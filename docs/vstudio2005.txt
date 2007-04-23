@@ -1,0 +1,62 @@
+Building Power Tab Parser Using Visual Studio 2005 on Windows Vista
+===================================================================
+
+Date: April 22, 2007
+
+Step 1 - Installing and Setting Up wxWidgets
+--------------------------------------------
+
+1) The project relies on wxWidgets for it's GUI. You must download wxWidgets
+2.8.3 for Windows from http://www.wxwidgets.org/. Version 2.8.3 is the only
+version guaranteed to work, so don't download any other version.
+
+2) Once installed, you may need to setup an environmental path variable that's
+required by the project, if it wasn't installed by the installer:
+
+a) Click Start -> Control Panel -> System and Maintenance -> System ->
+Advanced System Settings
+b) Click Environment Variables
+c) Under the System variables heading, click New
+d) In the Variable name box, type WXWIN (must be capital letters)
+e) In the Variable value box, enter the full path to the folder where wxWidgets
+is installed. (i.e. C:\wxWidgets-2.8.3)
+f) Click OK
+g) Click OK
+h) Click OK
+
+
+Step 2 - Building wxWidgets
+---------------------------
+
+1) In the folder where you installed wxWidgets, open the build\msw folder, and
+then double-click the wx.dsw file so that the project opens in Visual Studio.
+When it asks to convert the project, click Yes To All.
+
+2) Build the "Debug" and "Release" Win32 configurations. You don't need to
+build the DLL or Unicode configurations, the parser project is statically
+linked, and non-Unicode.
+
+3) Set up the appropriate wxWidgets directories within Visual Studio using the
+WXWIN environment variable you setup in Step 1. On the Tools menu click
+Options -> Projects and Solutions -> VC++ Directories, and then add the
+directories.
+
+i.e. $(WXWIN)\include, $(WXWIN)\libs
+
+
+Step 3 - Building Power Tab Parser
+----------------------------------
+
+1) Checkout the latest source using Subversion/TortoiseSVN:
+
+# Non-members may check out a read-only working copy anonymously over HTTP.
+svn checkout http://ptparser.googlecode.com/svn/trunk/ ptparser
+
+2) Double-click the powertabparser.sln file in the project folder so that the
+project opens in Visual Studio.
+
+3) On the Build menu, click Batch Build.
+
+4) Click Select All.
+
+5) Click the Build button and wait for the build to complete.

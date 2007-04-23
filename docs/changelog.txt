@@ -1,0 +1,37 @@
+Version 1.1 [ 22-Apr-2007 ]
+===========================
+
+NEW: Project updated to a Visual Studio 2005 project
+
+NEW: Project updated to use wxWidgets 2.8.3
+
+FIX: testsuite.cpp(52) : error C2143: syntax error : missing ';' before 'return'
+     
+FIX: All wxStreamBase::LastError calls renamed to wxStreamBase::GetLastError
+
+FIX: Removed wxHIDE_READONLY flag from wxFileDialog calls as it is no longer
+     supported
+
+FIX: Added std:: namespace prefix to all min and max calls
+
+NEW: Added and changed WXUNUSED in several places to eliminate C4100: unreferenced
+     formal parameter warnings
+
+FIX: Removed <pos> tag from dialog resource in the .xrc file, and replaced it with
+     <centered> tag. No longer get "Cannot convert dialog units" error.
+
+NEW: Added statistical analysis feature to the Tools menu.
+
+
+Version 1.0 [ 27-Jan-2006 ]
+===========================
+
+NEW: license.txt
+
+
+Version 1.0 [ 10-Oct-2005 ]
+===========================
+
+NEW: Everything, it's the first version.
+
+

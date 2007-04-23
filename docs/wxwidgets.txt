@@ -1,0 +1,47 @@
+wxWidgets Port Guide
+--------------------
+
+[Value Replacements]
+TRUE -> true
+FALSE -> false
+
+[Variable Replacements]
+BYTE -> wxByte
+BOOL -> bool
+TCHAR -> wxChar
+WORD -> wxWord
+DWORD -> wxUint32
+UINT -> wxUint32
+int -> wxInt32
+COLORREF -> wxColor
+CString -> wxString
+LPCTSTR -> const wxChar*
+LPTSTR -> wxChar*
+CPoint -> wxPoint
+CRect -> wxRect
+CRect.left -> wxRect.GetLeft
+CRect.top -> wxRect.GetTop
+CRect.right -> wxRect.GetRight
+CRect.bottom -> wxRect.GetBottom
+CDC -> wxDC
+
+[Macro Replacements]
+ASSERT -> wxASSERT
+VERIFY -> wxCHECK if function returns a value or wxCHECK2 if function doesn't return a value
+
+[Function Replacements]
+CString::Empty -> wxString.Clear
+CString::IsEmpty -> wxString.IsEmpty
+CString::GetLength -> wxString.Length
+CString::GetBufferSetLength -> wxString.GetWriteBuf
+CString::ReleaseBuffer -> wxString.UngetWriteBuf
+CRect::PtInRect -> wxRect::Inside
+CString.Format -> wxString::Format
+AfxExtractSubString -> wxExtractSubString
+text mappings -> wx text mappings
+
+[Coding Guidelines]
+- NULL must be cast
+- all file names should be lowercase
+- Make sure there's an extra line at end of each file
+- use ternary with functions?  i.e. int x = ((y < 0) ? AddFive(x) : AddFour(x));

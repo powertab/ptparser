@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VersionTool>
+  <MajorVersion>1</MajorVersion>
+  <MinorVersion>0</MinorVersion>
+  <RevisionNumber>0</RevisionNumber>
+  <BuildNumber ConfigurationName="Debug" PlatformName="Win32">1574</BuildNumber>
+  <BuildNumber ConfigurationName="Release" PlatformName="Win32">113</BuildNumber>
+</VersionTool>

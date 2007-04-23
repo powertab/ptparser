@@ -1,0 +1,187 @@
+[Apr. 22, 2007]
+
+Notes About the Power Tab File Format
+-------------------------------------
+
+- PTE was coded using MSVC++ 6.0 w/Microsoft Foundation Classes (MFC)
+
+- All data is stored using little endian format
+
+- No standard notation information is stored with the files, you'll
+need to calculate that yourself
+
+- Most of the files found on the Web should be in v1.7 format
+
+[Physical File Layout]
+
+a) Header
+b) Guitar Score
+c) Bass Score
+d) Document Attributes
+
+See (or follow along with in Debug mode) the PowerTabDocument class's
+LoadObject function to better help understand the document structure.
+
+The best way to figure out what's going on in a given class is to load
+up the corresponding dialog box in Power Tab Editor v1.7. 
+(i.e. For the TempoMarker class, simply open up the Tempo Marker dialog
+within PTE in order to visualize the various components used in the class)
+
+[Co-ordinate System]
+Top left of the document's logical co-ordinate system is (0,0). Positive
+x is to the right; positive y is down.
+
+[Object Anchoring]
+Most Power Tab objects are anchored to a location in the score using system,
+staff and position references. (floating text objects are the exception, they
+use logical co-ords, as described in the co-ordinate system topic)
+- systems are indexed from 0 to (number of systems in score - 1)
+- staffs are indexed from 0 to (number of staves in the system - 1)
+- positions are indexed from 0 to (max number of positions in the system - 1)
+
+The number of positions in a system is dependant upon the position width that's
+set for the system; the wider the position width, the fewer positions there 
+will be. (In PTE, you move to different positions within the system by using 
+the left and right arrow keys)
+
+Examples:
+
+1) A dynamic symbol with the anchoring values, system = 3, staff = 1,
+position = 20, means the symbol is anchored to the 21st position across
+on the 2nd staff in the 4th system in the score.
+
+2) A floating text object with the a rect of l = 40, t = 100, r = 100,
+b = 110 is anchored 40 logical units to the left, and 100 units down
+from the document's logical origin. The text is 60 logical units wide,
+and 10 logical units high.
+
+3) A tempo marker with the anchoring values, system = 1, position = 0,
+means the symbol is anchored to the 1st position of the 2nd system in
+the score.
+
+4) A direction with the anchoring value position = 14 is anchored
+to the 15th position in system.
+
+[Array Sorting Orders]
+Most of the data that is contained in arrays are stored in sorted order.
+If you plan on creating scores, you must ensure they are sorted correctly.
+
+Score Arrays
+------------
+a) GuitarArray - sorted by number
+b) ChordDiagramArray - sorted by the order they appear in printout, left to right,
+top to bottom
+c) FloatingTextArray - sorted by rect top value, then rect left value
+d) GuitarInArray - sorted by system, position, then staff
+e) TempoMarkerArray - sorted by system, then position
+f) DynamicArray - sorted by system, position, then staff
+g) AlternateEndingArray - sorted by system, then position
+h) SystemArray - sorted by order they are drawn in the score (top to bottom)
+
+System Arrays
+-------------
+a) DirectionArray - sorted by position within the system
+b) ChordTextArray - sorted by position within the system
+c) RhythmSlashArray - sorted by position within the system
+d) StaffArray - sorted by the order they are drawn in the score (top to bottom)
+e) BarlineArray - sorted by position within the system
+
+Staff Arrays
+------------
+a) PositionArray - sorted by position
+
+Position Arrays
+---------------
+a) NoteArray - sorted by MIDI note pitch, highest to lowest, then by
+line number, high string to low string
+
+Power Tab Parser
+----------------
+
+[Background]
+
+- Power Tab Parser contains code for loading and saving Power Tab files.
+No drawing code is included
+
+- Coded using MSVC++ 2005 w/wxWidgets v2.8.3. You can download
+wxWidgets for free from http://www.wxwidgets.org/. I simply followed the
+appropriate instructions to get things running on Vista. No other platform
+was tested.
+
+* For example code on how to properly read a Power Tab document, see the
+OnTestParseFile function in the powertabview.cpp file. You should be able
+to use similar code without using the built-in doc/view architecture that
+wxWidgets provides. See the Load functions in the PowerTabDocument class.
+
+- Uses the built in doc/view architecture provided by wxWidgets
+
+- doxygen oriented comments appear in all the code, so you can generate help
+files from that (See http://www.doxygen.org)
+
+- A small testing framework and all testing suites are included with the
+project
+
+- The code in this project was tested using:
+    a) MSVC++ 2005 on Windows Vista
+    
+- In order to simulate the CArchive MFC class, I created a couple of classes
+derived from the wxWidgets streams: 
+    a) PowerTabInputStream
+    b) PowerTabOutputStream
+    
+These classes handle all of the messy internal serialization/deserialization
+that occurs when using the MFC Collection classes (CObList)
+
+- To enable saving of files, uncomment the appropriate lines in the 
+CreateChildFrame function in the mainframe.cpp file. Saving should be used
+for testing only. (or merging if you add code for that)
+
+[Usage]
+    
+1) To perform unit testing:
+    a) On the Test menu, click Testing Framework
+    b) Click Run
+
+All tests should pass of course.
+
+2) To run the batch file serialization tester:
+
+** NOTE: Do not perform this test on your original files!!!! Make copies of the
+files and perform the test on them instead.
+
+    This test feature will load (individually) all .ptb files
+    in a folder (and its subfolders), to ensure deserialization (loading)
+    is working correctly.  If a file is the most recent file
+    format (v1.7), the file is saved to a memory stream, and
+    then compared with the original file to ensure serialization
+    is working correctly. If any errors occur, you will be prompted
+    to save the errors to a text file. This test can take some time on
+    a slow machine, or if you are testing a large number of files. A good
+    sample size to test is ~750 files.
+    
+    a) On the Test menu, click Batch File Serialization
+    b) Select the folder where your COPIED files reside, and then click OK
+    c) Sit back and wait
+    
+3) To open a Power Tab file:
+    a) On the File menu, click Open
+    b) Select the .ptb file to Open, and then click Open
+
+4) To open a Power Tab tuning database file:
+    a) On the File menu, click Open
+    b) In the Files of type list, select Power Tab Tuning Database
+    c) Select the .dat file to Open, and then click Open
+
+5) To run statistical analysis on a group of files:
+    a) On the Tools menu, click Statistical Analysis
+    b) Select the folder where your files reside, and then click OK
+    c) Sit back and wait
+    d) Save the resultant .csv (comma delimited) to a folder of your choice
+
+[Future Considerations]
+- It should be relatively simple to create a dialog for merging the Guitar Score
+of one document with the Bass Score of another. The code to perform the operation
+is already present in the PowerTabDocument class, (but not tested) and there is
+an event handler for the operation on the Tools menu.
+
+-- Brad
