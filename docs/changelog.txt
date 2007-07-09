@@ -1,3 +1,10 @@
+Version 1.1.1 [ 09-Jul-2007 ]
+=============================
+
+FIX: chordname.h(233, 238, 243) - all instances of 'm_key' replaced with 'm_formula'
+     Bug found by Simone Tellini
+http://groups.google.com/group/powertab-developers/browse_thread/thread/5628a93cf4fd5f52?hl=en
+
 Version 1.1 [ 22-Apr-2007 ]
 ===========================
 

@@ -23,7 +23,7 @@ void MainFrame::OnHelpAbout(wxCommandEvent& WXUNUSED(event))
     // - Apr 22, 2007
     wxString aboutCaption = wxString::Format(wxT("About %s"),
         wxTheApp->GetAppName().c_str());
-    wxMessageBox(wxT("Power Tab Parser 1.1.0.0\nA wxWidgets application that ") \
+    wxMessageBox(wxT("Power Tab Parser 1.1.1.0\nA wxWidgets application that ") \
         wxT("can load and save Power Tab (.ptb) files.\n\nWritten by Brad Larsen") \
         wxT("\nCopyright (c) 2005-2007 by Brad Larsen. All rights reserved."),
         aboutCaption, wxICON_INFORMATION);

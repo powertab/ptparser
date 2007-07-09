@@ -230,17 +230,17 @@ protected:
     /// @param flag Flag to set
     /// @return True if the flag was set, false if not
     bool SetFormulaFlag(wxByte flag)                                
-        {wxCHECK(IsValidFormulaFlag(flag), false); m_key |= flag; return (true);}
+        {wxCHECK(IsValidFormulaFlag(flag), false); m_formula |= flag; return (true);}
     /// Clears a formula flag
     /// @param flag Flag to clear
     /// @return True if the flag was cleared, false if not
     bool ClearFormulaFlag(wxByte flag)                              
-        {wxCHECK(IsValidFormulaFlag(flag), false); m_key &= ~flag; return (true);}
+        {wxCHECK(IsValidFormulaFlag(flag), false); m_formula &= ~flag; return (true);}
     /// Determines if a formula flag is set
     /// @param flag Flag to test
     /// @return True if the flag is set, false if not
     bool IsFormulaFlagSet(wxByte flag) const                        
-        {return ((m_key & flag) == flag);}
+        {return ((m_formula & flag) == flag);}
         	
 public:
 	// Formula Modifications Functions

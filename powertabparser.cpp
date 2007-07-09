@@ -40,7 +40,7 @@ bool PowerTabParser::OnInit()
 {
     //------Last Checked------//
     // - Dec 30, 2004
-    SetAppName(wxT("Power Tab Parser 1.1"));
+    SetAppName(wxT("Power Tab Parser 1.1.1"));
     
     // Initialize and load the XML resources
     wxXmlResource::Get()->InitAllHandlers();
@@ -55,7 +55,7 @@ bool PowerTabParser::OnInit()
        
     // Create the main frame window
     frame = new MainFrame((wxDocManager*) m_docManager, (wxFrame*)NULL,
-                wxT("PowerTabParser 1.1"), wxPoint(0,0), wxSize(300,300),
+                wxT("PowerTabParser 1.1.1"), wxPoint(0,0), wxSize(300,300),
                 wxDEFAULT_FRAME_STYLE | wxNO_FULL_REPAINT_ON_RESIZE | wxMAXIMIZE);
 
     // Create the main menu
