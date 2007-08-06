@@ -36,30 +36,33 @@ public:
         notUsed                         = (wxByte)0xff              ///< Marker that signifies an unused string
     };
     
+// Member Variables
 protected:
     wxString    m_name;                             ///< Name (or description) of the tuning
     wxByte      m_data;                             ///< bit 7 = Music notation offset sign, bits 6 to 1 = Music notation offset value, bit 0 = display sharps or flats
     wxByteArray m_noteArray;                        ///< Array of bytes representing the MIDI notes of the tuning, ordered from high string to low string
-   
+
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     Tuning();
-    Tuning(const wxChar* name, wxInt8 musicNotationOffset, bool sharps, wxByte note1, wxByte note2, wxByte note3, wxByte note4 = notUsed, wxByte note5 = notUsed, wxByte note6 = notUsed, wxByte note7 = notUsed);
+    Tuning(const wxChar* name, wxInt8 musicNotationOffset, bool sharps,
+        wxByte note1, wxByte note2, wxByte note3, wxByte note4 = notUsed,
+        wxByte note5 = notUsed, wxByte note6 = notUsed, wxByte note7 = notUsed);
     Tuning(const Tuning& tuning);
     ~Tuning();
 
-    // Creation Functions
+// Creation Functions
     /// Creates an exact duplicate of the object
     /// @return The duplicate object
     PowerTabObject* CloneObject() const                         
         {return (new Tuning(*this));}
     
-    // Operators
+// Operators
     const Tuning& operator=(const Tuning& tuning);
     bool operator==(const Tuning& tuning) const;
     bool operator!=(const Tuning& tuning) const;
 
-    // MFC Class Functions
+// MFC Class Functions
     /// Gets the MFC Class Name for the object
     /// @return The MFC Class Name
     wxString GetMFCClassName() const                            
@@ -69,19 +72,23 @@ public:
     wxWord GetMFCClassSchema() const                            
         {return ((wxWord)1);}
     
-    // Serialize Functions
+// Serialize Functions
 protected:
     bool DoSerialize(PowerTabOutputStream& stream);
     bool DoDeserialize(PowerTabInputStream& stream, wxWord version);
 
+// Tuning Functions
 public:
-    // Tuning Functions
-    bool SetTuning(const wxChar* name, wxInt8 musicNotationOffset, bool sharps, wxByte note1, wxByte note2, wxByte note3, wxByte note4 = notUsed, wxByte note5 = notUsed, wxByte note6 = notUsed, wxByte note7 = notUsed);
+    bool SetTuning(const wxChar* name, wxInt8 musicNotationOffset, bool sharps,
+        wxByte note1, wxByte note2, wxByte note3, wxByte note4 = notUsed,
+        wxByte note5 = notUsed, wxByte note6 = notUsed, wxByte note7 = notUsed);
     bool SetTuningFromString(const wxChar* string);
     bool IsSameTuning(const Tuning& tuning) const;
-    bool IsSameTuning(wxByte note1, wxByte note2, wxByte note3, wxByte note4 = notUsed, wxByte note5 = notUsed, wxByte note6 = notUsed, wxByte note7 = notUsed) const;
+    bool IsSameTuning(wxByte note1, wxByte note2, wxByte note3,
+        wxByte note4 = notUsed, wxByte note5 = notUsed, wxByte note6 = notUsed,
+        wxByte note7 = notUsed) const;
     
-    // Name Functions
+// Name Functions
     /// Sets the tuning name (i.e. "Open G")
     /// @param name Name to set
     /// @return True if the name was successfully set, false if not
@@ -92,28 +99,35 @@ public:
     wxString GetName() const                                
         {return (m_name);}
 
-    // Music Notation Offset Functions
+// Music Notation Offset Functions
     /// Determines if a music notation offset value is valid
     /// @param musicNotationOffset Music notation offset to validate
     /// @return True if the music notation offset is valid, false if not
     static bool IsValidMusicNotationOffset(wxInt8 musicNotationOffset)  
-        {return ((musicNotationOffset >= MIN_MUSIC_NOTATION_OFFSET) && ((musicNotationOffset <= MAX_MUSIC_NOTATION_OFFSET)));}
+    {
+        return ((musicNotationOffset >= MIN_MUSIC_NOTATION_OFFSET) &&
+            ((musicNotationOffset <= MAX_MUSIC_NOTATION_OFFSET)));
+    }
     bool SetMusicNotationOffset(wxInt8 musicNotationOffset);
     wxInt8 GetMusicNotationOffset() const;
     
-    // Sharps Functions
+// Sharps Functions
     void SetSharps(bool set = true);
     /// Determines if the tuning notes are displayed using sharps, or flats
-    /// @return True if the tuning notes are displayed using sharps, false if flats
+    /// @return True if the tuning notes are displayed using sharps, false if
+    /// flats
     bool UsesSharps() const                                 
         {return ((m_data & sharpsMask) == sharpsMask);}
         
-    // String Functions
+// String Functions
     /// Determines if a string count is valid
     /// @param stringCount String count to validate
     /// @return True if the string count is valid, false if not
     static bool IsValidStringCount(size_t stringCount)      
-        {return ((stringCount >= MIN_STRING_COUNT) && (stringCount <= MAX_STRING_COUNT));}
+    {
+        return ((stringCount >= MIN_STRING_COUNT) &&
+            (stringCount <= MAX_STRING_COUNT));
+    }
     /// Determines if a string is valid
     /// @param string String to validate
     /// @return True if the string is valid, false if not
@@ -124,18 +138,20 @@ public:
     size_t GetStringCount() const                           
         {return (m_noteArray.GetCount());}
 
-    // Note Functions
+// Note Functions
     bool SetNote(wxUint32 string, wxByte note);
-    wxByte GetNote(wxUint32 string, bool includeMusicNotationOffset = false) const;
+    wxByte GetNote(wxUint32 string,
+        bool includeMusicNotationOffset = false) const;
     wxString GetNoteText(wxUint32 string) const;
     bool IsOpenStringNote(wxByte note) const;
     wxSize GetNoteRange(wxByte capo) const;
 protected:
-    bool AddTuningNotes(wxByte note1, wxByte note2, wxByte note3, wxByte note4, wxByte note5, wxByte note6, wxByte note7);
+    bool AddTuningNotes(wxByte note1, wxByte note2, wxByte note3, wxByte note4,
+        wxByte note5, wxByte note6, wxByte note7);
     void DeleteNoteArrayContents();
-    
+
+// Operations
 public:    
-    // Operations
     /// Determines if a tuning is valid (has a valid number of strings)
     /// @return True if the tuning is valid, false if not
     bool IsValid() const                                    

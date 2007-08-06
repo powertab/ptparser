@@ -17,24 +17,25 @@ class PowerTabViewCanvas;
 /// Displays the PowerTabDocument-based data
 class PowerTabView: public wxView
 {
+// Member Variables
 public:
     wxMDIChildFrame*        m_frame;            ///< Frame that holds the view
     PowerTabViewCanvas*     m_canvas;           ///< Canvas associated with the view
   
-    // Constructor/Destructor
+// Constructor/Destructor
     PowerTabView();
     ~PowerTabView();
 
-    // Overrides
+// Overrides
     bool OnCreate(wxDocument* doc, long flags);
     void OnDraw(wxDC* dc);
     void OnUpdate(wxView* sender, wxObject* hint = (wxObject*) NULL);
     bool OnClose(bool deleteWindow = TRUE);
     
-    // Command Events
+// Command Events
     void OnTestParseFile(wxCommandEvent& event);
     
-    // Operations
+// Operations
     PowerTabViewCanvas* CreateCanvas(wxView* view, wxMDIChildFrame* parent);
 
 private:

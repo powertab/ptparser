@@ -36,37 +36,39 @@ public:
         border      = (wxByte)0x08              ///< Text surrounded by border
     };
     
+// Member Variables
 protected:
     wxString        m_text;                     ///< Text to be output
     wxRect          m_rect;                     ///< Bounding rectangle for the text
     wxByte          m_flags;                    ///< Flags representing alignment and borders (see flags below)
     FontSetting     m_fontSetting;              ///< Font setting (format) to use when drawing the text
 
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     FloatingText();
-    FloatingText(const wxChar* text, wxRect rect, wxByte flags, const FontSetting& fontSetting);
+    FloatingText(const wxChar* text, wxRect rect, wxByte flags,
+        const FontSetting& fontSetting);
     FloatingText(const FloatingText& floatingText);
     ~FloatingText();
 
-    // Creation Functions
+// Creation Functions
     /// Creates an exact duplicate of the object
     /// @return The duplicate object
     PowerTabObject* CloneObject() const                         
         {return (new FloatingText(*this));}
     
-    // Operators
+// Operators
     const FloatingText& operator=(const FloatingText& floatingText);
     bool operator==(const FloatingText& floatingText) const;
     bool operator!=(const FloatingText& floatingText) const;
 
-    // Serialize Functions
+// Serialize Functions
 protected:
     bool DoSerialize(PowerTabOutputStream& stream);
     bool DoDeserialize(PowerTabInputStream& stream, wxWord version);
 
+// MFC Class Functions
 public:
-    // MFC Class Functions
     /// Gets the MFC Class Name for the object
     /// @return The MFC Class Name
     wxString GetMFCClassName() const                            
@@ -76,7 +78,7 @@ public:
     wxWord GetMFCClassSchema() const                            
         {return ((wxWord)1);}
     
-    // Text Functions
+// Text Functions
     /// Sets the text used by the FloatingText object
     /// @param text Text to set
     /// @return True if the text was set, false if not
@@ -87,7 +89,7 @@ public:
     wxString GetText() const                                        
         {return (m_text);}
 
-    // Rect Functions
+// Rect Functions
     /// Sets the bounding rect for the text in the FloatingText object
     /// @param rect Rect to set
     void SetRect(wxRect rect)                                       
@@ -100,7 +102,7 @@ public:
     bool IsEmpty() const                                            
         {return ((m_rect.width == 0) && (m_rect.height == 0));}
 
-    // Flag Functions
+// Flag Functions
 protected:
     void SetFlag(wxByte flag);
     /// Clears a flag used by the FloatingText object
@@ -112,40 +114,59 @@ protected:
     /// @return True if the flag is set, false if not
     bool IsFlagSet(wxByte flag) const                               
         {return ((m_flags & flag) == flag);}
-    
+
+// Alignment Functions
 public:
-    // Alignment Functions
     /// Determines if a alignment value is valid
     /// @param alignment Text alignment to validate
     static bool IsValidAlignment(wxByte alignment)                  
-        {return ((alignment == alignLeft) || (alignment == alignCenter) || (alignment == alignRight));}
+    {
+        return ((alignment == alignLeft) || (alignment == alignCenter) ||
+            (alignment == alignRight));
+    }
     /// Sets the alignment used by the FloatingText object
     /// @param alignment Text alignment to set
     /// @return True if the alignment was successfully set, false if not
     bool SetAlignment(wxByte alignment)                             
-        {wxCHECK(IsValidAlignment(alignment), false); ClearFlag(alignMask); SetFlag(alignment); return (true);}
+    {
+        wxCHECK(IsValidAlignment(alignment), false);
+        ClearFlag(alignMask);
+        SetFlag(alignment);
+        return (true);
+    }
     /// Gets the alignment used by the FloatingText object
     /// @return The alignment used by the FloatingText object
     wxByte GetAlignment() const                                     
         {return (wxByte)(m_flags & FloatingText::alignMask);}
-    /// Determines if the alignment used by the FloatingText object is in a particular alignment
+    /// Determines if the alignment used by the FloatingText object is in a
+    /// particular alignment
     /// @param alignment Alignment to test
-    /// @return True if the alignment used by the FloatingText object matches the one given by alignment, false if not
+    /// @return True if the alignment used by the FloatingText object matches
+    /// the one given by alignment, false if not
     bool IsAligned(wxByte alignment) const                          
-        {wxCHECK(IsValidAlignment(alignment), false); return (IsFlagSet(alignment));}
-    /// Determines if the alignment used by the FloatingText object is left aligned
-    /// @return True if the alignment used by the FloatingText object is left aligned, false if not
+    {
+        wxCHECK(IsValidAlignment(alignment), false);
+        return (IsFlagSet(alignment));
+    }
+    /// Determines if the alignment used by the FloatingText object is left
+    /// aligned
+    /// @return True if the alignment used by the FloatingText object is left
+    /// aligned, false if not
     bool IsAlignedLeft() const                                      
         {return (IsAligned(FloatingText::alignLeft));}
     /// Determines if the alignment used by the FloatingText object is centered
-    /// @return True if the alignment used by the FloatingText object is centered, false if not
+    /// @return True if the alignment used by the FloatingText object is
+    /// centered, false if not
     bool IsAlignedCenter() const                                    
         {return (IsAligned(FloatingText::alignCenter));}
-    /// Determines if the alignment used by the FloatingText object is right aligned
-    /// @return True if the alignment used by the FloatingText object is right aligned, false if not
+    /// Determines if the alignment used by the FloatingText object is right
+    /// aligned
+    /// @return True if the alignment used by the FloatingText object is right
+    /// aligned, false if not
     bool IsAlignedRight() const                                     
         {return (IsAligned(FloatingText::alignRight));}
 
+// Border Functions
     /// Sets the border
     /// @param set True sets the border, false clears it
     void SetBorder(bool set = true)                                 
@@ -156,7 +177,7 @@ public:
         {return (IsFlagSet(FloatingText::border));}
     wxRect GetBorderRect() const;
         
-    // Font Setting Functions
+// Font Setting Functions
     /// Sets the font setting used by the FloatingText object
     /// @param fontSetting FontSetting object to set
     void SetFontSetting(const FontSetting& fontSetting)             
@@ -165,12 +186,16 @@ public:
     /// @return The font setting used by the FloatingText object
     FontSetting GetFontSetting() const                              
         {return (m_fontSetting);}
-    /// Gets a reference to the FontSetting object used by the FloatingText object
-    /// @return Reference to the FontSetting object used by the FloatingText object
+    /// Gets a reference to the FontSetting object used by the FloatingText
+    /// object
+    /// @return Reference to the FontSetting object used by the FloatingText
+    /// object
     FontSetting& GetFontSettingRef()                                
         {return (m_fontSetting);}
-    /// Gets a constant reference to the FontSetting object used by the FloatingText object
-    /// @return Constant reference to the FontSetting object used by the FloatingText object
+    /// Gets a constant reference to the FontSetting object used by the
+    /// FloatingText object
+    /// @return Constant reference to the FontSetting object used by the
+    /// FloatingText object
     const FontSetting& GetFontSettingConstRef() const               
         {return (m_fontSetting);}
 };

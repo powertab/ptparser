@@ -21,7 +21,8 @@ END_EVENT_TABLE()
 
 // Constructor/Destructor
 /// Primary Constructor
-PowerTabViewCanvas::PowerTabViewCanvas(wxView *view, wxMDIChildFrame *frame, const wxPoint& pos, const wxSize& size, long style):
+PowerTabViewCanvas::PowerTabViewCanvas(wxView *view, wxMDIChildFrame *frame,
+    const wxPoint& pos, const wxSize& size, long style):
     wxScrolledWindow(frame, -1, pos, size, style)
 {
     //------Last Checked------//

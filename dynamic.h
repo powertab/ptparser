@@ -54,37 +54,39 @@ public:
         off     = (wxByte)0
     };
 
+// Member Variables
 protected:
     wxWord      m_system;       ///< Zero-based index of the system where the dynamic is anchored
     wxByte      m_staff;        ///< Zero-based index of the staff within the system where the dynamic is anchored
     wxByte      m_position;     ///< Zero-based index of the position within the system where the dynamic is anchored
     wxWord      m_data;         ///< Volume level (see volumeLevels enum for values; top byte = staff volume, bottom byte = dynamic volume)
 
+// Constructors/Destructors
 public:
-    // Constructors/Destructors
     Dynamic();
-    Dynamic(wxUint32 system, wxUint32 staff, wxUint32 position, wxByte staffVolume, wxByte rhythmSlashVolume);
+    Dynamic(wxUint32 system, wxUint32 staff, wxUint32 position,
+        wxByte staffVolume, wxByte rhythmSlashVolume);
     Dynamic(const Dynamic& dynamic);
     ~Dynamic();
     
-    // Creation Functions
+// Creation Functions
     /// Creates an exact duplicate of the object
     /// @return The duplicate object
     PowerTabObject* CloneObject() const                         
         {return (new Dynamic(*this));}
     
-    // Operators
+// Operators
     const Dynamic& operator=(const Dynamic& dynamic);
     bool operator==(const Dynamic& dynamic) const;
     bool operator!=(const Dynamic& dynamic) const;
     
-    // Serialization functions
+// Serialization functions
 protected:
     bool DoSerialize(PowerTabOutputStream& stream);
     bool DoDeserialize(PowerTabInputStream& stream, wxWord version);
 
+// MFC Class Functions
 public:
-    // MFC Class Functions
     /// Gets the MFC Class Name for the object
     /// @return The MFC Class Name
     wxString GetMFCClassName() const                            
@@ -94,23 +96,28 @@ public:
     wxWord GetMFCClassSchema() const                            
         {return ((wxWord)1);}
     
-    // System Functions
+// System Functions
     /// Determines whether a system is valid
     /// @param system System to validate
     /// @return True if the system is valid, false if not
     static bool IsValidSystem(wxUint32 system)
         {return ((system >= MIN_SYSTEM) && (system <= MAX_SYSTEM));}
     /// Sets the system within the system where the dynamic is anchored
-    /// @param system Zero-based index of the system where the dynamic is anchored
+    /// @param system Zero-based index of the system where the dynamic is
+    /// anchored
     /// @return True if the system was set, false if not
     bool SetSystem(wxUint32 system)
-        {wxCHECK(IsValidSystem(system), false); m_system = (wxWord)system; return (true);}
+    {
+        wxCHECK(IsValidSystem(system), false);
+        m_system = (wxWord)system;
+        return (true);
+    }
     /// Gets the system within the system where the dynamic is anchored
     /// @return The system within the system where the dynamic is anchored
     wxUint32 GetSystem() const                           
         {return (m_system);}
         
-    // Staff Functions
+// Staff Functions
     /// Determines whether a staff is valid
     /// @param staff Staff to validate
     /// @return True if the staff is valid, false if not
@@ -120,38 +127,49 @@ public:
     /// @param staff Zero-based index of the staff where the dynamic is anchored
     /// @return True if the staff was set, false if not
     bool SetStaff(wxUint32 staff)
-        {wxCHECK(IsValidStaff(staff), false); m_staff = (wxByte)staff; return (true);}
+    {
+        wxCHECK(IsValidStaff(staff), false);
+        m_staff = (wxByte)staff;
+        return (true);
+    }
     /// Gets the staff within the system where the dynamic is anchored
     /// @return The staff within the system where the dynamic is anchored
     wxUint32 GetStaff() const                           
         {return (m_staff);}
         
-    // Position Functions
+// Position Functions
     /// Determines whether a position is valid
     /// @param position Position to validate
     /// @return True if the position is valid, false if not
     static bool IsValidPosition(wxUint32 position)
         {return ((position >= MIN_POSITION) && (position <= MAX_POSITION));}
     /// Sets the position within the system where the dynamic is anchored
-    /// @param position Zero-based index of the position within the system where the dynamic is anchored
+    /// @param position Zero-based index of the position within the system where
+    /// the dynamic is anchored
     /// @return True if the position was set, false if not
     bool SetPosition(wxUint32 position)
-        {wxCHECK(IsValidPosition(position), false); m_position = (wxByte)position; return (true);}
+    {
+        wxCHECK(IsValidPosition(position), false);
+        m_position = (wxByte)position;
+        return (true);
+    }
     /// Gets the position within the system where the dynamic is anchored
     /// @return The position within the system where the dynamic is anchored
     wxUint32 GetPosition() const                           
         {return (m_position);}
     
-    // Volume Functions
+// Volume Functions
     /// Determines if a volume is valid
     /// @param volume Volume to validate
     /// @return True if the volume is valid, false if not
     static bool IsValidVolume(wxByte volume)
-        {return ((volume == notSet) || (volume == fff) || (volume == ff) ||
-            (volume == f) || (volume == mf) || (volume == mp) || (volume == p) ||
-            (volume == pp) || (volume == ppp) || (volume == off));
-        }
-    // Staff Volume Functions
+    {
+        return ((volume == notSet) || (volume == fff) || (volume == ff) ||
+            (volume == f) || (volume == mf) || (volume == mp) ||
+            (volume == p) || (volume == pp) || (volume == ppp) ||
+            (volume == off));
+    }
+// Staff Volume Functions
     /// Sets the staff volume
     /// @param volume Volume to set
     /// @return True if the volume was set, false if not
@@ -166,7 +184,7 @@ public:
     bool IsStaffVolumeSet() const
         {return (IsVolumeSet(false));}
 
-    // Rhythm Slash Functions
+// Rhythm Slash Functions
     bool SetRhythmSlashVolume(wxByte volume)
         {return (SetVolume(true, volume));}
     /// Gets the dynamic volume
@@ -181,9 +199,9 @@ protected:
     bool SetVolume(bool rhythmSlashes, wxByte volume);
     wxByte GetVolume(bool rhythmSlashes) const;
     bool IsVolumeSet(bool rhythmSlashes) const;
-    
+
+// Operations
 public:
-    // Operations
     wxString GetText(bool rhythmSlashes) const;
 };
 

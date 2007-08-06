@@ -37,7 +37,8 @@ class MainFrame: public wxDocMDIParentFrame
     
 public:
     // Constructor/Destructor
-    MainFrame(wxDocManager* manager, wxFrame* frame, const wxString& title, const wxPoint& pos, const wxSize& size, long type);
+    MainFrame(wxDocManager* manager, wxFrame* frame, const wxString& title,
+        const wxPoint& pos, const wxSize& size, long type);
 
     // Command Events
     void OnHelpAbout(wxCommandEvent& event);

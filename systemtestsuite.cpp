@@ -84,8 +84,10 @@ bool SystemTestSuite::TestCaseConstructor()
         TEST(wxT("Default Constructor"), 
             (system.GetRect() == System::DEFAULT_RECT) &&
             (system.GetPositionSpacing() == System::DEFAULT_POSITION_SPACING) &&
-            (system.GetRhythmSlashSpacingAbove() == System::DEFAULT_RHYTHM_SLASH_SPACING_ABOVE) &&
-            (system.GetRhythmSlashSpacingBelow() == System::DEFAULT_RHYTHM_SLASH_SPACING_BELOW) &&
+            (system.GetRhythmSlashSpacingAbove() ==
+            System::DEFAULT_RHYTHM_SLASH_SPACING_ABOVE) &&
+            (system.GetRhythmSlashSpacingBelow() ==
+            System::DEFAULT_RHYTHM_SLASH_SPACING_BELOW) &&
             (system.GetExtraSpacing() == System::DEFAULT_EXTRA_SPACING) &&
             (system.GetDirectionCount() == 0) &&
             (system.GetChordTextCount() == 0) &&
@@ -338,7 +340,8 @@ bool SystemTestSuite::TestCaseDirectionArray()
     //------Last Checked------//
     // - Jan 6, 2005
     System system;
-    TEST(wxT("IsValidDirectionIndex - false"), !system.IsValidDirectionIndex(0));
+    TEST(wxT("IsValidDirectionIndex - false"),
+        !system.IsValidDirectionIndex(0));
     TEST(wxT("GetDirection - invalid index"), (system.GetDirection(0) == NULL));
     return (true);
 }
@@ -350,7 +353,8 @@ bool SystemTestSuite::TestCaseChordTextArray()
     //------Last Checked------//
     // - Jan 6, 2005
     System system;
-    TEST(wxT("IsValidChordTextIndex - false"), !system.IsValidChordTextIndex(0));
+    TEST(wxT("IsValidChordTextIndex - false"),
+        !system.IsValidChordTextIndex(0));
     TEST(wxT("GetChordText - invalid index"), (system.GetChordText(0) == NULL));
     return (true);
 }
@@ -362,8 +366,10 @@ bool SystemTestSuite::TestCaseRhythmSlashArray()
     //------Last Checked------//
     // - Jan 6, 2005
     System system;
-    TEST(wxT("IsValidRhythmSlashIndex - false"), !system.IsValidRhythmSlashIndex(0));
-    TEST(wxT("GetRhythmSlash - invalid index"), (system.GetRhythmSlash(0) == NULL));
+    TEST(wxT("IsValidRhythmSlashIndex - false"),
+        !system.IsValidRhythmSlashIndex(0));
+    TEST(wxT("GetRhythmSlash - invalid index"),
+        (system.GetRhythmSlash(0) == NULL));
     return (true);
 }
 

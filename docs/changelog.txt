@@ -1,9 +1,22 @@
+Version 1.1.2 [ 05-Aug-2007 ]
+=============================
+
+NEW: Added all documents in the doc folder to the Documents folder within the 
+	 Visual Studio 2005 project
+
+NEW: Most code and comments are now aligned on the 80 character boundary
+
+FIX: note.cpp(31) - changed MAX_FRET_NUMBER from 24 to 29
+	 Bug found by Jon Eric Wennerstrom
+
+FIX: note.cpp(35) - changed MAX_BEND_DURATION from 8 to 9
+	 Bug found by Jon Eric Wennerstrom
+
 Version 1.1.1 [ 09-Jul-2007 ]
 =============================
 
 FIX: chordname.h(233, 238, 243) - all instances of 'm_key' replaced with 'm_formula'
      Bug found by Simone Tellini
-http://groups.google.com/group/powertab-developers/browse_thread/thread/5628a93cf4fd5f52?hl=en
 
 Version 1.1 [ 22-Apr-2007 ]
 ===========================

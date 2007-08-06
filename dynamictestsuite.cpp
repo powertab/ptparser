@@ -84,7 +84,8 @@ bool DynamicTestSuite::TestCaseConstructor()
             (dynamic.GetStaff() == Dynamic::DEFAULT_STAFF) &&
             (dynamic.GetPosition() == Dynamic::DEFAULT_POSITION) &&
             (dynamic.GetStaffVolume() == Dynamic::DEFAULT_STAFF_VOLUME) &&
-            (dynamic.GetRhythmSlashVolume() == Dynamic::DEFAULT_RHYTHM_SLASH_VOLUME)
+            (dynamic.GetRhythmSlashVolume() ==
+                Dynamic::DEFAULT_RHYTHM_SLASH_VOLUME)
         );
     }
     
@@ -210,7 +211,8 @@ bool DynamicTestSuite::TestCaseSerialize()
     
         // Read test data back from stream
         Dynamic dynamicIn;
-        dynamicIn.Deserialize(streamIn, PowerTabFileHeader::FILEVERSION_CURRENT);
+        dynamicIn.Deserialize(streamIn,
+            PowerTabFileHeader::FILEVERSION_CURRENT);
 
         // Validate the data
         ok = ((dynamicIn == dynamicOut)
@@ -358,14 +360,16 @@ bool DynamicTestSuite::TestCaseVolume()
         wxUint32 i = 0;
         for (; i < testValueCount; i++)
             TEST(wxString::Format(wxT("IsValidVolume - %d"), i),
-                (Dynamic::IsValidVolume(testValues[i]) == (testValues[i] != (Dynamic::notSet - 1)))
+                (Dynamic::IsValidVolume(testValues[i]) ==
+                    (testValues[i] != (Dynamic::notSet - 1)))
             );
     }
     
     // TEST CASE: SetStaffVolume
     {
         Dynamic dynamic;
-        TEST(wxT("SetStaffVolume - invalid volume"), !dynamic.SetStaffVolume(Dynamic::notSet - 1));
+        TEST(wxT("SetStaffVolume - invalid volume"),
+            !dynamic.SetStaffVolume(Dynamic::notSet - 1));
         TEST(wxT("SetStaffVolume - valid volume"), 
             (dynamic.SetStaffVolume(Dynamic::ff)) &&
             (dynamic.GetStaffVolume() == Dynamic::ff) &&
@@ -376,7 +380,8 @@ bool DynamicTestSuite::TestCaseVolume()
     // TEST CASE: SetRhythmSlashVolume
     {
         Dynamic dynamic;
-        TEST(wxT("SetRhythmSlashVolume - invalid volume"), !dynamic.SetRhythmSlashVolume(Dynamic::notSet - 1));
+        TEST(wxT("SetRhythmSlashVolume - invalid volume"),
+            !dynamic.SetRhythmSlashVolume(Dynamic::notSet - 1));
         TEST(wxT("SetRhythmSlashVolume - valid volume"), 
             (dynamic.SetRhythmSlashVolume(Dynamic::ff)) &&
             (dynamic.GetRhythmSlashVolume() == Dynamic::ff) &&
@@ -387,14 +392,16 @@ bool DynamicTestSuite::TestCaseVolume()
     // TEST CASE: SetVolume
     {
         Dynamic dynamic;
-        TEST(wxT("SetVolume - invalid staff volume"), !dynamic.SetVolume(false, Dynamic::notSet - 1));
+        TEST(wxT("SetVolume - invalid staff volume"),
+            !dynamic.SetVolume(false, Dynamic::notSet - 1));
         TEST(wxT("SetVolume - staff valid"), 
             (dynamic.SetVolume(false, Dynamic::ff)) &&
             (dynamic.GetVolume(false) == Dynamic::ff) &&
             (dynamic.IsVolumeSet(false))
         );
         
-        TEST(wxT("SetVolume - invalid rhythm slash volume"), !dynamic.SetVolume(true, Dynamic::notSet - 1));
+        TEST(wxT("SetVolume - invalid rhythm slash volume"),
+            !dynamic.SetVolume(true, Dynamic::notSet - 1));
         TEST(wxT("SetVolume - rhythm slash valid"), 
             (dynamic.SetVolume(true, Dynamic::ff)) &&
             (dynamic.GetVolume(true) == Dynamic::ff) &&

@@ -126,9 +126,12 @@ bool System::DoSerialize(PowerTabOutputStream& stream)
     stream.WriteMFCRect(m_rect);
     wxCHECK(stream.CheckState(), false);
     
-    // Note: End bar is stored as a byte; we use Barline class to make it easier for the user
-    wxByte endBar = (wxByte)((m_endBar.GetType() << 5) | (m_endBar.GetRepeatCount()));
-    stream << endBar << m_positionSpacing << m_rhythmSlashSpacingAbove << m_rhythmSlashSpacingBelow << m_extraSpacing;
+    // Note: End bar is stored as a byte; we use Barline class to make it easier
+    // for the user
+    wxByte endBar = (wxByte)((m_endBar.GetType() << 5) |
+        (m_endBar.GetRepeatCount()));
+    stream << endBar << m_positionSpacing << m_rhythmSlashSpacingAbove <<
+        m_rhythmSlashSpacingBelow << m_extraSpacing;
     wxCHECK(stream.CheckState(), false);
     
     m_startBar.Serialize(stream);
@@ -162,7 +165,8 @@ bool System::DoDeserialize(PowerTabInputStream& stream, wxWord version)
     // - Jan 14, 2005
     
     // Version 1.0 and 1.0.2
-	if (version == PowerTabFileHeader::FILEVERSION_1_0 || version == PowerTabFileHeader::FILEVERSION_1_0_2)
+	if (version == PowerTabFileHeader::FILEVERSION_1_0 ||
+        version == PowerTabFileHeader::FILEVERSION_1_0_2)
 	{
 		wxByte key;
 		wxWord endBar;
@@ -170,7 +174,9 @@ bool System::DoDeserialize(PowerTabInputStream& stream, wxWord version)
         stream.ReadMFCRect(m_rect);
         wxCHECK(stream.CheckState(), false);
                 
-		stream >> key >> endBar >> m_positionSpacing >> m_rhythmSlashSpacingAbove >> m_rhythmSlashSpacingBelow >> m_extraSpacing;
+		stream >> key >> endBar >> m_positionSpacing >>
+            m_rhythmSlashSpacingAbove >> m_rhythmSlashSpacingBelow >>
+            m_extraSpacing;
 		wxCHECK(stream.CheckState(), false);
 
 		// Update the key signature at start of section (always shown)
@@ -183,7 +189,8 @@ bool System::DoDeserialize(PowerTabInputStream& stream, wxWord version)
 		if (keyType > 2)
 		    m_startBar.GetKeySignatureRef().SetCancellation();
 
-		keyType = (wxByte)(((keyType % 2) == 1) ? KeySignature::majorKey : KeySignature::minorKey);
+		keyType = (wxByte)(((keyType % 2) == 1) ? KeySignature::majorKey :
+            KeySignature::minorKey);
 
         m_startBar.GetKeySignatureRef().SetKey(keyType, keyAccidentals);
 
@@ -256,11 +263,13 @@ bool System::DoDeserialize(PowerTabInputStream& stream, wxWord version)
         wxCHECK(stream.CheckState(), false);
         
         wxByte endBar = 0;
-        stream >> endBar >> m_positionSpacing >> m_rhythmSlashSpacingAbove >> m_rhythmSlashSpacingBelow >> m_extraSpacing;
+        stream >> endBar >> m_positionSpacing >> m_rhythmSlashSpacingAbove >>
+            m_rhythmSlashSpacingBelow >> m_extraSpacing;
         wxCHECK(stream.CheckState(), false);
         
         // Update end bar (using Barline class is easier to use)
-        m_endBar.SetBarlineData((wxByte)((endBar & 0xe0) >> 5), (wxByte)(endBar & 0x1f));
+        m_endBar.SetBarlineData((wxByte)((endBar & 0xe0) >> 5),
+            (wxByte)(endBar & 0x1f));
         
         m_startBar.Deserialize(stream, version);
         wxCHECK(stream.CheckState(), false);
@@ -287,7 +296,8 @@ bool System::DoDeserialize(PowerTabInputStream& stream, wxWord version)
 // Barline Array Functions
 /// Gets the barline at a given position
 /// @param position Position to get the barline for
-/// @return A pointer to the barline at the position, or NULL if the barline doesn't exist
+/// @return A pointer to the barline at the position, or NULL if the barline
+/// doesn't exist
 Barline* System::GetBarlineAtPosition(wxUint32 position) const
 {
     //------Last Checked------//

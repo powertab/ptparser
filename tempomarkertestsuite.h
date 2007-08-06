@@ -17,17 +17,17 @@ class TempoMarkerTestSuite :
     public TestSuite
 {
     DECLARE_DYNAMIC_CLASS(TempoMarkerTestSuite)
-    
+
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     TempoMarkerTestSuite();
     ~TempoMarkerTestSuite();
     
-    // Overrides
+// Overrides
     size_t GetTestCount() const;
     bool RunTestCases();
     
-    // Test Cases
+// Test Cases
 private:
     bool TestCaseConstructor();
     bool TestCaseCreation();

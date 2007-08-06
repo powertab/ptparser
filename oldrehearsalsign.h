@@ -27,37 +27,41 @@ public:
     static const wxInt8         DEFAULT_LETTER;             ///< Default value for the letter member variable
     static const wxChar*        DEFAULT_DESCRIPTION;        ///< Default value for the description member variable
     
+// Member Variables
 public:
     wxWord          m_system;               ///< Zero based index of the system the rehearsal sign is anchored to
     wxByte          m_position;             ///< Zero based index of the position within the system where the rehearsal sign is anchored
     wxUint32        m_data;                 ///< Unused data
     wxInt8          m_letter;               ///< The letter used to uniquely identify the rehearsal sign (i.e. A, B, F, etc. - must be a capital letter)
     wxString        m_description;          ///< A description that indicates the passage the rehearsal sign is marking (i.e. Chorus, Intro, etc.)
-    
+
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     OldRehearsalSign();
     ~OldRehearsalSign();
     
-    // Creation Functions
+// Creation Functions
     /// Creates an exact duplicate of the object
     /// @return The duplicate object
     PowerTabObject* CloneObject() const         
         {return (new OldRehearsalSign(*this));}
     
-    // Construction Functions
+// Construction Functions
     bool ConstructRehearsalSign(RehearsalSign& rehearsalSign) const;
     
-    // Operators
+// Operators
     const OldRehearsalSign& operator=(const OldRehearsalSign& oldRehearsalSign);
     bool operator==(const OldRehearsalSign& oldRehearsalSign) const;
     bool operator!=(const OldRehearsalSign& oldRehearsalSign) const;
     
-    // MFC Class Functions
+// MFC Class Functions
     /// Gets the MFC class id associated with the object
     /// @return The MFC class id associated with the object
     wxString GetMFCClassId() const              
-        {return (wxString::Format(wxT("%s-%d"), GetMFCClassName().c_str(), GetMFCClassSchema()));}
+    {
+        return (wxString::Format(wxT("%s-%d"), GetMFCClassName().c_str(),
+            GetMFCClassSchema()));
+    }
     /// Gets the MFC Class Name for the object
     /// @return The MFC Class Name
     wxString GetMFCClassName() const            
@@ -67,7 +71,7 @@ public:
     wxWord GetMFCClassSchema() const            
         {return ((wxWord)1);}
     
-    // Serialization Functions
+// Serialization Functions
 protected:
     bool DoDeserialize(PowerTabInputStream& stream, wxWord version);
 };

@@ -18,16 +18,16 @@ class RehearsalSignTestSuite :
 {
     DECLARE_DYNAMIC_CLASS(RehearsalSignTestSuite)
     
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     RehearsalSignTestSuite();
     ~RehearsalSignTestSuite();
     
-    // Overrides
+// Overrides
     size_t GetTestCount() const;
     bool RunTestCases();
     
-    // Test Cases
+// Test Cases
 private:
     bool TestCaseConstructor();
     bool TestCaseCreation();

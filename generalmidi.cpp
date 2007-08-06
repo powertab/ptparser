@@ -57,7 +57,8 @@ bool wxIsValidMidiNote(wxByte note)
 
 /// Gets the text representation of a MIDI note
 /// @param note MIDI note to get the text representation for
-/// @param sharps True to get the sharp representation of the note, false to get the flat representation of the note
+/// @param sharps True to get the sharp representation of the note, false to get
+/// the flat representation of the note
 /// @return A text representation of the MIDI note
 wxString wxGetMidiNoteText(wxByte note, bool sharps)
 {

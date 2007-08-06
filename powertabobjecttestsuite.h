@@ -18,16 +18,16 @@ class PowerTabObjectTestSuite :
 {
     DECLARE_DYNAMIC_CLASS(PowerTabObjectTestSuite)
     
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     PowerTabObjectTestSuite();
     ~PowerTabObjectTestSuite();
     
-    // Overrides
+// Overrides
     size_t GetTestCount() const;
     bool RunTestCases();
     
-    // Test Cases
+// Test Cases
 private:
     bool TestCaseCreateObject();
     bool TestCaseMFCClassInformation();

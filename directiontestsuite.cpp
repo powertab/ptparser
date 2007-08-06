@@ -159,34 +159,48 @@ bool DirectionTestSuite::TestCaseOperator()
     {
         Direction direction(12, Direction::toCoda, Direction::activeDaCapo, 4);
         Direction direction2(12, Direction::toCoda, Direction::activeDaCapo, 4);
-        Direction direction3(13, Direction::toDoubleCoda, Direction::activeDaCapo, 4);
+        Direction direction3(13, Direction::toDoubleCoda,
+            Direction::activeDaCapo, 4);
         Direction direction4(12, Direction::toCoda, Direction::activeNone, 4);
         Direction direction5(12, Direction::toCoda, Direction::activeDaCapo, 5);
         Direction direction6(12, Direction::toCoda, Direction::activeDaCapo, 4);
-        direction6.AddSymbol(Direction::toDoubleCoda, Direction::activeDaCapo, 4);
+        direction6.AddSymbol(Direction::toDoubleCoda, Direction::activeDaCapo,
+            4);
                        
-        TEST(wxT("Operator== - direction == direction"), (direction == direction2));
-        TEST(wxT("Operator== - direction != direction"), !(direction == direction3));
-        TEST(wxT("Operator== - direction != direction 2"), !(direction == direction4));
-        TEST(wxT("Operator== - direction != direction 3"), !(direction == direction5));
-        TEST(wxT("Operator== - direction != direction 4"), !(direction == direction6));
+        TEST(wxT("Operator== - direction == direction"),
+            (direction == direction2));
+        TEST(wxT("Operator== - direction != direction"),
+            !(direction == direction3));
+        TEST(wxT("Operator== - direction != direction 2"),
+            !(direction == direction4));
+        TEST(wxT("Operator== - direction != direction 3"),
+            !(direction == direction5));
+        TEST(wxT("Operator== - direction != direction 4"),
+            !(direction == direction6));
     }
         
     // TEST CASE: Operator!=
     {
         Direction direction(12, Direction::toCoda, Direction::activeDaCapo, 4);
         Direction direction2(12, Direction::toCoda, Direction::activeDaCapo, 4);
-        Direction direction3(13, Direction::toDoubleCoda, Direction::activeDaCapo, 4);
+        Direction direction3(13, Direction::toDoubleCoda,
+            Direction::activeDaCapo, 4);
         Direction direction4(12, Direction::toCoda, Direction::activeNone, 4);
         Direction direction5(12, Direction::toCoda, Direction::activeDaCapo, 5);
         Direction direction6(12, Direction::toCoda, Direction::activeDaCapo, 4);
-        direction6.AddSymbol(Direction::toDoubleCoda, Direction::activeDaCapo, 4);
+        direction6.AddSymbol(Direction::toDoubleCoda, Direction::activeDaCapo,
+            4);
                        
-        TEST(wxT("Operator!= - direction == direction"), !(direction != direction2));
-        TEST(wxT("Operator!= - direction != direction"), (direction != direction3));
-        TEST(wxT("Operator!= - direction != direction 2"), (direction != direction4));
-        TEST(wxT("Operator!= - direction != direction 3"), (direction != direction5));
-        TEST(wxT("Operator!= - direction != direction 4"), (direction != direction6));
+        TEST(wxT("Operator!= - direction == direction"),
+            !(direction != direction2));
+        TEST(wxT("Operator!= - direction != direction"),
+            (direction != direction3));
+        TEST(wxT("Operator!= - direction != direction 2"),
+            (direction != direction4));
+        TEST(wxT("Operator!= - direction != direction 3"),
+            (direction != direction5));
+        TEST(wxT("Operator!= - direction != direction 4"),
+            (direction != direction6));
     }
 
     return (true);
@@ -214,7 +228,8 @@ bool DirectionTestSuite::TestCaseSerialize()
     
         // Read test data back from stream
         Direction directionIn;
-        directionIn.Deserialize(streamIn, PowerTabFileHeader::FILEVERSION_CURRENT);
+        directionIn.Deserialize(streamIn,
+            PowerTabFileHeader::FILEVERSION_CURRENT);
 
         // Validate the data
         ok = ((directionIn == directionOut) 
@@ -240,7 +255,8 @@ bool DirectionTestSuite::TestCasePosition()
         for (; i <= (Direction::MAX_POSITION + 1); i++)
         {
             TEST(wxString::Format(wxT("IsValidPosition - %d"), i),
-                (Direction::IsValidPosition(i) == (i <= Direction::MAX_POSITION))
+                (Direction::IsValidPosition(i) ==
+                (i <= Direction::MAX_POSITION))
             );
         }
     }
@@ -252,7 +268,8 @@ bool DirectionTestSuite::TestCasePosition()
         {
             TEST(wxT("SetPosition - %d"), 
                 (direction.SetPosition(i) == (i <= Direction::MAX_POSITION)) &&
-                ((i > Direction::MAX_POSITION) ? 1 : (direction.GetPosition() == i))
+                ((i > Direction::MAX_POSITION) ? 1 :
+                    (direction.GetPosition() == i))
             );
         }
     }
@@ -268,7 +285,8 @@ bool DirectionTestSuite::TestCaseSymbolType()
     wxByte i = Direction::coda;
     for (; i <= (Direction::dalSegnoSegnoAlFine + 1); i++)
         TEST(wxString::Format(wxT("IsValidSymbolType - %d"), i),
-            (Direction::IsValidSymbolType(i) == (i <= Direction::dalSegnoSegnoAlFine))
+            (Direction::IsValidSymbolType(i) ==
+                (i <= Direction::dalSegnoSegnoAlFine))
         );
     return (true);
 }
@@ -282,7 +300,8 @@ bool DirectionTestSuite::TestCaseActiveSymbol()
     wxByte i = Direction::activeNone;
     for (; i <= (Direction::activeDalSegnoSegno + 1); i++)
         TEST(wxString::Format(wxT("IsValidActiveSymbol - %d"), i),
-            (Direction::IsValidActiveSymbol(i) == (i <= Direction::activeDalSegnoSegno))
+            (Direction::IsValidActiveSymbol(i) ==
+                (i <= Direction::activeDalSegnoSegno))
         );
     return (true);
 }
@@ -296,7 +315,8 @@ bool DirectionTestSuite::TestCaseRepeatNumber()
     wxByte i = 0;
     for (; i <= (Direction::MAX_REPEAT_NUMBER + 1); i++)
         TEST(wxString::Format(wxT("IsValidRepeatNumber - %d"), i),
-            (Direction::IsValidRepeatNumber(i) == (i <= Direction::MAX_REPEAT_NUMBER))
+            (Direction::IsValidRepeatNumber(i) ==
+                (i <= Direction::MAX_REPEAT_NUMBER))
         );
     return (true);
 }
@@ -324,11 +344,12 @@ bool DirectionTestSuite::TestCaseSymbolArray()
     {
         Direction direction2;
         TEST(wxT("AddSymbol"), 
-            (direction2.AddSymbol(Direction::toCoda, Direction::activeDaCapo, 5)) &&
-            (direction2.GetSymbolCount() == 1)
+            (direction2.AddSymbol(Direction::toCoda, Direction::activeDaCapo,
+                5)) && (direction2.GetSymbolCount() == 1)
         );
         
-        TEST(wxT("AddSymbol - full"), (!direction.AddSymbol(Direction::doubleCoda)));
+        TEST(wxT("AddSymbol - full"),
+            (!direction.AddSymbol(Direction::doubleCoda)));
     }
 
     // TEST CASE: GetSymbolCount
@@ -340,7 +361,8 @@ bool DirectionTestSuite::TestCaseSymbolArray()
     {
         Direction direction2(12, Direction::toCoda, Direction::activeDaCapo, 5);
         TEST(wxT("SetSymbol - invalid index"),
-            (!direction2.SetSymbol(Direction::MAX_SYMBOLS, Direction::coda, Direction::activeNone, 0))
+            (!direction2.SetSymbol(Direction::MAX_SYMBOLS, Direction::coda,
+            Direction::activeNone, 0))
         );
         
         TEST(wxT("SetSymbol - invalid symbol type"),
@@ -352,7 +374,8 @@ bool DirectionTestSuite::TestCaseSymbolArray()
         );
         
         TEST(wxT("SetSymbol - invalid repeat number"),
-            (!direction2.SetSymbol(0, Direction::coda, Direction::activeNone, Direction::MAX_REPEAT_NUMBER + 1))
+            (!direction2.SetSymbol(0, Direction::coda, Direction::activeNone,
+                Direction::MAX_REPEAT_NUMBER + 1))
         );
         
         direction2.SetSymbol(0, Direction::coda, Direction::activeNone, 0);

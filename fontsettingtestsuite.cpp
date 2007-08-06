@@ -103,7 +103,8 @@ bool FontSettingTestSuite::TestCaseConstructor()
     
     // TEST CASE: Primary constructor
     {
-        FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true, true, true, wxColor(255,0,0));
+        FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true,
+            true, true, wxColor(255,0,0));
         TEST(wxT("Primary Constructor"), 
             (fontSetting.GetFaceName() == wxT("Arial")) &&
             (fontSetting.GetPointSize() == 12) &&
@@ -117,7 +118,8 @@ bool FontSettingTestSuite::TestCaseConstructor()
     
     // TEST CASE: Copy constructor
     {
-        FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true, true, true, wxColor(255,0,0));
+        FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true,
+            true, true, wxColor(255,0,0));
         FontSetting fontSetting2(fontSetting);
         TEST(wxT("Copy Constructor"), 
             (fontSetting2.GetFaceName() == wxT("Arial")) &&
@@ -139,7 +141,8 @@ bool FontSettingTestSuite::TestCaseCreation()
 {
     //------Last Checked------//
     // - Jan 12, 2005
-    FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true, true, true, wxColor(255,0,0));
+    FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true,
+        true, true, wxColor(255,0,0));
     FontSetting* clone = (FontSetting*)fontSetting.CloneObject();
     TEST(wxT("CloneObject"),
         (*clone == fontSetting)
@@ -157,7 +160,8 @@ bool FontSettingTestSuite::TestCaseOperator()
     
     // TEST CASE: Operator =
 	{
-	    FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true, true, true, wxColor(255,0,0));
+	    FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true,
+            true, true, wxColor(255,0,0));
         FontSetting fontSetting2 = fontSetting;
         TEST(wxT("Operator="), 
             (fontSetting2.GetFaceName() == wxT("Arial")) &&
@@ -171,7 +175,8 @@ bool FontSettingTestSuite::TestCaseOperator()
             
 		// TEST CASE: Self assignment
 		{
-		    FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true, true, true, wxColor(255,0,0));
+		    FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold,
+                true, true, true, wxColor(255,0,0));
             fontSetting = fontSetting;
             TEST(wxT("Operator= (self-assignment)"), 
                 (fontSetting.GetFaceName() == wxT("Arial")) &&
@@ -187,48 +192,82 @@ bool FontSettingTestSuite::TestCaseOperator()
 
 	// TEST CASE: Operator==
 	{
-	    FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true, true, true, wxColor(255,0,0));
-	    FontSetting fontSetting2(wxT("Arial"), 12, FontSetting::weightBold, true, true, true, wxColor(255,0,0));
-	    FontSetting fontSetting3(wxT("Times New Roman"), 12, FontSetting::weightBold, true, true, true, wxColor(255,0,0));
-	    FontSetting fontSetting4(wxT("Arial"), 11, FontSetting::weightBold, true, true, true, wxColor(255,0,0));
-	    FontSetting fontSetting5(wxT("Arial"), 12, FontSetting::weightNormal, true, true, true, wxColor(255,0,0));
-	    FontSetting fontSetting6(wxT("Arial"), 12, FontSetting::weightBold, false, true, true, wxColor(255,0,0));
-	    FontSetting fontSetting7(wxT("Arial"), 12, FontSetting::weightBold, true, false, true, wxColor(255,0,0));
-	    FontSetting fontSetting8(wxT("Arial"), 12, FontSetting::weightBold, true, true, false, wxColor(255,0,0));
-	    FontSetting fontSetting9(wxT("Arial"), 12, FontSetting::weightBold, true, true, true, wxColor(254,0,0));
+	    FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true,
+            true, true, wxColor(255,0,0));
+	    FontSetting fontSetting2(wxT("Arial"), 12, FontSetting::weightBold, true,
+            true, true, wxColor(255,0,0));
+	    FontSetting fontSetting3(wxT("Times New Roman"), 12,
+            FontSetting::weightBold, true, true, true, wxColor(255,0,0));
+	    FontSetting fontSetting4(wxT("Arial"), 11, FontSetting::weightBold,
+            true, true, true, wxColor(255,0,0));
+	    FontSetting fontSetting5(wxT("Arial"), 12, FontSetting::weightNormal,
+            true, true, true, wxColor(255,0,0));
+	    FontSetting fontSetting6(wxT("Arial"), 12, FontSetting::weightBold,
+            false, true, true, wxColor(255,0,0));
+	    FontSetting fontSetting7(wxT("Arial"), 12, FontSetting::weightBold,
+            true, false, true, wxColor(255,0,0));
+	    FontSetting fontSetting8(wxT("Arial"), 12, FontSetting::weightBold,
+            true, true, false, wxColor(255,0,0));
+	    FontSetting fontSetting9(wxT("Arial"), 12, FontSetting::weightBold,
+            true, true, true, wxColor(254,0,0));
 	    
 		// TEST CASE: fontSetting == fontSetting
-		TEST(wxT("Operator== - fontSetting == fontSetting"), (fontSetting == fontSetting2));
-		TEST(wxT("Operator== - fontSetting != fontSetting"), !(fontSetting == fontSetting3));
-		TEST(wxT("Operator== - fontSetting != fontSetting 2"), !(fontSetting == fontSetting4));
-		TEST(wxT("Operator== - fontSetting != fontSetting 3"), !(fontSetting == fontSetting5));
-		TEST(wxT("Operator== - fontSetting != fontSetting 4"), !(fontSetting == fontSetting6));
-		TEST(wxT("Operator== - fontSetting != fontSetting 5"), !(fontSetting == fontSetting7));
-		TEST(wxT("Operator== - fontSetting != fontSetting 6"), !(fontSetting == fontSetting8));
-		TEST(wxT("Operator== - fontSetting != fontSetting 7"), !(fontSetting == fontSetting9));
+		TEST(wxT("Operator== - fontSetting == fontSetting"),
+            (fontSetting == fontSetting2));
+		TEST(wxT("Operator== - fontSetting != fontSetting"),
+            !(fontSetting == fontSetting3));
+		TEST(wxT("Operator== - fontSetting != fontSetting 2"),
+            !(fontSetting == fontSetting4));
+		TEST(wxT("Operator== - fontSetting != fontSetting 3"),
+            !(fontSetting == fontSetting5));
+		TEST(wxT("Operator== - fontSetting != fontSetting 4"),
+            !(fontSetting == fontSetting6));
+		TEST(wxT("Operator== - fontSetting != fontSetting 5"),
+            !(fontSetting == fontSetting7));
+		TEST(wxT("Operator== - fontSetting != fontSetting 6"),
+            !(fontSetting == fontSetting8));
+		TEST(wxT("Operator== - fontSetting != fontSetting 7"),
+            !(fontSetting == fontSetting9));
 	}
 
 	// TEST CASE: Operator!=
 	{
-	    FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true, true, true, wxColor(255,0,0));
-	    FontSetting fontSetting2(wxT("Arial"), 12, FontSetting::weightBold, true, true, true, wxColor(255,0,0));
-	    FontSetting fontSetting3(wxT("Times New Roman"), 12, FontSetting::weightBold, true, true, true, wxColor(255,0,0));
-	    FontSetting fontSetting4(wxT("Arial"), 11, FontSetting::weightBold, true, true, true, wxColor(255,0,0));
-	    FontSetting fontSetting5(wxT("Arial"), 12, FontSetting::weightNormal, true, true, true, wxColor(255,0,0));
-	    FontSetting fontSetting6(wxT("Arial"), 12, FontSetting::weightBold, false, true, true, wxColor(255,0,0));
-	    FontSetting fontSetting7(wxT("Arial"), 12, FontSetting::weightBold, true, false, true, wxColor(255,0,0));
-	    FontSetting fontSetting8(wxT("Arial"), 12, FontSetting::weightBold, true, true, false, wxColor(255,0,0));
-	    FontSetting fontSetting9(wxT("Arial"), 12, FontSetting::weightBold, true, true, true, wxColor(254,0,0));
+	    FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true,
+            true, true, wxColor(255,0,0));
+	    FontSetting fontSetting2(wxT("Arial"), 12, FontSetting::weightBold,
+            true, true, true, wxColor(255,0,0));
+	    FontSetting fontSetting3(wxT("Times New Roman"), 12,
+            FontSetting::weightBold, true, true, true, wxColor(255,0,0));
+	    FontSetting fontSetting4(wxT("Arial"), 11, FontSetting::weightBold,
+            true, true, true, wxColor(255,0,0));
+	    FontSetting fontSetting5(wxT("Arial"), 12, FontSetting::weightNormal,
+            true, true, true, wxColor(255,0,0));
+	    FontSetting fontSetting6(wxT("Arial"), 12, FontSetting::weightBold,
+            false, true, true, wxColor(255,0,0));
+	    FontSetting fontSetting7(wxT("Arial"), 12, FontSetting::weightBold,
+            true, false, true, wxColor(255,0,0));
+	    FontSetting fontSetting8(wxT("Arial"), 12, FontSetting::weightBold,
+            true, true, false, wxColor(255,0,0));
+	    FontSetting fontSetting9(wxT("Arial"), 12, FontSetting::weightBold,
+            true, true, true, wxColor(254,0,0));
 	    
 		// TEST CASE: fontSetting == fontSetting
-		TEST(wxT("Operator!= - fontSetting == fontSetting"), !(fontSetting != fontSetting2));
-		TEST(wxT("Operator!= - fontSetting != fontSetting"), (fontSetting != fontSetting3));
-		TEST(wxT("Operator!= - fontSetting != fontSetting 2"), (fontSetting != fontSetting4));
-		TEST(wxT("Operator!= - fontSetting != fontSetting 3"), (fontSetting != fontSetting5));
-		TEST(wxT("Operator!= - fontSetting != fontSetting 4"), (fontSetting != fontSetting6));
-		TEST(wxT("Operator!= - fontSetting != fontSetting 5"), (fontSetting != fontSetting7));
-		TEST(wxT("Operator!= - fontSetting != fontSetting 6"), (fontSetting != fontSetting8));
-		TEST(wxT("Operator!= - fontSetting != fontSetting 7"), (fontSetting != fontSetting9));
+		TEST(wxT("Operator!= - fontSetting == fontSetting"),
+            !(fontSetting != fontSetting2));
+		TEST(wxT("Operator!= - fontSetting != fontSetting"),
+            (fontSetting != fontSetting3));
+		TEST(wxT("Operator!= - fontSetting != fontSetting 2"),
+            (fontSetting != fontSetting4));
+		TEST(wxT("Operator!= - fontSetting != fontSetting 3"),
+            (fontSetting != fontSetting5));
+		TEST(wxT("Operator!= - fontSetting != fontSetting 4"),
+            (fontSetting != fontSetting6));
+		TEST(wxT("Operator!= - fontSetting != fontSetting 5"),
+            (fontSetting != fontSetting7));
+		TEST(wxT("Operator!= - fontSetting != fontSetting 6"),
+            (fontSetting != fontSetting8));
+		TEST(wxT("Operator!= - fontSetting != fontSetting 7"),
+            (fontSetting != fontSetting9));
 	}
 	    
     return (true);
@@ -246,7 +285,8 @@ bool FontSettingTestSuite::TestCaseSerialize()
     PowerTabOutputStream streamOut(testStream.GetOutputStream());
     
     // Write test data to stream
-    FontSetting fontSettingOut(wxT("Arial"), 12, FontSetting::weightBold, true, true, true, wxColor(255,0,0));
+    FontSetting fontSettingOut(wxT("Arial"), 12, FontSetting::weightBold, true,
+        true, true, wxColor(255,0,0));
     fontSettingOut.Serialize(streamOut);
 
     // Output must be OK before using input
@@ -256,7 +296,8 @@ bool FontSettingTestSuite::TestCaseSerialize()
     
         // Read test data back from stream
         FontSetting fontSettingIn;
-        fontSettingIn.Deserialize(streamIn, PowerTabFileHeader::FILEVERSION_CURRENT);
+        fontSettingIn.Deserialize(streamIn,
+            PowerTabFileHeader::FILEVERSION_CURRENT);
 
         // Validate the data
         ok = ((fontSettingIn == fontSettingOut) 
@@ -277,14 +318,18 @@ bool FontSettingTestSuite::TestCaseSetFontSetting()
     FontSetting fontSetting;
     
     TEST(wxT("SetFontSetting - NULL facename"), 
-        !fontSetting.SetFontSetting(NULL, 12, FontSetting::weightBold, true, true, true, wxColor(255,0,0)));
+        !fontSetting.SetFontSetting(NULL, 12, FontSetting::weightBold, true,
+        true, true, wxColor(255,0,0)));
     TEST(wxT("SetFontSetting - invalid point size"), 
-        !fontSetting.SetFontSetting(wxT("Arial"), 0, FontSetting::weightBold, true, true, true, wxColor(255,0,0)));
+        !fontSetting.SetFontSetting(wxT("Arial"), 0, FontSetting::weightBold,
+        true, true, true, wxColor(255,0,0)));
     TEST(wxT("SetFontSetting - invalid weight"), 
-        !fontSetting.SetFontSetting(wxT("Arial"), 12, 139, true, true, true, wxColor(255,0,0)));
+        !fontSetting.SetFontSetting(wxT("Arial"), 12, 139, true, true, true,
+        wxColor(255,0,0)));
    
     TEST(wxT("SetFontSetting - valid"),
-        fontSetting.SetFontSetting(wxT("Arial"), 12, FontSetting::weightBold, true, true, true, wxColor(255,0,0)) &&
+        fontSetting.SetFontSetting(wxT("Arial"), 12, FontSetting::weightBold,
+        true, true, true, wxColor(255,0,0)) &&
         (fontSetting.GetFaceName() == wxT("Arial")) &&
         (fontSetting.GetPointSize() == 12) &&
         (fontSetting.GetWeight() == FontSetting::weightBold) &&
@@ -304,9 +349,11 @@ bool FontSettingTestSuite::TestCaseSetFontSettingFromString()
     //------Last Checked------//
     // - Dec 6, 2004
     FontSetting fontSetting;
-    TEST(wxT("SetFontSettingFromString - NULL string"), !fontSetting.SetFontSettingFromString(NULL));
+    TEST(wxT("SetFontSettingFromString - NULL string"),
+        !fontSetting.SetFontSettingFromString(NULL));
     
-    // String format = comma delimited: FaceName,PointSize,Weight,Italic(T/F),Underline(T/F),StrikeOut(T/F),Color
+    // String format = comma delimited: FaceName,PointSize,Weight,Italic(T/F),
+    // Underline(T/F),StrikeOut(T/F),Color
     TEST(wxT("SetFontSettingFromString - valid string"),
         fontSetting.SetFontSettingFromString(wxT("Arial,12,700,T,T,F,255")) && 
         (fontSetting.GetFaceName() == wxT("Arial")) &&
@@ -329,7 +376,8 @@ bool FontSettingTestSuite::TestCaseFaceName()
     // - Dec 6, 2004
     FontSetting fontSetting;
     TEST(wxT("SetFaceName - NULL"), (!fontSetting.SetFaceName(NULL)));
-    TEST(wxT("SetFaceName - Arial"), ((fontSetting.SetFaceName(wxT("Arial"))) && (fontSetting.GetFaceName() == wxT("Arial"))));
+    TEST(wxT("SetFaceName - Arial"), ((fontSetting.SetFaceName(wxT("Arial"))) &&
+        (fontSetting.GetFaceName() == wxT("Arial"))));
     return (true);
 }
 
@@ -357,12 +405,14 @@ bool FontSettingTestSuite::TestCasePointSize()
     int i = 0;
     for (; i < testValueCount; i++)
     {
-        TEST(wxString::Format(wxT("IsValidPointSize - %d"), testValues[i]), (FontSetting::IsValidPointSize(testValues[i]) == expectedResults[i]));
+        TEST(wxString::Format(wxT("IsValidPointSize - %d"), testValues[i]),
+            (FontSetting::IsValidPointSize(testValues[i]) == expectedResults[i]));
         
         FontSetting fontSetting;
         TEST(wxString::Format(wxT("SetPointSize - %d"), testValues[i]), 
             (fontSetting.SetPointSize(testValues[i]) == expectedResults[i]) &&
-            ((!expectedResults[i]) ? 1 : (fontSetting.GetPointSize() == testValues[i]))
+            ((!expectedResults[i]) ? 1 :
+                (fontSetting.GetPointSize() == testValues[i]))
         );
     }
         
@@ -418,12 +468,14 @@ bool FontSettingTestSuite::TestCaseWeight()
     int i = 0;
     for (; i < testValueCount; i++)
     {
-        TEST(wxString::Format(wxT("IsValidWeight - %d"), testValues[i]), (FontSetting::IsValidWeight(testValues[i]) == expectedResults[i]));
+        TEST(wxString::Format(wxT("IsValidWeight - %d"), testValues[i]),
+            (FontSetting::IsValidWeight(testValues[i]) == expectedResults[i]));
         
         FontSetting fontSetting;
         TEST(wxString::Format(wxT("SetWeight - %d"), testValues[i]), 
             (fontSetting.SetWeight(testValues[i]) == expectedResults[i]) &&
-            ((!expectedResults[i]) ? 1 : (fontSetting.GetWeight() == testValues[i]))
+            ((!expectedResults[i]) ? 1 :
+                (fontSetting.GetWeight() == testValues[i]))
         );
     }
 

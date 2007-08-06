@@ -812,11 +812,28 @@
 			Name="Documents"
 			>
 			<File
+				RelativePath=".\docs\changelog.txt"
+				>
+			</File>
+			<File
+				RelativePath=".\docs\license.txt"
+				>
+			</File>
+			<File
 				RelativePath=".\docs\notes.txt"
 				>
 			</File>
 			<File
+				RelativePath=".\docs\ptfileheader.htm"
+				DeploymentContent="true"
+				>
+			</File>
+			<File
 				RelativePath=".\docs\readme.txt"
+				>
+			</File>
+			<File
+				RelativePath=".\docs\vstudio2005.txt"
 				>
 			</File>
 			<File

@@ -27,8 +27,10 @@ BEGIN_EVENT_TABLE(MainFrame, wxDocMDIParentFrame)
 END_EVENT_TABLE()
 
 // Constructor/Destructor
-MainFrame::MainFrame(wxDocManager* manager, wxFrame* frame, const wxString& title, const wxPoint& pos, const wxSize& size, long type) :
-    wxDocMDIParentFrame(manager, frame, -1, title, pos, size, type, wxT("MainFrame"))
+MainFrame::MainFrame(wxDocManager* manager, wxFrame* frame,
+    const wxString& title, const wxPoint& pos, const wxSize& size, long type) :
+    wxDocMDIParentFrame(manager, frame, -1, title, pos, size, type,
+        wxT("MainFrame"))
 {
     //------Last Checked------//
     // - Dec 31, 2004
@@ -38,8 +40,10 @@ MainFrame::MainFrame(wxDocManager* manager, wxFrame* frame, const wxString& titl
 /// Creates a child frame for a view
 /// @param document Document for the view that the frame is to be created for
 /// @param view View that the frame is to be created for
-/// @return A pointer to the newly created child frame, or NULL if the child frame could not be created
-wxMDIChildFrame* MainFrame::CreateChildFrame(wxDocument* document, wxView* view)
+/// @return A pointer to the newly created child frame, or NULL if the child
+/// frame could not be created
+wxMDIChildFrame* MainFrame::CreateChildFrame(wxDocument* document,
+    wxView* view)
 {
     //------Last Checked------//
     // - Dec 31, 2004

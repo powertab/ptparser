@@ -90,11 +90,15 @@ bool StaffTestSuite::TestCaseConstructor()
         Staff staff;
         TEST(wxT("Default Constructor"),
             (staff.GetClef() == Staff::DEFAULT_CLEF) &&
-            (staff.GetTablatureStaffType() == Staff::DEFAULT_TABLATURE_STAFF_TYPE) &&
-            (staff.GetStandardNotationStaffAboveSpacing() == Staff::DEFAULT_STANDARD_NOTATION_STAFF_ABOVE_SPACING) &&
-            (staff.GetStandardNotationStaffBelowSpacing() == Staff::DEFAULT_STANDARD_NOTATION_STAFF_BELOW_SPACING) &&
+            (staff.GetTablatureStaffType() ==
+                Staff::DEFAULT_TABLATURE_STAFF_TYPE) &&
+            (staff.GetStandardNotationStaffAboveSpacing() ==
+                Staff::DEFAULT_STANDARD_NOTATION_STAFF_ABOVE_SPACING) &&
+            (staff.GetStandardNotationStaffBelowSpacing() ==
+                Staff::DEFAULT_STANDARD_NOTATION_STAFF_BELOW_SPACING) &&
             (staff.GetSymbolSpacing() == Staff::DEFAULT_SYMBOL_SPACING) &&
-            (staff.GetTablatureStaffBelowSpacing() == Staff::DEFAULT_TABLATURE_STAFF_BELOW_SPACING)
+            (staff.GetTablatureStaffBelowSpacing() ==
+                Staff::DEFAULT_TABLATURE_STAFF_BELOW_SPACING)
         );
     }
     
@@ -107,10 +111,13 @@ bool StaffTestSuite::TestCaseConstructor()
         TEST(wxT("Copy Constructor"),
             (staff.GetClef() == Staff::BASS_CLEF) &&
             (staff.GetTablatureStaffType() == 4) &&
-            (staff.GetStandardNotationStaffAboveSpacing() == Staff::DEFAULT_STANDARD_NOTATION_STAFF_ABOVE_SPACING) &&
-            (staff.GetStandardNotationStaffBelowSpacing() == Staff::DEFAULT_STANDARD_NOTATION_STAFF_BELOW_SPACING) &&
+            (staff.GetStandardNotationStaffAboveSpacing() ==
+                Staff::DEFAULT_STANDARD_NOTATION_STAFF_ABOVE_SPACING) &&
+            (staff.GetStandardNotationStaffBelowSpacing() ==
+                Staff::DEFAULT_STANDARD_NOTATION_STAFF_BELOW_SPACING) &&
             (staff.GetSymbolSpacing() == Staff::DEFAULT_SYMBOL_SPACING) &&
-            (staff.GetTablatureStaffBelowSpacing() == Staff::DEFAULT_TABLATURE_STAFF_BELOW_SPACING)
+            (staff.GetTablatureStaffBelowSpacing() ==
+                Staff::DEFAULT_TABLATURE_STAFF_BELOW_SPACING)
         );
     }
     
@@ -306,9 +313,13 @@ bool StaffTestSuite::TestCaseTablatureStaffType()
     {
         wxByte i = Staff::MIN_TABLATURE_STAFF_TYPE - 1;
         for (; i <= (Staff::MAX_TABLATURE_STAFF_TYPE + 1); i++)
+        {
             TEST(wxString::Format(wxT("IsValidTablatureStaffType - %d"), i),
-                (Staff::IsValidTablatureStaffType(i) == ((i >= Staff::MIN_TABLATURE_STAFF_TYPE) && (i <= Staff::MAX_TABLATURE_STAFF_TYPE)))
+                (Staff::IsValidTablatureStaffType(i) ==
+                ((i >= Staff::MIN_TABLATURE_STAFF_TYPE) &&
+                (i <= Staff::MAX_TABLATURE_STAFF_TYPE)))
             );
+        }
     }
     
     // TEST CASE: SetTablatureStaffType
@@ -316,10 +327,16 @@ bool StaffTestSuite::TestCaseTablatureStaffType()
         Staff staff;
         wxByte i = Staff::MIN_TABLATURE_STAFF_TYPE - 1;
         for (; i <= (Staff::MAX_TABLATURE_STAFF_TYPE + 1); i++)
+        {
             TEST(wxString::Format(wxT("SetTablatureStaffType - %d"), i),
-                (staff.SetTablatureStaffType(i) == ((i >= Staff::MIN_TABLATURE_STAFF_TYPE) && (i <= Staff::MAX_TABLATURE_STAFF_TYPE))) &&
-                (((i < Staff::MIN_TABLATURE_STAFF_TYPE) || (i > Staff::MAX_TABLATURE_STAFF_TYPE)) ? 1 : (staff.GetTablatureStaffType() == i))
+                (staff.SetTablatureStaffType(i) ==
+                ((i >= Staff::MIN_TABLATURE_STAFF_TYPE) &&
+                (i <= Staff::MAX_TABLATURE_STAFF_TYPE))) &&
+                (((i < Staff::MIN_TABLATURE_STAFF_TYPE) ||
+                (i > Staff::MAX_TABLATURE_STAFF_TYPE)) ? 1 :
+                (staff.GetTablatureStaffType() == i))
             );
+        }
     }
     
     return (true);
@@ -333,7 +350,8 @@ bool StaffTestSuite::TestCaseStandardNotationStaffAboveSpacing()
     // - Jan 5, 2005
     Staff staff;
     staff.SetStandardNotationStaffAboveSpacing(45);
-    TEST(wxT("SetStandardNotationStaffAboveSpacing"), staff.GetStandardNotationStaffAboveSpacing() == 45);
+    TEST(wxT("SetStandardNotationStaffAboveSpacing"),
+        staff.GetStandardNotationStaffAboveSpacing() == 45);
     return (true);
 }
 
@@ -345,7 +363,8 @@ bool StaffTestSuite::TestCaseStandardNotationStaffBelowSpacing()
     // - Jan 5, 2005
     Staff staff;
     staff.SetStandardNotationStaffBelowSpacing(45);
-    TEST(wxT("SetStandardNotationStaffBelowSpacing"), staff.GetStandardNotationStaffBelowSpacing() == 45);
+    TEST(wxT("SetStandardNotationStaffBelowSpacing"),
+        staff.GetStandardNotationStaffBelowSpacing() == 45);
     return (true);
 }
 
@@ -369,7 +388,8 @@ bool StaffTestSuite::TestCaseTablatureStaffBelowSpacing()
     // - Jan 5, 2005
     Staff staff;
     staff.SetTablatureStaffBelowSpacing(45);
-    TEST(wxT("SetTablatureStaffBelowSpacing"), staff.GetTablatureStaffBelowSpacing() == 45);    
+    TEST(wxT("SetTablatureStaffBelowSpacing"),
+        staff.GetTablatureStaffBelowSpacing() == 45);    
     return (true);
 }
 
@@ -409,7 +429,8 @@ bool StaffTestSuite::TestCasePositionArray()
         for (; j < 2; j++)
         {
             TEST(wxString::Format(wxT("IsValidPositionIndex - %d, %d"), i, j),
-                (staff.IsValidPositionIndex(i, j) == ((i < NUM_STAFF_VOICES) && (j == 0)))
+                (staff.IsValidPositionIndex(i, j) ==
+                ((i < NUM_STAFF_VOICES) && (j == 0)))
             );
             
             bool valid = ((i < NUM_STAFF_VOICES) && (j == 0));

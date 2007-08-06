@@ -317,7 +317,11 @@ bool GuitarTestSuite::TestCasePreset()
     Guitar guitar;
     wxByte i = Guitar::MIN_PRESET;
     for (; i <= (Guitar::MAX_PRESET + 1); i++)
-        TEST(wxString::Format(wxT("SetPreset - %d"), i), (guitar.SetPreset(i) == (i <= Guitar::MAX_PRESET)) && ((i == (Guitar::MAX_PRESET + 1)) ? 1 : (guitar.GetPreset() == i)));
+    {
+        TEST(wxString::Format(wxT("SetPreset - %d"), i),
+            (guitar.SetPreset(i) == (i <= Guitar::MAX_PRESET)) &&
+            ((i == (Guitar::MAX_PRESET + 1)) ? 1 : (guitar.GetPreset() == i)));
+    }
     return (true);
 }
 
@@ -330,7 +334,13 @@ bool GuitarTestSuite::TestCaseInitialVolume()
     Guitar guitar;
     wxByte i = Guitar::MIN_INITIAL_VOLUME;
     for (; i <= (Guitar::MAX_INITIAL_VOLUME + 1); i++)
-        TEST(wxString::Format(wxT("SetInitialVolume - %d"), i), (guitar.SetInitialVolume(i) == (i <= Guitar::MAX_INITIAL_VOLUME)) && ((i == (Guitar::MAX_INITIAL_VOLUME + 1)) ? 1 : (guitar.GetInitialVolume() == i)));
+    {
+        TEST(wxString::Format(wxT("SetInitialVolume - %d"), i),
+            (guitar.SetInitialVolume(i) == (i <= Guitar::MAX_INITIAL_VOLUME)) &&
+            ((i == (Guitar::MAX_INITIAL_VOLUME + 1)) ? 1 :
+            (guitar.GetInitialVolume() == i)));
+    }
+
     return (true);
 }
 
@@ -342,7 +352,8 @@ bool GuitarTestSuite::TestCaseDescription()
     // - Dec 8, 2004
     Guitar guitar;
     TEST(wxT("SetDescription - NULL"), !guitar.SetDescription(NULL));
-    TEST(wxT("SetDescription - valid"), (guitar.SetDescription(wxT("Test")) && guitar.GetDescription() == wxT("Test")));
+    TEST(wxT("SetDescription - valid"), (guitar.SetDescription(wxT("Test")) &&
+        guitar.GetDescription() == wxT("Test")));
     return (true);
 }
 
@@ -355,7 +366,11 @@ bool GuitarTestSuite::TestCaseReverb()
     Guitar guitar;
     wxByte i = Guitar::MIN_REVERB;
     for (; i <= (Guitar::MAX_REVERB + 1); i++)
-        TEST(wxString::Format(wxT("SetReverb - %d"), i), (guitar.SetReverb(i) == (i <= Guitar::MAX_REVERB)) && ((i == (Guitar::MAX_REVERB + 1)) ? 1 : (guitar.GetReverb() == i)));
+    {
+        TEST(wxString::Format(wxT("SetReverb - %d"), i),
+        (guitar.SetReverb(i) == (i <= Guitar::MAX_REVERB)) &&
+        ((i == (Guitar::MAX_REVERB + 1)) ? 1 : (guitar.GetReverb() == i)));
+    }
     return (true);
 }
 
@@ -368,7 +383,11 @@ bool GuitarTestSuite::TestCaseChorus()
     Guitar guitar;
     wxByte i = Guitar::MIN_CHORUS;
     for (; i <= (Guitar::MAX_CHORUS + 1); i++)
-        TEST(wxString::Format(wxT("SetChorus - %d"), i), (guitar.SetChorus(i) == (i <= Guitar::MAX_CHORUS)) && ((i == (Guitar::MAX_CHORUS + 1)) ? 1 : (guitar.GetChorus() == i)));
+    {
+        TEST(wxString::Format(wxT("SetChorus - %d"), i),
+            (guitar.SetChorus(i) == (i <= Guitar::MAX_CHORUS)) &&
+            ((i == (Guitar::MAX_CHORUS + 1)) ? 1 : (guitar.GetChorus() == i)));
+    }
     return (true);
 }
 
@@ -381,7 +400,11 @@ bool GuitarTestSuite::TestCaseTremolo()
     Guitar guitar;
     wxByte i = Guitar::MIN_TREMOLO;
     for (; i <= (Guitar::MAX_TREMOLO + 1); i++)
-        TEST(wxString::Format(wxT("SetTremolo - %d"), i), (guitar.SetTremolo(i) == (i <= Guitar::MAX_TREMOLO)) && ((i == (Guitar::MAX_TREMOLO + 1)) ? 1 : (guitar.GetTremolo() == i)));
+    {
+        TEST(wxString::Format(wxT("SetTremolo - %d"), i),
+            (guitar.SetTremolo(i) == (i <= Guitar::MAX_TREMOLO)) &&
+            ((i == (Guitar::MAX_TREMOLO + 1)) ? 1 : (guitar.GetTremolo() == i)));
+    }
     return (true);
 }
 
@@ -394,7 +417,11 @@ bool GuitarTestSuite::TestCasePhaser()
     Guitar guitar;
     wxByte i = Guitar::MIN_PHASER;
     for (; i <= (Guitar::MAX_PHASER + 1); i++)
-        TEST(wxString::Format(wxT("SetPhaser - %d"), i), (guitar.SetPhaser(i) == (i <= Guitar::MAX_PHASER)) && ((i == (Guitar::MAX_PHASER + 1)) ? 1 : (guitar.GetPhaser() == i)));
+    {
+        TEST(wxString::Format(wxT("SetPhaser - %d"), i),
+            (guitar.SetPhaser(i) == (i <= Guitar::MAX_PHASER)) &&
+            ((i == (Guitar::MAX_PHASER + 1)) ? 1 : (guitar.GetPhaser() == i)));
+    }
     return (true);
 }
 
@@ -410,7 +437,11 @@ bool GuitarTestSuite::TestCaseCapo()
     {
         wxByte i = Guitar::MIN_CAPO;
         for (; i <= (Guitar::MAX_CAPO + 1); i++)
-            TEST(wxString::Format(wxT("SetCapo - %d"), i), (guitar.SetCapo(i) == (i <= Guitar::MAX_CAPO)) && ((i == (Guitar::MAX_CAPO + 1)) ? 1 : (guitar.GetCapo() == i)));
+        {
+            TEST(wxString::Format(wxT("SetCapo - %d"), i),
+                (guitar.SetCapo(i) == (i <= Guitar::MAX_CAPO)) &&
+                ((i == (Guitar::MAX_CAPO + 1)) ? 1 : (guitar.GetCapo() == i)));
+        }
     }
     
     // TEST CASE: UsesCapo
@@ -419,7 +450,8 @@ bool GuitarTestSuite::TestCaseCapo()
         for (; i <= Guitar::MAX_CAPO; i++)
         {
             guitar.SetCapo(i);
-            TEST(wxString::Format(wxT("UsesCapo - %d"), i), (guitar.UsesCapo() == (i != Guitar::MIN_CAPO)));
+            TEST(wxString::Format(wxT("UsesCapo - %d"), i),
+                (guitar.UsesCapo() == (i != Guitar::MIN_CAPO)));
         }
     }
     return (true);
@@ -431,9 +463,11 @@ bool GuitarTestSuite::TestCaseTuning()
 {
     //------Last Checked------//
     // - Dec 8, 2004
-    const Tuning tuning(wxT("Test"), -1, true, MIDI_NOTE_E4, MIDI_NOTE_B3, MIDI_NOTE_G3, MIDI_NOTE_D3, MIDI_NOTE_A2, MIDI_NOTE_E2);
+    const Tuning tuning(wxT("Test"), -1, true, MIDI_NOTE_E4, MIDI_NOTE_B3,
+        MIDI_NOTE_G3, MIDI_NOTE_D3, MIDI_NOTE_A2, MIDI_NOTE_E2);
     Guitar guitar;
     guitar.SetTuning(tuning);
-    TEST(wxT("SetTuning"), (guitar.SetTuning(tuning) && (guitar.GetTuning() == tuning)));
+    TEST(wxT("SetTuning"), (guitar.SetTuning(tuning) &&
+        (guitar.GetTuning() == tuning)));
     return (true);
 }

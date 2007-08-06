@@ -25,14 +25,16 @@ public:
     static const int COLUMN_STRINGS;               ///< Index of the Strings column
     static const int COLUMN_SPELLING;              ///< Index of the Spelling column
     
+// Member Variables
 protected:
     wxView* m_view;     ///< View associated with the window
-    
+
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
-    PowerTabTuningViewWindow(wxView* view, wxWindow* parent, const wxPoint& pos, const wxSize& size, long style = wxLC_REPORT);
+    PowerTabTuningViewWindow(wxView* view, wxWindow* parent, const wxPoint& pos,
+        const wxSize& size, long style = wxLC_REPORT);
     
-    // Operations
+// Operations
 protected:
     bool InsertColumns();
 };

@@ -441,48 +441,82 @@ void MainFrame::OnTestStatisticalAnalysis(wxCommandEvent& WXUNUSED(event))
                 file.AddLine(wxString::Format("Errors,%d", errors.GetCount()));
 
                 file.AddLine(wxT("\n[Totals]"));
-                file.AddLine(wxString::Format("Guitars,%d", statistics.guitars));
-                file.AddLine(wxString::Format("Chord Diagrams,%d", statistics.chordDiagrams));
-                file.AddLine(wxString::Format("Guitar Ins,%d", statistics.guitarIns));
-                file.AddLine(wxString::Format("Chord Names,%d", statistics.chordNames));
-                file.AddLine(wxString::Format("Rehearsal Signs,%d", statistics.rehearsalSigns));
-                file.AddLine(wxString::Format("Tempo Markers,%d", statistics.tempoMarkers));
-                file.AddLine(wxString::Format("Alterations,%d", statistics.alterations));
-                file.AddLine(wxString::Format("Key Signatures,%d", statistics.keySignatures));
-                file.AddLine(wxString::Format("Time Signatures,%d", statistics.timeSignatures));
-                file.AddLine(wxString::Format("Directions,%d", statistics.directions));
-                file.AddLine(wxString::Format("Alternate Endings,%d", statistics.alternateEndings));
-                file.AddLine(wxString::Format("Barlines,%d", statistics.barlines));
-                file.AddLine(wxString::Format("Dynamics,%d", statistics.dynamics));
-                file.AddLine(wxString::Format("Volume Swells,%d", statistics.volumeSwells));
-                file.AddLine(wxString::Format("Hammer Ons,%d", statistics.hammerOns));
-                file.AddLine(wxString::Format("Pull Offs,%d", statistics.pullOffs));
+                file.AddLine(wxString::Format("Guitars,%d",
+                    statistics.guitars));
+                file.AddLine(wxString::Format("Chord Diagrams,%d",
+                    statistics.chordDiagrams));
+                file.AddLine(wxString::Format("Guitar Ins,%d",
+                    statistics.guitarIns));
+                file.AddLine(wxString::Format("Chord Names,%d",
+                    statistics.chordNames));
+                file.AddLine(wxString::Format("Rehearsal Signs,%d",
+                    statistics.rehearsalSigns));
+                file.AddLine(wxString::Format("Tempo Markers,%d",
+                    statistics.tempoMarkers));
+                file.AddLine(wxString::Format("Alterations,%d",
+                    statistics.alterations));
+                file.AddLine(wxString::Format("Key Signatures,%d",
+                    statistics.keySignatures));
+                file.AddLine(wxString::Format("Time Signatures,%d",
+                    statistics.timeSignatures));
+                file.AddLine(wxString::Format("Directions,%d",
+                    statistics.directions));
+                file.AddLine(wxString::Format("Alternate Endings,%d",
+                    statistics.alternateEndings));
+                file.AddLine(wxString::Format("Barlines,%d",
+                    statistics.barlines));
+                file.AddLine(wxString::Format("Dynamics,%d",
+                    statistics.dynamics));
+                file.AddLine(wxString::Format("Volume Swells,%d",
+                    statistics.volumeSwells));
+                file.AddLine(wxString::Format("Hammer Ons,%d",
+                    statistics.hammerOns));
+                file.AddLine(wxString::Format("Pull Offs,%d",
+                    statistics.pullOffs));
                 file.AddLine(wxString::Format("Bends,%d", statistics.bends));
                 file.AddLine(wxString::Format("Slides,%d", statistics.slides));
-                file.AddLine(wxString::Format("Vibratos,%d", statistics.vibratos));
-                file.AddLine(wxString::Format("Palm Mutes,%d", statistics.palmMutes));
-                file.AddLine(wxString::Format("Tremolos,%d", statistics.tremolos));
-                file.AddLine(wxString::Format("Arpeggios,%d", statistics.arpeggios));
+                file.AddLine(wxString::Format("Vibratos,%d",
+                    statistics.vibratos));
+                file.AddLine(wxString::Format("Palm Mutes,%d",
+                    statistics.palmMutes));
+                file.AddLine(wxString::Format("Tremolos,%d",
+                    statistics.tremolos));
+                file.AddLine(wxString::Format("Arpeggios,%d",
+                    statistics.arpeggios));
                 file.AddLine(wxString::Format("Trills,%d", statistics.trills));
-                file.AddLine(wxString::Format("Tremolo Bars,%d", statistics.tremoloBars));
+                file.AddLine(wxString::Format("Tremolo Bars,%d",
+                    statistics.tremoloBars));
                 file.AddLine(wxString::Format("Taps,%d", statistics.taps));
-                file.AddLine(wxString::Format("Natural Harmonics,%d", statistics.naturalHarmonics));
-                file.AddLine(wxString::Format("Artificial Harmonics,%d", statistics.artificialHarmonics));
-                file.AddLine(wxString::Format("Tapped Harmonics,%d", statistics.tappedHarmonics));
-                file.AddLine(wxString::Format("Pickstrokes,%d", statistics.pickstrokes));
+                file.AddLine(wxString::Format("Natural Harmonics,%d",
+                    statistics.naturalHarmonics));
+                file.AddLine(wxString::Format("Artificial Harmonics,%d",
+                    statistics.artificialHarmonics));
+                file.AddLine(wxString::Format("Tapped Harmonics,%d",
+                    statistics.tappedHarmonics));
+                file.AddLine(wxString::Format("Pickstrokes,%d",
+                    statistics.pickstrokes));
                 file.AddLine(wxString::Format("Ties,%d", statistics.ties));
-                file.AddLine(wxString::Format("Marcatos,%d", statistics.marcatos));
-                file.AddLine(wxString::Format("Sforzandos,%d", statistics.sforzandos));
-                file.AddLine(wxString::Format("Octave Signs,%d", statistics.octaveSigns));
-                file.AddLine(wxString::Format("Let Rings,%d", statistics.letRings));
-                file.AddLine(wxString::Format("Fermatas,%d", statistics.fermatas));
+                file.AddLine(wxString::Format("Marcatos,%d",
+                    statistics.marcatos));
+                file.AddLine(wxString::Format("Sforzandos,%d",
+                    statistics.sforzandos));
+                file.AddLine(wxString::Format("Octave Signs,%d",
+                    statistics.octaveSigns));
+                file.AddLine(wxString::Format("Let Rings,%d",
+                    statistics.letRings));
+                file.AddLine(wxString::Format("Fermatas,%d",
+                    statistics.fermatas));
                 file.AddLine(wxString::Format("Mutes,%d", statistics.mutes));
-                file.AddLine(wxString::Format("Acciaccaturas,%d", statistics.acciaccaturas));
-                file.AddLine(wxString::Format("Ghost Notes,%d", statistics.ghostNotes));
-                file.AddLine(wxString::Format("MultiBar Rests,%d", statistics.multiBarRests));
+                file.AddLine(wxString::Format("Acciaccaturas,%d",
+                    statistics.acciaccaturas));
+                file.AddLine(wxString::Format("Ghost Notes,%d",
+                    statistics.ghostNotes));
+                file.AddLine(wxString::Format("MultiBar Rests,%d",
+                    statistics.multiBarRests));
                 file.AddLine(wxString::Format("Rests,%d", statistics.rests));
                 file.AddLine(wxString::Format("Notes,%d", statistics.notes));
-                file.AddLine(wxString::Format("Rhythm Slashes,%d", statistics.rhythmSlashes));
+                file.AddLine(wxString::Format("Rhythm Slashes,%d",
+                    statistics.rhythmSlashes));
 
                 // Write the statistics
                 file.AddLine(wxT("\n[Tunings]"));
@@ -549,7 +583,8 @@ void MainFrame::OnTestStatisticalAnalysis(wxCommandEvent& WXUNUSED(event))
                 }
 
                 file.AddLine(wxT("\n[Barline Types]"));
-                for (MapStringToInt::iterator i = statistics.mapBarlines.begin();
+                for (MapStringToInt::iterator i =
+                    statistics.mapBarlines.begin();
                     i != statistics.mapBarlines.end(); ++i)
                 {
                     file.AddLine(wxString::Format(wxT("\"%s\",\"%d\""),

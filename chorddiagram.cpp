@@ -37,40 +37,50 @@ ChordDiagram::ChordDiagram() :
 
 /// Primary Constructor
 /// @param chordName Chord name represented in the chord diagram
-/// @param topFret The fret represented at the top of the chord diagram (zero = the nut)
-/// @param fretNumber1 Fret number for the 1st string in the chord diagram (for standard guitar tuning, this is the high E string)
+/// @param topFret The fret represented at the top of the chord diagram (zero =
+/// the nut)
+/// @param fretNumber1 Fret number for the 1st string in the chord diagram (for
+/// standard guitar tuning, this is the high E string)
 /// @param fretNumber2 Fret number for the 2nd string in the chord diagram
 /// @param fretNumber3 Fret number for the 3rd string in the chord diagram
 /// @param fretNumber4 Fret number for the 4th string in the chord diagram
 /// @param fretNumber5 Fret number for the 5th string in the chord diagram
 /// @param fretNumber6 Fret number for the 6th string in the chord diagram
 /// @param fretNumber7 Fret number for the 7th string in the chord diagram
-ChordDiagram::ChordDiagram(const ChordName& chordName, wxByte topFret, wxByte fretNumber1, wxByte fretNumber2, wxByte fretNumber3, wxByte fretNumber4, wxByte fretNumber5, wxByte fretNumber6, wxByte fretNumber7) :
-    m_topFret(topFret)
+ChordDiagram::ChordDiagram(const ChordName& chordName, wxByte topFret,
+    wxByte fretNumber1, wxByte fretNumber2, wxByte fretNumber3,
+    wxByte fretNumber4, wxByte fretNumber5, wxByte fretNumber6,
+    wxByte fretNumber7) : m_topFret(topFret)
 {
     //------Last Checked------//
     // - Jan 15, 2005
     wxASSERT(IsValidTopFret(topFret));
     SetChordName(chordName);
-    AddFretNumbers(fretNumber1, fretNumber2, fretNumber3, fretNumber4, fretNumber5, fretNumber6, fretNumber7);
+    AddFretNumbers(fretNumber1, fretNumber2, fretNumber3, fretNumber4,
+        fretNumber5, fretNumber6, fretNumber7);
 }
 
 /// Secondary Constructor
-/// @param topFret The fret represented at the top of the chord diagram (zero = the nut)
-/// @param fretNumber1 Fret number for the 1st string in the chord diagram (for standard guitar tuning, this is the high E string)
+/// @param topFret The fret represented at the top of the chord diagram (zero =
+/// the nut)
+/// @param fretNumber1 Fret number for the 1st string in the chord diagram (for
+/// standard guitar tuning, this is the high E string)
 /// @param fretNumber2 Fret number for the 2nd string in the chord diagram
 /// @param fretNumber3 Fret number for the 3rd string in the chord diagram
 /// @param fretNumber4 Fret number for the 4th string in the chord diagram
 /// @param fretNumber5 Fret number for the 5th string in the chord diagram
 /// @param fretNumber6 Fret number for the 6th string in the chord diagram
 /// @param fretNumber7 Fret number for the 7th string in the chord diagram
-ChordDiagram::ChordDiagram(wxByte topFret, wxByte fretNumber1, wxByte fretNumber2, wxByte fretNumber3, wxByte fretNumber4, wxByte fretNumber5, wxByte fretNumber6, wxByte fretNumber7) :
+ChordDiagram::ChordDiagram(wxByte topFret, wxByte fretNumber1,
+    wxByte fretNumber2, wxByte fretNumber3, wxByte fretNumber4,
+    wxByte fretNumber5, wxByte fretNumber6, wxByte fretNumber7) :
     m_topFret(topFret)
 {
     //------Last Checked------//
     // - Jan 15, 2005
     wxASSERT(IsValidTopFret(topFret));
-    AddFretNumbers(fretNumber1, fretNumber2, fretNumber3, fretNumber4, fretNumber5, fretNumber6, fretNumber7);
+    AddFretNumbers(fretNumber1, fretNumber2, fretNumber3, fretNumber4,
+        fretNumber5, fretNumber6, fretNumber7);
 }
 
 /// Copy Constructor
@@ -207,8 +217,10 @@ bool ChordDiagram::DoDeserialize(PowerTabInputStream& stream, wxWord version)
 // Chord Diagram Functions
 /// Sets the contents of the ChordDiagram object
 /// @param chordName Chord name represented in the chord diagram
-/// @param topFret The fret represented at the top of the chord diagram (zero = the nut)
-/// @param fretNumber1 Fret number for the 1st string in the chord diagram (for standard guitar tuning, this is the high E string)
+/// @param topFret The fret represented at the top of the chord diagram (zero =
+/// the nut)
+/// @param fretNumber1 Fret number for the 1st string in the chord diagram (for
+/// standard guitar tuning, this is the high E string)
 /// @param fretNumber2 Fret number for the 2nd string in the chord diagram
 /// @param fretNumber3 Fret number for the 3rd string in the chord diagram
 /// @param fretNumber4 Fret number for the 4th string in the chord diagram
@@ -216,14 +228,18 @@ bool ChordDiagram::DoDeserialize(PowerTabInputStream& stream, wxWord version)
 /// @param fretNumber6 Fret number for the 6th string in the chord diagram
 /// @param fretNumber7 Fret number for the 7th string in the chord diagram
 /// @return True if the chord diagram was set, false if not
-bool ChordDiagram::SetChordDiagram(const ChordName& chordName, wxByte topFret, wxByte fretNumber1, wxByte fretNumber2, wxByte fretNumber3, wxByte fretNumber4, wxByte fretNumber5, wxByte fretNumber6, wxByte fretNumber7)
+bool ChordDiagram::SetChordDiagram(const ChordName& chordName, wxByte topFret,
+    wxByte fretNumber1, wxByte fretNumber2, wxByte fretNumber3,
+    wxByte fretNumber4, wxByte fretNumber5, wxByte fretNumber6,
+    wxByte fretNumber7)
 {
     //------Last Checked------//
     // - Jan 15, 2005
     SetChordName(chordName);
     if (!SetTopFret(topFret))
         return (false);
-    return (AddFretNumbers(fretNumber1, fretNumber2, fretNumber3, fretNumber4, fretNumber5, fretNumber6, fretNumber7));
+    return (AddFretNumbers(fretNumber1, fretNumber2, fretNumber3, fretNumber4,
+        fretNumber5, fretNumber6, fretNumber7));
 }
 
 // Fret Number Functions
@@ -253,7 +269,8 @@ wxByte ChordDiagram::GetFretNumber(wxUint32 string) const
 }
         
 /// Sets the fret numbers for the chord diagram
-/// @param fretNumber1 Fret number value for the 1st string in the chord diagram (for standard guitar chord diagram, this is the high E string)
+/// @param fretNumber1 Fret number value for the 1st string in the chord diagram
+/// (for standard guitar chord diagram, this is the high E string)
 /// @param fretNumber2 Fret number value for the 2nd string in the chord diagram
 /// @param fretNumber3 Fret number value for the 3rd string in the chord diagram
 /// @param fretNumber4 Fret number value for the 4th string in the chord diagram
@@ -261,7 +278,9 @@ wxByte ChordDiagram::GetFretNumber(wxUint32 string) const
 /// @param fretNumber6 Fret number value for the 6th string in the chord diagram
 /// @param fretNumber7 Fret number value for the 7th string in the chord diagram
 /// @return True if the chord diagram fret numbers were set, false if not
-bool ChordDiagram::AddFretNumbers(wxByte fretNumber1, wxByte fretNumber2, wxByte fretNumber3, wxByte fretNumber4, wxByte fretNumber5, wxByte fretNumber6, wxByte fretNumber7)
+bool ChordDiagram::AddFretNumbers(wxByte fretNumber1, wxByte fretNumber2,
+    wxByte fretNumber3, wxByte fretNumber4, wxByte fretNumber5,
+    wxByte fretNumber6, wxByte fretNumber7)
 {
     //------Last Checked------//
     // - Jan 15, 2005
@@ -299,7 +318,8 @@ bool ChordDiagram::AddFretNumbers(wxByte fretNumber1, wxByte fretNumber2, wxByte
 }
 
 // Voicing Functions
-/// Determines if the chord diagram's voicing is the same as that of another ChordDiagram object
+/// Determines if the chord diagram's voicing is the same as that of another
+/// ChordDiagram object
 /// @param chordDiagram ChordDiagram object to compare with
 /// @return True if the chord diagrams have the same voicing, false if not
 bool ChordDiagram::IsSameVoicing(const ChordDiagram& chordDiagram) const
@@ -326,7 +346,8 @@ bool ChordDiagram::IsSameVoicing(const ChordDiagram& chordDiagram) const
 }
 
 /// Determines if the chord diagram's voicing is the same
-/// @param fretNumber1 Fret number for the 1st string in the chord diagram (for standard guitar tuning, this is the high E string)
+/// @param fretNumber1 Fret number for the 1st string in the chord diagram (for
+/// standard guitar tuning, this is the high E string)
 /// @param fretNumber2 Fret number for the 2nd string in the chord diagram
 /// @param fretNumber3 Fret number for the 3rd string in the chord diagram
 /// @param fretNumber4 Fret number for the 4th string in the chord diagram
@@ -334,12 +355,15 @@ bool ChordDiagram::IsSameVoicing(const ChordDiagram& chordDiagram) const
 /// @param fretNumber6 Fret number for the 6th string in the chord diagram
 /// @param fretNumber7 Fret number for the 7th string in the chord diagram
 /// @return True if all of the chord diagram fret numbers match, false if not
-bool ChordDiagram::IsSameVoicing(wxByte fretNumber1, wxByte fretNumber2, wxByte fretNumber3, wxByte fretNumber4, wxByte fretNumber5, wxByte fretNumber6, wxByte fretNumber7) const
+bool ChordDiagram::IsSameVoicing(wxByte fretNumber1, wxByte fretNumber2,
+    wxByte fretNumber3, wxByte fretNumber4, wxByte fretNumber5,
+    wxByte fretNumber6, wxByte fretNumber7) const
 {
     //------Last Checked------//
     // - Jan 15, 2005
     ChordDiagram temp;
-    temp.AddFretNumbers(fretNumber1, fretNumber2, fretNumber3, fretNumber4, fretNumber5, fretNumber6, fretNumber7);
+    temp.AddFretNumbers(fretNumber1, fretNumber2, fretNumber3, fretNumber4,
+        fretNumber5, fretNumber6, fretNumber7);
     return (IsSameVoicing(temp));
 }
 

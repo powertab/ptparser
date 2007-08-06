@@ -42,7 +42,8 @@ const wxByte    PowerTabDocument::MAX_GUITARS                               = 7;
 // Constructor/Destructor
 /// Default Constructor
 PowerTabDocument::PowerTabDocument() :
-    m_tablatureStaffLineSpacing(DEFAULT_TABLATURE_STAFF_LINE_SPACING), m_fadeIn(DEFAULT_FADE_IN), m_fadeOut(DEFAULT_FADE_OUT)
+    m_tablatureStaffLineSpacing(DEFAULT_TABLATURE_STAFF_LINE_SPACING),
+    m_fadeIn(DEFAULT_FADE_IN), m_fadeOut(DEFAULT_FADE_OUT)
 {
     //------Last Checked------//
     // - Jan 26, 2005
@@ -72,7 +73,8 @@ wxOutputStream& PowerTabDocument::SaveObject(wxOutputStream& stream)
     m_header.Serialize(data_stream);
     if (!data_stream.CheckState())
     {
-        DisplaySerializationError(GetFilename(), stream.TellO(), data_stream.GetLastErrorMessage());
+        DisplaySerializationError(GetFilename(), stream.TellO(),
+            data_stream.GetLastErrorMessage());
         return (stream);
     }
     
@@ -84,7 +86,8 @@ wxOutputStream& PowerTabDocument::SaveObject(wxOutputStream& stream)
         m_scoreArray[i]->Serialize(data_stream);
         if (!data_stream.CheckState())
         {
-            DisplaySerializationError(GetFilename(), stream.TellO(), data_stream.GetLastErrorMessage());
+            DisplaySerializationError(GetFilename(), stream.TellO(),
+                data_stream.GetLastErrorMessage());
             return (stream);
         }
     }
@@ -96,7 +99,8 @@ wxOutputStream& PowerTabDocument::SaveObject(wxOutputStream& stream)
 	    m_fontSettingArray[fontSettingIndex].Serialize(data_stream);
 	    if (!data_stream.CheckState())
         {
-            DisplaySerializationError(GetFilename(), stream.TellO(), data_stream.GetLastErrorMessage());
+            DisplaySerializationError(GetFilename(), stream.TellO(),
+                data_stream.GetLastErrorMessage());
             return (stream);
         }
     }
@@ -105,7 +109,8 @@ wxOutputStream& PowerTabDocument::SaveObject(wxOutputStream& stream)
 	data_stream << m_tablatureStaffLineSpacing << m_fadeIn << m_fadeOut;
 	if (!data_stream.CheckState())
     {
-        DisplaySerializationError(GetFilename(), stream.TellO(), data_stream.GetLastErrorMessage());
+        DisplaySerializationError(GetFilename(), stream.TellO(),
+            data_stream.GetLastErrorMessage());
         return (stream);
     }
 	               
@@ -129,7 +134,8 @@ wxInputStream& PowerTabDocument::LoadObject(wxInputStream& stream)
     if (!data_stream.CheckState())
     {
         DeleteContents();
-        DisplayDeserializationError(GetFilename(), stream.TellI(), data_stream.GetLastErrorMessage());
+        DisplayDeserializationError(GetFilename(), stream.TellI(),
+            data_stream.GetLastErrorMessage());
         return (stream);
     }
     
@@ -137,8 +143,11 @@ wxInputStream& PowerTabDocument::LoadObject(wxInputStream& stream)
     const wxWord version = m_header.GetVersion();
     
     // v1.0 or v1.0.2
-    if ((version == PowerTabFileHeader::FILEVERSION_1_0) || (version == PowerTabFileHeader::FILEVERSION_1_0_2))
+    if ((version == PowerTabFileHeader::FILEVERSION_1_0) ||
+        (version == PowerTabFileHeader::FILEVERSION_1_0_2))
+    {
         DeserializeFormat1_0(data_stream, version);
+    }
     // v1.5
     else if (version == PowerTabFileHeader::FILEVERSION_1_5)
         DeserializeFormat1_5(data_stream);
@@ -149,7 +158,8 @@ wxInputStream& PowerTabDocument::LoadObject(wxInputStream& stream)
     if (!data_stream.CheckState())
     {
         DeleteContents();
-        DisplayDeserializationError(GetFilename(), stream.TellI(), data_stream.GetLastErrorMessage());
+        DisplayDeserializationError(GetFilename(), stream.TellI(),
+            data_stream.GetLastErrorMessage());
         return (stream);
     }
     
@@ -192,8 +202,11 @@ bool PowerTabDocument::Load(PowerTabInputStream& stream)
     const wxWord version = m_header.GetVersion();
     
     // v1.0 or v1.0.2
-    if (version == PowerTabFileHeader::FILEVERSION_1_0 || version == PowerTabFileHeader::FILEVERSION_1_0_2)
+    if (version == PowerTabFileHeader::FILEVERSION_1_0 ||
+        version == PowerTabFileHeader::FILEVERSION_1_0_2)
+    {
         DeserializeFormat1_0(stream, version);
+    }
     // v1.5
     else if (version == PowerTabFileHeader::FILEVERSION_1_5)
         DeserializeFormat1_5(stream);
@@ -268,7 +281,8 @@ bool PowerTabDocument::DeserializeFormat1_5(PowerTabInputStream& stream)
     size_t scoreIndex = 0;
 	for (; scoreIndex < 2; scoreIndex++)
 	{
-	    // Don't create the score on the heap, the checks will cause memory leaks
+	    // Don't create the score on the heap, the checks will cause memory
+        // leaks
 	    Score score;
 	    
 	    // Read the transcriber for the score (stored in the header in v1.7)
@@ -347,7 +361,8 @@ bool PowerTabDocument::DeserializeFormat1_5(PowerTabInputStream& stream)
 /// @param stream Input stream to read from
 /// @param version File version
 /// @return True if the document was deserialized, false if not
-bool PowerTabDocument::DeserializeFormat1_0(PowerTabInputStream& stream, wxWord version)
+bool PowerTabDocument::DeserializeFormat1_0(PowerTabInputStream& stream,
+    wxWord version)
 {
     //------Last Checked------//
     // - Jan 26, 2005
@@ -370,7 +385,8 @@ bool PowerTabDocument::DeserializeFormat1_0(PowerTabInputStream& stream, wxWord 
     wxUint32 scoreIndex = 0;
 	for (; scoreIndex < 2; scoreIndex++)
 	{
-	    // Don't create the score on the heap, the checks will cause memory leaks
+	    // Don't create the score on the heap, the checks will cause memory
+        // leaks
 	    Score score;
 	    
 	    score.m_guitarArray.Deserialize(stream, version);
@@ -423,7 +439,8 @@ bool PowerTabDocument::DeserializeFormat1_0(PowerTabInputStream& stream, wxWord 
 			bool commonTime = ((data & 0x400000) == 0x400000);
 			bool cutTime = ((data & 0x800000) == 0x800000);
 
-            // Get the beaming information (all beam values are zero-based and 5 bits each)
+            // Get the beaming information (all beam values are zero-based and
+            // 5 bits each)
             wxByte beat1 = (wxByte)((data & 0xf8000) >> 15);
             wxByte beat2 = (wxByte)((data & 0x7c00) >> 10);
             wxByte beat3 = (wxByte)((data & 0x3e0) >> 5);
@@ -484,7 +501,8 @@ bool PowerTabDocument::DeserializeFormat1_0(PowerTabInputStream& stream, wxWord 
 			delete oldTimeSignature;
 		}
 
-		// We must update all bars in between v1.0 time signs, because unlike v1.0
+		// We must update all bars in between v1.0 time signs, because unlike
+        // v1.0
 		// the time is stored with each bar in the score
 		// Setup the default values for 4/4 time
 		wxByte beatsPerMeasure = 4;
@@ -508,7 +526,8 @@ bool PowerTabDocument::DeserializeFormat1_0(PowerTabInputStream& stream, wxWord 
 		    // Update the time signature for all non-shown time signatures
 
             // Check each barline in the system
-            // We don't check the end bar, because the key/time data is not maintained in that barline
+            // We don't check the end bar, because the key/time data is not
+            // maintained in that barline
 			size_t barlineIndex = 0;
 			size_t barlineCount = system->GetBarlineCount();
 			for (; barlineIndex <= barlineCount; barlineIndex++)
@@ -516,7 +535,8 @@ bool PowerTabDocument::DeserializeFormat1_0(PowerTabInputStream& stream, wxWord 
                 Barline* barline = NULL;
                 
                 // For the first index, use the starting barline
-                // That's why we iterate for <= barlineCount and not < barlineCount
+                // That's why we iterate for <= barlineCount and not <
+                // barlineCount
                 if (barlineIndex == 0)
                     barline = &system->GetStartBarRef();
                 else
@@ -526,7 +546,8 @@ bool PowerTabDocument::DeserializeFormat1_0(PowerTabInputStream& stream, wxWord 
                 // Process the time signature at the start of the system
 			    TimeSignature& timeSignature = barline->GetTimeSignatureRef();
     			
-			    // Starting time signature is shown, update the time signature data
+			    // Starting time signature is shown, update the time signature
+                // data
 			    if (timeSignature.IsShown())
 			    {
 			        timeSignature.GetMeter(beatsPerMeasure, beatAmount);
@@ -535,7 +556,8 @@ bool PowerTabDocument::DeserializeFormat1_0(PowerTabInputStream& stream, wxWord 
                     timeSignature.GetBeamingPattern(beat1, beat2, beat3, beat4);
 				    processedFirst = true;
 			    }
-			    // Starting time signature is not shown; update using the previous time signature data
+			    // Starting time signature is not shown; update using the
+                // previous time signature data
 			    else if (processedFirst)
 			    {
 			        if (cutTime)
@@ -637,7 +659,8 @@ bool PowerTabDocument::DeleteContents()
 }
 
 // Score Functions
-/// Determines if the guitar score in another document can be merged into the current document
+/// Determines if the guitar score in another document can be merged into the
+/// current document
 /// @param document Document who's guitar score we want to merge with
 /// @return True if the guitar score can be merged, false if not
 bool PowerTabDocument::CanMergeGuitarScore(PowerTabDocument& document) const
@@ -658,8 +681,11 @@ bool PowerTabDocument::CanMergeGuitarScore(PowerTabDocument& document) const
     wxUint32 fontSettingIndex = 0;
     for (; fontSettingIndex < NUM_DOCUMENT_FONT_SETTINGS; fontSettingIndex++)
     {
-        if (m_fontSettingArray[fontSettingIndex] != document.m_fontSettingArray[fontSettingIndex])
+        if (m_fontSettingArray[fontSettingIndex] !=
+            document.m_fontSettingArray[fontSettingIndex])
+        {
             return (false);
+        }
     }
     
     // 3)
@@ -668,8 +694,11 @@ bool PowerTabDocument::CanMergeGuitarScore(PowerTabDocument& document) const
     Score* bassScore = document.GetBassScore();
     wxCHECK(bassScore != NULL, false);
     
-    if ((guitarScore->GetGuitarCount() + bassScore->GetGuitarCount()) > MAX_GUITARS)
+    if ((guitarScore->GetGuitarCount() + bassScore->GetGuitarCount()) >
+        MAX_GUITARS)
+    {
         return (false);
+    }
     
     return (true);
 }
@@ -707,7 +736,8 @@ bool PowerTabDocument::MergeGuitarScore(PowerTabDocument& document)
     return (true);
 }
 
-/// Determines if the bass score in another document can be merged into the current document
+/// Determines if the bass score in another document can be merged into the
+/// current document
 /// @param document Document who's bass score we want to merge with
 /// @return True if the bass score can be merged, false if not
 bool PowerTabDocument::CanMergeBassScore(PowerTabDocument& document) const
@@ -738,8 +768,11 @@ bool PowerTabDocument::CanMergeBassScore(PowerTabDocument& document) const
     Score* bassScore = document.GetBassScore();
     wxCHECK(bassScore != NULL, false);
     
-    if ((guitarScore->GetGuitarCount() + bassScore->GetGuitarCount()) > MAX_GUITARS)
+    if ((guitarScore->GetGuitarCount() + bassScore->GetGuitarCount()) >
+        MAX_GUITARS)
+    {
         return (false);
+    }
         
     return (true);
 }
@@ -795,20 +828,28 @@ void PowerTabDocument::DeleteScoreArrayContents()
 /// @param fileName Name of the file that was loading during the error
 /// @param offset The offset within the file where the error occurred
 /// @param errorMessage Error message to display
-void PowerTabDocument::DisplaySerializationError(const wxString& fileName, off_t offset, const wxString& errorMessage)
+void PowerTabDocument::DisplaySerializationError(const wxString& fileName,
+    off_t offset, const wxString& errorMessage)
 {
     //------Last Checked------//
     // - Jan 27, 2005
-    wxMessageBox(wxString::Format(wxT("An error occurred at offset %lld while loading the file '%s'.\n\n%s"), offset, fileName.c_str(), errorMessage.c_str()), wxT("Serialize Error"), wxICON_ERROR);
+    wxMessageBox(wxString::Format(
+        wxT("An error occurred at offset %lld while loading the file '%s'.\n\n%s"),
+        offset, fileName.c_str(), errorMessage.c_str()), wxT("Serialize Error"),
+        wxICON_ERROR);
 }
 
 /// Displays an error message during deserialiation
 /// @param fileName Name of the file that was loading during the error
 /// @param offset The offset within the file where the error occurred
 /// @param errorMessage Error message to display
-void PowerTabDocument::DisplayDeserializationError(const wxString& fileName, off_t offset, const wxString& errorMessage)
+void PowerTabDocument::DisplayDeserializationError(const wxString& fileName,
+    off_t offset, const wxString& errorMessage)
 {
     //------Last Checked------//
     // - Jan 27, 2005
-    wxMessageBox(wxString::Format(wxT("An error occurred at offset %lld while saving the file '%s'.\n\n%s"), offset, fileName.c_str(), errorMessage.c_str()), wxT("Deserialize Error"), wxICON_ERROR);
+    wxMessageBox(
+        wxString::Format(wxT("An error occurred at offset %lld while saving the file '%s'.\n\n%s"),
+        offset, fileName.c_str(), errorMessage.c_str()),
+        wxT("Deserialize Error"), wxICON_ERROR);
 }

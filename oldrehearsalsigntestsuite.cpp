@@ -140,12 +140,18 @@ bool OldRehearsalSignTestSuite::TestCaseOperator()
         OldRehearsalSign oldRehearsalSign7;
         oldRehearsalSign7.m_description = wxT("Test");
 
-        TEST(wxT("Operator== - oldRehearsalSign == oldRehearsalSign"), (oldRehearsalSign == oldRehearsalSign2));
-        TEST(wxT("Operator== - oldRehearsalSign != oldRehearsalSign"), !(oldRehearsalSign == oldRehearsalSign3));
-        TEST(wxT("Operator== - oldRehearsalSign != oldRehearsalSign 2"), !(oldRehearsalSign == oldRehearsalSign4));
-        TEST(wxT("Operator== - oldRehearsalSign != oldRehearsalSign 3"), !(oldRehearsalSign == oldRehearsalSign5));
-        TEST(wxT("Operator== - oldRehearsalSign != oldRehearsalSign 4"), !(oldRehearsalSign == oldRehearsalSign6));
-        TEST(wxT("Operator== - oldRehearsalSign != oldRehearsalSign 5"), !(oldRehearsalSign == oldRehearsalSign7));
+        TEST(wxT("Operator== - oldRehearsalSign == oldRehearsalSign"),
+            (oldRehearsalSign == oldRehearsalSign2));
+        TEST(wxT("Operator== - oldRehearsalSign != oldRehearsalSign"),
+            !(oldRehearsalSign == oldRehearsalSign3));
+        TEST(wxT("Operator== - oldRehearsalSign != oldRehearsalSign 2"),
+            !(oldRehearsalSign == oldRehearsalSign4));
+        TEST(wxT("Operator== - oldRehearsalSign != oldRehearsalSign 3"),
+            !(oldRehearsalSign == oldRehearsalSign5));
+        TEST(wxT("Operator== - oldRehearsalSign != oldRehearsalSign 4"),
+            !(oldRehearsalSign == oldRehearsalSign6));
+        TEST(wxT("Operator== - oldRehearsalSign != oldRehearsalSign 5"),
+            !(oldRehearsalSign == oldRehearsalSign7));
     }
     
     // TEST CASE: Inequality Operator
@@ -163,12 +169,18 @@ bool OldRehearsalSignTestSuite::TestCaseOperator()
         OldRehearsalSign oldRehearsalSign7;
         oldRehearsalSign7.m_description = wxT("Test");
 
-        TEST(wxT("Operator!= - oldRehearsalSign == oldRehearsalSign"), !(oldRehearsalSign != oldRehearsalSign2));
-        TEST(wxT("Operator!= - oldRehearsalSign != oldRehearsalSign"), (oldRehearsalSign != oldRehearsalSign3));
-        TEST(wxT("Operator!= - oldRehearsalSign != oldRehearsalSign 2"), (oldRehearsalSign != oldRehearsalSign4));
-        TEST(wxT("Operator!= - oldRehearsalSign != oldRehearsalSign 3"), (oldRehearsalSign != oldRehearsalSign5));
-        TEST(wxT("Operator!= - oldRehearsalSign != oldRehearsalSign 4"), (oldRehearsalSign != oldRehearsalSign6));
-        TEST(wxT("Operator!= - oldRehearsalSign != oldRehearsalSign 5"), (oldRehearsalSign != oldRehearsalSign7));
+        TEST(wxT("Operator!= - oldRehearsalSign == oldRehearsalSign"),
+            !(oldRehearsalSign != oldRehearsalSign2));
+        TEST(wxT("Operator!= - oldRehearsalSign != oldRehearsalSign"), 
+            (oldRehearsalSign != oldRehearsalSign3));
+        TEST(wxT("Operator!= - oldRehearsalSign != oldRehearsalSign 2"),
+            (oldRehearsalSign != oldRehearsalSign4));
+        TEST(wxT("Operator!= - oldRehearsalSign != oldRehearsalSign 3"),
+            (oldRehearsalSign != oldRehearsalSign5));
+        TEST(wxT("Operator!= - oldRehearsalSign != oldRehearsalSign 4"),
+            (oldRehearsalSign != oldRehearsalSign6));
+        TEST(wxT("Operator!= - oldRehearsalSign != oldRehearsalSign 5"),
+            (oldRehearsalSign != oldRehearsalSign7));
     }
         
     return (true);

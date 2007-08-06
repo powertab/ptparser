@@ -18,16 +18,16 @@ class GlobalTestSuite :
 {
     DECLARE_DYNAMIC_CLASS(GlobalTestSuite)
     
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     GlobalTestSuite();
     ~GlobalTestSuite();
 
-    // Overrides    
+// Overrides    
     size_t GetTestCount() const;
     bool RunTestCases();
     
-    // Test Cases
+// Test Cases
 private:
     bool TestCasewxExtractSubString();
     bool TestCasewxArabicToRoman();

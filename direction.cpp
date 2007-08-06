@@ -34,9 +34,10 @@ const wxByte        Direction::MAX_REPEAT_NUMBER                = 24;
 static wxChar* directionText[Direction::NUM_SYMBOL_TYPES] = 
 {
     wxT("Coda"), wxT("Double Coda"), wxT("Segno"), wxT("Segno Segno"),
-    wxT("Fine"), wxT("D.C."), wxT("D.S."), wxT("D.S.S."), wxT("To Coda"), wxT("To Dbl. Coda"),
-    wxT("D.C. al Coda"), wxT("D.C. al Dbl. Coda"), wxT("D.S. al Coda"), wxT("D.S. al Dbl. Coda"), 
-    wxT("D.S.S. al Coda"), wxT("D.S.S. al Dbl. Coda"), wxT("D.C. al Fine"), wxT("D.S. al Fine"),
+    wxT("Fine"), wxT("D.C."), wxT("D.S."), wxT("D.S.S."), wxT("To Coda"),
+    wxT("To Dbl. Coda"), wxT("D.C. al Coda"), wxT("D.C. al Dbl. Coda"),
+    wxT("D.S. al Coda"), wxT("D.S. al Dbl. Coda"), wxT("D.S.S. al Coda"),
+    wxT("D.S.S. al Dbl. Coda"), wxT("D.C. al Fine"), wxT("D.S. al Fine"),
     wxT("D.S.S. al Fine")
 };
 
@@ -50,12 +51,15 @@ Direction::Direction() :
 }
 
 /// Primary Constructor
-/// @param position Zero-based index of the position within the system where the barline is anchored
+/// @param position Zero-based index of the position within the system where the
+/// barline is anchored
 /// @param symbolType Type of symbol to add (see symbolTypes enum for values)
-/// @param activeSymbol Symbol that must be active for the symbol to be triggered (see activeSymbols enum for values)
-/// @param repeatNumber Repeat number that must be active for the symbol to be triggered (0 = none)
-Direction::Direction(wxUint32 position, wxByte symbolType, wxByte activeSymbol, wxByte repeatNumber)
-    : m_position(position)
+/// @param activeSymbol Symbol that must be active for the symbol to be
+/// triggered (see activeSymbols enum for values)
+/// @param repeatNumber Repeat number that must be active for the symbol to be
+/// triggered (0 = none)
+Direction::Direction(wxUint32 position, wxByte symbolType, wxByte activeSymbol,
+    wxByte repeatNumber) : m_position(position)
 {
     //------Last Checked------//
     // - Jan 11, 2005
@@ -190,10 +194,13 @@ bool Direction::DoDeserialize(PowerTabInputStream& stream,
 // Symbol Functions
 /// Adds a symbol to the symbol array
 /// @param symbolType Type of symbol to add (see symbolTypes enum for values)
-/// @param activeSymbol Symbol that must be active for the symbol to be triggered (see activeSymbols enum for values)
-/// @param repeatNumber Repeat number that must be active for the symbol to be triggered (0 = none)
+/// @param activeSymbol Symbol that must be active for the symbol to be
+/// triggered (see activeSymbols enum for values)
+/// @param repeatNumber Repeat number that must be active for the symbol to be
+/// triggered (0 = none)
 /// @return True if the symbol was added, false if not
-bool Direction::AddSymbol(wxByte symbolType, wxByte activeSymbol, wxByte repeatNumber)
+bool Direction::AddSymbol(wxByte symbolType, wxByte activeSymbol,
+    wxByte repeatNumber)
 {
     //------Last Checked------//
     // - Jan 11, 2005
@@ -207,16 +214,20 @@ bool Direction::AddSymbol(wxByte symbolType, wxByte activeSymbol, wxByte repeatN
 
     // Add a symbol to the end of the array, then set the data    
     m_symbolArray.Add(0);
-    return (SetSymbol(GetSymbolCount() - 1, symbolType, activeSymbol, repeatNumber));
+    return (SetSymbol(GetSymbolCount() - 1, symbolType, activeSymbol,
+        repeatNumber));
 }
 
 /// Sets the data for an existing symbol in the symbol array
 /// @param index Index of the symbol to set the data for
 /// @param symbolType Type of symbol (see symbolTypes enum for values)
-/// @param activeSymbol Symbol that must be active for the symbol to be triggered (see activeSymbols enum for values)
-/// @param repeatNumber Repeat number that must be active for the symbol to be triggered (0 = none)
+/// @param activeSymbol Symbol that must be active for the symbol to be
+/// triggered (see activeSymbols enum for values)
+/// @param repeatNumber Repeat number that must be active for the symbol to be
+/// triggered (0 = none)
 /// @return True if the symbol data was set, false if not
-bool Direction::SetSymbol(wxUint32 index, wxByte symbolType, wxByte activeSymbol, wxByte repeatNumber)
+bool Direction::SetSymbol(wxUint32 index, wxByte symbolType,
+    wxByte activeSymbol, wxByte repeatNumber)
 {
     //------Last Checked------//
     // - Jan 11, 2005
@@ -240,7 +251,8 @@ bool Direction::SetSymbol(wxUint32 index, wxByte symbolType, wxByte activeSymbol
 /// @param activeSymbol Holds the active symbol return value
 /// @param repeatNumber Holds the repeat number return value
 /// @return True if the direction data was retrieved, false if not
-bool Direction::GetSymbol(wxUint32 index, wxByte& symbolType, wxByte& activeSymbol, wxByte& repeatNumber) const
+bool Direction::GetSymbol(wxUint32 index, wxByte& symbolType,
+    wxByte& activeSymbol, wxByte& repeatNumber) const
 {
     //------Last Checked------//
     // - Jan 11, 2005

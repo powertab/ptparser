@@ -39,9 +39,11 @@ const wxByte Staff::MAX_TABLATURE_STAFF_TYPE            = 7;
 
 /// Default Constructor
 Staff::Staff() :
-    m_data(DEFAULT_DATA), m_standardNotationStaffAboveSpacing(DEFAULT_STANDARD_NOTATION_STAFF_ABOVE_SPACING),
+    m_data(DEFAULT_DATA),
+    m_standardNotationStaffAboveSpacing(DEFAULT_STANDARD_NOTATION_STAFF_ABOVE_SPACING),
     m_standardNotationStaffBelowSpacing(DEFAULT_STANDARD_NOTATION_STAFF_BELOW_SPACING),
-    m_symbolSpacing(DEFAULT_SYMBOL_SPACING), m_tablatureStaffBelowSpacing(DEFAULT_TABLATURE_STAFF_BELOW_SPACING)
+    m_symbolSpacing(DEFAULT_SYMBOL_SPACING),
+    m_tablatureStaffBelowSpacing(DEFAULT_TABLATURE_STAFF_BELOW_SPACING)
 {
     //------Last Checked------//
     // - Jan 5, 2005
@@ -51,9 +53,11 @@ Staff::Staff() :
 /// @param tablatureStaffType The type of tablature staff to set (number of strings)
 /// @param clef Type of clef to set (see CLEF constants)
 Staff::Staff(wxByte tablatureStaffType, wxByte clef) :
-    m_data(DEFAULT_DATA), m_standardNotationStaffAboveSpacing(DEFAULT_STANDARD_NOTATION_STAFF_ABOVE_SPACING),
+    m_data(DEFAULT_DATA),
+    m_standardNotationStaffAboveSpacing(DEFAULT_STANDARD_NOTATION_STAFF_ABOVE_SPACING),
     m_standardNotationStaffBelowSpacing(DEFAULT_STANDARD_NOTATION_STAFF_BELOW_SPACING),
-    m_symbolSpacing(DEFAULT_SYMBOL_SPACING), m_tablatureStaffBelowSpacing(DEFAULT_TABLATURE_STAFF_BELOW_SPACING)
+    m_symbolSpacing(DEFAULT_SYMBOL_SPACING),
+    m_tablatureStaffBelowSpacing(DEFAULT_TABLATURE_STAFF_BELOW_SPACING)
 {
     //------Last Checked------//
     // - Jan 5, 2005
@@ -63,9 +67,11 @@ Staff::Staff(wxByte tablatureStaffType, wxByte clef) :
 
 /// Copy Constructor
 Staff::Staff(const Staff& staff) :
-    m_data(DEFAULT_DATA), m_standardNotationStaffAboveSpacing(DEFAULT_STANDARD_NOTATION_STAFF_ABOVE_SPACING),
+    m_data(DEFAULT_DATA),
+    m_standardNotationStaffAboveSpacing(DEFAULT_STANDARD_NOTATION_STAFF_ABOVE_SPACING),
     m_standardNotationStaffBelowSpacing(DEFAULT_STANDARD_NOTATION_STAFF_BELOW_SPACING),
-    m_symbolSpacing(DEFAULT_SYMBOL_SPACING), m_tablatureStaffBelowSpacing(DEFAULT_TABLATURE_STAFF_BELOW_SPACING)
+    m_symbolSpacing(DEFAULT_SYMBOL_SPACING),
+    m_tablatureStaffBelowSpacing(DEFAULT_TABLATURE_STAFF_BELOW_SPACING)
 {
     //------Last Checked------//
     // - Jan 5, 2005
@@ -91,8 +97,10 @@ const Staff& Staff::operator=(const Staff& staff)
     if (this != &staff)
     {
 	    m_data = staff.m_data;
-	    m_standardNotationStaffAboveSpacing = staff.m_standardNotationStaffAboveSpacing;
-	    m_standardNotationStaffBelowSpacing = staff.m_standardNotationStaffBelowSpacing;
+	    m_standardNotationStaffAboveSpacing =
+            staff.m_standardNotationStaffAboveSpacing;
+	    m_standardNotationStaffBelowSpacing =
+            staff.m_standardNotationStaffBelowSpacing;
 	    m_symbolSpacing = staff.m_symbolSpacing;
 	    m_tablatureStaffBelowSpacing = staff.m_tablatureStaffBelowSpacing;
 
@@ -109,8 +117,10 @@ bool Staff::operator==(const Staff& staff) const
     // - Jan 5, 2005
     return (
         (m_data == staff.m_data) &&
-        (m_standardNotationStaffAboveSpacing == staff.m_standardNotationStaffAboveSpacing) &&
-        (m_standardNotationStaffBelowSpacing == staff.m_standardNotationStaffBelowSpacing) &&
+        (m_standardNotationStaffAboveSpacing ==
+            staff.m_standardNotationStaffAboveSpacing) &&
+        (m_standardNotationStaffBelowSpacing ==
+            staff.m_standardNotationStaffBelowSpacing) &&
         (m_symbolSpacing == staff.m_symbolSpacing) &&
         (m_tablatureStaffBelowSpacing == staff.m_tablatureStaffBelowSpacing) &&
         (m_positionArray[0].Equals(staff.m_positionArray[0])) &&
@@ -134,7 +144,9 @@ bool Staff::DoSerialize(PowerTabOutputStream& stream)
 {
     //------Last Checked------//
     // - Jan 5, 2005
-    stream << m_data << m_standardNotationStaffAboveSpacing << m_standardNotationStaffBelowSpacing << m_symbolSpacing << m_tablatureStaffBelowSpacing;
+    stream << m_data << m_standardNotationStaffAboveSpacing <<
+        m_standardNotationStaffBelowSpacing << m_symbolSpacing <<
+        m_tablatureStaffBelowSpacing;
     wxCHECK(stream.CheckState(), false);
     
     m_positionArray[0].Serialize(stream);
@@ -156,10 +168,14 @@ bool Staff::DoDeserialize(PowerTabInputStream& stream, wxWord version)
     // - Jan 5, 2005
     
     // Version 1.0 and 1.0.2, music/tab staff type stored in separate variables
-	if (version == PowerTabFileHeader::FILEVERSION_1_0 || version == PowerTabFileHeader::FILEVERSION_1_0_2)
+	if (version == PowerTabFileHeader::FILEVERSION_1_0 ||
+        version == PowerTabFileHeader::FILEVERSION_1_0_2)
 	{
 		wxByte clef, tablatureStaffType;
-		stream >> clef >> tablatureStaffType >> m_standardNotationStaffAboveSpacing >> m_standardNotationStaffBelowSpacing >> m_symbolSpacing >> m_tablatureStaffBelowSpacing;
+		stream >> clef >> tablatureStaffType >>
+            m_standardNotationStaffAboveSpacing >>
+            m_standardNotationStaffBelowSpacing >> m_symbolSpacing >>
+            m_tablatureStaffBelowSpacing;
 		wxCHECK(stream.CheckState(), false);
 
         SetClef(clef);
@@ -174,7 +190,9 @@ bool Staff::DoDeserialize(PowerTabInputStream& stream, wxWord version)
 	// Version 1.5 and up
 	else
 	{
-		stream >> m_data >> m_standardNotationStaffAboveSpacing >> m_standardNotationStaffBelowSpacing >> m_symbolSpacing >> m_tablatureStaffBelowSpacing;
+		stream >> m_data >> m_standardNotationStaffAboveSpacing >>
+            m_standardNotationStaffBelowSpacing >> m_symbolSpacing >>
+            m_tablatureStaffBelowSpacing;
 		wxCHECK(stream.CheckState(), false);
 		
         m_positionArray[0].Deserialize(stream, version);

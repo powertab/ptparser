@@ -17,17 +17,17 @@ class ChordNameTestSuite :
     public TestSuite
 {
     DECLARE_DYNAMIC_CLASS(ChordNameTestSuite)
-    
+
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     ChordNameTestSuite();
     ~ChordNameTestSuite();
 
-    // Overrides    
+// Overrides    
     size_t GetTestCount() const;
     bool RunTestCases();
     
-    // Test Cases
+// Test Cases
 private:
     bool TestCaseConstructor();
     bool TestCaseCreation();

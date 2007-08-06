@@ -156,9 +156,12 @@ bool ChordTextTestSuite::TestCaseOperator()
         ChordText chordText3(13, chordName);
         ChordText chordText4(12, chordName2);
                
-        TEST(wxT("Operator== - chordText == chordText"), (chordText == chordText2));
-        TEST(wxT("Operator== - chordText != chordText"), !(chordText == chordText3));
-        TEST(wxT("Operator== - chordText != chordText 2"), !(chordText == chordText4));
+        TEST(wxT("Operator== - chordText == chordText"),
+            (chordText == chordText2));
+        TEST(wxT("Operator== - chordText != chordText"),
+            !(chordText == chordText3));
+        TEST(wxT("Operator== - chordText != chordText 2"),
+            !(chordText == chordText4));
     }
         
     // TEST CASE: Operator!=
@@ -168,9 +171,12 @@ bool ChordTextTestSuite::TestCaseOperator()
         ChordText chordText3(13, chordName);
         ChordText chordText4(12, chordName2);
                
-        TEST(wxT("Operator!= - chordText == chordText"), !(chordText != chordText2));
-        TEST(wxT("Operator!= - chordText != chordText"), (chordText != chordText3));
-        TEST(wxT("Operator!= - chordText != chordText 2"), (chordText != chordText4));
+        TEST(wxT("Operator!= - chordText == chordText"),
+            !(chordText != chordText2));
+        TEST(wxT("Operator!= - chordText != chordText"),
+            (chordText != chordText3));
+        TEST(wxT("Operator!= - chordText != chordText 2"),
+            (chordText != chordText4));
     }
 
     return (true);
@@ -198,7 +204,8 @@ bool ChordTextTestSuite::TestCaseSerialize()
     
         // Read test data back from stream
         ChordText chordTextIn;
-        chordTextIn.Deserialize(streamIn, PowerTabFileHeader::FILEVERSION_CURRENT);
+        chordTextIn.Deserialize(streamIn,
+            PowerTabFileHeader::FILEVERSION_CURRENT);
 
         // Validate the data
         ok = ((chordTextIn == chordTextOut) 

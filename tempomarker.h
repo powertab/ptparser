@@ -70,37 +70,40 @@ public:
         typeMask                        = (wxUint32)0x18000000      ///< Mask used to retrieve the tempo marker type
     };
 
-// Member variables
+// Member Variables
 protected:
     wxString m_description;
 
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     TempoMarker();
-    TempoMarker(wxUint32 system, wxUint32 position, wxByte beatType, wxUint32 beatsPerMinute, const wxChar* description, wxByte tripletFeelType);
-    TempoMarker(wxUint32 system, wxUint32 position, wxByte beatType, wxByte listessoBeatType, const wxChar* description);
+    TempoMarker(wxUint32 system, wxUint32 position, wxByte beatType,
+        wxUint32 beatsPerMinute, const wxChar* description,
+        wxByte tripletFeelType);
+    TempoMarker(wxUint32 system, wxUint32 position, wxByte beatType,
+        wxByte listessoBeatType, const wxChar* description);
     TempoMarker(wxUint32 system, wxUint32 position, bool accelerando);
     TempoMarker(const TempoMarker& tempoMarker);
     ~TempoMarker();
 
-    // Creation Functions
+// Creation Functions
     /// Creates an exact duplicate of the object
     /// @return The duplicate object
     PowerTabObject* CloneObject() const                         
         {return (new TempoMarker(*this));}
     
-    // Operators
+// Operators
     const TempoMarker& operator=(const TempoMarker& tempoMarker);
     bool operator==(const TempoMarker& tempoMarker) const;
     bool operator!=(const TempoMarker& tempoMarker) const;
 
-    // Serialize Functions
+// Serialize Functions
 protected:
     bool DoSerialize(PowerTabOutputStream& stream);
     bool DoDeserialize(PowerTabInputStream& stream, wxWord version);
 
+// MFC Class Functions
 public:
-    // MFC Class Functions
     /// Gets the MFC Class Name for the object
     /// @return The MFC Class Name
     wxString GetMFCClassName() const                            
@@ -110,7 +113,7 @@ public:
     wxWord GetMFCClassSchema() const                            
         {return ((wxWord)1);}
      
-    // Type Functions
+// Type Functions
     /// Determines if a type is valid
     /// @param type Type to validate
     /// @return True if the type is valid, false if not
@@ -124,21 +127,23 @@ public:
     bool IsMetronomeMarkerShown() const     
         {return (GetType() != notShown);}
     
-    // Standard Marker Functions
-    bool SetStandardMarker(wxByte beatType, wxUint32 beatsPerMinute, const wxChar* description, wxByte tripletFeelType = noTripletFeel);
+// Standard Marker Functions
+    bool SetStandardMarker(wxByte beatType, wxUint32 beatsPerMinute,
+        const wxChar* description, wxByte tripletFeelType = noTripletFeel);
     /// Determines if the tempo marker is a standard marker
     /// @return True if the tempo marker is a standard marker, false if not
     bool IsStandardMarker() const           
         {return (GetType() == standardMarker);}
     
-    // Listesso Functions
-    bool SetListesso(wxByte beatType, wxByte listessoBeatType, const wxChar* description = wxT(""));
+// Listesso Functions
+    bool SetListesso(wxByte beatType, wxByte listessoBeatType,
+        const wxChar* description = wxT(""));
     /// Determines if the tempo marker is a listesso
     /// @return True if the tempo marker is a listesso, false if not
     bool IsListesso() const                 
         {return (GetType() == listesso);}
     
-    // Alteration Of Pace Functions
+// Alteration Of Pace Functions
     /// Determines if the tempo marker is an alteration of pace
     /// @return True if the tempo marker is an alteration of pace, false if not
     bool IsAlterationOfPace() const               
@@ -153,7 +158,7 @@ public:
     bool IsRitardando() const
         {return ((IsAlterationOfPace()) && (GetBeatType() == 1));}
     
-    // Beat Type Functions
+// Beat Type Functions
     /// Determines if a beat type is valid
     /// @param beatType Beat type to validate
     /// @return True if the beat type is valid, false if not
@@ -162,11 +167,11 @@ public:
     bool SetBeatType(wxByte beatType);
     wxByte GetBeatType() const;
                     
-    // Listesso Beat Type Functions
+// Listesso Beat Type Functions
     bool SetListessoBeatType(wxByte beatType);
     wxByte GetListessoBeatType() const;
             
-    // Triplet Feel Functions
+// Triplet Feel Functions
     /// Determines if a triplet feel type is valid
     /// @param tripletFeelType Triplet feel type to validate
     /// @return True if the triplet feel type is valid, false if not
@@ -179,12 +184,15 @@ public:
     bool HasTripletFeel() const
         {return (GetTripletFeelType() != noTripletFeel);}
     
-    // Beats Per Minute Functions
+// Beats Per Minute Functions
     /// Determines if a beats per minute value is valid
     /// @param beatsPerMinute Beats per minute value to validate
     /// @return True if the beats per minute value is valid, false if not
     static bool IsValidBeatsPerMinute(wxUint32 beatsPerMinute)
-        {return ((beatsPerMinute >= MIN_BEATS_PER_MINUTE) && ((beatsPerMinute <= MAX_BEATS_PER_MINUTE)));}
+    {
+        return ((beatsPerMinute >= MIN_BEATS_PER_MINUTE) &&
+            ((beatsPerMinute <= MAX_BEATS_PER_MINUTE)));
+    }
     /// Sets the beats per minute
     /// @param beatsPerMinute Beats per minute value to set
     /// @return True if the beats per minute value was set, false if not
@@ -194,12 +202,16 @@ public:
     wxUint32 GetBeatsPerMinute() const                     
         {return ((wxUint32)(m_data & beatsPerMinuteMask));}
     
-    // Description Functions
+// Description Functions
     /// Sets the description
     /// @param description Description to set
     /// @return True if the description was set, false if not
     bool SetDescription(const wxChar* description)      
-        {wxCHECK(description != NULL, false); m_description = description; return (true);}
+    {
+        wxCHECK(description != NULL, false);
+        m_description = description;
+        return (true);
+    }
     /// Gets the description
     /// @return The description
     wxString GetDescription() const                     

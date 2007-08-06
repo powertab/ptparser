@@ -65,16 +65,18 @@ bool GlobalTestSuite::TestCasewxExtractSubString()
     wxString fullString = wxT("1,2,3,4,5");
     wxChar separator = wxT(',');
     
-    TEST(wxT("wxExtractSubString - invalid fullString"), !wxExtractSubString(string, NULL, 1, separator));
-    TEST(wxT("wxExtractSubString - empty fullString"), !wxExtractSubString(string, wxT(""), 1, separator));
+    TEST(wxT("wxExtractSubString - invalid fullString"),
+        !wxExtractSubString(string, NULL, 1, separator));
+    TEST(wxT("wxExtractSubString - empty fullString"),
+        !wxExtractSubString(string, wxT(""), 1, separator));
  
     size_t i = 0;
     size_t count = 6;
     for (; i < count; i++)
     {
         wxString expectedValue = wxString::Format(wxT("%d"), i + 1);
-        TEST(wxString::Format(wxT("wxExtractSubString - valid string w/5 substrings; substring %d"), i), 
-            (wxExtractSubString(string, fullString, i, separator) == (i < 5)) &&
+        TEST(wxString::Format(wxT("wxExtractSubString - valid string w/5 substrings; substring %d"),
+            i), (wxExtractSubString(string, fullString, i, separator) == (i < 5)) &&
             ((i >= 5) ? 1 : (string == expectedValue))
         );            
     }   

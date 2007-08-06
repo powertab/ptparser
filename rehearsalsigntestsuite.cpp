@@ -149,9 +149,12 @@ bool RehearsalSignTestSuite::TestCaseOperator()
         RehearsalSign rehearsalSign3(wxT('D'), wxT("Chorus"));
         RehearsalSign rehearsalSign4(wxT('C'), wxT("Chorus2"));
         
-        TEST(wxT("Operator== - rehearsalSign == rehearsalSign"), (rehearsalSign == rehearsalSign2));
-        TEST(wxT("Operator== - rehearsalSign != rehearsalSign 2"), !(rehearsalSign == rehearsalSign3));
-        TEST(wxT("Operator== - rehearsalSign != rehearsalSign 3"), !(rehearsalSign == rehearsalSign4));
+        TEST(wxT("Operator== - rehearsalSign == rehearsalSign"),
+            (rehearsalSign == rehearsalSign2));
+        TEST(wxT("Operator== - rehearsalSign != rehearsalSign 2"),
+            !(rehearsalSign == rehearsalSign3));
+        TEST(wxT("Operator== - rehearsalSign != rehearsalSign 3"),
+            !(rehearsalSign == rehearsalSign4));
     }
     
     // TEST CASE: Operator!=
@@ -161,9 +164,12 @@ bool RehearsalSignTestSuite::TestCaseOperator()
         RehearsalSign rehearsalSign3(wxT('D'), wxT("Chorus"));
         RehearsalSign rehearsalSign4(wxT('C'), wxT("Chorus2"));
         
-        TEST(wxT("Operator!= - rehearsalSign == rehearsalSign"), !(rehearsalSign != rehearsalSign2));
-        TEST(wxT("Operator!= - rehearsalSign != rehearsalSign 2"), (rehearsalSign != rehearsalSign3));
-        TEST(wxT("Operator!= - rehearsalSign != rehearsalSign 3"), (rehearsalSign != rehearsalSign4));
+        TEST(wxT("Operator!= - rehearsalSign == rehearsalSign"),
+            !(rehearsalSign != rehearsalSign2));
+        TEST(wxT("Operator!= - rehearsalSign != rehearsalSign 2"),
+            (rehearsalSign != rehearsalSign3));
+        TEST(wxT("Operator!= - rehearsalSign != rehearsalSign 3"),
+            (rehearsalSign != rehearsalSign4));
     }
     
     return (true);
@@ -191,7 +197,8 @@ bool RehearsalSignTestSuite::TestCaseSerialize()
     
         // Read test data back from stream
         RehearsalSign rehearsalSignIn;
-        rehearsalSignIn.Deserialize(streamIn, PowerTabFileHeader::FILEVERSION_CURRENT);
+        rehearsalSignIn.Deserialize(streamIn,
+            PowerTabFileHeader::FILEVERSION_CURRENT);
 
         // Validate the data
         ok = ((rehearsalSignIn == rehearsalSignOut) 
@@ -216,7 +223,9 @@ bool RehearsalSignTestSuite::TestCaseLetter()
             (rehearsalSign.SetLetter(i) == ((i >= 'A') && (i <= 'Z'))) &&
             (((i < 'A') || (i > 'Z')) ? 1 : (rehearsalSign.GetLetter() == i))
         );
-    TEST(wxT("SetLetter - notset"), ((rehearsalSign.SetLetter(RehearsalSign::notSet)) && (!rehearsalSign.IsSet())));
+    TEST(wxT("SetLetter - notset"),
+        ((rehearsalSign.SetLetter(RehearsalSign::notSet)) &&
+        (!rehearsalSign.IsSet())));
     return (true);
 }
 
@@ -228,7 +237,9 @@ bool RehearsalSignTestSuite::TestCaseDescription()
     // - Dec 10, 2004
     RehearsalSign rehearsalSign;
     TEST(wxT("SetDescription - NULL"), !rehearsalSign.SetDescription(NULL));
-    TEST(wxT("SetDescription - valid"), (rehearsalSign.SetDescription(wxT("Chorus")) && (rehearsalSign.GetDescription() == wxT("Chorus"))));
+    TEST(wxT("SetDescription - valid"),
+        (rehearsalSign.SetDescription(wxT("Chorus")) &&
+        (rehearsalSign.GetDescription() == wxT("Chorus"))));
     return (true);
 }
 

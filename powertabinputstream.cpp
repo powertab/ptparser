@@ -15,7 +15,8 @@
 // Constructor/Destructor
 /// Primary Constructor
 PowerTabInputStream::PowerTabInputStream(wxInputStream& stream) :
-    wxDataInputStream(stream), m_mapsInitialized(false), m_mapCount(0), m_lastPowerTabError(POWERTABSTREAM_NO_ERROR)
+    wxDataInputStream(stream), m_mapsInitialized(false), m_mapCount(0),
+    m_lastPowerTabError(POWERTABSTREAM_NO_ERROR)
 {
     //------Last Checked------//
     // - Dec 21, 2004
@@ -90,7 +91,8 @@ bool PowerTabInputStream::ReadAnsiText(wxUint32 length, wxString& text)
     return (true);
 }
 
-/// Loads an Microsoft based (MFC) string from the stream and copies the text to a wxString object
+/// Loads an Microsoft based (MFC) string from the stream and copies the text to
+/// a wxString object
 /// @param string wxString object to copy the text to
 /// @return True if the string was read, false if not
 bool PowerTabInputStream::ReadMFCString(wxString& string)
@@ -132,12 +134,14 @@ bool PowerTabInputStream::ReadWin32ColorRef(wxColor& color)
     *this >> colorref;
     wxCHECK(CheckState(), false);
         
-    color.Set(LOBYTE(LOWORD(colorref)), HIBYTE(LOWORD(colorref)), LOBYTE(HIWORD(colorref)));
+    color.Set(LOBYTE(LOWORD(colorref)), HIBYTE(LOWORD(colorref)),
+        LOBYTE(HIWORD(colorref)));
     
     return (true);
 }
 
-/// Loads a Microsoft CRect object from the stream and copies its values to a wxRect object
+/// Loads a Microsoft CRect object from the stream and copies its values to a
+/// wxRect object
 /// @param rect wxRect object to copy the CRect values to
 /// @return True if the rect was read, false if not
 bool PowerTabInputStream::ReadMFCRect(wxRect& rect)
@@ -217,7 +221,8 @@ PowerTabObject* PowerTabInputStream::ReadObject(wxWord version)
 /// @param classId Holds the class id return value
 /// @param objectTag Holds the object tag return value
 /// @return True if the class information was written, false if not
-bool PowerTabInputStream::ReadClassInformation(wxWord version, wxString& classId, wxUint32& objectTag)
+bool PowerTabInputStream::ReadClassInformation(wxWord version,
+    wxString& classId, wxUint32& objectTag)
 {
     //------Last Checked------//
     // - Dec 21, 2004
@@ -227,7 +232,8 @@ bool PowerTabInputStream::ReadClassInformation(wxWord version, wxString& classId
 	// make sure m_loadArray is initialized
 	MapObject(NULL);
 
-	// read object tag - if prefixed by BIG_OBJECT_TAG then double word tag follows
+	// read object tag - if prefixed by BIG_OBJECT_TAG then double word tag
+    // follows
 	wxUint32 obTag = 0;
 	wxWord wordTag = 0;
 	*this >> wordTag;
@@ -271,7 +277,8 @@ bool PowerTabInputStream::ReadClassInformation(wxWord version, wxString& classId
 	{
 		// existing class index in obTag followed by new object
 		wxUint32 classIndex = (obTag & ~BIG_CLASS_TAG);
-		if ((classIndex == 0) || (classIndex > (wxUint32)(m_loadArray.GetCount() - 1)))
+		if ((classIndex == 0) ||
+            (classIndex > (wxUint32)(m_loadArray.GetCount() - 1)))
 		{
 		    m_lastPowerTabError = POWERTABSTREAM_BAD_INDEX;
 		    return (false);
@@ -294,12 +301,14 @@ bool PowerTabInputStream::ReadClassInformation(wxWord version, wxString& classId
     return (true);
 }
 
-/// Reads the length of a Microsoft based (MFC) string from a data input stream. Also determines
-/// the character size of the text (ANSI or Unicode)
+/// Reads the length of a Microsoft based (MFC) string from a data input stream.
+/// Also determines the character size of the text (ANSI or Unicode)
 /// @param charSize Size of each character in the string; 1 - ANSI, 2 - Unicode
 /// @return The length of the string, in characters
 wxUint32 PowerTabInputStream::ReadMFCStringLength(wxUint32& charSize)
 {
+    //------Last Checked------//
+    // - Dec 21, 2004
     wxByte byteLength = 0;
     wxWord wordLength = 0;
     wxUint32 doubleWordLength = 0;
@@ -348,8 +357,10 @@ wxUint32 PowerTabInputStream::ReadMFCStringLength(wxUint32& charSize)
 }
 
 // Error Checking Functions
-/// Gets the error message associated with the last error that occurred in the stream
-/// @return The error message associated with the last error that occurred in the stream
+/// Gets the error message associated with the last error that occurred in the
+/// stream
+/// @return The error message associated with the last error that occurred in
+/// the stream
 wxString PowerTabInputStream::GetLastErrorMessage()
 {
     //------Last Checked------//

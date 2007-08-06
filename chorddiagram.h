@@ -44,33 +44,39 @@ protected:
     wxByte          m_topFret;                  ///< Fret represented at the top of the chord diagram
     wxByteArray     m_fretNumberArray;          ///< List of fret number offsets
 
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     ChordDiagram();
-    ChordDiagram(const ChordName& chordName, wxByte topFret, wxByte fretNumber1, wxByte fretNumber2, wxByte fretNumber3, wxByte fretNumber4 = notUsed, wxByte fretNumber5 = notUsed, wxByte fretNumber6 = notUsed, wxByte fretNumber7 = notUsed);
-    ChordDiagram(wxByte topFret, wxByte fretNumber1, wxByte fretNumber2, wxByte fretNumber3, wxByte fretNumber4 = notUsed, wxByte fretNumber5 = notUsed, wxByte fretNumber6 = notUsed, wxByte fretNumber7 = notUsed);
+    ChordDiagram(const ChordName& chordName, wxByte topFret, wxByte fretNumber1,
+        wxByte fretNumber2, wxByte fretNumber3, wxByte fretNumber4 = notUsed,
+        wxByte fretNumber5 = notUsed, wxByte fretNumber6 = notUsed,
+        wxByte fretNumber7 = notUsed);
+    ChordDiagram(wxByte topFret, wxByte fretNumber1, wxByte fretNumber2,
+        wxByte fretNumber3, wxByte fretNumber4 = notUsed,
+        wxByte fretNumber5 = notUsed, wxByte fretNumber6 = notUsed,
+        wxByte fretNumber7 = notUsed);
     ChordDiagram(const ChordDiagram& chordDiagram);
     ~ChordDiagram();
 
-    // Creation Functions
+// Creation Functions
     /// Creates an exact duplicate of the object
     /// @return The duplicate object
     PowerTabObject* CloneObject() const                 
         {return (new ChordDiagram(*this));}
     
-    // Operators
+// Operators
     const ChordDiagram& operator=(const ChordDiagram& chordDiagram);
     bool operator==(const ChordDiagram& chordDiagram) const;
     bool operator!=(const ChordDiagram& chordDiagram) const;
     // TODO: Add operator[]
     
-    // Serialize Functions
+// Serialize Functions
 protected:
     bool DoSerialize(PowerTabOutputStream& stream);
     bool DoDeserialize(PowerTabInputStream& stream, wxWord version);
-    
+
+// MFC Class Functions
 public:    
-    // MFC Class Functions
     /// Gets the MFC Class Name for the object
     /// @return The MFC Class Name
     wxString GetMFCClassName() const                        
@@ -80,10 +86,13 @@ public:
     wxWord GetMFCClassSchema() const                        
         {return ((wxWord)1);}
     
-    // Chord Diagram Functions
-    bool SetChordDiagram(const ChordName& chordName, wxByte topFret, wxByte fretNumber1, wxByte fretNumber2, wxByte fretNumber3, wxByte fretNumber4 = notUsed, wxByte fretNumber5 = notUsed, wxByte fretNumber6 = notUsed, wxByte fretNumber7 = notUsed);
+// Chord Diagram Functions
+    bool SetChordDiagram(const ChordName& chordName, wxByte topFret,
+        wxByte fretNumber1, wxByte fretNumber2, wxByte fretNumber3,
+        wxByte fretNumber4 = notUsed, wxByte fretNumber5 = notUsed,
+        wxByte fretNumber6 = notUsed, wxByte fretNumber7 = notUsed);
     
-    // Chord Name Functions
+// Chord Name Functions
     /// Sets the chord name
     /// @param chordName Chord name to set
     void SetChordName(const ChordName& chordName)       
@@ -105,7 +114,7 @@ public:
     ChordName* GetChordNamePtr()                        
         {return (&m_chordName);}
     
-    // Top Fret Functions
+// Top Fret Functions
     /// Determines if a top fret value is valid
     /// @param topFret Top fret to validate
     /// @return True if the top fret value is valid, false if not
@@ -115,13 +124,17 @@ public:
     /// @param topFret Top fret to set
     /// @return True if the top fret was set, false if not
     bool SetTopFret(wxByte topFret)
-        {wxCHECK(IsValidTopFret(topFret), false); m_topFret = topFret; return (true);}
+    {
+        wxCHECK(IsValidTopFret(topFret), false);
+        m_topFret = topFret;
+        return (true);
+    }
     /// Gets the top fret value
     /// @return The top fret
     wxByte GetTopFret() const
         {return (m_topFret);}
 
-    // String Functions
+// String Functions
     /// Determines if a string is valid
     /// @param string String to validate
     /// @return True if the string is valid, false if not
@@ -132,26 +145,35 @@ public:
     size_t GetStringCount() const
         {return (m_fretNumberArray.GetCount());}
     
-    // Fret Number Functions    
+// Fret Number Functions    
     /// Determines if a fret number is valid
     /// @param fretNumber Fret number to validate
     /// @return True if the fret number is valid, false if not
     static bool IsValidFretNumber(wxByte fretNumber)
-        {return ((fretNumber <= MAX_FRET_NUMBER) || (fretNumber == stringMuted) || (fretNumber == notUsed));}
+    {
+        return ((fretNumber <= MAX_FRET_NUMBER) ||
+            (fretNumber == stringMuted) ||
+            (fretNumber == notUsed));
+    }
     bool SetFretNumber(wxUint32 string, wxByte fretNumber);
     wxByte GetFretNumber(wxUint32 string) const;
 protected:
-    bool AddFretNumbers(wxByte fretNumber1, wxByte fretNumber2, wxByte fretNumber3, wxByte fretNumber4, wxByte fretNumber5, wxByte fretNumber6, wxByte fretNumber7);
+    bool AddFretNumbers(wxByte fretNumber1, wxByte fretNumber2,
+        wxByte fretNumber3, wxByte fretNumber4, wxByte fretNumber5,
+        wxByte fretNumber6, wxByte fretNumber7);
     /// Deletes the contents (and frees the memory) of the fret number array
     void DeleteFretNumberArrayContents()
         {m_fretNumberArray.Clear();}
 
+// Voicing Functions
 public:
-    // Voicing Functions
     bool IsSameVoicing(const ChordDiagram& chordDiagram) const;
-    bool IsSameVoicing(wxByte fretNumber1, wxByte fretNumber2, wxByte fretNumber3, wxByte fretNumber4 = notUsed, wxByte fretNumber5 = notUsed, wxByte fretNumber6 = notUsed, wxByte fretNumber7 = notUsed) const;
+    bool IsSameVoicing(wxByte fretNumber1, wxByte fretNumber2,
+        wxByte fretNumber3, wxByte fretNumber4 = notUsed,
+        wxByte fretNumber5 = notUsed, wxByte fretNumber6 = notUsed,
+        wxByte fretNumber7 = notUsed) const;
     
-    // Operations
+// Operations
     wxString GetSpelling() const;
 };
 

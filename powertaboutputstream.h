@@ -20,19 +20,20 @@ WX_DECLARE_VOIDPTR_HASH_MAP(void*, ObjectHashMap);
 class PowerTabOutputStream :
     public wxDataOutputStream
 {
+// Member Variables
 protected:
     bool                    m_mapsInitialized;                  ///< Determines whether or not the maps have been initialized
     ClassInfoHashMap        m_classInfoHashMap;                 ///< Map of class Ids to object index
     ObjectHashMap           m_objectHashMap;                    ///< Map of object pointers to object index
     wxUint32                m_mapCount;                         ///< Internal count of mapped objects
     PowerTabStreamError     m_lastPowerTabError;                ///< Last Power Tab specific error
-    
+
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     PowerTabOutputStream(wxOutputStream& stream);
     ~PowerTabOutputStream();
 
-    // Write Functions
+// Write Functions
     bool WriteCount(wxUint32 count);
     bool WriteAnsiText(const wxString& text);
     bool WriteMFCString(const wxString& string);
@@ -43,7 +44,7 @@ protected:
     bool WriteClassInformation(const PowerTabObject* object);
     bool WriteMFCStringLength(wxUint32 length, bool unicode);
     
-    // Error Checking Functions
+// Error Checking Functions
 public:
     /// Checks the current state of the stream
     /// @return True if the stream is OK, false if an error has occurred
@@ -54,7 +55,7 @@ public:
 protected:
     bool CheckCount();
     
-    // Operations
+// Operations
     bool MapObject(const PowerTabObject* object);
 
 public:

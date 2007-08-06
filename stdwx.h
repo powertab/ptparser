@@ -65,7 +65,8 @@
 #include "powertaboutputstream.h"
 
 // Global Functions
-extern bool wxExtractSubString(wxString& string, const wxChar* fullString, wxUint32 subString, wxChar separator);
+extern bool wxExtractSubString(wxString& string, const wxChar* fullString,
+    wxUint32 subString, wxChar separator);
 extern int wxCompareIntegers(int* n1, int* n2);
 
 // Date/Time

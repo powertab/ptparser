@@ -160,12 +160,18 @@ bool GuitarInTestSuite::TestCaseOperator()
         GuitarIn guitarIn6(1,2,3,8,2);
         GuitarIn guitarIn7(1,2,3,4,4);
         
-        TEST(wxT("Operator== - guitarIn == guitarIn"), (guitarIn == guitarIn2));
-        TEST(wxT("Operator== - guitarIn != guitarIn"), !(guitarIn == guitarIn3));
-        TEST(wxT("Operator== - guitarIn != guitarIn 2"), !(guitarIn == guitarIn4));
-        TEST(wxT("Operator== - guitarIn != guitarIn 3"), !(guitarIn == guitarIn5));
-        TEST(wxT("Operator== - guitarIn != guitarIn 4"), !(guitarIn == guitarIn6));
-        TEST(wxT("Operator== - guitarIn != guitarIn 5"), !(guitarIn == guitarIn7));
+        TEST(wxT("Operator== - guitarIn == guitarIn"),
+            (guitarIn == guitarIn2));
+        TEST(wxT("Operator== - guitarIn != guitarIn"),
+            !(guitarIn == guitarIn3));
+        TEST(wxT("Operator== - guitarIn != guitarIn 2"),
+            !(guitarIn == guitarIn4));
+        TEST(wxT("Operator== - guitarIn != guitarIn 3"),
+            !(guitarIn == guitarIn5));
+        TEST(wxT("Operator== - guitarIn != guitarIn 4"),
+            !(guitarIn == guitarIn6));
+        TEST(wxT("Operator== - guitarIn != guitarIn 5"),
+            !(guitarIn == guitarIn7));
     }
     
     // TEST CASE: Inequality Operator
@@ -178,12 +184,18 @@ bool GuitarInTestSuite::TestCaseOperator()
         GuitarIn guitarIn6(1,2,3,8,2);
         GuitarIn guitarIn7(1,2,3,4,4);
         
-        TEST(wxT("Operator!= - guitarIn == guitarIn"), !(guitarIn != guitarIn2));
-        TEST(wxT("Operator!= - guitarIn != guitarIn"), (guitarIn != guitarIn3));
-        TEST(wxT("Operator!= - guitarIn != guitarIn 2"), (guitarIn != guitarIn4));
-        TEST(wxT("Operator!= - guitarIn != guitarIn 3"), (guitarIn != guitarIn5));
-        TEST(wxT("Operator!= - guitarIn != guitarIn 4"), (guitarIn != guitarIn6));
-        TEST(wxT("Operator!= - guitarIn != guitarIn 5"), (guitarIn != guitarIn7));
+        TEST(wxT("Operator!= - guitarIn == guitarIn"),
+            !(guitarIn != guitarIn2));
+        TEST(wxT("Operator!= - guitarIn != guitarIn"),
+            (guitarIn != guitarIn3));
+        TEST(wxT("Operator!= - guitarIn != guitarIn 2"),
+            (guitarIn != guitarIn4));
+        TEST(wxT("Operator!= - guitarIn != guitarIn 3"),
+            (guitarIn != guitarIn5));
+        TEST(wxT("Operator!= - guitarIn != guitarIn 4"),
+            (guitarIn != guitarIn6));
+        TEST(wxT("Operator!= - guitarIn != guitarIn 5"),
+            (guitarIn != guitarIn7));
     }
         
     return (true);
@@ -211,7 +223,8 @@ bool GuitarInTestSuite::TestCaseSerialize()
     
         // Read test data back from stream
         GuitarIn guitarInIn;
-        guitarInIn.Deserialize(streamIn, PowerTabFileHeader::FILEVERSION_CURRENT);
+        guitarInIn.Deserialize(streamIn,
+            PowerTabFileHeader::FILEVERSION_CURRENT);
 
         // Validate the data
         ok = ((guitarInIn == guitarInOut)
@@ -325,7 +338,8 @@ bool GuitarInTestSuite::TestCasePosition()
         {
             TEST(wxString::Format(wxT("SetPosition - %d"), i),
                 (guitarIn.SetPosition(i) == (i <= GuitarIn::MAX_POSITION)) &&
-                ((i > GuitarIn::MAX_POSITION) ? 1 : (guitarIn.GetPosition() == i))
+                ((i > GuitarIn::MAX_POSITION) ? 1 :
+                    (guitarIn.GetPosition() == i))
             );
         }
     }

@@ -40,7 +40,8 @@ TestingFramework::~TestingFramework()
 
 // Test Suite Functions
 /// Sorts the test suites by their name
-/// @param sortAscending Indicates the direction of the sort: ascending or descending
+/// @param sortAscending Indicates the direction of the sort: ascending or
+/// descending
 void TestingFramework::SortTestSuitesByName(bool sortAscending)
 {
     //------Last Checked------//

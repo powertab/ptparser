@@ -136,10 +136,14 @@ bool OldTimeSignatureTestSuite::TestCaseOperator()
         OldTimeSignature oldTimeSignature5;
         oldTimeSignature5.m_data = 3;
 
-        TEST(wxT("Operator== - oldTimeSignature == oldTimeSignature"), (oldTimeSignature == oldTimeSignature2));
-        TEST(wxT("Operator== - oldTimeSignature != oldTimeSignature"), !(oldTimeSignature == oldTimeSignature3));
-        TEST(wxT("Operator== - oldTimeSignature != oldTimeSignature 2"), !(oldTimeSignature == oldTimeSignature4));
-        TEST(wxT("Operator== - oldTimeSignature != oldTimeSignature 3"), !(oldTimeSignature == oldTimeSignature5));
+        TEST(wxT("Operator== - oldTimeSignature == oldTimeSignature"),
+            (oldTimeSignature == oldTimeSignature2));
+        TEST(wxT("Operator== - oldTimeSignature != oldTimeSignature"),
+            !(oldTimeSignature == oldTimeSignature3));
+        TEST(wxT("Operator== - oldTimeSignature != oldTimeSignature 2"),
+            !(oldTimeSignature == oldTimeSignature4));
+        TEST(wxT("Operator== - oldTimeSignature != oldTimeSignature 3"),
+            !(oldTimeSignature == oldTimeSignature5));
     }
     
     // TEST CASE: Inequality Operator
@@ -153,10 +157,14 @@ bool OldTimeSignatureTestSuite::TestCaseOperator()
         OldTimeSignature oldTimeSignature5;
         oldTimeSignature5.m_data = 3;
 
-        TEST(wxT("Operator!= - oldTimeSignature == oldTimeSignature"), !(oldTimeSignature != oldTimeSignature2));
-        TEST(wxT("Operator!= - oldTimeSignature != oldTimeSignature"), (oldTimeSignature != oldTimeSignature3));
-        TEST(wxT("Operator!= - oldTimeSignature != oldTimeSignature 2"), (oldTimeSignature != oldTimeSignature4));
-        TEST(wxT("Operator!= - oldTimeSignature != oldTimeSignature 3"), (oldTimeSignature != oldTimeSignature5));
+        TEST(wxT("Operator!= - oldTimeSignature == oldTimeSignature"),
+            !(oldTimeSignature != oldTimeSignature2));
+        TEST(wxT("Operator!= - oldTimeSignature != oldTimeSignature"),
+            (oldTimeSignature != oldTimeSignature3));
+        TEST(wxT("Operator!= - oldTimeSignature != oldTimeSignature 2"),
+            (oldTimeSignature != oldTimeSignature4));
+        TEST(wxT("Operator!= - oldTimeSignature != oldTimeSignature 3"),
+            (oldTimeSignature != oldTimeSignature5));
     }
         
     return (true);

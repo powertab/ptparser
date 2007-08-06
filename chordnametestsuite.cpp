@@ -103,7 +103,9 @@ bool ChordNameTestSuite::TestCaseConstructor()
     
     // TEST CASE: Primary constructor
     {
-        ChordName chordName(ChordName::D, ChordName::variationDefault, ChordName::dominant7th, ChordName::extended9th | ChordName::suspended4th, 3, 2);
+        ChordName chordName(ChordName::D, ChordName::variationDefault,
+            ChordName::dominant7th,
+            ChordName::extended9th | ChordName::suspended4th, 3, 2);
         TEST(wxT("Primary Constructor"),
             (chordName.IsSameTonic(ChordName::D, ChordName::variationDefault)) &&
             (chordName.GetFormula() == ChordName::dominant7th) &&
@@ -114,7 +116,9 @@ bool ChordNameTestSuite::TestCaseConstructor()
     
     // TEST CASE: Copy constructor
     {
-        ChordName chordName(ChordName::D, ChordName::variationDefault, ChordName::dominant7th, ChordName::extended9th | ChordName::suspended4th, 3, 2);
+        ChordName chordName(ChordName::D, ChordName::variationDefault,
+            ChordName::dominant7th,
+            ChordName::extended9th | ChordName::suspended4th, 3, 2);
         ChordName chordName2(chordName);
         TEST(wxT("Copy Constructor"), 
             (chordName2 == chordName)
@@ -130,7 +134,9 @@ bool ChordNameTestSuite::TestCaseCreation()
 {
     //------Last Checked------//
     // - Jan 17, 2005
-    ChordName chordName(ChordName::D, ChordName::variationDefault, ChordName::dominant7th, ChordName::extended9th | ChordName::suspended4th, 3, 2);
+    ChordName chordName(ChordName::D, ChordName::variationDefault,
+        ChordName::dominant7th,
+        ChordName::extended9th | ChordName::suspended4th, 3, 2);
     
     ChordName* clone = (ChordName*)chordName.CloneObject();
     TEST(wxT("CloneObject"),
@@ -149,7 +155,9 @@ bool ChordNameTestSuite::TestCaseOperator()
     
     // TEST CASE: Operator=
     {
-        ChordName chordName(ChordName::D, ChordName::variationDefault, ChordName::dominant7th, ChordName::extended9th | ChordName::suspended4th, 3, 2);
+        ChordName chordName(ChordName::D, ChordName::variationDefault,
+            ChordName::dominant7th,
+            ChordName::extended9th | ChordName::suspended4th, 3, 2);
         ChordName chordName2 = chordName;
         TEST(wxT("Operator="),
             (chordName2 == chordName)
@@ -163,42 +171,87 @@ bool ChordNameTestSuite::TestCaseOperator()
     
     // TEST CASE: Operator==
     {
-        ChordName chordName(ChordName::D, ChordName::variationDefault, ChordName::dominant7th, ChordName::extended9th | ChordName::suspended4th, 3, 2);
-        ChordName chordName2(ChordName::D, ChordName::variationDefault, ChordName::dominant7th, ChordName::extended9th | ChordName::suspended4th, 3, 2);
-        ChordName chordName3(ChordName::EFlat, ChordName::variationDefault, ChordName::dominant7th, ChordName::extended9th | ChordName::suspended4th, 3, 2);
-        ChordName chordName4(ChordName::D, ChordName::variationUp, ChordName::dominant7th, ChordName::extended9th | ChordName::suspended4th, 3, 2);
-        ChordName chordName5(ChordName::D, ChordName::variationDefault, ChordName::major7th, ChordName::extended9th | ChordName::suspended4th, 3, 2);
-        ChordName chordName6(ChordName::D, ChordName::variationDefault, ChordName::dominant7th, ChordName::extended11th, 3, 2);
-        ChordName chordName7(ChordName::D, ChordName::variationDefault, ChordName::dominant7th, ChordName::extended9th | ChordName::suspended4th, 4, 2);
-        ChordName chordName8(ChordName::D, ChordName::variationDefault, ChordName::dominant7th, ChordName::extended9th | ChordName::suspended4th, 3, 3);
+        ChordName chordName(ChordName::D, ChordName::variationDefault,
+            ChordName::dominant7th,
+            ChordName::extended9th | ChordName::suspended4th, 3, 2);
+        ChordName chordName2(ChordName::D, ChordName::variationDefault,
+            ChordName::dominant7th,
+            ChordName::extended9th | ChordName::suspended4th, 3, 2);
+        ChordName chordName3(ChordName::EFlat, ChordName::variationDefault,
+            ChordName::dominant7th,
+            ChordName::extended9th | ChordName::suspended4th, 3, 2);
+        ChordName chordName4(ChordName::D, ChordName::variationUp,
+            ChordName::dominant7th,
+            ChordName::extended9th | ChordName::suspended4th, 3, 2);
+        ChordName chordName5(ChordName::D, ChordName::variationDefault,
+            ChordName::major7th,
+            ChordName::extended9th | ChordName::suspended4th, 3, 2);
+        ChordName chordName6(ChordName::D, ChordName::variationDefault,
+            ChordName::dominant7th, ChordName::extended11th, 3, 2);
+        ChordName chordName7(ChordName::D, ChordName::variationDefault,
+            ChordName::dominant7th,
+            ChordName::extended9th | ChordName::suspended4th, 4, 2);
+        ChordName chordName8(ChordName::D, ChordName::variationDefault,
+            ChordName::dominant7th,
+            ChordName::extended9th | ChordName::suspended4th, 3, 3);
         
-        TEST(wxT("Operator== - chordName == chordName"), (chordName == chordName2));
-        TEST(wxT("Operator== - chordName != chordName"), !(chordName == chordName3));
-        TEST(wxT("Operator== - chordName != chordName 2"), !(chordName == chordName4));
-        TEST(wxT("Operator== - chordName != chordName 3"), !(chordName == chordName5));
-        TEST(wxT("Operator== - chordName != chordName 4"), !(chordName == chordName6));
-        TEST(wxT("Operator== - chordName != chordName 5"), !(chordName == chordName7));
-        TEST(wxT("Operator== - chordName != chordName 6"), !(chordName == chordName8));
+        TEST(wxT("Operator== - chordName == chordName"),
+            (chordName == chordName2));
+        TEST(wxT("Operator== - chordName != chordName"),
+            !(chordName == chordName3));
+        TEST(wxT("Operator== - chordName != chordName 2"),
+            !(chordName == chordName4));
+        TEST(wxT("Operator== - chordName != chordName 3"),
+            !(chordName == chordName5));
+        TEST(wxT("Operator== - chordName != chordName 4"),
+            !(chordName == chordName6));
+        TEST(wxT("Operator== - chordName != chordName 5"),
+            !(chordName == chordName7));
+        TEST(wxT("Operator== - chordName != chordName 6"),
+            !(chordName == chordName8));
     }
         
     // TEST CASE: Operator!=
     {
-        ChordName chordName(ChordName::D, ChordName::variationDefault, ChordName::dominant7th, ChordName::extended9th | ChordName::suspended4th, 3, 2);
-        ChordName chordName2(ChordName::D, ChordName::variationDefault, ChordName::dominant7th, ChordName::extended9th | ChordName::suspended4th, 3, 2);
-        ChordName chordName3(ChordName::EFlat, ChordName::variationDefault, ChordName::dominant7th, ChordName::extended9th | ChordName::suspended4th, 3, 2);
-        ChordName chordName4(ChordName::D, ChordName::variationUp, ChordName::dominant7th, ChordName::extended9th | ChordName::suspended4th, 3, 2);
-        ChordName chordName5(ChordName::D, ChordName::variationDefault, ChordName::major7th, ChordName::extended9th | ChordName::suspended4th, 3, 2);
-        ChordName chordName6(ChordName::D, ChordName::variationDefault, ChordName::dominant7th, ChordName::extended11th, 3, 2);
-        ChordName chordName7(ChordName::D, ChordName::variationDefault, ChordName::dominant7th, ChordName::extended9th | ChordName::suspended4th, 4, 2);
-        ChordName chordName8(ChordName::D, ChordName::variationDefault, ChordName::dominant7th, ChordName::extended9th | ChordName::suspended4th, 3, 3);
+        ChordName chordName(ChordName::D, ChordName::variationDefault,
+            ChordName::dominant7th,
+            ChordName::extended9th | ChordName::suspended4th, 3, 2);
+        ChordName chordName2(ChordName::D, ChordName::variationDefault,
+            ChordName::dominant7th,
+            ChordName::extended9th | ChordName::suspended4th, 3, 2);
+        ChordName chordName3(ChordName::EFlat, ChordName::variationDefault,
+            ChordName::dominant7th,
+            ChordName::extended9th | ChordName::suspended4th, 3, 2);
+        ChordName chordName4(ChordName::D, ChordName::variationUp,
+            ChordName::dominant7th,
+            ChordName::extended9th | ChordName::suspended4th, 3, 2);
+        ChordName chordName5(ChordName::D, ChordName::variationDefault,
+            ChordName::major7th,
+            ChordName::extended9th | ChordName::suspended4th, 3, 2);
+        ChordName chordName6(ChordName::D, ChordName::variationDefault,
+            ChordName::dominant7th,
+            ChordName::extended11th, 3, 2);
+        ChordName chordName7(ChordName::D, ChordName::variationDefault,
+            ChordName::dominant7th,
+            ChordName::extended9th | ChordName::suspended4th, 4, 2);
+        ChordName chordName8(ChordName::D, ChordName::variationDefault,
+            ChordName::dominant7th,
+            ChordName::extended9th | ChordName::suspended4th, 3, 3);
         
-        TEST(wxT("Operator!= - chordName == chordName"), !(chordName != chordName2));
-        TEST(wxT("Operator!= - chordName != chordName"), (chordName != chordName3));
-        TEST(wxT("Operator!= - chordName != chordName 2"), (chordName != chordName4));
-        TEST(wxT("Operator!= - chordName != chordName 3"), (chordName != chordName5));
-        TEST(wxT("Operator!= - chordName != chordName 4"), (chordName != chordName6));
-        TEST(wxT("Operator!= - chordName != chordName 5"), (chordName != chordName7));
-        TEST(wxT("Operator!= - chordName != chordName 6"), (chordName != chordName8));
+        TEST(wxT("Operator!= - chordName == chordName"),
+            !(chordName != chordName2));
+        TEST(wxT("Operator!= - chordName != chordName"),
+            (chordName != chordName3));
+        TEST(wxT("Operator!= - chordName != chordName 2"),
+            (chordName != chordName4));
+        TEST(wxT("Operator!= - chordName != chordName 3"),
+            (chordName != chordName5));
+        TEST(wxT("Operator!= - chordName != chordName 4"),
+            (chordName != chordName6));
+        TEST(wxT("Operator!= - chordName != chordName 5"),
+            (chordName != chordName7));
+        TEST(wxT("Operator!= - chordName != chordName 6"),
+            (chordName != chordName8));
     }
     
     return (true);
@@ -216,7 +269,9 @@ bool ChordNameTestSuite::TestCaseSerialize()
     PowerTabOutputStream streamOut(testStream.GetOutputStream());
     
     // Write test data to stream
-    ChordName chordNameOut(ChordName::D, ChordName::variationDefault, ChordName::dominant7th, ChordName::extended9th | ChordName::suspended4th, 3, 2);
+    ChordName chordNameOut(ChordName::D, ChordName::variationDefault,
+        ChordName::dominant7th,
+        ChordName::extended9th | ChordName::suspended4th, 3, 2);
     chordNameOut.Serialize(streamOut);
 
     // Output must be OK before using input
@@ -226,7 +281,8 @@ bool ChordNameTestSuite::TestCaseSerialize()
     
         // Read test data back from stream
         ChordName chordNameIn;
-        chordNameIn.Deserialize(streamIn, PowerTabFileHeader::FILEVERSION_CURRENT);
+        chordNameIn.Deserialize(streamIn,
+            PowerTabFileHeader::FILEVERSION_CURRENT);
 
         // Validate the data
         ok = ((chordNameIn == chordNameOut) 
@@ -267,8 +323,10 @@ bool ChordNameTestSuite::TestCaseTonic()
                 chordName.GetTonic(key, keyVariation);
                 
                 TEST(wxString::Format(wxT("SetTonic - %d, %d"), i, j), 
-                    (set == !((i == ChordName::AFlat) && (j == ChordName::variationUp))) &&
-                    (((i == ChordName::AFlat) && (j == ChordName::variationUp)) ? 1 : 
+                    (set == !((i == ChordName::AFlat) &&
+                    (j == ChordName::variationUp))) &&
+                    (((i == ChordName::AFlat) &&
+                    (j == ChordName::variationUp)) ? 1 : 
                     (key == i && keyVariation == j))
                 );
             }
@@ -306,8 +364,10 @@ bool ChordNameTestSuite::TestCaseBassNote()
                 chordName.GetBassNote(key, keyVariation);
                 
                 TEST(wxString::Format(wxT("SetBassNote - %d, %d"), i, j), 
-                    (set == !((i == ChordName::AFlat) && (j == ChordName::variationUp))) &&
-                    ((i == ChordName::AFlat) && (j == ChordName::variationUp)) ? 1 : 
+                    (set == !((i == ChordName::AFlat) &&
+                    (j == ChordName::variationUp))) &&
+                    ((i == ChordName::AFlat) &&
+                    (j == ChordName::variationUp)) ? 1 : 
                     (key == i && keyVariation == j)
                 );
             }
@@ -329,7 +389,8 @@ bool ChordNameTestSuite::TestCaseFormula()
         wxByte i = ChordName::major;
         for (; i <= (ChordName::minor7thFlatted5th + 1); i++)
             TEST(wxString::Format(wxT("IsValidFormula - %d"), i),
-                (ChordName::IsValidFormula(i) == (i <= ChordName::minor7thFlatted5th))
+                (ChordName::IsValidFormula(i) ==
+                    (i <= ChordName::minor7thFlatted5th))
                 );
     }
     
@@ -339,8 +400,10 @@ bool ChordNameTestSuite::TestCaseFormula()
         wxByte i = ChordName::major;
         for (; i <= (ChordName::minor7thFlatted5th + 1); i++)
             TEST(wxString::Format(wxT("SetFormula - %d"), i),
-                (chordName.SetFormula(i) == (i <= ChordName::minor7thFlatted5th)) &&
-                ((i > ChordName::minor7thFlatted5th) ? 1 : (chordName.GetFormula() == i))
+                (chordName.SetFormula(i) ==
+                    (i <= ChordName::minor7thFlatted5th)) &&
+                ((i > ChordName::minor7thFlatted5th) ? 1 :
+                    (chordName.GetFormula() == i))
             );
     }
     
@@ -443,7 +506,8 @@ bool ChordNameTestSuite::TestCaseFormulaModifications()
     // TEST CASE: SetFormulaModifications
     {
         ChordName chordName;
-        chordName.SetFormulaModifications(ChordName::added2nd | ChordName::added4th);
+        chordName.SetFormulaModifications(
+            ChordName::added2nd | ChordName::added4th);
         TEST(wxT("SetFormulaModifications"),
             (chordName.IsFormulaModificationFlagSet(ChordName::added2nd)) &&
             (chordName.IsFormulaModificationFlagSet(ChordName::added4th)) 
@@ -461,7 +525,8 @@ bool ChordNameTestSuite::TestCaseFormulaModifications()
         {
             wxWord flag = (wxWord)pow((double)2,(double)i);
             chordName.SetFormulaModificationFlag(flag);
-            TEST(wxString::Format(wxT("GetFormulaModificationCount - %d"), i + 1),
+            TEST(wxString::Format(wxT("GetFormulaModificationCount - %d"),
+                i + 1),
                 (chordName.GetFormulaModificationsCount() == (i + 1))
             );
         }
@@ -470,7 +535,8 @@ bool ChordNameTestSuite::TestCaseFormulaModifications()
     // TEST CASE: ClearFormulaModifications
     {
         ChordName chordName;
-        chordName.SetFormulaModifications(ChordName::added2nd | ChordName::added4th);
+        chordName.SetFormulaModifications(
+            ChordName::added2nd | ChordName::added4th);
         chordName.ClearFormulaModifications();
         TEST(wxT("ClearFormulaModifications"),
             (chordName.GetFormulaModificationsCount() == 0)
@@ -514,8 +580,11 @@ bool ChordNameTestSuite::TestCaseFretPosition()
     for (; i <= (ChordName::MAX_FRET_POSITION + 1); i++)
     {
         TEST(wxString::Format(wxT("SetFretPosition - %d"), i),
-            (chordName.SetFretPosition(i) == (i <= ChordName::MAX_FRET_POSITION)) &&
-            ((i > ChordName::MAX_FRET_POSITION) ? 1 : ((chordName.GetFretPosition() == i) && (chordName.IsFretPositionUsed())))
+            (chordName.SetFretPosition(i) ==
+            (i <= ChordName::MAX_FRET_POSITION)) &&
+            ((i > ChordName::MAX_FRET_POSITION) ? 1 :
+                ((chordName.GetFretPosition() == i) &&
+                (chordName.IsFretPositionUsed())))
         );
     }
     TEST(wxT("SetFretPosition - not used"), 
@@ -538,8 +607,10 @@ bool ChordNameTestSuite::TestCaseType()
     for (; i <= (ChordName::MAX_TYPE + 1); i++)
     {
         TEST(wxString::Format(wxT("GetType - %d"), i),
-            (chordName.SetType(i) == ((i >= ChordName::MIN_TYPE) && (i <= ChordName::MAX_TYPE))) &&
-            (((i < ChordName::MIN_TYPE) || (i > ChordName::MAX_TYPE)) ? 1 : ((chordName.GetType() == i) && (chordName.IsTypeUsed())))
+            (chordName.SetType(i) == ((i >= ChordName::MIN_TYPE) &&
+            (i <= ChordName::MAX_TYPE))) &&
+            (((i < ChordName::MIN_TYPE) || (i > ChordName::MAX_TYPE)) ? 1 :
+            ((chordName.GetType() == i) && (chordName.IsTypeUsed())))
         );
     }
     TEST(wxT("SetType - not used"),

@@ -17,17 +17,17 @@ class DynamicTestSuite :
     public TestSuite
 {
     DECLARE_DYNAMIC_CLASS(DynamicTestSuite)
-    
+
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     DynamicTestSuite();
     ~DynamicTestSuite();
 
-    // Overrides    
+// Overrides
     size_t GetTestCount() const;
     bool RunTestCases();
     
-    // Test Cases
+// Test Cases
 private:
     bool TestCaseConstructor();
     bool TestCaseCreation();

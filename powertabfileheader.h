@@ -95,6 +95,7 @@ protected:
     static const wxByte RO_VIDEO;
     static const wxByte RO_NONE;
     
+// Member Variables
 protected:
     wxWord      m_version;                                          ///< Version number of the file format
     wxByte      m_fileType;                                         ///< Type of file
@@ -162,18 +163,18 @@ protected:
         wxString    copyright;                                      ///< Copyright for lesson
     } m_lessonData;
 
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     PowerTabFileHeader();
     PowerTabFileHeader(const PowerTabFileHeader& header);
     ~PowerTabFileHeader();
 
-    // Operators
+// Operators
     const PowerTabFileHeader& operator=(const PowerTabFileHeader& header);
     bool operator==(const PowerTabFileHeader& header) const;
     bool operator!=(const PowerTabFileHeader& header) const;
 
-    // Serialization Functions
+// Serialization Functions
     bool Serialize(wxOutputStream& stream);
     bool Serialize(PowerTabOutputStream& stream);
     bool Deserialize(wxInputStream& stream);
@@ -182,28 +183,35 @@ public:
     bool DeserializeVersion1_5(PowerTabInputStream& stream);
     bool DeserializeVersion1_0(PowerTabInputStream& stream);
     
-    // Header Functions
+// Header Functions
     /// Determines if a marker is a valid Power Tab file marker
     static bool IsValidPowerTabFileMarker(wxUint32 marker)          
         {return (marker == POWERTABFILE_MARKER);}
     
-    // Version Functions
+// Version Functions
     /// Determines if a file version is valid
     /// @param version File version to validate
     /// @return True if the file version is valid, false if not
     static bool IsValidFileVersion(wxWord version)                  
-        {return ((version >= FILEVERSION_1_0) && (version <= FILEVERSION_CURRENT));}
+    {
+        return ((version >= FILEVERSION_1_0) &&
+            (version <= FILEVERSION_CURRENT));
+    }
     /// Sets the file version (see FILEVERSION_ constants for values)
     /// @param version File version to set
     /// @return True if the file version was set, false if not
     bool SetVersion(wxWord version)                                 
-        {wxCHECK(IsValidFileVersion(version), false); m_version = version; return (true);}
+    {
+        wxCHECK(IsValidFileVersion(version), false);
+        m_version = version;
+        return (true);
+    }
     /// Gets the file version
     /// @return The file version
     wxWord GetVersion() const                                       
         {return (m_version);}
 
-    // File Type Functions
+// File Type Functions
     /// Determines if a file type is valid
     /// @param fileType File type to validate
     /// @return True if the file type is valid, false if not
@@ -213,7 +221,11 @@ public:
     /// @param fileType File type to set
     /// @return True if the file type was set, false if not
     bool SetFileType(wxByte fileType)                               
-        {wxCHECK(IsValidFileType(fileType), false); m_fileType = fileType; return (true);}
+    {
+        wxCHECK(IsValidFileType(fileType), false);
+        m_fileType = fileType;
+        return (true);
+    }
     /// Gets the file type
     /// @return The file type
     wxByte GetFileType() const                                      
@@ -243,7 +255,11 @@ public:
     /// @param contentType Content type to set
     /// @return True if the content type was set, false if not
     bool SetSongContentType(wxByte contentType)                     
-        {wxCHECK(IsValidSongContentType(contentType), false); m_songData.contentType = contentType; return (true);}
+    {
+        wxCHECK(IsValidSongContentType(contentType), false);
+        m_songData.contentType = contentType;
+        return (true);
+    }
     /// Gets the song content type
     /// @return The song content type
     wxByte GetSongContentType() const                               
@@ -253,7 +269,11 @@ public:
     /// @param title Song title to set
     /// @return True if the song title was set, false if not
     bool SetSongTitle(const wxChar* title)                          
-        {wxCHECK(title != NULL, false); m_songData.title = title; return (true);}
+    {
+        wxCHECK(title != NULL, false);
+        m_songData.title = title;
+        return (true);
+    }
     /// Gets the song title
     /// @return The song title
     wxString GetSongTitle() const                                   
@@ -263,7 +283,11 @@ public:
     /// @param artist Song artist to set
     /// @return True if the song artist was set, false if not
     bool SetSongArtist(const wxChar* artist)                        
-        {wxCHECK(artist != NULL, false); m_songData.artist = artist; return (true);}
+    {
+        wxCHECK(artist != NULL, false);
+        m_songData.artist = artist;
+        return (true);
+    }
     /// Gets the song artist
     /// @return The song artist
     wxString GetSongArtist() const                                  
@@ -278,7 +302,11 @@ public:
     /// @param releaseType Release type to set
     /// @return True if the song release type was set, false if not
     bool SetSongReleaseType(wxByte releaseType)                     
-        {wxCHECK(IsValidSongReleaseType(releaseType), false); m_songData.releaseType = releaseType; return (true);}
+    {
+        wxCHECK(IsValidSongReleaseType(releaseType), false);
+        m_songData.releaseType = releaseType;
+        return (true);
+    }
     /// Gets the song release type
     /// @return The song release type
     wxByte GetSongReleaseType() const                               
@@ -290,11 +318,16 @@ public:
     /// @return True if the album type is valid, false if not
     static bool IsValidAudioReleaseType(wxByte audioReleaseType)    
         {return (audioReleaseType < NUM_AUDIORELEASETYPES);}
-    /// Sets the song audio release type (see AUDIORELEASETYPE_ constants for values)
+    /// Sets the song audio release type (see AUDIORELEASETYPE_ constants for
+    /// values)
     /// @param type Audio release type to set
     /// @return True if the song audio release type was set, false if not
     bool SetSongAudioReleaseType(wxByte type)                       
-        {wxCHECK(IsValidAudioReleaseType(type), false); m_songData.audioData.type = type; return (true);}
+    {
+        wxCHECK(IsValidAudioReleaseType(type), false);
+        m_songData.audioData.type = type;
+        return (true);
+    }
     /// Gets the song audio release type
     /// @return The song audio release type
     wxByte GetSongAudioReleaseType() const                          
@@ -304,7 +337,11 @@ public:
     /// @param title Title to set
     /// @return True if the song audio release title was set, false if not
     bool SetSongAudioReleaseTitle(const wxChar* title)              
-        {wxCHECK(title != NULL, false); m_songData.audioData.title = title; return (true);}
+    {
+        wxCHECK(title != NULL, false);
+        m_songData.audioData.title = title;
+        return (true);
+    }
     /// Gets the song audio release title
     /// @return The song audio release title
     wxString GetSongAudioReleaseTitle() const                       
@@ -332,7 +369,11 @@ public:
     /// @param title Title to set
     /// @return True if the video release title was set, false if not
     bool SetSongVideoReleaseTitle(const wxChar* title)              
-        {wxCHECK(title != NULL, false); m_songData.videoData.title = title; return (true);}
+    {
+        wxCHECK(title != NULL, false);
+        m_songData.videoData.title = title;
+        return (true);
+    }
     /// Gets the song video release title
     /// @return The song video release title
     wxString GetSongVideoReleaseTitle() const                       
@@ -351,7 +392,11 @@ public:
     /// @param title Title to set
     /// @return True if the song bootleg title was set, false if not
     bool SetSongBootlegTitle(const wxChar* title)                   
-        {wxCHECK(title != NULL, false); m_songData.bootlegData.title = title; return (true);}
+    {
+        wxCHECK(title != NULL, false);
+        m_songData.bootlegData.title = title;
+        return (true);
+    }
     /// Gets the song bootleg title
     /// @return The song bootleg title
     wxString GetSongBootlegTitle() const                            
@@ -369,7 +414,11 @@ public:
     /// @param authorType Author type to set
     /// @return True if the song author type was set, false if not
     bool SetSongAuthorType(wxByte authorType)                       
-        {wxCHECK(IsValidAuthorType(authorType), false); m_songData.authorType = authorType; return (true);}
+    {
+        wxCHECK(IsValidAuthorType(authorType), false);
+        m_songData.authorType = authorType;
+        return (true);
+    }
     /// Gets the song author type
     /// @return The song author type
     wxByte GetSongAuthorType() const                                
@@ -379,7 +428,11 @@ public:
     /// @param composer Composer to set
     /// @return True if the song composer was set, false if not
     bool SetSongComposer(const wxChar* composer)                    
-        {wxCHECK(composer != NULL, false); m_songData.authorData.composer = composer; return (true);}
+    {
+        wxCHECK(composer != NULL, false);
+        m_songData.authorData.composer = composer;
+        return (true);
+    }
     /// Gets the song composer
     /// @return The song composer
     wxString GetSongComposer() const                                
@@ -389,7 +442,11 @@ public:
     /// @param lyricist Lyricist to set
     /// @return True if the song lyricist was set, false if not
     bool SetSongLyricist(const wxChar* lyricist)                    
-        {wxCHECK(lyricist != NULL, false); m_songData.authorData.lyricist = lyricist; return (true);}
+    {
+        wxCHECK(lyricist != NULL, false);
+        m_songData.authorData.lyricist = lyricist;
+        return (true);
+    }
     /// Gets the song lyricist
     /// @return The song lyricist
     wxString GetSongLyricist() const                                
@@ -399,7 +456,11 @@ public:
     /// @param arranger Arranger to set
     /// @return True if the song arranger was set, false if not
     bool SetSongArranger(const wxChar* arranger)                    
-        {wxCHECK(arranger != NULL, false); m_songData.arranger = arranger; return (true);}
+    {
+        wxCHECK(arranger != NULL, false);
+        m_songData.arranger = arranger;
+        return (true);
+    }
     /// Gets the song arranger
     /// @return The song arranger
     wxString GetSongArranger() const                                
@@ -409,7 +470,11 @@ public:
     /// @param transcriber Transcriber to set
     /// @return True if the song guitar score transcriber was set, false if not
     bool SetSongGuitarScoreTranscriber(const wxChar* transcriber)   
-        {wxCHECK(transcriber != NULL, false); m_songData.guitarScoreTranscriber = transcriber; return (true);}
+    {
+        wxCHECK(transcriber != NULL, false);
+        m_songData.guitarScoreTranscriber = transcriber;
+        return (true);
+    }
     /// Gets the song guitar score transcriber
     /// @return The song guitar score transcriber
     wxString GetSongGuitarScoreTranscriber() const                  
@@ -419,7 +484,11 @@ public:
     /// @param transcriber Transcriber to set
     /// @return True if the song bass score transcriber was set, false if not
     bool SetSongBassScoreTranscriber(const wxChar* transcriber)     
-        {wxCHECK(transcriber != NULL, false); m_songData.bassScoreTranscriber = transcriber; return (true);}
+    {
+        wxCHECK(transcriber != NULL, false);
+        m_songData.bassScoreTranscriber = transcriber;
+        return (true);
+    }
     /// Gets the song bass score transcriber
     /// @return The song bass score transcriber
     wxString GetSongBassScoreTranscriber() const                    
@@ -429,7 +498,11 @@ public:
     /// @param copyright Copyright to set
     /// @return True if the song copyright was set, false if not
     bool SetSongCopyright(const wxChar* copyright)                  
-        {wxCHECK(copyright != NULL, false); m_songData.copyright = copyright; return (true);}
+    {
+        wxCHECK(copyright != NULL, false);
+        m_songData.copyright = copyright;
+        return (true);
+    }
     /// Gets the song copyright
     /// @return The song copyright
     wxString GetSongCopyright() const                               
@@ -439,7 +512,11 @@ public:
     /// @param lyrics Lyrics to set
     /// @return True if the lyrics were set, false if not
     bool SetSongLyrics(const wxChar* lyrics)                        
-        {wxCHECK(lyrics != NULL, false); m_songData.lyrics = lyrics; return (true);}
+    {
+        wxCHECK(lyrics != NULL, false);
+        m_songData.lyrics = lyrics;
+        return (true);
+    }
     /// Gets the song lyrics
     /// @return The song lyrics
     wxString GetSongLyrics() const                                  
@@ -449,7 +526,11 @@ public:
     /// @param notes Notes to set
     /// @return True if the song guitar score notes were set, false if not
     bool SetSongGuitarScoreNotes(const wxChar* notes)               
-        {wxCHECK(notes != NULL, false); m_songData.guitarScoreNotes = notes; return (true);}
+    {
+        wxCHECK(notes != NULL, false);
+        m_songData.guitarScoreNotes = notes;
+        return (true);
+    }
     /// Gets the song guitar score notes
     /// @return The song guitar score notes
     wxString GetSongGuitarScoreNotes() const                        
@@ -459,7 +540,11 @@ public:
     /// @param notes Notes to set
     /// @return True if the song bass score notes were set, false if not
     bool SetSongBassScoreNotes(const wxChar* notes)                 
-        {wxCHECK(notes != NULL, false); m_songData.bassScoreNotes = notes; return (true);}
+    {
+        wxCHECK(notes != NULL, false);
+        m_songData.bassScoreNotes = notes;
+        return (true);
+    }
     /// Gets the song bass score notes
     /// @return The song bass score notes
     wxString GetSongBassScoreNotes() const                          
@@ -470,7 +555,11 @@ public:
     /// @param title Title to set
     /// @return True if the title was set, false if not
     bool SetLessonTitle(const wxChar* title)                        
-        {wxCHECK(title != NULL, false); m_lessonData.title = title; return (true);}
+    {
+        wxCHECK(title != NULL, false);
+        m_lessonData.title = title;
+        return (true);
+    }
     /// Gets the lesson title
     /// @return The lesson title
     wxString GetLessonTitle() const                                 
@@ -480,7 +569,11 @@ public:
     /// @param subtitle Subtitle to set
     /// @return True if the subtitle was set, false if not
     bool SetLessonSubtitle(const wxChar* subtitle)                  
-        {wxCHECK(subtitle != NULL, false); m_lessonData.subtitle = subtitle; return (true);}
+    {
+        wxCHECK(subtitle != NULL, false);
+        m_lessonData.subtitle = subtitle;
+        return (true);
+    }
     /// Gets the lesson subtitle
     /// @return The lesson subtitle
     wxString GetLessonSubtitle() const                              
@@ -495,7 +588,11 @@ public:
     /// @param musicStyle Music musicStyle to set
     /// @return True if the music musicStyle was set, false if not
     bool SetLessonMusicStyle(wxWord musicStyle)                     
-        {wxCHECK(IsValidMusicStyle(musicStyle), false); m_lessonData.musicStyle = musicStyle; return (true);}
+    {
+        wxCHECK(IsValidMusicStyle(musicStyle), false);
+        m_lessonData.musicStyle = musicStyle;
+        return (true);
+    }
     /// Gets the lesson music musicStyle
     /// @return The lesson music musicStyle
     wxWord GetLessonMusicStyle() const                              
@@ -510,7 +607,11 @@ public:
     /// @param level Lesson level to set
     /// @return True if the lesson level was set, false if not
     bool SetLessonLevel(wxByte level)                               
-        {wxCHECK(IsValidLessonLevel(level), false); m_lessonData.level = level; return (true);}
+    {
+        wxCHECK(IsValidLessonLevel(level), false);
+        m_lessonData.level = level;
+        return (true);
+    }
     /// Gets the lesson level
     /// @return The lesson level
     wxByte GetLessonLevel() const                                   
@@ -520,7 +621,11 @@ public:
     /// @param author Lesson author to set
     /// @return True if the lesson author was set, false if not
     bool SetLessonAuthor(const wxChar* author)                      
-        {wxCHECK(author != NULL, false); m_lessonData.author = author; return (true);}
+    {
+        wxCHECK(author != NULL, false);
+        m_lessonData.author = author;
+        return (true);
+    }
     /// Gets the lesson author
     /// @return The lesson author
     wxString GetLessonAuthor() const                                
@@ -530,7 +635,11 @@ public:
     /// @param notes Lesson notes to set
     /// @return True if the lesson notes were set, false if not
     bool SetLessonNotes(const wxChar* notes)                        
-        {wxCHECK(notes != NULL, false); m_lessonData.notes = notes; return (true);}
+    {
+        wxCHECK(notes != NULL, false);
+        m_lessonData.notes = notes;
+        return (true);
+    }
     /// Gets the lesson notes
     /// @return The lesson notes
     wxString GetLessonNotes() const                                 
@@ -540,13 +649,17 @@ public:
     /// @param copyright Lesson copyright to set
     /// @return True if the lesson copyright was set, false if not
     bool SetLessonCopyright(const wxChar* copyright)                
-        {wxCHECK(copyright != NULL, false); m_lessonData.copyright = copyright; return (true);}
+    {
+        wxCHECK(copyright != NULL, false);
+        m_lessonData.copyright = copyright;
+        return (true);
+    }
     /// Gets the lesson copyright
     /// @return The lesson copyright
     wxString GetLessonCopyright() const                             
         {return (m_lessonData.copyright);}
 
-    // Operations
+// Operations
     void LoadDefaults();
 };
 

@@ -18,16 +18,16 @@ class GuitarInTestSuite :
 {
     DECLARE_DYNAMIC_CLASS(GuitarInTestSuite)
     
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     GuitarInTestSuite();
     ~GuitarInTestSuite();
 
-    // Overrides    
+// Overrides    
     size_t GetTestCount() const;
     bool RunTestCases();
     
-    // Test Cases
+// Test Cases
 private:
     bool TestCaseConstructor();
     bool TestCaseCreation();

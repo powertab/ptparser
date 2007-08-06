@@ -29,7 +29,8 @@ KeySignature::KeySignature() :
 
 /// Primary Constructor
 /// @param keyType major or minor (see keyTypes enum in .h for values)
-/// @param keyAccidentals type and number of accidentals (4 sharps, 2 flats, etc.; see keyAccidentals enum in .h for values)
+/// @param keyAccidentals type and number of accidentals (4 sharps, 2 flats,
+/// etc.; see keyAccidentals enum in .h for values)
 KeySignature::KeySignature(wxByte keyType, wxByte keyAccidentals) :
     m_data(DEFAULT_DATA)
 {
@@ -114,7 +115,8 @@ bool KeySignature::DoDeserialize(PowerTabInputStream& stream,
 // Key Functions
 /// Sets the key type and accidentals
 /// @param keyType major or minor (see keyTypes enum in .h for values)
-/// @param keyAccidentals type and number of accidentals (4 sharps, 2 flats, etc.; see keyAccidentals enum in .h for values)
+/// @param keyAccidentals type and number of accidentals (4 sharps, 2 flats,
+/// etc.; see keyAccidentals enum in .h for values)
 bool KeySignature::SetKey(wxByte keyType, wxByte keyAccidentals)
 {
     //------Last Checked------//
@@ -128,7 +130,8 @@ bool KeySignature::SetKey(wxByte keyType, wxByte keyAccidentals)
 
 /// Gets the key type and accidentals
 /// @param keyType major or minor (see keyTypes enum in .h for values)
-/// @param keyAccidentals type and number of accidentals (4 sharps, 2 flats, etc.; see keyAccidentals enum in .h for values)
+/// @param keyAccidentals type and number of accidentals (4 sharps, 2 flats,
+/// etc.; see keyAccidentals enum in .h for values)
 void KeySignature::GetKey(wxByte& keyType, wxByte& keyAccidentals) const
 {
     //------Last Checked------//
@@ -136,7 +139,8 @@ void KeySignature::GetKey(wxByte& keyType, wxByte& keyAccidentals) const
     keyType = GetKeyType();
     keyAccidentals = GetKeyAccidentals();
 
-    // Cancellations store the key of the cancelled type, but we know that the cancellations will always
+    // Cancellations store the key of the cancelled type, but we know that the
+    // cancellations will always
     // occur on C Major/A Minor so set the key to 0
     if (IsCancellation())
         keyAccidentals = 0;
@@ -144,7 +148,8 @@ void KeySignature::GetKey(wxByte& keyType, wxByte& keyAccidentals) const
 
 /// Gets the key type and accidentals required to draw the key signature
 /// @param keyType major or minor (see keyTypes enum in .h for values)
-/// @param keyAccidentals type and number of accidentals (4 sharps, 2 flats, etc.; see keyAccidentals enum in .h for values)
+/// @param keyAccidentals type and number of accidentals (4 sharps, 2 flats,
+/// etc.; see keyAccidentals enum in .h for values)
 /// @return True if the key is a cancellation, false if not
 bool KeySignature::GetDrawKey(wxByte& keyType, wxByte& keyAccidentals) const
 {
@@ -170,7 +175,8 @@ bool KeySignature::SetKeyType(wxByte keyType)
 }
 
 // Key Accidentals Functions
-/// Sets the type and number of accidentals in the key signature (4 sharps, 2 flats, etc.)
+/// Sets the type and number of accidentals in the key signature (4 sharps,
+/// 2 flats, etc.)
 /// @param keyAccidentals Type and number of accidentals to set
 /// @return True if the key accidentals was set, false if not
 bool KeySignature::SetKeyAccidentals(wxByte keyAccidentals)
@@ -183,15 +189,18 @@ bool KeySignature::SetKeyAccidentals(wxByte keyAccidentals)
     return (true);
 }
 
-/// Gets the type and number of accidentals in the key signature (4 sharps, 2 flats, etc.)
-/// @return Type and number of accidentals in the key signature (see keyAccidentals enum in .h for values)
+/// Gets the type and number of accidentals in the key signature (4 sharps,
+/// 2 flats, etc.)
+/// @return Type and number of accidentals in the key signature (see
+/// keyAccidentals enum in .h for values)
 wxByte KeySignature::GetKeyAccidentals() const
 {
     //------Last Checked------//
     // - Dec 10, 2004
     wxByte returnValue = (wxByte)(m_data & keyAccidentalsMask);
     
-    // Cancellations store the key of the cancelled type, but we know that the cancellations will always
+    // Cancellations store the key of the cancelled type, but we know that the
+    // cancellations will always
     // occur on C Major/A Minor so set the key to 0
     if (IsCancellation())
         returnValue = 0;

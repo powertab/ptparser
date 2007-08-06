@@ -170,13 +170,20 @@ bool TimeSignatureTestSuite::TestCaseOperator()
         TimeSignature timeSignature8(12,8);
         timeSignature8.Show();
         
-        TEST(wxT("Operator== - timeSignature == timeSignature"), (timeSignature == timeSignature2));
-        TEST(wxT("Operator== - timeSignature != timeSignature"), !(timeSignature == timeSignature3));
-        TEST(wxT("Operator== - timeSignature != timeSignature 2"), !(timeSignature == timeSignature4));
-        TEST(wxT("Operator== - timeSignature != timeSignature 3"), !(timeSignature == timeSignature5));
-        TEST(wxT("Operator== - timeSignature != timeSignature 4"), !(timeSignature == timeSignature6));
-        TEST(wxT("Operator== - timeSignature != timeSignature 5"), !(timeSignature == timeSignature7));
-        TEST(wxT("Operator== - timeSignature != timeSignature 6"), !(timeSignature == timeSignature8));
+        TEST(wxT("Operator== - timeSignature == timeSignature"),
+            (timeSignature == timeSignature2));
+        TEST(wxT("Operator== - timeSignature != timeSignature"),
+            !(timeSignature == timeSignature3));
+        TEST(wxT("Operator== - timeSignature != timeSignature 2"),
+            !(timeSignature == timeSignature4));
+        TEST(wxT("Operator== - timeSignature != timeSignature 3"),
+            !(timeSignature == timeSignature5));
+        TEST(wxT("Operator== - timeSignature != timeSignature 4"),
+            !(timeSignature == timeSignature6));
+        TEST(wxT("Operator== - timeSignature != timeSignature 5"),
+            !(timeSignature == timeSignature7));
+        TEST(wxT("Operator== - timeSignature != timeSignature 6"),
+            !(timeSignature == timeSignature8));
     }
     
     return (true);
@@ -204,7 +211,8 @@ bool TimeSignatureTestSuite::TestCaseSerialize()
     
         // Read test data back from stream
         TimeSignature timeSignatureIn;
-        timeSignatureIn.Deserialize(streamIn, PowerTabFileHeader::FILEVERSION_CURRENT);
+        timeSignatureIn.Deserialize(streamIn,
+            PowerTabFileHeader::FILEVERSION_CURRENT);
 
         // Validate the data
         ok = ((timeSignatureIn == timeSignatureOut) 
@@ -223,8 +231,10 @@ bool TimeSignatureTestSuite::TestCaseMeter()
     //------Last Checked------//
     // - Dec 13, 2004
     TimeSignature timeSignature;
-    TEST(wxT("SetMeter - invalid beatsPerMeasure"), (!timeSignature.SetMeter(0,4)));
-    TEST(wxT("SetMeter - invalid beatsAmount"), (!timeSignature.SetMeter(4,0)));
+    TEST(wxT("SetMeter - invalid beatsPerMeasure"),
+        (!timeSignature.SetMeter(0,4)));
+    TEST(wxT("SetMeter - invalid beatsAmount"),
+        (!timeSignature.SetMeter(4,0)));
     
     // TEST CASE: IsSameMeter
     {
@@ -236,11 +246,16 @@ bool TimeSignatureTestSuite::TestCaseMeter()
         timeSignature5.SetCutTime();
         TimeSignature timeSignature6;
         timeSignature6.SetCommonTime();
-        TEST(wxT("IsSameMeter - true"), timeSignature.IsSameMeter(timeSignature2));
-        TEST(wxT("IsSameMeter - false"), !timeSignature.IsSameMeter(timeSignature3));
-        TEST(wxT("IsSameMeter - false"), !timeSignature.IsSameMeter(timeSignature4));
-        TEST(wxT("IsSameMeter - false"), !timeSignature.IsSameMeter(timeSignature5));
-        TEST(wxT("IsSameMeter - true"), timeSignature.IsSameMeter(timeSignature6));
+        TEST(wxT("IsSameMeter - true"),
+            timeSignature.IsSameMeter(timeSignature2));
+        TEST(wxT("IsSameMeter - false"),
+            !timeSignature.IsSameMeter(timeSignature3));
+        TEST(wxT("IsSameMeter - false"),
+            !timeSignature.IsSameMeter(timeSignature4));
+        TEST(wxT("IsSameMeter - false"),
+            !timeSignature.IsSameMeter(timeSignature5));
+        TEST(wxT("IsSameMeter - true"),
+            timeSignature.IsSameMeter(timeSignature6));
     }
     
     // TEST CASE: SetCutTime
@@ -274,7 +289,9 @@ bool TimeSignatureTestSuite::TestCaseMeter()
 
         int i = 0;
         for (; i < testValueCount; i++)
-            TEST(wxString::Format(wxT("IsCompoundTime - %s"), testValues[i].GetText(TimeSignature::textFull).c_str()), (testValues[i].IsCompoundTime() == (i < 9)));
+            TEST(wxString::Format(wxT("IsCompoundTime - %s"),
+            testValues[i].GetText(TimeSignature::textFull).c_str()),
+            (testValues[i].IsCompoundTime() == (i < 9)));
     }
     
     // TEST CASE: IsQuadrupleTime
@@ -291,7 +308,9 @@ bool TimeSignatureTestSuite::TestCaseMeter()
 
         int i = 0;
         for (; i < testValueCount; i++)
-            TEST(wxString::Format(wxT("IsQuadrupleTime - %s"), testValues[i].GetText(TimeSignature::textFull).c_str()), (testValues[i].IsQuadrupleTime() == (i < 6)));
+            TEST(wxString::Format(wxT("IsQuadrupleTime - %s"),
+            testValues[i].GetText(TimeSignature::textFull).c_str()),
+            (testValues[i].IsQuadrupleTime() == (i < 6)));
     }
     
     return (true);
@@ -308,7 +327,10 @@ bool TimeSignatureTestSuite::TestCaseBeatsPerMeasure()
     {
         wxByte i = TimeSignature::MIN_BEATSPERMEASURE - 1;
         for (; i <= (TimeSignature::MAX_BEATSPERMEASURE + 1); i++)
-            TEST(wxString::Format(wxT("IsValidBeatsPerMeasure - %d"), i), (TimeSignature::IsValidBeatsPerMeasure(i) == ((i >= TimeSignature::MIN_BEATSPERMEASURE) && (i <= TimeSignature::MAX_BEATSPERMEASURE))));
+            TEST(wxString::Format(wxT("IsValidBeatsPerMeasure - %d"), i),
+            (TimeSignature::IsValidBeatsPerMeasure(i) ==
+            ((i >= TimeSignature::MIN_BEATSPERMEASURE) &&
+            (i <= TimeSignature::MAX_BEATSPERMEASURE))));
     }
     
     TimeSignature timeSignature;
@@ -317,8 +339,12 @@ bool TimeSignatureTestSuite::TestCaseBeatsPerMeasure()
     {
         timeSignature.SetBeatsPerMeasure(i);
         TEST(wxT("SetBeatsPerMeasure - %d"),
-            (timeSignature.SetBeatsPerMeasure(i) == ((i >= TimeSignature::MIN_BEATSPERMEASURE) && (i <= TimeSignature::MAX_BEATSPERMEASURE))) &&
-            (((i < TimeSignature::MIN_BEATSPERMEASURE) || (i > TimeSignature::MAX_BEATSPERMEASURE))) ? 1 : (timeSignature.GetBeatsPerMeasure() == i)
+            (timeSignature.SetBeatsPerMeasure(i) ==
+            ((i >= TimeSignature::MIN_BEATSPERMEASURE) &&
+            (i <= TimeSignature::MAX_BEATSPERMEASURE))) &&
+            (((i < TimeSignature::MIN_BEATSPERMEASURE) ||
+            (i > TimeSignature::MAX_BEATSPERMEASURE))) ? 1 :
+            (timeSignature.GetBeatsPerMeasure() == i)
         );
     }
     return (true);
@@ -335,7 +361,10 @@ bool TimeSignatureTestSuite::TestCaseBeatAmount()
     {
         wxByte i = 1;
         for (; i <= (2 * TimeSignature::MAX_BEATAMOUNT); i += i)
-            TEST(wxString::Format(wxT("IsValidBeatAmount - %d"), i), (TimeSignature::IsValidBeatAmount(i) == ((i >= TimeSignature::MIN_BEATAMOUNT) && (i <= TimeSignature::MAX_BEATAMOUNT))));
+            TEST(wxString::Format(wxT("IsValidBeatAmount - %d"), i),
+            (TimeSignature::IsValidBeatAmount(i) == 
+            ((i >= TimeSignature::MIN_BEATAMOUNT) &&
+            (i <= TimeSignature::MAX_BEATAMOUNT))));
     }
     
     TimeSignature timeSignature;
@@ -344,8 +373,12 @@ bool TimeSignatureTestSuite::TestCaseBeatAmount()
     {
         timeSignature.SetBeatAmount(i);
         TEST(wxT("SetBeatAmount - %d"),
-            (timeSignature.SetBeatAmount(i) == ((i >= TimeSignature::MIN_BEATAMOUNT) && (i <= TimeSignature::MAX_BEATAMOUNT))) &&
-            (((i < TimeSignature::MIN_BEATAMOUNT) || (i > TimeSignature::MAX_BEATAMOUNT))) ? 1 : (timeSignature.GetBeatAmount() == i)
+            (timeSignature.SetBeatAmount(i) ==
+            ((i >= TimeSignature::MIN_BEATAMOUNT) &&
+            (i <= TimeSignature::MAX_BEATAMOUNT))) &&
+            (((i < TimeSignature::MIN_BEATAMOUNT) ||
+            (i > TimeSignature::MAX_BEATAMOUNT))) ? 1 :
+            (timeSignature.GetBeatAmount() == i)
         );
     }
     return (true);
@@ -359,10 +392,14 @@ bool TimeSignatureTestSuite::TestCaseBeamingPattern()
     // - Dec 13, 2004
     TimeSignature timeSignature;
     
-    TEST(wxT("SetBeamingPattern(wxByte, wxByte, wxByte, wxByte) - invalid beat1"), !timeSignature.SetBeamingPattern(0));
-    TEST(wxT("SetBeamingPattern(wxByte, wxByte, wxByte, wxByte) - invalid beat2"), !timeSignature.SetBeamingPattern(4,TimeSignature::MAX_BEATAMOUNT + 1));
-    TEST(wxT("SetBeamingPattern(wxByte, wxByte, wxByte, wxByte) - invalid beat3"), !timeSignature.SetBeamingPattern(4,4,TimeSignature::MAX_BEATAMOUNT + 1));
-    TEST(wxT("SetBeamingPattern(wxByte, wxByte, wxByte, wxByte) - invalid beat4"), !timeSignature.SetBeamingPattern(4,4,4,TimeSignature::MAX_BEATAMOUNT + 1));
+    TEST(wxT("SetBeamingPattern(wxByte, wxByte, wxByte, wxByte) - invalid beat1"),
+        !timeSignature.SetBeamingPattern(0));
+    TEST(wxT("SetBeamingPattern(wxByte, wxByte, wxByte, wxByte) - invalid beat2"),
+        !timeSignature.SetBeamingPattern(4,TimeSignature::MAX_BEATAMOUNT + 1));
+    TEST(wxT("SetBeamingPattern(wxByte, wxByte, wxByte, wxByte) - invalid beat3"),
+        !timeSignature.SetBeamingPattern(4,4,TimeSignature::MAX_BEATAMOUNT + 1));
+    TEST(wxT("SetBeamingPattern(wxByte, wxByte, wxByte, wxByte) - invalid beat4"),
+        !timeSignature.SetBeamingPattern(4,4,4,TimeSignature::MAX_BEATAMOUNT + 1));
     
     wxByte beat1 = 0, beat2 = 0, beat3 = 0, beat4 = 0;
     timeSignature.SetBeamingPattern(4);
@@ -410,16 +447,22 @@ bool TimeSignatureTestSuite::TestCaseBeamingPattern()
         const int testValueCount = 4;
         wxUint32 testValues[testValueCount];
         testValues[0] = MAKELONG(MAKEWORD(0,0), MAKEWORD(0,0));
-        testValues[1] = MAKELONG(MAKEWORD(4,TimeSignature::MAX_BEATAMOUNT + 1), MAKEWORD(0,0));
-        testValues[2] = MAKELONG(MAKEWORD(3,4), MAKEWORD(TimeSignature::MAX_BEATAMOUNT + 1,0));
-        testValues[3] = MAKELONG(MAKEWORD(2,3), MAKEWORD(4,TimeSignature::MAX_BEATAMOUNT + 1));
+        testValues[1] = MAKELONG(MAKEWORD(4,TimeSignature::MAX_BEATAMOUNT + 1),
+            MAKEWORD(0,0));
+        testValues[2] = MAKELONG(MAKEWORD(3,4),
+            MAKEWORD(TimeSignature::MAX_BEATAMOUNT + 1,0));
+        testValues[3] = MAKELONG(MAKEWORD(2,3),
+            MAKEWORD(4,TimeSignature::MAX_BEATAMOUNT + 1));
         
         int i = 0;
         for (; i < testValueCount; i++)
-            TEST(wxString::Format(wxT("SetBeamingPatternFromwxUint32 - %d"), testValues[i]), !timeSignature.SetBeamingPatternFromwxUint32(testValues[i]));
+            TEST(wxString::Format(wxT("SetBeamingPatternFromwxUint32 - %d"),
+            testValues[i]),
+            !timeSignature.SetBeamingPatternFromwxUint32(testValues[i]));
             
         wxByte beat1 = 0, beat2 = 0, beat3 = 0, beat4 = 0;
-        timeSignature.SetBeamingPattern(MAKELONG(MAKEWORD(4,0), MAKEWORD(0,0)));
+        timeSignature.SetBeamingPattern(MAKELONG(MAKEWORD(4,0),
+            MAKEWORD(0,0)));
         timeSignature.GetBeamingPattern(beat1, beat2, beat3, beat4);
         TEST(wxT("SetBeamingPattern(wxByte, wxByte, wxByte, wxByte) - valid beat1"), 
             (beat1 == 4) && 
@@ -429,7 +472,8 @@ bool TimeSignatureTestSuite::TestCaseBeamingPattern()
         );
     
         beat1 = 0, beat2 = 0, beat3 = 0, beat4 = 0;
-        timeSignature.SetBeamingPatternFromwxUint32(MAKELONG(MAKEWORD(3,4), MAKEWORD(0,0)));
+        timeSignature.SetBeamingPatternFromwxUint32(MAKELONG(MAKEWORD(3,4),
+            MAKEWORD(0,0)));
         timeSignature.GetBeamingPattern(beat1, beat2, beat3, beat4);
         TEST(wxT("SetBeamingPattern(wxByte, wxByte, wxByte, wxByte) - valid beat1, beat2"), 
             (beat1 == 3) &&
@@ -439,7 +483,8 @@ bool TimeSignatureTestSuite::TestCaseBeamingPattern()
         );
     
         beat1 = 0, beat2 = 0, beat3 = 0, beat4 = 0;
-        timeSignature.SetBeamingPatternFromwxUint32(MAKELONG(MAKEWORD(2,3), MAKEWORD(4,0)));
+        timeSignature.SetBeamingPatternFromwxUint32(MAKELONG(MAKEWORD(2,3),
+            MAKEWORD(4,0)));
         timeSignature.GetBeamingPattern(beat1, beat2, beat3, beat4);
         TEST(wxT("SetBeamingPattern(wxByte, wxByte, wxByte, wxByte) - valid beat1, beat2, beat3"), 
             (beat1 == 2) &&
@@ -449,7 +494,8 @@ bool TimeSignatureTestSuite::TestCaseBeamingPattern()
         );
     
         beat1 = 0, beat2 = 0, beat3 = 0, beat4 = 0;
-        timeSignature.SetBeamingPatternFromwxUint32(MAKELONG(MAKEWORD(1,2), MAKEWORD(3,4)));
+        timeSignature.SetBeamingPatternFromwxUint32(MAKELONG(MAKEWORD(1,2),
+            MAKEWORD(3,4)));
         timeSignature.GetBeamingPattern(beat1, beat2, beat3, beat4);
         TEST(wxT("SetBeamingPattern(wxByte, wxByte, wxByte, wxByte) - valid beat1, beat2, beat3, beat4"), 
             (beat1 == 1) &&
@@ -484,14 +530,19 @@ bool TimeSignatureTestSuite::TestCasePulses()
     TimeSignature timeSignature;
     wxByte i = TimeSignature::MIN_PULSES - 1;
     for (; i <= (TimeSignature::MAX_PULSES + 1); i++)
-        TEST(wxT("IsValidPulses - %d"), (TimeSignature::IsValidPulses(i) == ((i >= TimeSignature::MIN_PULSES) && (i <= TimeSignature::MAX_PULSES))));
+        TEST(wxT("IsValidPulses - %d"), (TimeSignature::IsValidPulses(i) ==
+        ((i >= TimeSignature::MIN_PULSES) &&
+        (i <= TimeSignature::MAX_PULSES))));
     
     i = TimeSignature::MIN_PULSES - 1;
     {
         timeSignature.SetPulses(i);
         TEST(wxT("SetPulses - %d"),
-            (timeSignature.SetPulses(i) == ((i >= TimeSignature::MIN_PULSES) && (i <= TimeSignature::MAX_PULSES))) &&
-            (((i < TimeSignature::MIN_PULSES) || (i > TimeSignature::MAX_PULSES))) ? 1 : (timeSignature.GetPulses() == i)
+            (timeSignature.SetPulses(i) == ((i >= TimeSignature::MIN_PULSES) &&
+            (i <= TimeSignature::MAX_PULSES))) &&
+            (((i < TimeSignature::MIN_PULSES) ||
+            (i > TimeSignature::MAX_PULSES))) ? 1 :
+            (timeSignature.GetPulses() == i)
         );
     }
     return (true);
@@ -516,7 +567,9 @@ bool TimeSignatureTestSuite::TestCaseFlag()
     for (; i < testValueCount; i++)
     {
         timeSignature.SetFlag(testValues[i]);
-        TEST(wxString::Format(wxT("SetFlag - 0x%x"), testValues[i]), ((timeSignature.SetFlag(testValues[i]) == (i < 4)) && (timeSignature.IsFlagSet(testValues[i]) == (i < 4))));
+        TEST(wxString::Format(wxT("SetFlag - 0x%x"), testValues[i]),
+            ((timeSignature.SetFlag(testValues[i]) == (i < 4)) &&
+            (timeSignature.IsFlagSet(testValues[i]) == (i < 4))));
     }
     return (true);
 }

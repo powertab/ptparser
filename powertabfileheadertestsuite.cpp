@@ -130,19 +130,23 @@ bool PowerTabFileHeaderTestSuite::TestCaseConstructor()
     PowerTabFileHeader powerTabFileHeader;
 	TEST(_T("Default Constructor"), 
 	(
-	    (powerTabFileHeader.GetVersion() == PowerTabFileHeader::FILEVERSION_CURRENT) &&
+	    (powerTabFileHeader.GetVersion() ==
+            PowerTabFileHeader::FILEVERSION_CURRENT) &&
 	    (powerTabFileHeader.IsSong()) &&
-	    (powerTabFileHeader.GetSongContentType() == PowerTabFileHeader::CONTENTTYPE_NONE) &&
+	    (powerTabFileHeader.GetSongContentType() ==
+            PowerTabFileHeader::CONTENTTYPE_NONE) &&
 	    (powerTabFileHeader.GetSongTitle().IsEmpty()) &&
 	    (powerTabFileHeader.GetSongArtist().IsEmpty()) &&
-	    (powerTabFileHeader.GetSongReleaseType() == PowerTabFileHeader::RELEASETYPE_PUBLIC_AUDIO) &&
+	    (powerTabFileHeader.GetSongReleaseType() ==
+            PowerTabFileHeader::RELEASETYPE_PUBLIC_AUDIO) &&
 	    (powerTabFileHeader.GetSongReleaseTitle().IsEmpty()) &&
 	    (powerTabFileHeader.GetSongAudioReleaseTitle().IsEmpty()) &&
 	    (!powerTabFileHeader.IsSongAudioReleaseLive()) &&
 	    (powerTabFileHeader.GetSongVideoReleaseTitle().IsEmpty()) &&
 	    (!powerTabFileHeader.IsSongVideoReleaseLive()) &&
 	    (powerTabFileHeader.GetSongBootlegTitle().IsEmpty()) &&
-	    (powerTabFileHeader.GetSongAuthorType() == PowerTabFileHeader::AUTHORTYPE_AUTHORKNOWN) &&
+	    (powerTabFileHeader.GetSongAuthorType() ==
+            PowerTabFileHeader::AUTHORTYPE_AUTHORKNOWN) &&
 	    (powerTabFileHeader.GetSongComposer().IsEmpty()) &&
 	    (powerTabFileHeader.GetSongLyricist().IsEmpty()) &&
 	    (powerTabFileHeader.GetSongArranger().IsEmpty()) &&
@@ -154,8 +158,10 @@ bool PowerTabFileHeaderTestSuite::TestCaseConstructor()
 	    (powerTabFileHeader.GetSongBassScoreNotes().IsEmpty()) &&
 	    (powerTabFileHeader.GetLessonTitle().IsEmpty()) &&
 	    (powerTabFileHeader.GetLessonSubtitle().IsEmpty()) &&
-	    (powerTabFileHeader.GetLessonMusicStyle() == PowerTabFileHeader::MUSICSTYLE_GENERAL) &&
-	    (powerTabFileHeader.GetLessonLevel() == PowerTabFileHeader::LESSONLEVEL_INTERMEDIATE) &&
+	    (powerTabFileHeader.GetLessonMusicStyle() ==
+            PowerTabFileHeader::MUSICSTYLE_GENERAL) &&
+	    (powerTabFileHeader.GetLessonLevel() ==
+            PowerTabFileHeader::LESSONLEVEL_INTERMEDIATE) &&
 	    (powerTabFileHeader.GetLessonAuthor().IsEmpty()) &&
 	    (powerTabFileHeader.GetLessonCopyright().IsEmpty())
 	));
@@ -164,7 +170,8 @@ bool PowerTabFileHeaderTestSuite::TestCaseConstructor()
     {
         PowerTabFileHeader header;
         powerTabFileHeader.SetVersion(PowerTabFileHeader::FILEVERSION_1_5);
-        powerTabFileHeader.SetSongContentType(PowerTabFileHeader::CONTENTTYPE_BASS);
+        powerTabFileHeader.SetSongContentType(
+            PowerTabFileHeader::CONTENTTYPE_BASS);
         powerTabFileHeader.SetSongTitle(wxT("title"));
         powerTabFileHeader.SetSongArtist(wxT("artist"));
         powerTabFileHeader.SetSongAudioReleaseTitle(wxT("audio release title"));
@@ -193,7 +200,8 @@ bool PowerTabFileHeaderTestSuite::TestCaseOperator()
     header13.SetSongReleaseType(PowerTabFileHeader::RELEASETYPE_BOOTLEG);
     
     PowerTabFileHeader header20, header21, header22, header23;
-    header20.SetSongAudioReleaseType(PowerTabFileHeader::AUDIORELEASETYPE_BOXSET);
+    header20.SetSongAudioReleaseType(
+        PowerTabFileHeader::AUDIORELEASETYPE_BOXSET);
     header21.SetSongAudioReleaseTitle(wxT("a"));
     header22.SetSongAudioReleaseYear(1900);
     header23.SetSongAudioReleaseLive();
@@ -206,7 +214,8 @@ bool PowerTabFileHeaderTestSuite::TestCaseOperator()
     header40.SetSongBootlegTitle(wxT("a"));
     header41.SetSongBootlegDate(wxDateTime::Now());
     
-    PowerTabFileHeader header50, header51, header52, header53, header54, header55, header56, header57, header58, header59;
+    PowerTabFileHeader header50, header51, header52, header53, header54,
+        header55, header56, header57, header58, header59;
     
     header50.SetSongAuthorType(PowerTabFileHeader::AUTHORTYPE_TRADITIONAL);
     header51.SetSongComposer(wxT("c"));
@@ -219,7 +228,8 @@ bool PowerTabFileHeaderTestSuite::TestCaseOperator()
     header58.SetSongGuitarScoreNotes(wxT("t"));
     header59.SetSongBassScoreNotes(wxT("x"));
 
-    PowerTabFileHeader header100, header101, header102, header103, header104, header105, header106;
+    PowerTabFileHeader header100, header101, header102, header103, header104,
+        header105, header106;
     header100.SetLessonTitle(wxT("a"));
     header101.SetLessonSubtitle(wxT("b"));
     header102.SetLessonMusicStyle(PowerTabFileHeader::MUSICSTYLE_COUNTRY);
@@ -239,7 +249,8 @@ bool PowerTabFileHeaderTestSuite::TestCaseOperator()
             PowerTabFileHeader header201;
             header201.SetLessonTitle(wxT("a"));
             header201.SetLessonSubtitle(wxT("b"));
-            header201.SetLessonMusicStyle(PowerTabFileHeader::MUSICSTYLE_COUNTRY);
+            header201.SetLessonMusicStyle(
+                PowerTabFileHeader::MUSICSTYLE_COUNTRY);
             header201.SetLessonLevel(PowerTabFileHeader::LESSONLEVEL_ADVANCED);
             header201.SetLessonAuthor(wxT("c"));
             header201.SetLessonNotes(wxT("d"));
@@ -250,8 +261,10 @@ bool PowerTabFileHeaderTestSuite::TestCaseOperator()
             TEST(wxT("Operator= (self-assignment)"), 
                 (header201.GetLessonTitle() == wxT("a")) &&
                 (header201.GetLessonSubtitle() == wxT("b")) &&
-                (header201.GetLessonMusicStyle() == PowerTabFileHeader::MUSICSTYLE_COUNTRY) &&
-                (header201.GetLessonLevel() == PowerTabFileHeader::LESSONLEVEL_ADVANCED) &&
+                (header201.GetLessonMusicStyle() ==
+                    PowerTabFileHeader::MUSICSTYLE_COUNTRY) &&
+                (header201.GetLessonLevel() ==
+                    PowerTabFileHeader::LESSONLEVEL_ADVANCED) &&
                 (header201.GetLessonAuthor() == wxT("c")) &&
                 (header201.GetLessonNotes() == wxT("d")) &&
                 (header201.GetLessonCopyright() == wxT("e"))
@@ -409,7 +422,8 @@ bool PowerTabFileHeaderTestSuite::TestCaseSerialize()
         headerOut.SetSong();
         headerOut.SetSongTitle(wxT("Title"));
         headerOut.SetSongArtist(wxT("Artist"));
-        headerOut.SetSongReleaseType(PowerTabFileHeader::RELEASETYPE_PUBLIC_VIDEO);
+        headerOut.SetSongReleaseType(
+            PowerTabFileHeader::RELEASETYPE_PUBLIC_VIDEO);
         headerOut.SetSongVideoReleaseTitle(wxT("Title2"));
         headerOut.SetSongVideoReleaseLive();        
         headerOut.SetSongComposer(wxT("Composer"));
@@ -493,7 +507,8 @@ bool PowerTabFileHeaderTestSuite::TestCaseSerialize()
         headerOut.SetSong();
         headerOut.SetSongTitle(wxT("Title"));
         headerOut.SetSongArtist(wxT("Artist"));
-        headerOut.SetSongReleaseType(PowerTabFileHeader::RELEASETYPE_NOTRELEASED);
+        headerOut.SetSongReleaseType(
+            PowerTabFileHeader::RELEASETYPE_NOTRELEASED);
         headerOut.SetSongAuthorType(PowerTabFileHeader::AUTHORTYPE_TRADITIONAL);
         headerOut.SetSongArranger(wxT("Arranger"));
         headerOut.SetSongGuitarScoreTranscriber(wxT("Transcriber"));
@@ -563,8 +578,11 @@ bool PowerTabFileHeaderTestSuite::TestCasePowerTabFileMarker()
 {
     //------Last Checked------//
     // - Dec 28, 2004
-    TEST(wxT("IsValidPowerTabFileMarker - false"), !PowerTabFileHeader::IsValidPowerTabFileMarker(0));
-    TEST(wxT("IsValidPowerTabFileMarker - true"), PowerTabFileHeader::IsValidPowerTabFileMarker(PowerTabFileHeader::POWERTABFILE_MARKER));
+    TEST(wxT("IsValidPowerTabFileMarker - false"),
+        !PowerTabFileHeader::IsValidPowerTabFileMarker(0));
+    TEST(wxT("IsValidPowerTabFileMarker - true"),
+        PowerTabFileHeader::IsValidPowerTabFileMarker(
+        PowerTabFileHeader::POWERTABFILE_MARKER));
     return (true);
 }
 
@@ -576,16 +594,27 @@ bool PowerTabFileHeaderTestSuite::TestCaseFileVersion()
     // - Dec 28, 2004
     wxWord i = PowerTabFileHeader::FILEVERSION_1_0 - 1;
     for (; i <= PowerTabFileHeader::NUM_FILEVERSIONS; i++)
-        TEST(wxString::Format(wxT("IsValidFileVersion - %d"), i), (PowerTabFileHeader::IsValidFileVersion(i) == (i >= PowerTabFileHeader::FILEVERSION_1_0 && i <= PowerTabFileHeader::FILEVERSION_CURRENT)));
+    {
+        TEST(wxString::Format(wxT("IsValidFileVersion - %d"), i),
+            (PowerTabFileHeader::IsValidFileVersion(i) ==
+            (i >= PowerTabFileHeader::FILEVERSION_1_0 &&
+            i <= PowerTabFileHeader::FILEVERSION_CURRENT)));
+    }
 
     PowerTabFileHeader header;
     i = PowerTabFileHeader::FILEVERSION_1_0 - 1;
     for (; i <= PowerTabFileHeader::NUM_FILEVERSIONS; i++)
+    {
         TEST(wxT("SetVersion - %d"), 
-            (header.SetVersion(i) == (i >= PowerTabFileHeader::FILEVERSION_1_0 && i <= PowerTabFileHeader::FILEVERSION_CURRENT) &&
-            ((i < PowerTabFileHeader::FILEVERSION_1_0 || i > PowerTabFileHeader::FILEVERSION_CURRENT) ? 1 : (header.GetVersion() == i))
+            (header.SetVersion(i) ==
+            (i >= PowerTabFileHeader::FILEVERSION_1_0 &&
+                i <= PowerTabFileHeader::FILEVERSION_CURRENT) &&
+            ((i < PowerTabFileHeader::FILEVERSION_1_0 ||
+                i > PowerTabFileHeader::FILEVERSION_CURRENT) ? 1 :
+                (header.GetVersion() == i))
             )
         );
+    }
         
     return (true);
 }
@@ -598,14 +627,20 @@ bool PowerTabFileHeaderTestSuite::TestCaseFileType()
     // - Dec 28, 2004
     wxByte i = PowerTabFileHeader::FILETYPE_SONG;
     for (; i <= PowerTabFileHeader::NUM_FILETYPES; i++)
-        TEST(wxString::Format(wxT("IsValidFileType - %d"), i), (PowerTabFileHeader::IsValidFileType(i) == (i >= PowerTabFileHeader::FILETYPE_SONG && i <= PowerTabFileHeader::FILETYPE_LESSON)));
+        TEST(wxString::Format(wxT("IsValidFileType - %d"), i),
+            (PowerTabFileHeader::IsValidFileType(i) ==
+            (i >= PowerTabFileHeader::FILETYPE_SONG &&
+            i <= PowerTabFileHeader::FILETYPE_LESSON)));
         
     PowerTabFileHeader header;
     i = PowerTabFileHeader::FILETYPE_SONG;
     for (; i <= PowerTabFileHeader::NUM_FILETYPES; i++)
         TEST(wxT("SetFileType - %d"),
-            (header.SetFileType(i) == (i >= PowerTabFileHeader::FILETYPE_SONG && i <= PowerTabFileHeader::FILETYPE_LESSON) &&
-            ((i >= PowerTabFileHeader::NUM_FILETYPES) ? 1 : (header.GetFileType() == i))
+            (header.SetFileType(i) ==
+                (i >= PowerTabFileHeader::FILETYPE_SONG &&
+                i <= PowerTabFileHeader::FILETYPE_LESSON) &&
+            ((i >= PowerTabFileHeader::NUM_FILETYPES) ? 1 :
+                (header.GetFileType() == i))
             )
         );
     
@@ -634,14 +669,17 @@ bool PowerTabFileHeaderTestSuite::TestCaseSongContentType()
     // - Dec 28, 2004            
     wxByte i = PowerTabFileHeader::CONTENTTYPE_NONE;
     for (; i <= (PowerTabFileHeader::CONTENTTYPE_ALL + 1); i++)
-        TEST(wxString::Format(wxT("IsValidSongContentType - %d"), i), (PowerTabFileHeader::IsValidSongContentType(i) == (i <= PowerTabFileHeader::CONTENTTYPE_ALL)));
+        TEST(wxString::Format(wxT("IsValidSongContentType - %d"), i),
+        (PowerTabFileHeader::IsValidSongContentType(i) ==
+            (i <= PowerTabFileHeader::CONTENTTYPE_ALL)));
         
     PowerTabFileHeader header;
     i = PowerTabFileHeader::CONTENTTYPE_NONE;
     for (; i <= (PowerTabFileHeader::CONTENTTYPE_ALL + 1); i++)
         TEST(wxT("SetSongContentType - %d"),
             (header.SetSongContentType(i) == (i <= PowerTabFileHeader::CONTENTTYPE_ALL) &&
-            ((i > PowerTabFileHeader::CONTENTTYPE_ALL) ? 1 : (header.GetSongContentType() == i))
+            ((i > PowerTabFileHeader::CONTENTTYPE_ALL) ? 1 :
+                (header.GetSongContentType() == i))
             )
         );
         
@@ -656,7 +694,8 @@ bool PowerTabFileHeaderTestSuite::TestCaseSongTitle()
     // - Dec 28, 2004
     PowerTabFileHeader header;
     TEST(wxT("SetSongTitle - invalid title"), !header.SetSongTitle(NULL));
-    TEST(wxT("SetSongTitle - valid title"), header.SetSongTitle(wxT("Test")) && header.GetSongTitle() == wxT("Test"));    
+    TEST(wxT("SetSongTitle - valid title"), header.SetSongTitle(wxT("Test")) &&
+        header.GetSongTitle() == wxT("Test"));    
     return (true);
 }
 
@@ -668,7 +707,9 @@ bool PowerTabFileHeaderTestSuite::TestCaseSongArtist()
     // - Dec 28, 2004
     PowerTabFileHeader header;
     TEST(wxT("SetSongArtist - invalid artist"), !header.SetSongArtist(NULL));
-    TEST(wxT("SetSongArtist - valid artist"), header.SetSongArtist(wxT("Test")) && header.GetSongArtist() == wxT("Test"));    
+    TEST(wxT("SetSongArtist - valid artist"),
+        header.SetSongArtist(wxT("Test")) &&
+        header.GetSongArtist() == wxT("Test"));    
     return (true);
 }
 
@@ -681,14 +722,20 @@ bool PowerTabFileHeaderTestSuite::TestCaseSongReleaseType()
     
     wxByte i = PowerTabFileHeader::RELEASETYPE_PUBLIC_AUDIO;
     for (; i <= PowerTabFileHeader::NUM_RELEASETYPES; i++)
-        TEST(wxString::Format(wxT("IsValidSongReleaseType - %d"), i), (PowerTabFileHeader::IsValidSongReleaseType(i) == (i >= PowerTabFileHeader::RELEASETYPE_PUBLIC_AUDIO && i <= PowerTabFileHeader::RELEASETYPE_NOTRELEASED)));
+        TEST(wxString::Format(wxT("IsValidSongReleaseType - %d"), i),
+            (PowerTabFileHeader::IsValidSongReleaseType(i) ==
+            (i >= PowerTabFileHeader::RELEASETYPE_PUBLIC_AUDIO &&
+            i <= PowerTabFileHeader::RELEASETYPE_NOTRELEASED)));
         
     PowerTabFileHeader header;
     i = PowerTabFileHeader::RELEASETYPE_PUBLIC_AUDIO;
     for (; i <= PowerTabFileHeader::NUM_RELEASETYPES; i++)
         TEST(wxT("SetSongReleaseType - %d"),
-            (header.SetSongReleaseType(i) == (i >= PowerTabFileHeader::RELEASETYPE_PUBLIC_AUDIO && i <= PowerTabFileHeader::RELEASETYPE_NOTRELEASED) &&
-            ((i >= PowerTabFileHeader::NUM_RELEASETYPES) ? 1 : (header.GetSongReleaseType() == i))
+            (header.SetSongReleaseType(i) ==
+                (i >= PowerTabFileHeader::RELEASETYPE_PUBLIC_AUDIO &&
+                i <= PowerTabFileHeader::RELEASETYPE_NOTRELEASED) &&
+            ((i >= PowerTabFileHeader::NUM_RELEASETYPES) ? 1 :
+            (header.GetSongReleaseType() == i))
             )
         );
     
@@ -702,8 +749,11 @@ bool PowerTabFileHeaderTestSuite::TestCaseSongAudioReleaseTitle()
     //------Last Checked------//
     // - Dec 28, 2004
     PowerTabFileHeader header;
-    TEST(wxT("SetSongAudioReleaseTitle - invalid title"), !header.SetSongAudioReleaseTitle(NULL));
-    TEST(wxT("SetSongAudioReleaseTitle - valid title"), header.SetSongAudioReleaseTitle(wxT("Test")) && header.GetSongAudioReleaseTitle() == wxT("Test"));    
+    TEST(wxT("SetSongAudioReleaseTitle - invalid title"),
+        !header.SetSongAudioReleaseTitle(NULL));
+    TEST(wxT("SetSongAudioReleaseTitle - valid title"),
+        header.SetSongAudioReleaseTitle(wxT("Test")) &&
+        header.GetSongAudioReleaseTitle() == wxT("Test"));    
     return (true);
 }
 
@@ -715,7 +765,8 @@ bool PowerTabFileHeaderTestSuite::TestCaseSongAudioReleaseYear()
     // - Dec 28, 2004
     PowerTabFileHeader header;
     header.SetSongAudioReleaseYear(2010);
-    TEST(wxT("SetSongAudioReleaseYear"), header.GetSongAudioReleaseYear() == 2010);
+    TEST(wxT("SetSongAudioReleaseYear"),
+        header.GetSongAudioReleaseYear() == 2010);
     return (true);
 }
 
@@ -727,9 +778,11 @@ bool PowerTabFileHeaderTestSuite::TestCaseSongAudioReleaseLive()
     // - Dec 28, 2004
     PowerTabFileHeader header;
     header.SetSongAudioReleaseLive();
-    TEST(wxT("SetSongAudioReleaseLive - true"),  header.IsSongAudioReleaseLive());
+    TEST(wxT("SetSongAudioReleaseLive - true"),
+        header.IsSongAudioReleaseLive());
     header.SetSongAudioReleaseLive(false);
-    TEST(wxT("SetSongAudioReleaseLive - false"), !header.IsSongAudioReleaseLive());        
+    TEST(wxT("SetSongAudioReleaseLive - false"),
+        !header.IsSongAudioReleaseLive());        
     return (true);
 }
     
@@ -740,8 +793,11 @@ bool PowerTabFileHeaderTestSuite::TestCaseSongVideoReleaseTitle()
     //------Last Checked------//
     // - Dec 28, 2004
     PowerTabFileHeader header;
-    TEST(wxT("SetSongVideoReleaseTitle - invalid title"), !header.SetSongVideoReleaseTitle(NULL));
-    TEST(wxT("SetSongVideoReleaseTitle - valid title"), header.SetSongVideoReleaseTitle(wxT("Test")) && header.GetSongVideoReleaseTitle() == wxT("Test"));    
+    TEST(wxT("SetSongVideoReleaseTitle - invalid title"),
+        !header.SetSongVideoReleaseTitle(NULL));
+    TEST(wxT("SetSongVideoReleaseTitle - valid title"),
+        header.SetSongVideoReleaseTitle(wxT("Test")) &&
+        header.GetSongVideoReleaseTitle() == wxT("Test"));    
     return (true);
 }
 
@@ -753,9 +809,11 @@ bool PowerTabFileHeaderTestSuite::TestCaseSongVideoReleaseLive()
     // - Dec 28, 2004
     PowerTabFileHeader header;
     header.SetSongVideoReleaseLive();
-    TEST(wxT("SetSongVideoReleaseLive - true"),  header.IsSongVideoReleaseLive());
+    TEST(wxT("SetSongVideoReleaseLive - true"),
+        header.IsSongVideoReleaseLive());
     header.SetSongVideoReleaseLive(false);
-    TEST(wxT("SetSongVideoReleaseLive - false"), !header.IsSongVideoReleaseLive());        
+    TEST(wxT("SetSongVideoReleaseLive - false"),
+        !header.IsSongVideoReleaseLive());        
     return (true);
 }
 
@@ -766,8 +824,11 @@ bool PowerTabFileHeaderTestSuite::TestCaseSongBootlegTitle()
     //------Last Checked------//
     // - Dec 28, 2004
     PowerTabFileHeader header;
-    TEST(wxT("SetSongBootlegTitle - invalid title"), !header.SetSongBootlegTitle(NULL));
-    TEST(wxT("SetSongBootlegTitle - valid title"), header.SetSongBootlegTitle(wxT("Test")) && header.GetSongBootlegTitle() == wxT("Test"));    
+    TEST(wxT("SetSongBootlegTitle - invalid title"),
+        !header.SetSongBootlegTitle(NULL));
+    TEST(wxT("SetSongBootlegTitle - valid title"),
+        header.SetSongBootlegTitle(wxT("Test")) &&
+        header.GetSongBootlegTitle() == wxT("Test"));    
     return (true);
 }
 
@@ -779,11 +840,15 @@ bool PowerTabFileHeaderTestSuite::TestCaseSongBootlegDate()
     // - Dec 28, 2004
     PowerTabFileHeader header;
     wxDateTime testDate(0, wxDateTime::Jan, 1999);
-    TEST(wxT("SetSongBootlegDate - invalid date"), !header.SetSongBootlegDate(testDate));
+    TEST(wxT("SetSongBootlegDate - invalid date"),
+        !header.SetSongBootlegDate(testDate));
     wxDateTime testDate2 = wxDateTime::Now();
     header.SetSongBootlegDate(testDate2);
     wxDateTime testDate3 = header.GetSongBootlegDate();
-    TEST(wxT("SetSongBootlegDate - valid date"), ((testDate3.GetDay() == testDate2.GetDay()) && (testDate3.GetMonth() == testDate2.GetMonth()) && (testDate3.GetYear() == testDate2.GetYear())));
+    TEST(wxT("SetSongBootlegDate - valid date"),
+        ((testDate3.GetDay() == testDate2.GetDay()) &&
+        (testDate3.GetMonth() == testDate2.GetMonth()) &&
+        (testDate3.GetYear() == testDate2.GetYear())));
     return (true);
 }
     
@@ -795,14 +860,22 @@ bool PowerTabFileHeaderTestSuite::TestCaseSongAuthorType()
     // - Dec 28, 2004
     wxByte i = PowerTabFileHeader::AUTHORTYPE_AUTHORKNOWN;
     for (; i <= PowerTabFileHeader::NUM_AUTHORTYPES; i++)
-        TEST(wxString::Format(wxT("IsValidAuthorType - %d"), i), (PowerTabFileHeader::IsValidAuthorType(i) == (i >= PowerTabFileHeader::AUTHORTYPE_AUTHORKNOWN && i <= PowerTabFileHeader::AUTHORTYPE_TRADITIONAL)));
+    {
+        TEST(wxString::Format(wxT("IsValidAuthorType - %d"), i),
+        (PowerTabFileHeader::IsValidAuthorType(i) ==
+        (i >= PowerTabFileHeader::AUTHORTYPE_AUTHORKNOWN &&
+        i <= PowerTabFileHeader::AUTHORTYPE_TRADITIONAL)));
+    }
         
     PowerTabFileHeader header;
     i = PowerTabFileHeader::AUTHORTYPE_AUTHORKNOWN;
     for (; i <= PowerTabFileHeader::NUM_AUTHORTYPES; i++)
         TEST(wxT("SetSongAuthorType - %d"),
-            (header.SetSongAuthorType(i) == (i >= PowerTabFileHeader::AUTHORTYPE_AUTHORKNOWN && i <= PowerTabFileHeader::AUTHORTYPE_TRADITIONAL) &&
-            ((i >= PowerTabFileHeader::NUM_AUTHORTYPES) ? 1 : (header.GetSongAuthorType() == i))
+            (header.SetSongAuthorType(i) ==
+                (i >= PowerTabFileHeader::AUTHORTYPE_AUTHORKNOWN &&
+                i <= PowerTabFileHeader::AUTHORTYPE_TRADITIONAL) &&
+            ((i >= PowerTabFileHeader::NUM_AUTHORTYPES) ? 1 :
+                (header.GetSongAuthorType() == i))
             )
         );
     
@@ -816,8 +889,11 @@ bool PowerTabFileHeaderTestSuite::TestCaseSongComposer()
     //------Last Checked------//
     // - Dec 28, 2004
     PowerTabFileHeader header;
-    TEST(wxT("SetSongComposer - invalid composer"), !header.SetSongComposer(NULL));
-    TEST(wxT("SetSongComposer - valid composer"), header.SetSongComposer(wxT("Test")) && header.GetSongComposer() == wxT("Test"));    
+    TEST(wxT("SetSongComposer - invalid composer"),
+        !header.SetSongComposer(NULL));
+    TEST(wxT("SetSongComposer - valid composer"),
+        header.SetSongComposer(wxT("Test")) && 
+        header.GetSongComposer() == wxT("Test"));    
     return (true);
 }
 
@@ -828,8 +904,11 @@ bool PowerTabFileHeaderTestSuite::TestCaseSongLyricist()
     //------Last Checked------//
     // - Dec 28, 2004
     PowerTabFileHeader header;
-    TEST(wxT("SetSongLyricist - invalid lyricist"), !header.SetSongLyricist(NULL));
-    TEST(wxT("SetSongLyricist - valid lyricist"), header.SetSongLyricist(wxT("Test")) && header.GetSongLyricist() == wxT("Test"));    
+    TEST(wxT("SetSongLyricist - invalid lyricist"),
+        !header.SetSongLyricist(NULL));
+    TEST(wxT("SetSongLyricist - valid lyricist"),
+        header.SetSongLyricist(wxT("Test")) &&
+        header.GetSongLyricist() == wxT("Test"));    
     return (true);
 }
 
@@ -840,8 +919,11 @@ bool PowerTabFileHeaderTestSuite::TestCaseSongArranger()
     //------Last Checked------//
     // - Dec 28, 2004
     PowerTabFileHeader header;
-    TEST(wxT("SetSongArranger - invalid arranger"), !header.SetSongArranger(NULL));
-    TEST(wxT("SetSongArranger - valid arranger"), header.SetSongArranger(wxT("Test")) && header.GetSongArranger() == wxT("Test"));    
+    TEST(wxT("SetSongArranger - invalid arranger"),
+        !header.SetSongArranger(NULL));
+    TEST(wxT("SetSongArranger - valid arranger"),
+        header.SetSongArranger(wxT("Test")) &&
+        header.GetSongArranger() == wxT("Test"));    
     return (true);
 }
 
@@ -852,8 +934,11 @@ bool PowerTabFileHeaderTestSuite::TestCaseSongCopyright()
     //------Last Checked------//
     // - Dec 28, 2004
     PowerTabFileHeader header;
-    TEST(wxT("SetSongCopyright - invalid copyright"), !header.SetSongCopyright(NULL));
-    TEST(wxT("SetSongCopyright - valid copyright"), header.SetSongCopyright(wxT("Test")) && header.GetSongCopyright() == wxT("Test"));   
+    TEST(wxT("SetSongCopyright - invalid copyright"),
+        !header.SetSongCopyright(NULL));
+    TEST(wxT("SetSongCopyright - valid copyright"),
+        header.SetSongCopyright(wxT("Test")) && 
+        header.GetSongCopyright() == wxT("Test"));   
     return (true);
 }
 
@@ -864,8 +949,11 @@ bool PowerTabFileHeaderTestSuite::TestCaseSongGuitarScoreTranscriber()
     //------Last Checked------//
     // - Dec 28, 2004
     PowerTabFileHeader header;
-    TEST(wxT("SetSongGuitarScoreTranscriber - invalid transcriber"), !header.SetSongGuitarScoreTranscriber(NULL));
-    TEST(wxT("SetSongGuitarScoreTranscriber - valid transcriber"), header.SetSongGuitarScoreTranscriber(wxT("Test")) && header.GetSongGuitarScoreTranscriber() == wxT("Test"));    
+    TEST(wxT("SetSongGuitarScoreTranscriber - invalid transcriber"),
+        !header.SetSongGuitarScoreTranscriber(NULL));
+    TEST(wxT("SetSongGuitarScoreTranscriber - valid transcriber"),
+        header.SetSongGuitarScoreTranscriber(wxT("Test")) &&
+        header.GetSongGuitarScoreTranscriber() == wxT("Test"));    
     return (true);
 }
 
@@ -876,8 +964,11 @@ bool PowerTabFileHeaderTestSuite::TestCaseSongBassScoreTranscriber()
     //------Last Checked------//
     // - Dec 28, 2004
     PowerTabFileHeader header;
-    TEST(wxT("SetSongBassScoreTranscriber - invalid transcriber"), !header.SetSongBassScoreTranscriber(NULL));
-    TEST(wxT("SetSongBassScoreTranscriber - valid transcriber"), header.SetSongBassScoreTranscriber(wxT("Test")) && header.GetSongBassScoreTranscriber() == wxT("Test"));    
+    TEST(wxT("SetSongBassScoreTranscriber - invalid transcriber"),
+        !header.SetSongBassScoreTranscriber(NULL));
+    TEST(wxT("SetSongBassScoreTranscriber - valid transcriber"),
+        header.SetSongBassScoreTranscriber(wxT("Test")) &&
+        header.GetSongBassScoreTranscriber() == wxT("Test"));    
     return (true);
 }
 
@@ -888,8 +979,11 @@ bool PowerTabFileHeaderTestSuite::TestCaseSongLyrics()
     //------Last Checked------//
     // - Dec 28, 2004
     PowerTabFileHeader header;
-    TEST(wxT("SetSongLyrics - invalid lyrics"), !header.SetSongLyrics(NULL));
-    TEST(wxT("SetSongLyrics - valid lyrics"), header.SetSongLyrics(wxT("Test")) && header.GetSongLyrics() == wxT("Test"));   
+    TEST(wxT("SetSongLyrics - invalid lyrics"),
+        !header.SetSongLyrics(NULL));
+    TEST(wxT("SetSongLyrics - valid lyrics"),
+        header.SetSongLyrics(wxT("Test")) &&
+        header.GetSongLyrics() == wxT("Test"));   
     return (true);
 }
 
@@ -900,8 +994,11 @@ bool PowerTabFileHeaderTestSuite::TestCaseSongGuitarScoreNotes()
     //------Last Checked------//
     // - Dec 28, 2004
     PowerTabFileHeader header;
-    TEST(wxT("SetSongGuitarScoreNotes - invalid notes"), !header.SetSongGuitarScoreNotes(NULL));
-    TEST(wxT("SetSongGuitarScoreNotes - valid notes"), header.SetSongGuitarScoreNotes(wxT("Test")) && header.GetSongGuitarScoreNotes() == wxT("Test"));    
+    TEST(wxT("SetSongGuitarScoreNotes - invalid notes"),
+        !header.SetSongGuitarScoreNotes(NULL));
+    TEST(wxT("SetSongGuitarScoreNotes - valid notes"),
+        header.SetSongGuitarScoreNotes(wxT("Test")) &&
+        header.GetSongGuitarScoreNotes() == wxT("Test"));    
     return (true);
 }
 
@@ -912,8 +1009,11 @@ bool PowerTabFileHeaderTestSuite::TestCaseSongBassScoreNotes()
     //------Last Checked------//
     // - Dec 28, 2004
     PowerTabFileHeader header;
-    TEST(wxT("SetSongBassScoreNotes - invalid notes"), !header.SetSongBassScoreNotes(NULL));
-    TEST(wxT("SetSongBassScoreNotes - valid notes"), header.SetSongBassScoreNotes(wxT("Test")) && header.GetSongBassScoreNotes() == wxT("Test"));    
+    TEST(wxT("SetSongBassScoreNotes - invalid notes"),
+        !header.SetSongBassScoreNotes(NULL));
+    TEST(wxT("SetSongBassScoreNotes - valid notes"),
+        header.SetSongBassScoreNotes(wxT("Test")) &&
+        header.GetSongBassScoreNotes() == wxT("Test"));    
     return (true);
 }
     
@@ -924,8 +1024,11 @@ bool PowerTabFileHeaderTestSuite::TestCaseLessonTitle()
     //------Last Checked------//
     // - Dec 28, 2004
     PowerTabFileHeader header;
-    TEST(wxT("SetLessonTitle - invalid title"), !header.SetLessonTitle(NULL));
-    TEST(wxT("SetLessonTitle - valid title"), header.SetLessonTitle(wxT("Test")) && header.GetLessonTitle() == wxT("Test"));    
+    TEST(wxT("SetLessonTitle - invalid title"),
+        !header.SetLessonTitle(NULL));
+    TEST(wxT("SetLessonTitle - valid title"),
+        header.SetLessonTitle(wxT("Test")) &&
+        header.GetLessonTitle() == wxT("Test"));    
     return (true);
 }
 
@@ -936,8 +1039,11 @@ bool PowerTabFileHeaderTestSuite::TestCaseLessonSubtitle()
     //------Last Checked------//
     // - Dec 28, 2004
     PowerTabFileHeader header;
-    TEST(wxT("SetLessonSubtitle - invalid subtitle"), !header.SetLessonSubtitle(NULL));
-    TEST(wxT("SetLessonSubtitle - valid subtitle"), header.SetLessonSubtitle(wxT("Test")) && header.GetLessonSubtitle() == wxT("Test"));    
+    TEST(wxT("SetLessonSubtitle - invalid subtitle"),
+        !header.SetLessonSubtitle(NULL));
+    TEST(wxT("SetLessonSubtitle - valid subtitle"),
+        header.SetLessonSubtitle(wxT("Test")) &&
+        header.GetLessonSubtitle() == wxT("Test"));    
     return (true);
 }
 
@@ -949,16 +1055,24 @@ bool PowerTabFileHeaderTestSuite::TestCaseLessonMusicStyle()
     // - Dec 28, 2004
     wxByte i = PowerTabFileHeader::MUSICSTYLE_ALTERNATIVE;
     for (; i <= PowerTabFileHeader::NUM_MUSICSTYLES; i++)
-        TEST(wxString::Format(wxT("IsValidMusicStyle - %d"), i), (PowerTabFileHeader::IsValidMusicStyle(i) == (i < PowerTabFileHeader::NUM_MUSICSTYLES)));
+    {
+        TEST(wxString::Format(wxT("IsValidMusicStyle - %d"), i),
+        (PowerTabFileHeader::IsValidMusicStyle(i) ==
+        (i < PowerTabFileHeader::NUM_MUSICSTYLES)));
+    }
         
     PowerTabFileHeader header;
     i = PowerTabFileHeader::MUSICSTYLE_ALTERNATIVE;
     for (; i <= PowerTabFileHeader::NUM_MUSICSTYLES; i++)
+    {
         TEST(wxT("SetMusicStyle - %d"),
-            (header.SetLessonMusicStyle(i) == (i < PowerTabFileHeader::NUM_MUSICSTYLES) &&
-            ((i >= PowerTabFileHeader::NUM_MUSICSTYLES) ? 1 : (header.GetLessonMusicStyle() == i))
+            (header.SetLessonMusicStyle(i) ==
+                (i < PowerTabFileHeader::NUM_MUSICSTYLES) &&
+            ((i >= PowerTabFileHeader::NUM_MUSICSTYLES) ? 1 :
+                (header.GetLessonMusicStyle() == i))
             )
         );
+    }
     return (true);
 }
 
@@ -970,16 +1084,22 @@ bool PowerTabFileHeaderTestSuite::TestCaseLessonLevel()
     // - Dec 28, 2004
     wxByte i = PowerTabFileHeader::LESSONLEVEL_BEGINNER;
     for (; i <= PowerTabFileHeader::NUM_LESSONLEVELS; i++)
-        TEST(wxString::Format(wxT("IsValidLessonLevel - %d"), i), (PowerTabFileHeader::IsValidLessonLevel(i) == (i < PowerTabFileHeader::NUM_LESSONLEVELS)));
+    {
+        TEST(wxString::Format(wxT("IsValidLessonLevel - %d"), i),
+        (PowerTabFileHeader::IsValidLessonLevel(i) ==
+            (i < PowerTabFileHeader::NUM_LESSONLEVELS)));
+    }
         
     PowerTabFileHeader header;
     i = PowerTabFileHeader::LESSONLEVEL_BEGINNER;
     for (; i <= PowerTabFileHeader::NUM_LESSONLEVELS; i++)
+    {
         TEST(wxT("SetLessonLevel - %d"),
             (header.SetLessonLevel(i) == (i < PowerTabFileHeader::NUM_LESSONLEVELS) &&
             ((i >= PowerTabFileHeader::NUM_LESSONLEVELS) ? 1 : (header.GetLessonLevel() == i))
             )
         );
+    }
     return (true);
 }
 
@@ -990,8 +1110,11 @@ bool PowerTabFileHeaderTestSuite::TestCaseLessonAuthor()
     //------Last Checked------//
     // - Dec 28, 2004
     PowerTabFileHeader header;
-    TEST(wxT("SetLessonAuthor - invalid author"), !header.SetLessonAuthor(NULL));
-    TEST(wxT("SetLessonAuthor - valid author"), header.SetLessonAuthor(wxT("Test")) && header.GetLessonAuthor() == wxT("Test"));    
+    TEST(wxT("SetLessonAuthor - invalid author"),
+        !header.SetLessonAuthor(NULL));
+    TEST(wxT("SetLessonAuthor - valid author"),
+        header.SetLessonAuthor(wxT("Test")) &&
+        header.GetLessonAuthor() == wxT("Test"));    
     return (true);
 }
 
@@ -1002,8 +1125,11 @@ bool PowerTabFileHeaderTestSuite::TestCaseLessonNotes()
     //------Last Checked------//
     // - Dec 28, 2004
     PowerTabFileHeader header;
-    TEST(wxT("SetLessonNotes - invalid notes"), !header.SetLessonNotes(NULL));
-    TEST(wxT("SetLessonNotes - valid notes"), header.SetLessonNotes(wxT("Test")) && header.GetLessonNotes() == wxT("Test"));    
+    TEST(wxT("SetLessonNotes - invalid notes"),
+        !header.SetLessonNotes(NULL));
+    TEST(wxT("SetLessonNotes - valid notes"),
+        header.SetLessonNotes(wxT("Test")) &&
+        header.GetLessonNotes() == wxT("Test"));    
     return (true);
 }
 
@@ -1014,7 +1140,10 @@ bool PowerTabFileHeaderTestSuite::TestCaseLessonCopyright()
     //------Last Checked------//
     // - Dec 28, 2004
     PowerTabFileHeader header;
-    TEST(wxT("SetLessonCopyright - invalid copyright"), !header.SetLessonCopyright(NULL));
-    TEST(wxT("SetLessonCopyright - valid copyright"), header.SetLessonCopyright(wxT("Test")) && header.GetLessonCopyright() == wxT("Test"));    
+    TEST(wxT("SetLessonCopyright - invalid copyright"),
+        !header.SetLessonCopyright(NULL));
+    TEST(wxT("SetLessonCopyright - valid copyright"),
+        header.SetLessonCopyright(wxT("Test")) &&
+        header.GetLessonCopyright() == wxT("Test"));    
     return (true);
 }

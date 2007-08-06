@@ -57,31 +57,31 @@ protected:
 public:
     PositionArray m_positionArray[NUM_STAFF_VOICES];                ///< Array of positions; one for each voice - 0 = high melody, 1 = low melody
 
+// Constructor/Destructor
 public:
-	// Constructor/Destructor
 	Staff();
 	Staff(wxByte tablatureStaffType, wxByte clef);
 	Staff(const Staff& staff);
 	~Staff();
 
-    // Creation Functions
+// Creation Functions
     /// Creates an exact duplicate of the object
     /// @return The duplicate object
     PowerTabObject* CloneObject() const                     
         {return (new Staff(*this));}
     
-	// Operators
+// Operators
 	const Staff& operator=(const Staff& staff);
 	bool operator==(const Staff& staff) const;
 	bool operator!=(const Staff& staff) const;
 
-	// Serialize Functions
+// Serialize Functions
 protected:
     bool DoSerialize(PowerTabOutputStream& stream);
     bool DoDeserialize(PowerTabInputStream& stream, wxWord version);
-   
+
+// MFC Class Functions
 public:
-    // MFC Class Functions
     /// Gets the MFC Class Name for the object
     /// @return The MFC Class Name
     wxString GetMFCClassName() const                        
@@ -91,6 +91,7 @@ public:
     wxWord GetMFCClassSchema() const                        
         {return ((wxWord)1);}
     
+// Clef Functions
     /// Determines if a Clef is valid
     /// @param clef Clef to validate
     /// @return True if the clef is valid, false if not
@@ -102,18 +103,22 @@ public:
     wxByte GetClef() const                                  
         {return ((wxByte)((m_data & clefMask) >> 4));}
     
+// Tablature Staff Type Functions
     /// Determines if a Tablature Staff Type is valid
     /// @param type Tablature staff type to validate
     /// @return True if the tablature staff type is valid, false if not
     static bool IsValidTablatureStaffType(wxByte type)      
-        {return ((type >= MIN_TABLATURE_STAFF_TYPE) && ((type <= MAX_TABLATURE_STAFF_TYPE)));}
+    {
+        return ((type >= MIN_TABLATURE_STAFF_TYPE) &&
+            ((type <= MAX_TABLATURE_STAFF_TYPE)));
+    }
     bool SetTablatureStaffType(wxByte type);
     /// Gets the tablature staff type (3-7 strings)
     /// @return The tablature staff type
     wxByte GetTablatureStaffType() const                     
         {return ((wxByte)(m_data & tablatureStaffTypeMask));}
     
-    // Standard Notation Staff Above Spacing Functions
+// Standard Notation Staff Above Spacing Functions
     /// Sets the amount of spacing above the standard notation staff
     /// @param spacing Spacing to set
     void SetStandardNotationStaffAboveSpacing(wxByte spacing)
@@ -123,7 +128,7 @@ public:
     wxByte GetStandardNotationStaffAboveSpacing() const         
         {return (m_standardNotationStaffAboveSpacing);}
     
-    // Standard Notation Staff Below Spacing Functions
+// Standard Notation Staff Below Spacing Functions
     /// Sets the amount of spacing below the standard notation staff
     /// @param spacing Spacing to set
     void SetStandardNotationStaffBelowSpacing(wxByte spacing)   
@@ -133,17 +138,20 @@ public:
     wxByte GetStandardNotationStaffBelowSpacing() const         
         {return (m_standardNotationStaffBelowSpacing);}
     
-    // Symbol Spacing Functions
-    /// Sets the amount of spacing used by symbols in between the standard notation and tablature staves
+// Symbol Spacing Functions
+    /// Sets the amount of spacing used by symbols in between the standard
+    /// notation and tablature staves
     /// @param spacing Spacing to set
     void SetSymbolSpacing(wxByte spacing)                   
         {m_symbolSpacing = spacing;}
-    /// Gets the amount of spacing used by symbols in between the standard notation and tablature staves
-    /// @return The amount of spacing used by symbols in between the standard notation and tablature staves
+    /// Gets the amount of spacing used by symbols in between the standard
+    /// notation and tablature staves
+    /// @return The amount of spacing used by symbols in between the standard
+    /// notation and tablature staves
     wxByte GetSymbolSpacing() const                         
         {return (m_symbolSpacing);}
     
-    // Tablature Staff Below Spacing Functions
+// Tablature Staff Below Spacing Functions
     /// Sets the amount of spacing below the tablature staff
     /// @param spacing Spacing to set
     void SetTablatureStaffBelowSpacing(wxByte spacing)      
@@ -153,31 +161,40 @@ public:
     wxByte GetTablatureStaffBelowSpacing() const            
         {return (m_tablatureStaffBelowSpacing);}
     
-    // Voice Functions
+// Voice Functions
     /// Determines if a voice is valid
     /// @param voice Voice to validate
     /// @return True if the voice is valid, false if not
     static bool IsValidVoice(wxUint32 voice)
         {return (voice < NUM_STAFF_VOICES);}
         
-    // Position Functions
+// Position Functions
     /// Determines if a position index is valid
     /// @param voice Voice the position belongs to
     /// @param index position index to validate
     /// @return True if the position index is valid, false if not
     bool IsValidPositionIndex(wxUint32 voice, wxUint32 index) const
-        {wxCHECK(IsValidVoice(voice), false); return (index < GetPositionCount(voice));}
+    {
+        wxCHECK(IsValidVoice(voice), false);
+        return (index < GetPositionCount(voice));
+    }
     /// Gets the number of positions in the staff
     /// @param voice Voice of the positions to get the count of
     /// @return The number of positions in the staff
     size_t GetPositionCount(wxUint32 voice) const
-        {wxCHECK(IsValidVoice(voice), 0); return (m_positionArray[voice].GetCount());}
+    {
+        wxCHECK(IsValidVoice(voice), 0);
+        return (m_positionArray[voice].GetCount());
+    }
     /// Gets the nth position in the staff
     /// @param voice Voice the position belongs to
     /// @param index Index of the position to get
     /// @return The nth position in the staff
     Position* GetPosition(wxUint32 voice, wxUint32 index) const
-        {wxCHECK(IsValidPositionIndex(voice, index), NULL); return (m_positionArray[voice][index]);}
+    {
+        wxCHECK(IsValidPositionIndex(voice, index), NULL);
+        return (m_positionArray[voice][index]);
+    }
 };
 
 WX_DEFINE_POWERTABARRAY(Staff*, StaffArray);

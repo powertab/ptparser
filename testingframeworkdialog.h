@@ -28,7 +28,7 @@ public:
     static const int RESULTSTREECTRL_IMAGE_TEST_WARNING;
     static const int RESULTSTREECTRL_IMAGE_TEST_FAILURE;
 
-    // Member Variables
+// Member Variables
 protected:
     static TestingFrameworkDialog*      m_this;                             ///< Pointer to the dialog (used by the callback function)
     bool                                m_controlsInitialized;              ///< Indicates whether or not the dialog controls have been successfully initialized
@@ -44,22 +44,32 @@ protected:
     ResultsTreeCtrlHashMap              m_resultsTreeCtrlHashMap;           ///< Maps tests suites to tree item ids
     wxLongLong                          m_startTime;                        ///< Stores the start time for a given test suite
     double                              m_totalTime;                        ///< Total time taken to perform the active test run
-    
+
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     TestingFrameworkDialog();
     ~TestingFrameworkDialog();
 
-    // Testing Framework Functions
-    bool SetTestingFramework(TestingFramework* testingFramework)            {wxCHECK(testingFramework != NULL, false); m_testingFramework = testingFramework; return (true);}
+// Testing Framework Functions
+    /// Sets the testing framework
+    /// @param testingFramework Pointer to the testing framework to set
+    /// @return True if the testing framework was set, false if not
+    bool SetTestingFramework(TestingFramework* testingFramework)
+    {
+        wxCHECK(testingFramework != NULL, false);
+        m_testingFramework = testingFramework;
+        return (true);
+    }
        
-    // Test Suite Functions
+// Test Suite Functions
     void RunTestSuites();
     void StartTestSuite(TestSuite* testSuite);
-    static bool TestSuiteCallback(TestSuite* testSuite, const wxChar* testName, bool success, const wxChar* fileName, size_t lineNumber, bool record, double executionTime, void* clientData);
+    static bool TestSuiteCallback(TestSuite* testSuite, const wxChar* testName,
+        bool success, const wxChar* fileName, size_t lineNumber, bool record,
+        double executionTime, void* clientData);
     void EndTestSuite(TestSuite* testSuite);
     
-    // Operations
+// Operations
     bool InitializeDialogControls();
     void PopulateTestSuiteListBox();
     void InitializeResultsTreeCtrlImageList();

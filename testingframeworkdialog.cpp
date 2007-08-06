@@ -248,12 +248,15 @@ void TestingFrameworkDialog::OnBnClickedExportButton(
                 //long cookie2 = wxNewId();
                 wxTreeItemIdValue cookie2;
                 wxTreeItemId messageTreeItemId =
-                    m_resultsTreeCtrl->GetFirstChild(testSuiteTreeItemId, cookie2);
+                    m_resultsTreeCtrl->GetFirstChild(testSuiteTreeItemId,
+                    cookie2);
                 for (; messageTreeItemId.IsOk();
-                    messageTreeItemId = m_resultsTreeCtrl->GetNextSibling(messageTreeItemId))
+                    messageTreeItemId = m_resultsTreeCtrl->GetNextSibling(
+                    messageTreeItemId))
                 {
                     wxString message = wxT("\t");
-                    message += m_resultsTreeCtrl->GetItemText(messageTreeItemId);
+                    message += m_resultsTreeCtrl->GetItemText(
+                        messageTreeItemId);
                     file.AddLine(message);
                 }
                 

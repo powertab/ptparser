@@ -26,29 +26,30 @@ public:
         notSet = (wxInt8)0x7f           ///< Marker used to indicate the rehearsal sign is not set (not used)
     };
 
+// Member Variables
 protected:
     wxInt8      m_letter;               ///< The letter used to uniquely identify the rehearsal sign (i.e. A, B, F, etc. - must be a capital letter)
     wxString    m_description;          ///< A description that indicates the passage the rehearsal sign is marking (i.e. Chorus, Intro, etc.)
 
+// Construction/Destruction
 public:
-    // Construction/Destruction
     RehearsalSign();
     RehearsalSign(wxInt8 letter, const wxChar* description);
     RehearsalSign(const RehearsalSign& rehearsalSign);
     ~RehearsalSign();
     
-    // Creation Functions
+// Creation Functions
     /// Creates an exact duplicate of the object
     /// @return The duplicate object
     PowerTabObject* CloneObject() const                     
         {return (new RehearsalSign(*this));}
     
-    // Operators
+// Operators
     const RehearsalSign& operator=(const RehearsalSign& rehearsalSign);
     bool operator==(const RehearsalSign& rehearsalSign) const;
     bool operator!=(const RehearsalSign& rehearsalSign) const;
 
-    // MFC Class Functions
+// MFC Class Functions
     /// Gets the MFC Class Name for the object
     /// @return The MFC Class Name
     wxString GetMFCClassName() const                        
@@ -58,13 +59,13 @@ public:
     wxWord GetMFCClassSchema() const                        
         {return ((wxWord)1);}
     
-    // Serialization Functions
+// Serialization Functions
 protected:
     bool DoSerialize(PowerTabOutputStream& stream);
     bool DoDeserialize(PowerTabInputStream& stream, wxWord version);
 
+// Letter Functions
 public:
-    // Letter Functions
     /// Determines if a letter is valid
     /// @param letter The letter to validate
     /// @return True if the letter is valid, false if not
@@ -76,18 +77,22 @@ public:
     wxInt8 GetLetter() const
         {return (m_letter);}
 
-    // Description functions
+// Description functions
     /// Sets the rehearsal sign description
     /// @param description Description to set
     /// @return True if the description was set, false if not
     bool SetDescription(const wxChar* description)
-        {wxCHECK(description != NULL, false); m_description = description; return (true);}
+    {
+        wxCHECK(description != NULL, false);
+        m_description = description;
+        return (true);
+    }
     /// Gets the rehearsal sign description
     /// @return The rehearsal sign description
     wxString GetDescription() const
         {return (m_description);}
 
-    // Operations
+// Operations
     /// Determines if a RehearsalSign object is set (in use)
     /// @return True if the RehearsalSign object is set, false if not
     bool IsSet() const                                      

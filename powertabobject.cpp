@@ -1,6 +1,7 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:            powertabobject.cpp
-// Purpose:         Provides support for polymorphic reading/writing of Power Tab objects
+// Purpose:         Provides support for polymorphic reading/writing of Power
+//                  Tab objects
 // Author:          Brad Larsen
 // Modified by:     
 // Created:         Dec 20, 2004
@@ -46,9 +47,13 @@ PowerTabObject::~PowerTabObject()
 // Creation Functions
 /// Creates a new object based on the class id
 /// @param classId Class id for the object to create
-/// @return Pointer to object if it was created, NULL if the object couldn't be created
+/// @return Pointer to object if it was created, NULL if the object couldn't be
+/// created
 PowerTabObject* PowerTabObject::CreateObject(const wxString& classId)
 {
+    //------Last Checked------//
+    // - Dec 21, 2004
+
     // TODO: add all classes
     PowerTabObject* returnValue = NULL;
     if (strcmp(wxT("CGuitar-1"), classId) == 0)
@@ -106,7 +111,8 @@ bool PowerTabObject::WriteMFCClassInformation(wxOutputStream& stream) const
 /// Writes the MFC class information for the object to a Power Tab output stream
 /// @param stream Power Tab output stream to write to
 /// @return True if the class information was written, false if not
-bool PowerTabObject::WriteMFCClassInformation(PowerTabOutputStream& stream) const
+bool PowerTabObject::WriteMFCClassInformation(
+    PowerTabOutputStream& stream) const
 {
     //------Last Checked------//
     // - Dec 24, 2004
@@ -131,7 +137,8 @@ bool PowerTabObject::WriteMFCClassInformation(PowerTabOutputStream& stream) cons
 /// @param version File version
 /// @param classId Class id for the object
 /// @return True if the object's class information was read, false if not
-bool PowerTabObject::ReadMFCClassInformation(wxInputStream& stream, wxWord version, wxString& classId)
+bool PowerTabObject::ReadMFCClassInformation(wxInputStream& stream,
+    wxWord version, wxString& classId)
 {
     //------Last Checked------//
     // - Dec 24, 2004
@@ -144,7 +151,8 @@ bool PowerTabObject::ReadMFCClassInformation(wxInputStream& stream, wxWord versi
 /// @param version File version
 /// @param classId Class id for the object
 /// @return True if the object's class information was read, false if not
-bool PowerTabObject::ReadMFCClassInformation(PowerTabInputStream& stream, wxWord version, wxString& classId)
+bool PowerTabObject::ReadMFCClassInformation(PowerTabInputStream& stream,
+    wxWord version, wxString& classId)
 {
     //------Last Checked------//
     // - Dec 24, 2004

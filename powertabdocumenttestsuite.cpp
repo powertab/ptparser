@@ -78,7 +78,8 @@ bool PowerTabDocumentTestSuite::TestCaseConstructor()
     {
         PowerTabDocument powerTabDocument;
         TEST(wxT("Default Constructor"), 
-            (powerTabDocument.m_tablatureStaffLineSpacing == PowerTabDocument::DEFAULT_TABLATURE_STAFF_LINE_SPACING) &&
+            (powerTabDocument.m_tablatureStaffLineSpacing ==
+                PowerTabDocument::DEFAULT_TABLATURE_STAFF_LINE_SPACING) &&
             (powerTabDocument.m_fadeIn == PowerTabDocument::DEFAULT_FADE_IN) &&
             (powerTabDocument.m_fadeOut == PowerTabDocument::DEFAULT_FADE_OUT)
         );        
@@ -110,7 +111,8 @@ bool PowerTabDocumentTestSuite::TestCaseChordNameFontSetting()
     //------Last Checked------//
     // - Jan 27, 2005
     PowerTabDocument document;
-    FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true, true, true, wxColour(25,25,25));
+    FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true,
+        true, true, wxColour(25,25,25));
     document.SetChordNameFontSetting(fontSetting);
     TEST(wxT("SetChordNameFontSetting"),
         (document.GetChordNameFontSettingConstRef() == fontSetting)
@@ -126,7 +128,8 @@ bool PowerTabDocumentTestSuite::TestCaseSetTablatureNumbersFontSetting()
     //------Last Checked------//
     // - Jan 27, 2005
     PowerTabDocument document;
-    FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true, true, true, wxColour(25,25,25));
+    FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true,
+        true, true, wxColour(25,25,25));
     document.SetTablatureNumbersFontSetting(fontSetting);
     TEST(wxT("SetTablatureNumbersFontSetting"),
         (document.GetTablatureNumbersFontSettingConstRef() == fontSetting)
@@ -149,7 +152,8 @@ bool PowerTabDocumentTestSuite::TestCaseTablatureStaffLineSpacing()
         {
             TEST(wxString::Format(wxT("IsValidTablatureStaffLineSpacing - %d"), i),
                 (PowerTabDocument::IsValidTablatureStaffLineSpacing(i) == 
-                    ((i >= PowerTabDocument::MIN_TABLATURE_STAFF_LINE_SPACING) && (PowerTabDocument::MAX_TABLATURE_STAFF_LINE_SPACING)))
+                    ((i >= PowerTabDocument::MIN_TABLATURE_STAFF_LINE_SPACING) &&
+                    (PowerTabDocument::MAX_TABLATURE_STAFF_LINE_SPACING)))
             );
         }
     }
@@ -161,8 +165,10 @@ bool PowerTabDocumentTestSuite::TestCaseTablatureStaffLineSpacing()
         {
             TEST(wxString::Format(wxT("SetTablatureStaffLineSpacing - %d"), i),
                 (document.SetTablatureStaffLineSpacing(i) == 
-                    ((i >= PowerTabDocument::MIN_TABLATURE_STAFF_LINE_SPACING) && (i <= PowerTabDocument::MAX_TABLATURE_STAFF_LINE_SPACING))) &&
-                    ((i < PowerTabDocument::MIN_TABLATURE_STAFF_LINE_SPACING) || (i > PowerTabDocument::MAX_TABLATURE_STAFF_LINE_SPACING)) ?
+                    ((i >= PowerTabDocument::MIN_TABLATURE_STAFF_LINE_SPACING) &&
+                    (i <= PowerTabDocument::MAX_TABLATURE_STAFF_LINE_SPACING))) &&
+                    ((i < PowerTabDocument::MIN_TABLATURE_STAFF_LINE_SPACING) ||
+                    (i > PowerTabDocument::MAX_TABLATURE_STAFF_LINE_SPACING)) ?
                     1 : 
                     (document.GetTablatureStaffLineSpacing() == i)
             );

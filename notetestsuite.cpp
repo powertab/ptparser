@@ -40,8 +40,8 @@ NoteTestSuite::~NoteTestSuite()
 size_t NoteTestSuite::GetTestCount() const
 {
     //------Last Checked------//
-    // - Dec 10, 2004
-    return (723);
+    // - Aug 06, 2007
+    return (743);
 }
 
 /// Executes all test cases in the test suite
@@ -226,13 +226,15 @@ bool NoteTestSuite::TestCaseOperator()
         Note note18(2,10);
         note18.SetSlideInto(Note::slideIntoFromBelow);
         Note note19(2,10);
-        note19.SetBend(Note::bendAndHold, 4, 0, 1, Note::lowPoint, Note::highPoint);
+        note19.SetBend(Note::bendAndHold, 4, 0, 1, Note::lowPoint,
+            Note::highPoint);
         Note note20(2,10);
         note20.SetTappedHarmonic(14);
         Note note21(2,10);
         note21.SetTrill(5);
         Note note22(2,10);
-        note22.SetArtificialHarmonic(ChordName::C, ChordName::variationDefault, 1);
+        note22.SetArtificialHarmonic(ChordName::C, ChordName::variationDefault,
+            1);
        
         TEST(wxT("Operator== - note == note"), (note == note2));
         TEST(wxT("Operator== - note != note"), !(note == note3));
@@ -292,13 +294,15 @@ bool NoteTestSuite::TestCaseOperator()
         Note note18(2,10);
         note18.SetSlideInto(Note::slideIntoFromBelow);
         Note note19(2,10);
-        note19.SetBend(Note::bendAndHold, 4, 0, 1, Note::lowPoint, Note::highPoint);
+        note19.SetBend(Note::bendAndHold, 4, 0, 1, Note::lowPoint,
+            Note::highPoint);
         Note note20(2,10);
         note20.SetTappedHarmonic(14);
         Note note21(2,10);
         note21.SetTrill(5);
         Note note22(2,10);
-        note22.SetArtificialHarmonic(ChordName::C, ChordName::variationDefault, 1);
+        note22.SetArtificialHarmonic(ChordName::C, ChordName::variationDefault,
+            1);
        
         TEST(wxT("Operator!= - note != note"), !(note != note2));
         TEST(wxT("Operator!= - note != note"), (note != note3));
@@ -456,7 +460,8 @@ bool NoteTestSuite::TestCaseTieWrap()
     // - Jan 17, 2005
     Note note;
     TEST(wxT("SetTieWrap - true"), (note.SetTieWrap() && note.HasTieWrap()));
-    TEST(wxT("SetTieWrap - false"), (note.SetTieWrap(false) && !note.HasTieWrap()));
+    TEST(wxT("SetTieWrap - false"),
+        (note.SetTieWrap(false) && !note.HasTieWrap()));
     return (true);
 }
 
@@ -468,7 +473,8 @@ bool NoteTestSuite::TestCaseHammerOn()
     // - Jan 17, 2005
     Note note;
     TEST(wxT("SetHammerOn - true"), (note.SetHammerOn() && note.HasHammerOn()));
-    TEST(wxT("SetHammerOn - false"), (note.SetHammerOn(false) && !note.HasHammerOn()));
+    TEST(wxT("SetHammerOn - false"),
+        (note.SetHammerOn(false) && !note.HasHammerOn()));
     return (true);
 }
 
@@ -479,8 +485,10 @@ bool NoteTestSuite::TestCaseHammerOnFromNowhere()
     //------Last Checked------//
     // - Jan 24, 2005
     Note note;
-    TEST(wxT("SetHammerOnFromNowhere - true"), (note.SetHammerOnFromNowhere() && note.HasHammerOnFromNowhere() && !note.HasHammerOn()));
-    TEST(wxT("SetHammerOnFromNowhere - false"), (note.SetHammerOnFromNowhere(false) && !note.HasHammerOnFromNowhere()));
+    TEST(wxT("SetHammerOnFromNowhere - true"),
+        (note.SetHammerOnFromNowhere() && note.HasHammerOnFromNowhere() && !note.HasHammerOn()));
+    TEST(wxT("SetHammerOnFromNowhere - false"),
+        (note.SetHammerOnFromNowhere(false) && !note.HasHammerOnFromNowhere()));
     return (true);
 }
 
@@ -492,7 +500,8 @@ bool NoteTestSuite::TestCasePullOff()
     // - Jan 17, 2005
     Note note;
     TEST(wxT("SetPullOff - true"), (note.SetPullOff() && note.HasPullOff()));
-    TEST(wxT("SetPullOff - false"), (note.SetPullOff(false) && !note.HasPullOff()));
+    TEST(wxT("SetPullOff - false"),
+        (note.SetPullOff(false) && !note.HasPullOff()));
     return (true);
 }
 
@@ -503,8 +512,10 @@ bool NoteTestSuite::TestCasePullOffToNowhere()
     //------Last Checked------//
     // - Jan 24, 2005
     Note note;
-    TEST(wxT("SetPullOffToNowhere - true"), (note.SetPullOffToNowhere() && note.HasPullOffToNowhere() && !note.HasPullOff()));
-    TEST(wxT("SetPullOffToNowhere - false"), (note.SetPullOffToNowhere(false) && !note.HasPullOffToNowhere()));
+    TEST(wxT("SetPullOffToNowhere - true"),
+        (note.SetPullOffToNowhere() && note.HasPullOffToNowhere() && !note.HasPullOff()));
+    TEST(wxT("SetPullOffToNowhere - false"),
+        (note.SetPullOffToNowhere(false) && !note.HasPullOffToNowhere()));
     return (true);
 }
     
@@ -515,8 +526,10 @@ bool NoteTestSuite::TestCaseNaturalHarmonic()
     //------Last Checked------//
     // - Jan 17, 2005
     Note note;
-    TEST(wxT("SetNaturalHarmonic - true"), (note.SetNaturalHarmonic() && note.IsNaturalHarmonic()));
-    TEST(wxT("SetNaturalHarmonic - false"), (note.SetNaturalHarmonic(false) && !note.IsNaturalHarmonic()));
+    TEST(wxT("SetNaturalHarmonic - true"),
+        (note.SetNaturalHarmonic() && note.IsNaturalHarmonic()));
+    TEST(wxT("SetNaturalHarmonic - false"),
+        (note.SetNaturalHarmonic(false) && !note.IsNaturalHarmonic()));
     return (true);
 }
 
@@ -527,8 +540,10 @@ bool NoteTestSuite::TestCaseGhostNote()
     //------Last Checked------//
     // - Jan 17, 2005
     Note note;
-    TEST(wxT("SetGhostNote - true"), (note.SetGhostNote() && note.IsGhostNote()));
-    TEST(wxT("SetGhostNote - false"), (note.SetGhostNote(false) && !note.IsGhostNote()));
+    TEST(wxT("SetGhostNote - true"),
+        (note.SetGhostNote() && note.IsGhostNote()));
+    TEST(wxT("SetGhostNote - false"),
+        (note.SetGhostNote(false) && !note.IsGhostNote()));
     return (true);
 }
 
@@ -539,8 +554,10 @@ bool NoteTestSuite::TestCaseOctave8va()
     //------Last Checked------//
     // - Jan 17, 2005
     Note note;
-    TEST(wxT("SetOctave8va - true"), (note.SetOctave8va() && note.IsOctave8va()));
-    TEST(wxT("SetOctave8va - false"), (note.SetOctave8va(false) && !note.IsOctave8va()));
+    TEST(wxT("SetOctave8va - true"),
+        (note.SetOctave8va() && note.IsOctave8va()));
+    TEST(wxT("SetOctave8va - false"),
+        (note.SetOctave8va(false) && !note.IsOctave8va()));
     return (true);
 }
 
@@ -551,8 +568,10 @@ bool NoteTestSuite::TestCaseOctave15ma()
     //------Last Checked------//
     // - Jan 17, 2005
     Note note;
-    TEST(wxT("SetOctave15ma - true"), (note.SetOctave15ma() && note.IsOctave15ma()));
-    TEST(wxT("SetOctave15ma - false"), (note.SetOctave15ma(false) && !note.IsOctave15ma()));
+    TEST(wxT("SetOctave15ma - true"),
+        (note.SetOctave15ma() && note.IsOctave15ma()));
+    TEST(wxT("SetOctave15ma - false"),
+        (note.SetOctave15ma(false) && !note.IsOctave15ma()));
     return (true);
 }
 
@@ -563,8 +582,10 @@ bool NoteTestSuite::TestCaseOctave8mb()
     //------Last Checked------//
     // - Jan 17, 2005
     Note note;
-    TEST(wxT("SetOctave8vb - true"), (note.SetOctave8vb() && note.IsOctave8vb()));
-    TEST(wxT("SetOctave8vb - false"), (note.SetOctave8vb(false) && !note.IsOctave8vb()));
+    TEST(wxT("SetOctave8vb - true"),
+        (note.SetOctave8vb() && note.IsOctave8vb()));
+    TEST(wxT("SetOctave8vb - false"),
+        (note.SetOctave8vb(false) && !note.IsOctave8vb()));
     return (true);
 }
 
@@ -575,8 +596,10 @@ bool NoteTestSuite::TestCaseOctave15mb()
     //------Last Checked------//
     // - Jan 17, 2005
     Note note;
-    TEST(wxT("SetOctave15mb - true"), (note.SetOctave15mb() && note.IsOctave15mb()));
-    TEST(wxT("SetOctave15mb - false"), (note.SetOctave15mb(false) && !note.IsOctave15mb()));
+    TEST(wxT("SetOctave15mb - true"),
+        (note.SetOctave15mb() && note.IsOctave15mb()));
+    TEST(wxT("SetOctave15mb - false"),
+        (note.SetOctave15mb(false) && !note.IsOctave15mb()));
     return (true);
 }
 
@@ -907,13 +930,16 @@ bool NoteTestSuite::TestCaseBend()
             (!note.SetBend(255, 4, 0, 1, Note::lowPoint, Note::midPoint))
         );
         TEST(wxT("SetBend - invalid bent pitch"),
-            (!note.SetBend(Note::bendAndHold, 0, 0, 1, Note::lowPoint, Note::midPoint))
+            (!note.SetBend(Note::bendAndHold, 0, 0, 1, Note::lowPoint,
+            Note::midPoint))
         );
         TEST(wxT("SetBend - invalid release pitch"),
-            (!note.SetBend(Note::bendAndHold, 4, 1, 1, Note::lowPoint, Note::midPoint))
+            (!note.SetBend(Note::bendAndHold, 4, 1, 1, Note::lowPoint,
+            Note::midPoint))
         );
         TEST(wxT("SetBend - invalid duration"),
-            (!note.SetBend(Note::bendAndHold, 4, 0, 255, Note::lowPoint, Note::midPoint))
+            (!note.SetBend(Note::bendAndHold, 4, 0, 255, Note::lowPoint,
+            Note::midPoint))
         );
         TEST(wxT("SetBend - invalid draw start point"),
             (!note.SetBend(Note::bendAndHold, 4, 0, 1, 255, Note::midPoint))
@@ -922,7 +948,8 @@ bool NoteTestSuite::TestCaseBend()
             (!note.SetBend(Note::bendAndHold, 4, 0, 1, Note::lowPoint, 255))
         );
         
-        note.SetBend(Note::bendAndHold, 4, 0, 1, Note::lowPoint, Note::midPoint);
+        note.SetBend(Note::bendAndHold, 4, 0, 1, Note::lowPoint
+            , Note::midPoint);
                 
         wxByte type = 0;
         wxByte bentPitch = 0;
@@ -930,7 +957,8 @@ bool NoteTestSuite::TestCaseBend()
         wxByte duration = 0;
         wxByte drawStart = 0;
         wxByte drawEnd = 0;
-        note.GetBend(type, bentPitch, releasePitch, duration, drawStart, drawEnd);
+        note.GetBend(type, bentPitch, releasePitch, duration, drawStart,
+            drawEnd);
         
         TEST(wxT("SetBend - valid"), 
             (type == Note::bendAndHold) &&
@@ -944,9 +972,11 @@ bool NoteTestSuite::TestCaseBend()
         
         {
             Note note;
-            note.SetBend(Note::bendAndHold, 4, 0, 1, Note::lowPoint, Note::midPoint);
+            note.SetBend(Note::bendAndHold, 4, 0, 1, Note::lowPoint,
+                Note::midPoint);
             
-            bool set = note.SetBend(Note::normalBend, 2, 0, 2, Note::midPoint, Note::highPoint);
+            bool set = note.SetBend(Note::normalBend, 2, 0, 2, Note::midPoint,
+                Note::highPoint);
                 
             wxByte type = 0;
             wxByte bentPitch = 0;
@@ -954,7 +984,8 @@ bool NoteTestSuite::TestCaseBend()
             wxByte duration = 0;
             wxByte drawStart = 0;
             wxByte drawEnd = 0;
-            note.GetBend(type, bentPitch, releasePitch, duration, drawStart, drawEnd);
+            note.GetBend(type, bentPitch, releasePitch, duration, drawStart,
+                drawEnd);
             
             TEST(wxT("SetBend - update"), 
                 (set) &&
@@ -977,7 +1008,8 @@ bool NoteTestSuite::TestCaseBend()
             wxByte drawStart = 0;
             wxByte drawEnd = 0;
             TEST(wxT("GetBend - false"),
-                !note.GetBend(type, bentPitch, releasePitch, duration, drawStart, drawEnd)
+                !note.GetBend(type, bentPitch, releasePitch, duration,
+                    drawStart, drawEnd)
             );
                 
         }
@@ -986,7 +1018,8 @@ bool NoteTestSuite::TestCaseBend()
     // Clear Bend
     {
         Note note;
-        note.SetBend(Note::bendAndHold, 4, 0, 1, Note::lowPoint, Note::midPoint);
+        note.SetBend(Note::bendAndHold, 4, 0, 1, Note::lowPoint,
+            Note::midPoint);
         TEST(wxT("ClearBend"),
             (note.ClearBend()) &&
             (!note.HasBend())
@@ -1098,9 +1131,13 @@ bool NoteTestSuite::TestCaseArtificialHarmonic()
                     wxByte octave = 0;
                     note.GetArtificialHarmonic(key, keyVariation, octave);
                 
-                    TEST(wxString::Format(wxT("SetArtificialHarmonic - %d, %d, %d"), i, j, k), 
-                        (set == (ChordName::IsValidKeyAndVariation(i,j) && (k <= Note::artificialHarmonicOctave15ma))) &&
-                        (!ChordName::IsValidKeyAndVariation(i,j) || (k > Note::artificialHarmonicOctave15ma)) ? 1 : 
+                    TEST(
+                        wxString::Format(wxT("SetArtificialHarmonic - %d, %d, %d"),
+                            i, j, k), 
+                        (set == (ChordName::IsValidKeyAndVariation(i,j) && 
+                        (k <= Note::artificialHarmonicOctave15ma))) &&
+                        (!ChordName::IsValidKeyAndVariation(i,j) ||
+                        (k > Note::artificialHarmonicOctave15ma)) ? 1 : 
                         (key == i && keyVariation == j && octave == k)
                     );
                 }
@@ -1111,7 +1148,8 @@ bool NoteTestSuite::TestCaseArtificialHarmonic()
     // TEST CASE: ClearArtificialHarmonic
     {
         Note note;
-        bool set = note.SetArtificialHarmonic(ChordName::AFlat, ChordName::variationDefault, 1);
+        bool set = note.SetArtificialHarmonic(ChordName::AFlat,
+            ChordName::variationDefault, 1);
         note.ClearArtificialHarmonic();
         TEST(wxT("ClearArtificialHarmonic"), 
             ((set) &&
@@ -1135,7 +1173,9 @@ bool NoteTestSuite::TestCaseComplexSymbol()
         for (;;i++)
         {
             TEST(wxString::Format(wxT("IsValidComplexSymbolType - %d"), i),
-                (Note::IsValidComplexSymbolType(i) == ((i == Note::slide) || (i == Note::bend) || (i == Note::tappedHarmonic) || (i == Note::trill) || (i == Note::artificialHarmonic)))
+                (Note::IsValidComplexSymbolType(i) == ((i == Note::slide) ||
+                (i == Note::bend) || (i == Note::tappedHarmonic) ||
+                (i == Note::trill) || (i == Note::artificialHarmonic)))
             );
 
             // block overflow
@@ -1161,7 +1201,8 @@ bool NoteTestSuite::TestCaseComplexSymbol()
         note.SetTrill(5);
         note.SetArtificialHarmonic(ChordName::C, ChordName::variationDefault, 1);
         
-        TEST(wxT("AddComplexSymbol - full"), !note.SetSlideInto(Note::slideIntoFromBelow));
+        TEST(wxT("AddComplexSymbol - full"),
+            !note.SetSlideInto(Note::slideIntoFromBelow));
     }
     
     // TEST CASE: GetComplexSymbolCount
@@ -1192,9 +1233,12 @@ bool NoteTestSuite::TestCaseComplexSymbol()
         note.SetTrill(5);
         note.SetArtificialHarmonic(ChordName::C, ChordName::variationDefault, 1);
         
-        TEST(wxT("FindComplexSymbol - tapped harmonic"), (note.FindComplexSymbol(Note::tappedHarmonic) == 0));
-        TEST(wxT("FindComplexSymbol - trill"), (note.FindComplexSymbol(Note::trill) == 1));
-        TEST(wxT("FindComplexSymbol - artificial harmonic"), (note.FindComplexSymbol(Note::artificialHarmonic) == 2));
+        TEST(wxT("FindComplexSymbol - tapped harmonic"),
+            (note.FindComplexSymbol(Note::tappedHarmonic) == 0));
+        TEST(wxT("FindComplexSymbol - trill"),
+            (note.FindComplexSymbol(Note::trill) == 1));
+        TEST(wxT("FindComplexSymbol - artificial harmonic"),
+            (note.FindComplexSymbol(Note::artificialHarmonic) == 2));
     }
 
     // TEST CASE: RemoveComplexSymbol

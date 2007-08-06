@@ -55,29 +55,29 @@ public:
         sevenFlats              = (wxByte)14        ///< Key signature uses 7 flats
     };
         
-// Member variables
+// Member Variables
 protected:
     wxByte m_data;      ///< Stores all data required by the key signature (see the flags enum for the meaning of the individual bits)
 
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     KeySignature();
     KeySignature(wxByte keyType, wxByte keyAccidentals);
     KeySignature(const KeySignature& keySignature);
     ~KeySignature();
 
-    // Creation Functions
+// Creation Functions
     /// Creates an exact duplicate of the object
     /// @return The duplicate object
     PowerTabObject* CloneObject() const                         
         {return (new KeySignature(*this));}
     
-    // Operators
+// Operators
     const KeySignature& operator=(const KeySignature& keySignature);
     bool operator==(const KeySignature& keySignature) const;
     bool operator!=(const KeySignature& keySignature) const;
 
-    // MFC Class Functions
+// MFC Class Functions
     /// Gets the MFC Class Name for the object
     /// @return The MFC Class Name
     wxString GetMFCClassName() const                            
@@ -87,23 +87,27 @@ public:
     wxWord GetMFCClassSchema() const                            
         {return ((wxWord)1);}
     
-    // Serialization Functions
+// Serialization Functions
 protected:
     bool DoSerialize(PowerTabOutputStream& stream);
     bool DoDeserialize(PowerTabInputStream& stream, wxWord version);
 
+// Key Functions
 public:
-    // Key Functions
     bool SetKey(wxByte keyType, wxByte keyAccidentals);
     void GetKey(wxByte & keyType, wxByte & keyAccidentals) const;
-    /// Determines if the key (type + accidentals) is the same as that of another KeySignature object
+    /// Determines if the key (type + accidentals) is the same as that of
+    /// another KeySignature object
     /// @param keySignature KeySignature object to compare with
     /// @return True if the key signatures have the same key, false if not
     bool IsSameKey(const KeySignature& keySignature) const              
-        {return ((GetKeyType() == keySignature.GetKeyType()) && (GetKeyAccidentals() == keySignature.GetKeyAccidentals()));}
+    {
+        return ((GetKeyType() == keySignature.GetKeyType()) &&
+            (GetKeyAccidentals() == keySignature.GetKeyAccidentals()));
+    }
     bool GetDrawKey(wxByte& keyType, wxByte& keyAccidentals) const;
     
-    // Type Functions
+// Type Functions
     /// Deteremines if a key type is valid
     /// @param keyType The key type to validate
     /// @return True if the key type is valid, false if not
@@ -111,7 +115,8 @@ public:
         {return ((keyType == majorKey) || (keyType == minorKey));}
     bool SetKeyType(wxByte keyType);
     /// Gets the key type for the key signature (majorKey vs minorKey)
-    /// @return majorKey (see enum) if the key signature is a majorKey key, minorKey (see enum) if the key signature is a minorKey key
+    /// @return majorKey (see enum) if the key signature is a majorKey key,
+    /// minorKey (see enum) if the key signature is a minorKey key
     wxByte GetKeyType() const                                           
         {return (wxByte)((m_data & keyTypeMask) >> 6);}
     /// Determines if the key signature is a majorKey key
@@ -123,7 +128,7 @@ public:
     bool IsMinorKey() const                                             
         {return (GetKeyType() == minorKey);}
     
-    // Accidentals Functions
+// Accidentals Functions
     /// Determines if a key accidentals value is valid
     /// @param keyAccidentals Key accidentals value to validate
     /// @return True if the key accidentals value is validate, false if not
@@ -192,7 +197,7 @@ public:
     bool HasSevenFlats() const                                          
         {return (GetKeyAccidentals() == sevenFlats);}
     
-    // Show/Hide Functions
+// Show/Hide Functions
     /// Makes the key signature visible
     void Show()                                                         
         {SetFlag(show);}
@@ -204,9 +209,10 @@ public:
     bool IsShown() const                                                
         {return (IsFlagSet(show));}
 
-    // Cancellation Functions
+// Cancellation Functions
     /// Sets or clears the cancellation on a key signature
-    /// @param set If true, makes the key signature a cancellation, otherwise clears the cancellation
+    /// @param set If true, makes the key signature a cancellation, otherwise
+    /// clears the cancellation
     void SetCancellation(bool set = true)                               
         {if (set) SetFlag(cancellation); else ClearFlag(cancellation);}
     /// Determines if the key signature is a cancellation
@@ -214,10 +220,10 @@ public:
     bool IsCancellation() const                                         
         {return (IsFlagSet(cancellation));}
         
-    // Operations
+// Operations
     wxString GetText() const;
 
-    // Flag Functions
+// Flag Functions
 protected:
     /// Determines if a flag is valid
     /// @param flag Flag to validate

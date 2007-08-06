@@ -28,7 +28,8 @@ IMPLEMENT_ABSTRACT_CLASS(TestSuite, wxObject)
 // Constructor/Destructor
 /// Default Constructor
 TestSuite::TestSuite() :
-    m_execute(DEFAULT_EXECUTE), m_passed(DEFAULT_PASSED), m_failed(DEFAULT_FAILED), m_testSuiteCallback(NULL), m_clientData(NULL)
+    m_execute(DEFAULT_EXECUTE), m_passed(DEFAULT_PASSED),
+    m_failed(DEFAULT_FAILED), m_testSuiteCallback(NULL), m_clientData(NULL)
 {
     //------Last Verified------//
     // - Dec 2, 2004
@@ -53,7 +54,8 @@ wxString TestSuite::GetName() const
 }
 
 /// Executes all the tests in a TestSuite object
-/// @param testSuiteCallback Callback function that will receive the results of each test in the test suite
+/// @param testSuiteCallback Callback function that will receive the results of
+/// each test in the test suite
 /// @param clientData User defined data (optional)
 bool TestSuite::Run(TESTSUITECALLBACK testSuiteCallback, void* clientData)
 {
@@ -72,13 +74,15 @@ bool TestSuite::Run(TESTSUITECALLBACK testSuiteCallback, void* clientData)
 }
 
 /// Passes the results of a test to the test suite callback function
-/// @param record Indicates whether or note the results of the test should be recorded to the results tree ctrl if the test was successful
+/// @param record Indicates whether or note the results of the test should be
+/// recorded to the results tree ctrl if the test was successful
 /// @param startTime The time when the test was started
 /// @param testName Name of the test
 /// @param success Indicates the success/failure of the test
 /// @param fileName Name of the file where the test occurred
 /// @param lineNumber Line number in the file where the test occurred
-bool TestSuite::Test(bool record, wxLongLong startTime, const wxChar* testName, bool success, char* fileName, size_t lineNumber)
+bool TestSuite::Test(bool record, wxLongLong startTime, const wxChar* testName,
+    bool success, char* fileName, size_t lineNumber)
 {
     //------Last Checked------//
     // - Dec 2, 2004
@@ -101,9 +105,11 @@ bool TestSuite::Test(bool record, wxLongLong startTime, const wxChar* testName, 
     wxCHECK(fileName != NULL, false);
     wxCHECK(m_testSuiteCallback != NULL, false);
 
-    // Create a temp string used for the filename (since it's ANSI and we want it this to work on Unicode builds)
+    // Create a temp string used for the filename (since it's ANSI and we want
+    // it this to work on Unicode builds)
     wxString tempFileName(fileName);
 
     // Send the results of the test to the callback
-    return (m_testSuiteCallback(this, testName, success, tempFileName, lineNumber, record, executionTime, m_clientData));
+    return (m_testSuiteCallback(this, testName, success, tempFileName,
+        lineNumber, record, executionTime, m_clientData));
 }

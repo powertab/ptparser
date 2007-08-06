@@ -29,7 +29,8 @@ ChordText::ChordText() :
 }
 
 /// Primary Constructor
-/// @param position Zero-based index of the position within the system where the chord text is anchored
+/// @param position Zero-based index of the position within the system where the
+/// chord text is anchored
 /// @param chordName Chord name represented in the chord text
 ChordText::ChordText(wxUint32 position, const ChordName& chordName) :
     m_position((wxByte)position), m_chordName(chordName)

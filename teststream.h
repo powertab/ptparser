@@ -15,27 +15,28 @@
 /// Wrapper for memory streams used to perform serialization testing
 class TestStream
 {
+// Constants
 protected:
     // Default Constants
     static const wxMemoryInputStream*   DEFAULT_INPUT_STREAM;           ///< Default value for the input stream member variable
     
-    // Member Variables
+// Member Variables
     wxMemoryInputStream*        m_inputStream;                          ///< Memory input stream (created on the fly due to constructor limitations)
     wxMemoryOutputStream        m_outputStream;                         ///< Memory output stream
-    
+
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     TestStream();
     ~TestStream();
     
-    // Input Stream Functions
+// Input Stream Functions
     wxMemoryInputStream& GetInputStream();
 protected:
     bool CreateInputStream();
     void DeleteInputStream();
 
+// Output Stream Functions
 public:
-    // Output Stream Functions
     /// Gets a reference to the output stream
     /// @return Reference to the output stream
     wxMemoryOutputStream& GetOutputStream()                             {return (m_outputStream);}

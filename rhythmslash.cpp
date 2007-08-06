@@ -38,18 +38,22 @@ const wxByte    RhythmSlash::MAX_SINGLE_NOTE_FRET_NUMBER        = 24;
 
 /// Default Constructor
 RhythmSlash::RhythmSlash() :
-    m_position(DEFAULT_POSITION), m_beaming(DEFAULT_BEAMING), m_data(DEFAULT_DATA)
+    m_position(DEFAULT_POSITION), m_beaming(DEFAULT_BEAMING),
+    m_data(DEFAULT_DATA)
 {
     //------Last Checked------//
     // - Jan 7, 2005
 }
 
 /// Primary Constructor
-/// @param position Zero-based index within the system where the rhythm slash is anchored
-/// @param durationType Duration type to set (1 = whole, 2 = half, 4 = quarter, 8 = 8th, 16 = 16th, 32 = 32nd, 64 = 64th)
+/// @param position Zero-based index within the system where the rhythm slash is
+/// anchored
+/// @param durationType Duration type to set (1 = whole, 2 = half, 4 = quarter,
+/// 8 = 8th, 16 = 16th, 32 = 32nd, 64 = 64th)
 /// @param dotCount Number of duration dots to set
-RhythmSlash::RhythmSlash(wxUint32 position, wxByte durationType, wxByte dotCount) :
-    m_position(position), m_beaming(DEFAULT_BEAMING), m_data(DEFAULT_DATA)
+RhythmSlash::RhythmSlash(wxUint32 position, wxByte durationType,
+    wxByte dotCount) : m_position(position), m_beaming(DEFAULT_BEAMING),
+    m_data(DEFAULT_DATA)
 {
     //------Last Checked------//
     // - Jan 7, 2005
@@ -64,7 +68,8 @@ RhythmSlash::RhythmSlash(wxUint32 position, wxByte durationType, wxByte dotCount
 
 /// Copy Constructor
 RhythmSlash::RhythmSlash(const RhythmSlash& rhythmSlash) :
-    m_position(DEFAULT_POSITION), m_beaming(DEFAULT_BEAMING), m_data(DEFAULT_DATA)
+    m_position(DEFAULT_POSITION), m_beaming(DEFAULT_BEAMING),
+    m_data(DEFAULT_DATA)
 {
     //------Last Checked------//
     // - Dec 17, 2004
@@ -143,7 +148,8 @@ bool RhythmSlash::DoDeserialize(PowerTabInputStream& stream,
 
 // Duration Type Functions
 /// Sets the duration type
-/// @param durationType Duration type to set (1 = whole, 2 = half, 4 = quarter, 8 = 8th, 16 = 16th)
+/// @param durationType Duration type to set (1 = whole, 2 = half, 4 = quarter,
+/// 8 = 8th, 16 = 16th)
 /// @return True if the duration type was set, false if not
 bool RhythmSlash::SetDurationType(wxByte durationType)
 {
@@ -170,7 +176,8 @@ bool RhythmSlash::SetDurationType(wxByte durationType)
 	return (true);
 }
 
-/// Gets the duration type (1 = whole, 2 = half, 4 = quarter, 8 = 8th, 16 = 16th)
+/// Gets the duration type (1 = whole, 2 = half, 4 = quarter, 8 = 8th,
+/// 16 = 16th)
 /// @return The duration type
 wxByte RhythmSlash::GetDurationType() const
 {
@@ -182,8 +189,10 @@ wxByte RhythmSlash::GetDurationType() const
 }
 
 // Previous Beam Duration Functions
-/// Sets the duration type of the previous rhythm slash in the beam group (cache only)
-/// @param durationType Duration type to set (0 = not beamed, 8 = 8th, 16 = 16th)
+/// Sets the duration type of the previous rhythm slash in the beam group
+/// (cache only)
+/// @param durationType Duration type to set (0 = not beamed, 8 = 8th,
+/// 16 = 16th)
 /// @return True if the duration type was set, false if not
 bool RhythmSlash::SetPreviousBeamDurationType(wxByte durationType)
 {
@@ -203,7 +212,8 @@ bool RhythmSlash::SetPreviousBeamDurationType(wxByte durationType)
 }
 
 /// Gets the duration type of the previous rhythm slash in the beam group
-/// @return The duration type of the previous rhythm slash in the beam group (0 = not beamed, 8 = 8th, 16 = 16th)
+/// @return The duration type of the previous rhythm slash in the beam group
+/// (0 = not beamed, 8 = 8th, 16 = 16th)
 wxByte RhythmSlash::GetPreviousBeamDurationType() const
 {
     //------Last Checked------//
@@ -328,7 +338,8 @@ bool RhythmSlash::SetSingleNoteData(wxByte stringNumber, wxByte fretNumber)
 /// Gets the single note data (string number + fret number)
 /// @param stringNumber Holds the string number return value
 /// @param fretNumber Holds the fret number return value
-void RhythmSlash::GetSingleNoteData(wxByte& stringNumber, wxByte& fretNumber) const
+void RhythmSlash::GetSingleNoteData(wxByte& stringNumber,
+    wxByte& fretNumber) const
 {
     //------Last Checked------//
     // - Jan 6, 2005

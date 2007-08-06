@@ -40,7 +40,7 @@ bool PowerTabParser::OnInit()
 {
     //------Last Checked------//
     // - Dec 30, 2004
-    SetAppName(wxT("Power Tab Parser 1.1.1"));
+    SetAppName(wxT("Power Tab Parser 1.1.2"));
     
     // Initialize and load the XML resources
     wxXmlResource::Get()->InitAllHandlers();
@@ -55,8 +55,9 @@ bool PowerTabParser::OnInit()
        
     // Create the main frame window
     frame = new MainFrame((wxDocManager*) m_docManager, (wxFrame*)NULL,
-                wxT("PowerTabParser 1.1.1"), wxPoint(0,0), wxSize(300,300),
-                wxDEFAULT_FRAME_STYLE | wxNO_FULL_REPAINT_ON_RESIZE | wxMAXIMIZE);
+                wxT("PowerTabParser 1.1.2"), wxPoint(0,0), wxSize(300,300),
+                wxDEFAULT_FRAME_STYLE | wxNO_FULL_REPAINT_ON_RESIZE |
+                wxMAXIMIZE);
 
     // Create the main menu
     
@@ -76,8 +77,10 @@ bool PowerTabParser::OnInit()
     // Test Menu
     wxMenu* test_menu = new wxMenu;
     test_menu->Append(IDM_TEST_TESTINGFRAMEWORK, wxT("Testing &Framework..."));
-    test_menu->Append(IDM_TEST_BATCHFILESERIALIZATION, wxT("&Batch File Serialization..."));
-    test_menu->Append(IDM_TEST_STATISTICALANALYSIS, wxT("&Statistical Analysis..."));
+    test_menu->Append(IDM_TEST_BATCHFILESERIALIZATION,
+        wxT("&Batch File Serialization..."));
+    test_menu->Append(IDM_TEST_STATISTICALANALYSIS,
+        wxT("&Statistical Analysis..."));
          
     // Help Menu
     wxMenu* help_menu = new wxMenu;
@@ -170,13 +173,17 @@ bool PowerTabParser::LoadXMLResources()
         // Make sure the XML file exists
         if (!wxFileName::FileExists(resourceFiles[i]))
         {
-            wxMessageBox(wxString::Format(wxT("Could not find the XML resource file '%s'."), resourceFiles[i]), GetAppName(), wxICON_ERROR);
+            wxMessageBox(
+                wxString::Format(wxT("Could not find the XML resource file '%s'."),
+                resourceFiles[i]), GetAppName(), wxICON_ERROR);
             return (false);
         }
 
         if (!wxXmlResource::Get()->Load(resourceFiles[i]))
         {
-            wxMessageBox(wxString::Format(wxT("Could not load the XML resource file '%s'."), resourceFiles[i]), GetAppName(), wxICON_ERROR);
+            wxMessageBox(
+                wxString::Format(wxT("Could not load the XML resource file '%s'."),
+                resourceFiles[i]), GetAppName(), wxICON_ERROR);
             return (false);
         }
     }

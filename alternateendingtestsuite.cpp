@@ -161,7 +161,8 @@ bool AlternateEndingTestSuite::TestCaseOperator()
 	    
 	    // TEST CASE: Self assignment
 	    alternateEnding = alternateEnding;
-	    TEST(wxT("Operator= - self assignment"), (alternateEnding == alternateEnding));
+	    TEST(wxT("Operator= - self assignment"),
+            (alternateEnding == alternateEnding));
     }
 
     // TEST CASE: Equality Operator
@@ -184,22 +185,38 @@ bool AlternateEndingTestSuite::TestCaseOperator()
         AlternateEnding alternateEnding16(1,2,1024);
         AlternateEnding alternateEnding17(1,2,2048);
         
-        TEST(wxT("Operator== - alternateEnding == alternateEnding"), (alternateEnding == alternateEnding2));
-        TEST(wxT("Operator== - alternateEnding != alternateEnding"), !(alternateEnding == alternateEnding3));
-        TEST(wxT("Operator== - alternateEnding != alternateEnding 2"), !(alternateEnding == alternateEnding4));
-        TEST(wxT("Operator== - alternateEnding != alternateEnding 3"), !(alternateEnding == alternateEnding5));
-        TEST(wxT("Operator== - alternateEnding != alternateEnding 4"), !(alternateEnding == alternateEnding6));
-        TEST(wxT("Operator== - alternateEnding != alternateEnding 5"), !(alternateEnding == alternateEnding7));
-        TEST(wxT("Operator== - alternateEnding != alternateEnding 6"), !(alternateEnding == alternateEnding8));
-        TEST(wxT("Operator== - alternateEnding != alternateEnding 7"), !(alternateEnding == alternateEnding9));
-        TEST(wxT("Operator== - alternateEnding != alternateEnding 8"), !(alternateEnding == alternateEnding10));
-        TEST(wxT("Operator== - alternateEnding != alternateEnding 9"), !(alternateEnding == alternateEnding11));
-        TEST(wxT("Operator== - alternateEnding != alternateEnding 10"), !(alternateEnding == alternateEnding12));
-        TEST(wxT("Operator== - alternateEnding != alternateEnding 11"), !(alternateEnding == alternateEnding13));
-        TEST(wxT("Operator== - alternateEnding != alternateEnding 12"), !(alternateEnding == alternateEnding14));
-        TEST(wxT("Operator== - alternateEnding != alternateEnding 13"), !(alternateEnding == alternateEnding15));
-        TEST(wxT("Operator== - alternateEnding != alternateEnding 14"), !(alternateEnding == alternateEnding16));
-        TEST(wxT("Operator== - alternateEnding != alternateEnding 15"), !(alternateEnding == alternateEnding17));
+        TEST(wxT("Operator== - alternateEnding == alternateEnding"),
+            (alternateEnding == alternateEnding2));
+        TEST(wxT("Operator== - alternateEnding != alternateEnding"),
+            !(alternateEnding == alternateEnding3));
+        TEST(wxT("Operator== - alternateEnding != alternateEnding 2"),
+            !(alternateEnding == alternateEnding4));
+        TEST(wxT("Operator== - alternateEnding != alternateEnding 3"),
+            !(alternateEnding == alternateEnding5));
+        TEST(wxT("Operator== - alternateEnding != alternateEnding 4"),
+            !(alternateEnding == alternateEnding6));
+        TEST(wxT("Operator== - alternateEnding != alternateEnding 5"),
+            !(alternateEnding == alternateEnding7));
+        TEST(wxT("Operator== - alternateEnding != alternateEnding 6"),
+            !(alternateEnding == alternateEnding8));
+        TEST(wxT("Operator== - alternateEnding != alternateEnding 7"),
+            !(alternateEnding == alternateEnding9));
+        TEST(wxT("Operator== - alternateEnding != alternateEnding 8"),
+            !(alternateEnding == alternateEnding10));
+        TEST(wxT("Operator== - alternateEnding != alternateEnding 9"),
+            !(alternateEnding == alternateEnding11));
+        TEST(wxT("Operator== - alternateEnding != alternateEnding 10"),
+            !(alternateEnding == alternateEnding12));
+        TEST(wxT("Operator== - alternateEnding != alternateEnding 11"),
+            !(alternateEnding == alternateEnding13));
+        TEST(wxT("Operator== - alternateEnding != alternateEnding 12"),
+            !(alternateEnding == alternateEnding14));
+        TEST(wxT("Operator== - alternateEnding != alternateEnding 13"),
+            !(alternateEnding == alternateEnding15));
+        TEST(wxT("Operator== - alternateEnding != alternateEnding 14"),
+            !(alternateEnding == alternateEnding16));
+        TEST(wxT("Operator== - alternateEnding != alternateEnding 15"),
+            !(alternateEnding == alternateEnding17));
     }
     
     // TEST CASE: Inequality Operator
@@ -222,22 +239,38 @@ bool AlternateEndingTestSuite::TestCaseOperator()
         AlternateEnding alternateEnding16(1,2,1024);
         AlternateEnding alternateEnding17(1,2,2048);
         
-        TEST(wxT("Operator!= - alternateEnding == alternateEnding"), !(alternateEnding != alternateEnding2));
-        TEST(wxT("Operator!= - alternateEnding != alternateEnding"), (alternateEnding != alternateEnding3));
-        TEST(wxT("Operator!= - alternateEnding != alternateEnding 2"), (alternateEnding != alternateEnding4));
-        TEST(wxT("Operator!= - alternateEnding != alternateEnding 2"), (alternateEnding != alternateEnding5));
-        TEST(wxT("Operator!= - alternateEnding != alternateEnding 4"), (alternateEnding != alternateEnding6));
-        TEST(wxT("Operator!= - alternateEnding != alternateEnding 5"), (alternateEnding != alternateEnding7));
-        TEST(wxT("Operator!= - alternateEnding != alternateEnding 6"), (alternateEnding != alternateEnding8));
-        TEST(wxT("Operator!= - alternateEnding != alternateEnding 7"), (alternateEnding != alternateEnding9));
-        TEST(wxT("Operator!= - alternateEnding != alternateEnding 8"), (alternateEnding != alternateEnding10));
-        TEST(wxT("Operator!= - alternateEnding != alternateEnding 9"), (alternateEnding != alternateEnding11));
-        TEST(wxT("Operator!= - alternateEnding != alternateEnding 10"), (alternateEnding != alternateEnding12));
-        TEST(wxT("Operator!= - alternateEnding != alternateEnding 11"), (alternateEnding != alternateEnding13));
-        TEST(wxT("Operator!= - alternateEnding != alternateEnding 12"), (alternateEnding != alternateEnding14));
-        TEST(wxT("Operator!= - alternateEnding != alternateEnding 13"), (alternateEnding != alternateEnding15));
-        TEST(wxT("Operator!= - alternateEnding != alternateEnding 14"), (alternateEnding != alternateEnding16));
-        TEST(wxT("Operator!= - alternateEnding != alternateEnding 15"), (alternateEnding != alternateEnding17));
+        TEST(wxT("Operator!= - alternateEnding == alternateEnding"),
+            !(alternateEnding != alternateEnding2));
+        TEST(wxT("Operator!= - alternateEnding != alternateEnding"),
+            (alternateEnding != alternateEnding3));
+        TEST(wxT("Operator!= - alternateEnding != alternateEnding 2"),
+            (alternateEnding != alternateEnding4));
+        TEST(wxT("Operator!= - alternateEnding != alternateEnding 2"),
+            (alternateEnding != alternateEnding5));
+        TEST(wxT("Operator!= - alternateEnding != alternateEnding 4"),
+            (alternateEnding != alternateEnding6));
+        TEST(wxT("Operator!= - alternateEnding != alternateEnding 5"),
+            (alternateEnding != alternateEnding7));
+        TEST(wxT("Operator!= - alternateEnding != alternateEnding 6"),
+            (alternateEnding != alternateEnding8));
+        TEST(wxT("Operator!= - alternateEnding != alternateEnding 7"),
+            (alternateEnding != alternateEnding9));
+        TEST(wxT("Operator!= - alternateEnding != alternateEnding 8"),
+            (alternateEnding != alternateEnding10));
+        TEST(wxT("Operator!= - alternateEnding != alternateEnding 9"),
+            (alternateEnding != alternateEnding11));
+        TEST(wxT("Operator!= - alternateEnding != alternateEnding 10"),
+            (alternateEnding != alternateEnding12));
+        TEST(wxT("Operator!= - alternateEnding != alternateEnding 11"),
+            (alternateEnding != alternateEnding13));
+        TEST(wxT("Operator!= - alternateEnding != alternateEnding 12"),
+            (alternateEnding != alternateEnding14));
+        TEST(wxT("Operator!= - alternateEnding != alternateEnding 13"),
+            (alternateEnding != alternateEnding15));
+        TEST(wxT("Operator!= - alternateEnding != alternateEnding 14"),
+            (alternateEnding != alternateEnding16));
+        TEST(wxT("Operator!= - alternateEnding != alternateEnding 15"),
+            (alternateEnding != alternateEnding17));
     }
     return (true);
 }
@@ -264,7 +297,8 @@ bool AlternateEndingTestSuite::TestCaseSerialize()
     
         // Read test data back from stream
         AlternateEnding alternateEndingIn;
-        alternateEndingIn.Deserialize(streamIn, PowerTabFileHeader::FILEVERSION_CURRENT);
+        alternateEndingIn.Deserialize(streamIn,
+            PowerTabFileHeader::FILEVERSION_CURRENT);
 
         // Validate the data
         ok = ((alternateEndingIn == alternateEndingOut) 
@@ -293,7 +327,8 @@ bool AlternateEndingTestSuite::TestCaseNumbers()
             if (i > 0)
                 numbers = (wxWord)pow((double)2, (double)i - 1);
             TEST(wxString::Format(wxT("IsValidNumbers - %d"), numbers),
-                (AlternateEnding::IsValidNumbers(numbers) == (i <= AlternateEnding::dalSegnoSegno))
+                (AlternateEnding::IsValidNumbers(numbers) ==
+                (i <= AlternateEnding::dalSegnoSegno))
             );
         }
     }
@@ -303,7 +338,8 @@ bool AlternateEndingTestSuite::TestCaseNumbers()
         wxUint32 i = 0;
         for (; i <= (AlternateEnding::dalSegnoSegno + 1); i++)
             TEST(wxString::Format(wxT("IsValidNumber - %d"), i),
-                (AlternateEnding::IsValidNumber(i) == ((i > 0) && (i <= AlternateEnding::dalSegnoSegno)))
+                (AlternateEnding::IsValidNumber(i) == ((i > 0) &&
+                (i <= AlternateEnding::dalSegnoSegno)))
             );
     }
     
@@ -336,8 +372,10 @@ bool AlternateEndingTestSuite::TestCaseNumbers()
         wxUint32 i = 0;
         for (; i <= (AlternateEnding::dalSegnoSegno + 1); i++)
             TEST(wxString::Format(wxT("SetNumber - %d"), i),
-                (alternateEnding.SetNumber(i) == ((i > 0) && (i <= AlternateEnding::dalSegnoSegno)) &&
-                ((i == 0) || (i > AlternateEnding::dalSegnoSegno)) ? 1 : (alternateEnding.IsNumberSet(i)))
+                (alternateEnding.SetNumber(i) == ((i > 0) &&
+                (i <= AlternateEnding::dalSegnoSegno)) &&
+                ((i == 0) || (i > AlternateEnding::dalSegnoSegno)) ? 1 :
+                (alternateEnding.IsNumberSet(i)))
             );
     }
     
@@ -419,19 +457,24 @@ bool AlternateEndingTestSuite::TestCaseText()
     // TEST CASE: GetText
     {
         AlternateEnding alternateEnding;
-        TEST(wxT("GetText - empty"), (alternateEnding.GetText() == wxT("")));
+        TEST(wxT("GetText - empty"),
+            (alternateEnding.GetText() == wxT("")));
         
         alternateEnding.SetNumbers(1);
-        TEST(wxT("GetText - 1."), (alternateEnding.GetText() == wxT("1.")));
+        TEST(wxT("GetText - 1."),
+            (alternateEnding.GetText() == wxT("1.")));
         
         alternateEnding.SetNumbers(3);
-        TEST(wxT("GetText - 1., 2."), (alternateEnding.GetText() == wxT("1., 2.")));
+        TEST(wxT("GetText - 1., 2."),
+            (alternateEnding.GetText() == wxT("1., 2.")));
         
         alternateEnding.SetNumbers(7);
-        TEST(wxT("GetText - 1.-3."), (alternateEnding.GetText() == wxT("1.-3.")));
+        TEST(wxT("GetText - 1.-3."),
+            (alternateEnding.GetText() == wxT("1.-3.")));
         
         alternateEnding.SetNumbers(testNumbers);
-        TEST(wxT("GetText - 1., 5.-7., D.S."), (alternateEnding.GetText() == wxT("1., 5.-7., D.S.")));
+        TEST(wxT("GetText - 1., 5.-7., D.S."),
+            (alternateEnding.GetText() == wxT("1., 5.-7., D.S.")));
     }
     return (true);
 }

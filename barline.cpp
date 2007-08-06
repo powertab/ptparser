@@ -36,9 +36,11 @@ Barline::Barline() :
 }
 
 /// Primary Constructor
-/// @param position Zero-based index of the position within the system where the barline is anchored
+/// @param position Zero-based index of the position within the system where the
+/// barline is anchored
 /// @param type The type of barline (see barTypes enum)
-/// @param repeatCount The repeat count to set (if type is a repeat end, use 0 for other types)
+/// @param repeatCount The repeat count to set (if type is a repeat end, use 0
+/// for other types)
 Barline::Barline(wxUint32 position, wxByte type, wxByte repeatCount) : 
     m_position(DEFAULT_POSITION), m_data(DEFAULT_DATA)
 {
@@ -138,7 +140,8 @@ bool Barline::DoDeserialize(PowerTabInputStream& stream, wxWord version)
     // - Jan 4, 2005
     
     // Version 1.0/1.0.2 (key was stored in word)
-    if (version == PowerTabFileHeader::FILEVERSION_1_0 || version == PowerTabFileHeader::FILEVERSION_1_0_2)
+    if (version == PowerTabFileHeader::FILEVERSION_1_0 ||
+        version == PowerTabFileHeader::FILEVERSION_1_0_2)
     {
         wxWord symbol;
         stream >> m_position >> symbol;
@@ -158,7 +161,8 @@ bool Barline::DoDeserialize(PowerTabInputStream& stream, wxWord version)
             if (keyType > 2)
                 m_keySignature.SetCancellation();
 
-            keyType = (wxByte)(((keyType % 2) == 1) ? KeySignature::majorKey : KeySignature::minorKey);
+            keyType = (wxByte)(((keyType % 2) == 1) ? KeySignature::majorKey :
+                KeySignature::minorKey);
 
             m_keySignature.SetKey(keyType, keyAccidentals);
         }

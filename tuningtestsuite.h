@@ -17,17 +17,17 @@ class TuningTestSuite :
     public TestSuite
 {
     DECLARE_DYNAMIC_CLASS(TuningTestSuite)
-    
+
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     TuningTestSuite();
     ~TuningTestSuite();
     
-    // Overrides
+// Overrides
     size_t GetTestCount() const;
     bool RunTestCases();
     
-    // Test Cases
+// Test Cases
 private:
     bool TestCaseConstructor();
     bool TestCaseCreation();

@@ -18,16 +18,16 @@ class DirectionTestSuite :
 {
     DECLARE_DYNAMIC_CLASS(DirectionTestSuite)
     
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     DirectionTestSuite();
     ~DirectionTestSuite();
 
-    // Overrides    
+// Overrides    
     size_t GetTestCount() const;
     bool RunTestCases();
     
-    // Test Cases
+// Test Cases
 private:
     bool TestCaseConstructor();
     bool TestCaseCreation();

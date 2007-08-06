@@ -34,17 +34,20 @@ Tuning::Tuning() :
 
 /// Primary Constructor
 /// @param name Tuning name (Standard, Dropped-D, Open G, etc.)
-/// @param musicNotationOffset Offset used when drawing notes on the music staff, in semi-tones
+/// @param musicNotationOffset Offset used when drawing notes on the music
+/// staff, in semi-tones
 /// @param sharps Display the tuning notes using sharps as opposed to flats
-/// @param note1 MIDI note value for the 1st string in the tuning (for standard guitar tuning, this is the high E string)
+/// @param note1 MIDI note value for the 1st string in the tuning (for standard
+/// guitar tuning, this is the high E string)
 /// @param note2 MIDI note value for the 2nd string in the tuning
 /// @param note3 MIDI note value for the 3rd string in the tuning
 /// @param note4 MIDI note value for the 4th string in the tuning
 /// @param note5 MIDI note value for the 5th string in the tuning
 /// @param note6 MIDI note value for the 6th string in the tuning
 /// @param note7 MIDI note value for the 7th string in the tuning
-Tuning::Tuning(const wxChar* name, wxInt8 musicNotationOffset, bool sharps, wxByte note1, wxByte note2, wxByte note3, wxByte note4, wxByte note5, wxByte note6, wxByte note7) :
-    m_name(name), m_data(DEFAULT_DATA)
+Tuning::Tuning(const wxChar* name, wxInt8 musicNotationOffset, bool sharps,
+    wxByte note1, wxByte note2, wxByte note3, wxByte note4, wxByte note5,
+    wxByte note6, wxByte note7) : m_name(name), m_data(DEFAULT_DATA)
 {
     //------Last Checked------//
     // - Dec 14, 2004
@@ -193,9 +196,11 @@ bool Tuning::DoDeserialize(PowerTabInputStream& stream,
 // Tuning Functions
 /// Sets the contents of the Tuning object
 /// @param name Tuning name (Standard, Dropped-D, Open G, etc.)
-/// @param musicNotationOffset Offset used when drawing notes on the music staff, in semi-tones
+/// @param musicNotationOffset Offset used when drawing notes on the music
+/// staff, in semi-tones
 /// @param sharps Display the tuning notes using sharps as opposed to flats
-/// @param note1 MIDI note value for the 1st string in the tuning (for standard guitar tuning, this is the high E string)
+/// @param note1 MIDI note value for the 1st string in the tuning (for standard
+/// guitar tuning, this is the high E string)
 /// @param note2 MIDI note value for the 2nd string in the tuning
 /// @param note3 MIDI note value for the 3rd string in the tuning
 /// @param note4 MIDI note value for the 4th string in the tuning
@@ -203,7 +208,9 @@ bool Tuning::DoDeserialize(PowerTabInputStream& stream,
 /// @param note6 MIDI note value for the 6th string in the tuning
 /// @param note7 MIDI note value for the 7th string in the tuning
 /// @return True if the tuning was set, false if not
-bool Tuning::SetTuning(const wxChar* name, wxInt8 musicNotationOffset, bool sharps, wxByte note1, wxByte note2, wxByte note3, wxByte note4, wxByte note5, wxByte note6, wxByte note7)
+bool Tuning::SetTuning(const wxChar* name, wxInt8 musicNotationOffset,
+    bool sharps, wxByte note1, wxByte note2, wxByte note3, wxByte note4,
+    wxByte note5, wxByte note6, wxByte note7)
 {
     //------Last Checked------//
     // - Dec 14, 2004
@@ -216,7 +223,8 @@ bool Tuning::SetTuning(const wxChar* name, wxInt8 musicNotationOffset, bool shar
 }
 
 /// Sets the contents of a tuning using a comma delimited string
-/// @param string Comma delimited string containing the tuning settings (Name,Sharps,MusicNotationOffset,Note1,...,Note7)
+/// @param string Comma delimited string containing the tuning settings (Name,
+/// Sharps,MusicNotationOffset,Note1,...,Note7)
 /// @return True if the tuning was updated, false if not
 bool Tuning::SetTuningFromString(const wxChar* string)
 {
@@ -259,7 +267,8 @@ bool Tuning::SetTuningFromString(const wxChar* string)
         notes[i - 3] = (wxByte)(wxAtoi(temp));
     }
 
-    return (AddTuningNotes(notes[0], notes[1], notes[2], notes[3], notes[4], notes[5], notes[6]));
+    return (AddTuningNotes(notes[0], notes[1], notes[2], notes[3], notes[4],
+        notes[5], notes[6]));
 }
 
 /// Determines if the tuning notes are the same as that of another Tuning object
@@ -289,7 +298,8 @@ bool Tuning::IsSameTuning(const Tuning& tuning) const
 }
 
 /// Determines if the tuning notes are the same
-/// @param note1 MIDI note value for the 1st string in the tuning (for standard guitar tuning, this is the high E string)
+/// @param note1 MIDI note value for the 1st string in the tuning (for standard
+/// guitar tuning, this is the high E string)
 /// @param note2 MIDI note value for the 2nd string in the tuning
 /// @param note3 MIDI note value for the 3rd string in the tuning
 /// @param note4 MIDI note value for the 4th string in the tuning
@@ -297,7 +307,8 @@ bool Tuning::IsSameTuning(const Tuning& tuning) const
 /// @param note6 MIDI note value for the 6th string in the tuning
 /// @param note7 MIDI note value for the 7th string in the tuning
 /// @return True if all of the tuning notes match, false if not
-bool Tuning::IsSameTuning(wxByte note1, wxByte note2, wxByte note3, wxByte note4, wxByte note5, wxByte note6, wxByte note7) const
+bool Tuning::IsSameTuning(wxByte note1, wxByte note2, wxByte note3,
+    wxByte note4, wxByte note5, wxByte note6, wxByte note7) const
 {
     //------Last Checked------//
     // - Dec 15, 2004
@@ -307,7 +318,8 @@ bool Tuning::IsSameTuning(wxByte note1, wxByte note2, wxByte note3, wxByte note4
 }
 
 // Sharps Functions
-/// Sets the tuning to use sharps when displaying the tuning notes (i.e. C# vs Db)
+/// Sets the tuning to use sharps when displaying the tuning notes (i.e. C# vs
+/// Db)
 /// @param set True uses use sharps, false uses flats
 void Tuning::SetSharps(bool set)
 {
@@ -373,7 +385,8 @@ bool Tuning::SetNote(wxUint32 string, wxByte note)
 
 /// Gets the note for assigned to a string
 /// @param string String to get the note for
-/// @param includeMusicNotationOffset Include the music notation offset in the note pitch
+/// @param includeMusicNotationOffset Include the music notation offset in the
+/// note pitch
 /// @return The MIDI note assigned to the string
 wxByte Tuning::GetNote(wxUint32 string, bool includeMusicNotationOffset) const
 {
@@ -422,16 +435,19 @@ bool Tuning::IsOpenStringNote(wxByte note) const
     return (false);
 }
 
-/// Gets the MIDI note range for the tuning (lowest possible playable note + highest possible playable note)
+/// Gets the MIDI note range for the tuning (lowest possible playable note +
+/// highest possible playable note)
 /// @param capo Capo value to apply to the tuning
-/// @return .cx - contains the lowest possible note, .cy - contains the highest possible note
+/// @return .cx - contains the lowest possible note, .cy - contains the highest
+/// possible note
 wxSize Tuning::GetNoteRange(wxByte capo) const
 {
     //------Last Checked------//
     // - Apr 22, 2007
     wxSize returnValue(notUsed, 0);
 
-    // Loop through each tuning note and get the minimum and maximum notes for the string
+    // Loop through each tuning note and get the minimum and maximum notes for
+    // the string
     size_t i = 0;
     size_t stringCount = GetStringCount();
     for (; i < stringCount; i++)
@@ -446,7 +462,8 @@ wxSize Tuning::GetNoteRange(wxByte capo) const
 }
 
 /// Sets the tuning notes for the tuning
-/// @param note1 MIDI note value for the 1st string in the tuning (for standard guitar tuning, this is the high E string)
+/// @param note1 MIDI note value for the 1st string in the tuning (for standard
+/// guitar tuning, this is the high E string)
 /// @param note2 MIDI note value for the 2nd string in the tuning
 /// @param note3 MIDI note value for the 3rd string in the tuning
 /// @param note4 MIDI note value for the 4th string in the tuning
@@ -454,7 +471,8 @@ wxSize Tuning::GetNoteRange(wxByte capo) const
 /// @param note6 MIDI note value for the 6th string in the tuning
 /// @param note7 MIDI note value for the 7th string in the tuning
 /// @return True if the tuning notes were set, false if not
-bool Tuning::AddTuningNotes(wxByte note1, wxByte note2, wxByte note3, wxByte note4, wxByte note5, wxByte note6, wxByte note7)
+bool Tuning::AddTuningNotes(wxByte note1, wxByte note2, wxByte note3,
+    wxByte note4, wxByte note5, wxByte note6, wxByte note7)
 {
     //------Last Checked------//
     // - Dec 14, 2004    
@@ -500,7 +518,8 @@ void Tuning::DeleteNoteArrayContents()
 }
 
 // Operations
-/// Gets a full string representation of the tuning from low to high (i.e. E A D G B E)
+/// Gets a full string representation of the tuning from low to high
+/// (i.e. E A D G B E)
 /// @return A full string representation of the tuning from low to high
 wxString Tuning::GetSpelling() const
 {

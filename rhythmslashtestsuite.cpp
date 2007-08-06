@@ -232,36 +232,66 @@ bool RhythmSlashTestSuite::TestCaseOperator()
         RhythmSlash rhythmSlash31(12,4,2);
         rhythmSlash31.SetSingleNoteData(4,5);
                 
-        TEST(wxT("Operator== - rhythmSlash == rhythmSlash"), (rhythmSlash == rhythmSlash2));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash"), !(rhythmSlash == rhythmSlash3));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 2"), !(rhythmSlash == rhythmSlash4));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 3"), !(rhythmSlash == rhythmSlash5));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 4"), !(rhythmSlash == rhythmSlash6));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 5"), !(rhythmSlash == rhythmSlash7));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 6"), !(rhythmSlash == rhythmSlash8));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 7"), !(rhythmSlash == rhythmSlash9));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 8"), !(rhythmSlash == rhythmSlash10));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 9"), !(rhythmSlash == rhythmSlash11));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 10"), !(rhythmSlash == rhythmSlash12));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 11"), !(rhythmSlash == rhythmSlash13));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 12"), !(rhythmSlash == rhythmSlash14));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 13"), !(rhythmSlash == rhythmSlash15));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 14"), !(rhythmSlash == rhythmSlash16));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 15"), !(rhythmSlash == rhythmSlash17));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 16"), !(rhythmSlash == rhythmSlash18));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 17"), !(rhythmSlash == rhythmSlash19));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 18"), !(rhythmSlash == rhythmSlash20));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 19"), !(rhythmSlash == rhythmSlash21));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 20"), !(rhythmSlash == rhythmSlash22));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 21"), !(rhythmSlash == rhythmSlash23));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 22"), !(rhythmSlash == rhythmSlash24));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 23"), !(rhythmSlash == rhythmSlash25));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 24"), !(rhythmSlash == rhythmSlash26));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 25"), !(rhythmSlash == rhythmSlash27));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 26"), !(rhythmSlash == rhythmSlash28));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 27"), !(rhythmSlash == rhythmSlash29));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 28"), !(rhythmSlash == rhythmSlash30));
-        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 29"), !(rhythmSlash == rhythmSlash31));
+        TEST(wxT("Operator== - rhythmSlash == rhythmSlash"),
+            (rhythmSlash == rhythmSlash2));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash"),
+            !(rhythmSlash == rhythmSlash3));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 2"),
+            !(rhythmSlash == rhythmSlash4));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 3"),
+            !(rhythmSlash == rhythmSlash5));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 4"),
+            !(rhythmSlash == rhythmSlash6));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 5"),
+            !(rhythmSlash == rhythmSlash7));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 6"),
+            !(rhythmSlash == rhythmSlash8));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 7"),
+            !(rhythmSlash == rhythmSlash9));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 8"),
+            !(rhythmSlash == rhythmSlash10));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 9"),
+            !(rhythmSlash == rhythmSlash11));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 10"),
+            !(rhythmSlash == rhythmSlash12));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 11"),
+            !(rhythmSlash == rhythmSlash13));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 12"),
+            !(rhythmSlash == rhythmSlash14));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 13"),
+            !(rhythmSlash == rhythmSlash15));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 14"),
+            !(rhythmSlash == rhythmSlash16));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 15"),
+            !(rhythmSlash == rhythmSlash17));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 16"),
+            !(rhythmSlash == rhythmSlash18));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 17"),
+            !(rhythmSlash == rhythmSlash19));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 18"),
+            !(rhythmSlash == rhythmSlash20));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 19"),
+            !(rhythmSlash == rhythmSlash21));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 20"),
+            !(rhythmSlash == rhythmSlash22));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 21"),
+            !(rhythmSlash == rhythmSlash23));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 22"),
+            !(rhythmSlash == rhythmSlash24));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 23"),
+            !(rhythmSlash == rhythmSlash25));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 24"),
+            !(rhythmSlash == rhythmSlash26));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 25"),
+            !(rhythmSlash == rhythmSlash27));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 26"),
+            !(rhythmSlash == rhythmSlash28));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 27"),
+            !(rhythmSlash == rhythmSlash29));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 28"),
+            !(rhythmSlash == rhythmSlash30));
+        TEST(wxT("Operator== - rhythmSlash != rhythmSlash 29"),
+            !(rhythmSlash == rhythmSlash31));
     }
     
     // Inequality Operator
@@ -324,36 +354,66 @@ bool RhythmSlashTestSuite::TestCaseOperator()
         RhythmSlash rhythmSlash31(12,4,2);
         rhythmSlash31.SetSingleNoteData(4,5);
                 
-        TEST(wxT("Operator!= - rhythmSlash == rhythmSlash"), !(rhythmSlash != rhythmSlash2));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash"), (rhythmSlash != rhythmSlash3));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 2"), (rhythmSlash != rhythmSlash4));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 3"), (rhythmSlash != rhythmSlash5));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 4"), (rhythmSlash != rhythmSlash6));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 5"), (rhythmSlash != rhythmSlash7));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 6"), (rhythmSlash != rhythmSlash8));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 7"), (rhythmSlash != rhythmSlash9));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 8"), (rhythmSlash != rhythmSlash10));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 9"), (rhythmSlash != rhythmSlash11));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 10"), (rhythmSlash != rhythmSlash12));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 11"), (rhythmSlash != rhythmSlash13));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 12"), (rhythmSlash != rhythmSlash14));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 13"), (rhythmSlash != rhythmSlash15));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 14"), (rhythmSlash != rhythmSlash16));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 15"), (rhythmSlash != rhythmSlash17));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 16"), (rhythmSlash != rhythmSlash18));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 17"), (rhythmSlash != rhythmSlash19));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 18"), (rhythmSlash != rhythmSlash20));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 19"), (rhythmSlash != rhythmSlash21));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 20"), (rhythmSlash != rhythmSlash22));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 21"), (rhythmSlash != rhythmSlash23));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 22"), (rhythmSlash != rhythmSlash24));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 23"), (rhythmSlash != rhythmSlash25));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 24"), (rhythmSlash != rhythmSlash26));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 25"), (rhythmSlash != rhythmSlash27));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 26"), (rhythmSlash != rhythmSlash28));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 27"), (rhythmSlash != rhythmSlash29));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 28"), (rhythmSlash != rhythmSlash30));
-        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 29"), (rhythmSlash != rhythmSlash31));
+        TEST(wxT("Operator!= - rhythmSlash == rhythmSlash"),
+            !(rhythmSlash != rhythmSlash2));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash"),
+            (rhythmSlash != rhythmSlash3));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 2"),
+            (rhythmSlash != rhythmSlash4));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 3"),
+            (rhythmSlash != rhythmSlash5));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 4"),
+            (rhythmSlash != rhythmSlash6));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 5"),
+            (rhythmSlash != rhythmSlash7));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 6"),
+            (rhythmSlash != rhythmSlash8));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 7"),
+            (rhythmSlash != rhythmSlash9));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 8"),
+            (rhythmSlash != rhythmSlash10));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 9"),
+            (rhythmSlash != rhythmSlash11));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 10"),
+            (rhythmSlash != rhythmSlash12));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 11"),
+            (rhythmSlash != rhythmSlash13));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 12"),
+            (rhythmSlash != rhythmSlash14));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 13"),
+            (rhythmSlash != rhythmSlash15));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 14"),
+            (rhythmSlash != rhythmSlash16));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 15"),
+            (rhythmSlash != rhythmSlash17));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 16"),
+            (rhythmSlash != rhythmSlash18));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 17"),
+            (rhythmSlash != rhythmSlash19));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 18"), 
+            (rhythmSlash != rhythmSlash20));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 19"),
+            (rhythmSlash != rhythmSlash21));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 20"),
+            (rhythmSlash != rhythmSlash22));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 21"),
+            (rhythmSlash != rhythmSlash23));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 22"),
+            (rhythmSlash != rhythmSlash24));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 23"), 
+            (rhythmSlash != rhythmSlash25));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 24"),
+            (rhythmSlash != rhythmSlash26));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 25"),
+            (rhythmSlash != rhythmSlash27));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 26"),
+            (rhythmSlash != rhythmSlash28));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 27"),
+            (rhythmSlash != rhythmSlash29));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 28"),
+            (rhythmSlash != rhythmSlash30));
+        TEST(wxT("Operator!= - rhythmSlash != rhythmSlash 29"),
+            (rhythmSlash != rhythmSlash31));
     }
     
     return (true);
@@ -381,7 +441,8 @@ bool RhythmSlashTestSuite::TestCaseSerialize()
     
         // Read test data back from stream
         RhythmSlash rhythmSlashIn;
-        rhythmSlashIn.Deserialize(streamIn, PowerTabFileHeader::FILEVERSION_CURRENT);
+        rhythmSlashIn.Deserialize(streamIn,
+            PowerTabFileHeader::FILEVERSION_CURRENT);
 
         // Validate the data
         ok = ((rhythmSlashIn == rhythmSlashOut)
@@ -406,7 +467,8 @@ bool RhythmSlashTestSuite::TestCasePosition()
         for (; i <= (RhythmSlash::MAX_POSITION + 1); i++)
         {
             TEST(wxString::Format(wxT("IsValidPosition - %d"), i),
-                (RhythmSlash::IsValidPosition(i) == (i <= RhythmSlash::MAX_POSITION))
+                (RhythmSlash::IsValidPosition(i) == 
+                (i <= RhythmSlash::MAX_POSITION))
             );
         }
     }
@@ -418,8 +480,10 @@ bool RhythmSlashTestSuite::TestCasePosition()
         for (; i <= (RhythmSlash::MAX_POSITION + 1); i++)
         {
             TEST(wxT("SetPosition - %d"), 
-                (rhythmSlash.SetPosition(i) == (i <= RhythmSlash::MAX_POSITION)) &&
-                ((i > RhythmSlash::MAX_POSITION) ? 1 : (rhythmSlash.GetPosition() == i))
+                (rhythmSlash.SetPosition(i) ==
+                (i <= RhythmSlash::MAX_POSITION)) &&
+                ((i > RhythmSlash::MAX_POSITION) ? 1 :
+                (rhythmSlash.GetPosition() == i))
             );
         }
     }
@@ -435,7 +499,8 @@ bool RhythmSlashTestSuite::TestCaseDurationType()
     
     // TEST CASE: IsValidDurationType
     {
-        TEST(wxT("IsValidDurationType - 0"), !RhythmSlash::IsValidDurationType(0));
+        TEST(wxT("IsValidDurationType - 0"),
+            !RhythmSlash::IsValidDurationType(0));
         
         wxByte i = 1;
         for (; i <= 32; i = i * 2)
@@ -469,12 +534,14 @@ bool RhythmSlashTestSuite::TestCaseBeaming()
     
     // TEST CASE: IsValidPreviousBeamDurationType
     {
-        TEST(wxT("IsValidPreviousBeamDurationType - 0"), RhythmSlash::IsValidPreviousBeamDurationType(0));
+        TEST(wxT("IsValidPreviousBeamDurationType - 0"),
+            RhythmSlash::IsValidPreviousBeamDurationType(0));
         
         wxByte i = 1;
         for (; i <= 32; i = i * 2)
             TEST(wxString::Format(wxT("IsValidPreviousBeamDurationType - %d"), i),
-                (RhythmSlash::IsValidPreviousBeamDurationType(i) == ((i == 0) || (i == 8) || (i == 16)))
+                (RhythmSlash::IsValidPreviousBeamDurationType(i) ==
+                ((i == 0) || (i == 8) || (i == 16)))
             );
     }
     
@@ -482,35 +549,46 @@ bool RhythmSlashTestSuite::TestCaseBeaming()
     {
         RhythmSlash rhythmSlash;
         
-        TEST(wxT("SetPreviousBeamDurationType - 0"), rhythmSlash.SetPreviousBeamDurationType(0));
+        TEST(wxT("SetPreviousBeamDurationType - 0"),
+            rhythmSlash.SetPreviousBeamDurationType(0));
         
         wxByte i = 1;
         for (; i <= 32; i = i * 2)
             TEST(wxString::Format(wxT("SetPreviousBeamDurationType - %d"), i),
-                (rhythmSlash.SetPreviousBeamDurationType(i) == ((i == 0) || (i == 8) || (i == 16))) &&
-                (!((i == 0) || (i == 8) || (i == 16)) ? 1 : (rhythmSlash.GetPreviousBeamDurationType() == i))
+                (rhythmSlash.SetPreviousBeamDurationType(i) == 
+                ((i == 0) || (i == 8) || (i == 16))) &&
+                (!((i == 0) || (i == 8) || (i == 16)) ? 1 :
+                (rhythmSlash.GetPreviousBeamDurationType() == i))
             );
     }
     
     // TEST CASE: SetBeamStart
     {
         RhythmSlash rhythmSlash;
-        TEST(wxT("SetBeamStart - true"), (rhythmSlash.SetBeamStart() && rhythmSlash.IsBeamStart()));
-        TEST(wxT("SetBeamStart - false"), (rhythmSlash.SetBeamStart(false) && !rhythmSlash.IsBeamStart()));
+        TEST(wxT("SetBeamStart - true"),
+            (rhythmSlash.SetBeamStart() && rhythmSlash.IsBeamStart()));
+        TEST(wxT("SetBeamStart - false"),
+            (rhythmSlash.SetBeamStart(false) && !rhythmSlash.IsBeamStart()));
     }
     
     // TEST CASE: SetFractionalBeam
     {
         RhythmSlash rhythmSlash;
-        TEST(wxT("SetFractionalBeam - true"), (rhythmSlash.SetFractionalBeam() && rhythmSlash.HasFractionalBeam()));
-        TEST(wxT("SetFractionalBeam - false"), (rhythmSlash.SetFractionalBeam(false) && !rhythmSlash.HasFractionalBeam()));
+        TEST(wxT("SetFractionalBeam - true"),
+            (rhythmSlash.SetFractionalBeam() &&
+            rhythmSlash.HasFractionalBeam()));
+        TEST(wxT("SetFractionalBeam - false"),
+            (rhythmSlash.SetFractionalBeam(false) &&
+            !rhythmSlash.HasFractionalBeam()));
     }
     
     // TEST CASE: SetBeamEnd
     {
         RhythmSlash rhythmSlash;
-        TEST(wxT("SetBeamEnd - true"), (rhythmSlash.SetBeamEnd() && rhythmSlash.IsBeamEnd()));
-        TEST(wxT("SetBeamEnd - false"), (rhythmSlash.SetBeamEnd(false) && !rhythmSlash.IsBeamEnd()));
+        TEST(wxT("SetBeamEnd - true"), 
+            (rhythmSlash.SetBeamEnd() && rhythmSlash.IsBeamEnd()));
+        TEST(wxT("SetBeamEnd - false"), 
+            (rhythmSlash.SetBeamEnd(false) && !rhythmSlash.IsBeamEnd()));
     }
     
     // TEST CASE: ClearBeam
@@ -562,19 +640,25 @@ bool RhythmSlashTestSuite::TestCaseTriplet()
         testValues[3] = (RhythmSlash::tripletStart | RhythmSlash::tripletMiddle);
         testValues[4] = (RhythmSlash::tripletStart | RhythmSlash::tripletEnd);
         testValues[5] = (RhythmSlash::tripletMiddle | RhythmSlash::tripletEnd);
-        testValues[6] = (RhythmSlash::tripletStart | RhythmSlash::tripletMiddle | RhythmSlash::tripletEnd);
+        testValues[6] = (RhythmSlash::tripletStart | RhythmSlash::tripletMiddle |
+            RhythmSlash::tripletEnd);
         testValues[7] = 0;
         testValues[8] = (RhythmSlash::tripletStart + 1);
         testValues[9] = (RhythmSlash::tripletMiddle + 1);
         testValues[10] = (RhythmSlash::tripletEnd + 1);
-        testValues[11] = (RhythmSlash::tripletStart | RhythmSlash::tripletMiddle + 1);
-        testValues[12] = (RhythmSlash::tripletStart | RhythmSlash::tripletEnd + 1);
-        testValues[13] = (RhythmSlash::tripletMiddle | RhythmSlash::tripletEnd + 1);
-        testValues[14] = (RhythmSlash::tripletStart | RhythmSlash::tripletMiddle | RhythmSlash::tripletEnd + 1);
+        testValues[11] = (RhythmSlash::tripletStart |
+            RhythmSlash::tripletMiddle + 1);
+        testValues[12] = (RhythmSlash::tripletStart |
+            RhythmSlash::tripletEnd + 1);
+        testValues[13] = (RhythmSlash::tripletMiddle |
+            RhythmSlash::tripletEnd + 1);
+        testValues[14] = (RhythmSlash::tripletStart |
+            RhythmSlash::tripletMiddle | RhythmSlash::tripletEnd + 1);
 
         wxUint32 i = 0;
         for (; i < testValueCount; i++)
-            TEST(wxString::Format(wxT("IsValidTripletFlag - %d"), testValues[i]), RhythmSlash::IsValidTripletFlag(testValues[i]) == (i < 7));
+            TEST(wxString::Format(wxT("IsValidTripletFlag - %d"), testValues[i]),
+            RhythmSlash::IsValidTripletFlag(testValues[i]) == (i < 7));
     }
     
     // TEST CASE: SetTripletFlag
@@ -631,22 +715,30 @@ bool RhythmSlashTestSuite::TestCaseTriplet()
     // TEST CASE: SetTripletStart
     {
         RhythmSlash rhythmSlash;
-        TEST(wxT("SetTripletStart - true"), (rhythmSlash.SetTripletStart() && rhythmSlash.IsTripletStart()));
-        TEST(wxT("SetTripletStart - false"), (rhythmSlash.SetTripletStart(false) && !rhythmSlash.IsTripletStart()));
+        TEST(wxT("SetTripletStart - true"),
+            (rhythmSlash.SetTripletStart() && rhythmSlash.IsTripletStart()));
+        TEST(wxT("SetTripletStart - false"),
+            (rhythmSlash.SetTripletStart(false) &&
+            !rhythmSlash.IsTripletStart()));
     }
     
     // TEST CASE: SetTripletMiddle
     {
         RhythmSlash rhythmSlash;
-        TEST(wxT("SetTripletMiddle - true"), (rhythmSlash.SetTripletMiddle() && rhythmSlash.IsTripletMiddle()));
-        TEST(wxT("SetTripletMiddle - false"), (rhythmSlash.SetTripletMiddle(false) && !rhythmSlash.IsTripletMiddle()));
+        TEST(wxT("SetTripletMiddle - true"),
+            (rhythmSlash.SetTripletMiddle() && rhythmSlash.IsTripletMiddle()));
+        TEST(wxT("SetTripletMiddle - false"),
+            (rhythmSlash.SetTripletMiddle(false) &&
+            !rhythmSlash.IsTripletMiddle()));
     }
     
     // TEST CASE: SetTripletEnd
     {
         RhythmSlash rhythmSlash;
-        TEST(wxT("SetTripletEnd - true"), (rhythmSlash.SetTripletEnd() && rhythmSlash.IsTripletEnd()));
-        TEST(wxT("SetTripletEnd - false"), (rhythmSlash.SetTripletEnd(false) && !rhythmSlash.IsTripletEnd()));
+        TEST(wxT("SetTripletEnd - true"),
+            (rhythmSlash.SetTripletEnd() && rhythmSlash.IsTripletEnd()));
+        TEST(wxT("SetTripletEnd - false"),
+            (rhythmSlash.SetTripletEnd(false) && !rhythmSlash.IsTripletEnd()));
     }
     
     // TEST CASE: ClearTriplet
@@ -685,15 +777,20 @@ bool RhythmSlashTestSuite::TestCaseDotted()
     // TEST CASE: Dotted
     {
         RhythmSlash rhythmSlash;
-        TEST(wxT("SetDotted - true"), (rhythmSlash.SetDotted() && rhythmSlash.IsDotted()));
-        TEST(wxT("SetDotted - false"), (rhythmSlash.SetDotted(false) && !rhythmSlash.IsDotted()));
+        TEST(wxT("SetDotted - true"),
+            (rhythmSlash.SetDotted() && rhythmSlash.IsDotted()));
+        TEST(wxT("SetDotted - false"),
+            (rhythmSlash.SetDotted(false) && !rhythmSlash.IsDotted()));
     }
     
     // TEST CASE: Double Dotted
     {
         RhythmSlash rhythmSlash;
-        TEST(wxT("SetDoubleDotted - true"), (rhythmSlash.SetDoubleDotted() && rhythmSlash.IsDoubleDotted()));
-        TEST(wxT("SetDoubleDotted - false"), (rhythmSlash.SetDoubleDotted(false) && !rhythmSlash.IsDoubleDotted()));
+        TEST(wxT("SetDoubleDotted - true"),
+            (rhythmSlash.SetDoubleDotted() && rhythmSlash.IsDoubleDotted()));
+        TEST(wxT("SetDoubleDotted - false"),
+            (rhythmSlash.SetDoubleDotted(false) &&
+            !rhythmSlash.IsDoubleDotted()));
     }
     
     return (true);
@@ -707,8 +804,10 @@ bool RhythmSlashTestSuite::TestCaseRest()
     // - Jan 7, 2005
     
     RhythmSlash rhythmSlash;
-    TEST(wxT("SetRest - true"), (rhythmSlash.SetRest() && rhythmSlash.IsRest()));
-    TEST(wxT("SetRest - false"), (rhythmSlash.SetRest(false) && !rhythmSlash.IsRest()));
+    TEST(wxT("SetRest - true"),
+        (rhythmSlash.SetRest() && rhythmSlash.IsRest()));
+    TEST(wxT("SetRest - false"),
+        (rhythmSlash.SetRest(false) && !rhythmSlash.IsRest()));
     
     return (true);
 }
@@ -721,8 +820,10 @@ bool RhythmSlashTestSuite::TestCaseTied()
     // - Jan 7, 2005
     
     RhythmSlash rhythmSlash;
-    TEST(wxT("SetTied - true"), (rhythmSlash.SetTied() && rhythmSlash.IsTied()));
-    TEST(wxT("SetTied - false"), (rhythmSlash.SetTied(false) && !rhythmSlash.IsTied()));
+    TEST(wxT("SetTied - true"),
+        (rhythmSlash.SetTied() && rhythmSlash.IsTied()));
+    TEST(wxT("SetTied - false"),
+        (rhythmSlash.SetTied(false) && !rhythmSlash.IsTied()));
     
     return (true);
 }
@@ -735,8 +836,10 @@ bool RhythmSlashTestSuite::TestCaseMuted()
     // - Jan 7, 2005
     
     RhythmSlash rhythmSlash;
-    TEST(wxT("SetMuted - true"), (rhythmSlash.SetMuted() && rhythmSlash.IsMuted()));
-    TEST(wxT("SetMuted - false"), (rhythmSlash.SetMuted(false) && !rhythmSlash.IsMuted()));
+    TEST(wxT("SetMuted - true"), 
+        (rhythmSlash.SetMuted() && rhythmSlash.IsMuted()));
+    TEST(wxT("SetMuted - false"),
+        (rhythmSlash.SetMuted(false) && !rhythmSlash.IsMuted()));
     
     return (true);
 }
@@ -749,8 +852,10 @@ bool RhythmSlashTestSuite::TestCaseStaccato()
     // - Jan 7, 2005
   
     RhythmSlash rhythmSlash;
-    TEST(wxT("SetStaccato - true"), (rhythmSlash.SetStaccato() && rhythmSlash.IsStaccato()));
-    TEST(wxT("SetStaccato - false"), (rhythmSlash.SetStaccato(false) && !rhythmSlash.IsStaccato()));
+    TEST(wxT("SetStaccato - true"), 
+        (rhythmSlash.SetStaccato() && rhythmSlash.IsStaccato()));
+    TEST(wxT("SetStaccato - false"), 
+        (rhythmSlash.SetStaccato(false) && !rhythmSlash.IsStaccato()));
     
     return (true);
 }
@@ -765,15 +870,22 @@ bool RhythmSlashTestSuite::TestCasePickStroke()
     // TEST CASE: SetPickStrokeUp
     {
         RhythmSlash rhythmSlash;
-        TEST(wxT("SetPickStrokeUp - true"), (rhythmSlash.SetPickStrokeUp() && rhythmSlash.HasPickStrokeUp()));
-        TEST(wxT("SetPickStrokeUp - false"), (rhythmSlash.SetPickStrokeUp(false) && !rhythmSlash.HasPickStrokeUp()));
+        TEST(wxT("SetPickStrokeUp - true"),
+            (rhythmSlash.SetPickStrokeUp() && rhythmSlash.HasPickStrokeUp()));
+        TEST(wxT("SetPickStrokeUp - false"), 
+            (rhythmSlash.SetPickStrokeUp(false) && 
+            !rhythmSlash.HasPickStrokeUp()));
     }
     
     // TEST CASE: SetPickStrokeDown
     {
         RhythmSlash rhythmSlash;
-        TEST(wxT("SetPickStrokeDown - true"), (rhythmSlash.SetPickStrokeDown() && rhythmSlash.HasPickStrokeDown()));
-        TEST(wxT("SetPickStrokeDown - false"), (rhythmSlash.SetPickStrokeDown(false) && !rhythmSlash.HasPickStrokeDown()));
+        TEST(wxT("SetPickStrokeDown - true"),
+            (rhythmSlash.SetPickStrokeDown() &&
+            rhythmSlash.HasPickStrokeDown()));
+        TEST(wxT("SetPickStrokeDown - false"),
+            (rhythmSlash.SetPickStrokeDown(false) &&
+            !rhythmSlash.HasPickStrokeDown()));
     }
     
     return (true);
@@ -789,15 +901,20 @@ bool RhythmSlashTestSuite::TestCaseArpeggio()
     // TEST CASE: SetArpeggioDown
     {
         RhythmSlash rhythmSlash;
-        TEST(wxT("SetArpeggioDown - true"), (rhythmSlash.SetArpeggioDown() && rhythmSlash.HasArpeggioDown()));
-        TEST(wxT("SetArpeggioDown - false"), (rhythmSlash.SetArpeggioDown(false) && !rhythmSlash.HasArpeggioDown()));
+        TEST(wxT("SetArpeggioDown - true"),
+            (rhythmSlash.SetArpeggioDown() && rhythmSlash.HasArpeggioDown()));
+        TEST(wxT("SetArpeggioDown - false"), 
+            (rhythmSlash.SetArpeggioDown(false) &&
+            !rhythmSlash.HasArpeggioDown()));
     }
     
     // TEST CASE: SetArpeggioUp
     {
         RhythmSlash rhythmSlash;
-        TEST(wxT("SetArpeggioUp - true"), (rhythmSlash.SetArpeggioUp() && rhythmSlash.HasArpeggioUp()));
-        TEST(wxT("SetArpeggioUp - false"), (rhythmSlash.SetArpeggioUp(false) && !rhythmSlash.HasArpeggioUp()));
+        TEST(wxT("SetArpeggioUp - true"),
+            (rhythmSlash.SetArpeggioUp() && rhythmSlash.HasArpeggioUp()));
+        TEST(wxT("SetArpeggioUp - false"),
+            (rhythmSlash.SetArpeggioUp(false) && !rhythmSlash.HasArpeggioUp()));
     }
     
     return (true);
@@ -813,15 +930,23 @@ bool RhythmSlashTestSuite::TestCaseTripletFeel()
     // TEST CASE: SetTripletFeel1st
     {
         RhythmSlash rhythmSlash;
-        TEST(wxT("SetTripletFeel1st - true"), (rhythmSlash.SetTripletFeel1st() && rhythmSlash.IsTripletFeel1st()));
-        TEST(wxT("SetTripletFeel1st - false"), (rhythmSlash.SetTripletFeel1st(false) && !rhythmSlash.IsTripletFeel1st()));
+        TEST(wxT("SetTripletFeel1st - true"),
+            (rhythmSlash.SetTripletFeel1st() &&
+            rhythmSlash.IsTripletFeel1st()));
+        TEST(wxT("SetTripletFeel1st - false"), 
+            (rhythmSlash.SetTripletFeel1st(false) && 
+            !rhythmSlash.IsTripletFeel1st()));
     }
     
     // TEST CASE: SetTripletFeel2nd
     {
         RhythmSlash rhythmSlash;
-        TEST(wxT("SetTripletFeel2nd - true"), (rhythmSlash.SetTripletFeel2nd() && rhythmSlash.IsTripletFeel2nd()));
-        TEST(wxT("SetTripletFeel2nd - false"), (rhythmSlash.SetTripletFeel2nd(false) && !rhythmSlash.IsTripletFeel2nd()));
+        TEST(wxT("SetTripletFeel2nd - true"),
+            (rhythmSlash.SetTripletFeel2nd() &&
+            rhythmSlash.IsTripletFeel2nd()));
+        TEST(wxT("SetTripletFeel2nd - false"),
+            (rhythmSlash.SetTripletFeel2nd(false) &&
+            !rhythmSlash.IsTripletFeel2nd()));
     }
     
     return (true);
@@ -837,15 +962,19 @@ bool RhythmSlashTestSuite::TestCaseAccent()
     // TEST CASE: SetMarcato
     {
         RhythmSlash rhythmSlash;    
-        TEST(wxT("SetMarcato - true"), (rhythmSlash.SetMarcato() && rhythmSlash.HasMarcato()));
-        TEST(wxT("SetMarcato - false"), (rhythmSlash.SetMarcato(false) && !rhythmSlash.HasMarcato()));
+        TEST(wxT("SetMarcato - true"),
+            (rhythmSlash.SetMarcato() && rhythmSlash.HasMarcato()));
+        TEST(wxT("SetMarcato - false"),
+            (rhythmSlash.SetMarcato(false) && !rhythmSlash.HasMarcato()));
     }
     
     // TEST CASE: SetSforzando
     {
         RhythmSlash rhythmSlash;
-        TEST(wxT("SetSforzando - true"), (rhythmSlash.SetSforzando() && rhythmSlash.HasSforzando()));
-        TEST(wxT("SetSforzando - false"), (rhythmSlash.SetSforzando(false) && !rhythmSlash.HasSforzando()));
+        TEST(wxT("SetSforzando - true"), 
+            (rhythmSlash.SetSforzando() && rhythmSlash.HasSforzando()));
+        TEST(wxT("SetSforzando - false"),
+            (rhythmSlash.SetSforzando(false) && !rhythmSlash.HasSforzando()));
     }
     
     return (true);
@@ -861,15 +990,23 @@ bool RhythmSlashTestSuite::TestCaseSlideInto()
     // TEST CASE: SetSlideIntoFromAbove
     {
         RhythmSlash rhythmSlash;   
-        TEST(wxT("SetSlideIntoFromAbove - true"), (rhythmSlash.SetSlideIntoFromAbove() && rhythmSlash.HasSlideIntoFromAbove()));
-        TEST(wxT("SetSlideIntoFromAbove - false"), (rhythmSlash.SetSlideIntoFromAbove(false) && !rhythmSlash.HasSlideIntoFromAbove()));
+        TEST(wxT("SetSlideIntoFromAbove - true"), 
+            (rhythmSlash.SetSlideIntoFromAbove() && 
+            rhythmSlash.HasSlideIntoFromAbove()));
+        TEST(wxT("SetSlideIntoFromAbove - false"),
+            (rhythmSlash.SetSlideIntoFromAbove(false) && 
+            !rhythmSlash.HasSlideIntoFromAbove()));
     }
     
     // TEST CASE: SetSlideIntoFromBelow
     {
         RhythmSlash rhythmSlash;
-        TEST(wxT("SetSlideIntoFromBelow - true"), (rhythmSlash.SetSlideIntoFromBelow() && rhythmSlash.HasSlideIntoFromBelow()));
-        TEST(wxT("SetSlideIntoFromBelow - false"), (rhythmSlash.SetSlideIntoFromBelow(false) && !rhythmSlash.HasSlideIntoFromBelow()));
+        TEST(wxT("SetSlideIntoFromBelow - true"), 
+            (rhythmSlash.SetSlideIntoFromBelow() &&
+            rhythmSlash.HasSlideIntoFromBelow()));
+        TEST(wxT("SetSlideIntoFromBelow - false"), 
+            (rhythmSlash.SetSlideIntoFromBelow(false) &&
+            !rhythmSlash.HasSlideIntoFromBelow()));
     }
     
     return (true);
@@ -885,15 +1022,23 @@ bool RhythmSlashTestSuite::TestCaseSlideOutOf()
     // TEST CASE: SetSlideOutOfDownwards
     {
         RhythmSlash rhythmSlash;
-        TEST(wxT("SetSlideOutOfDownwards - true"), (rhythmSlash.SetSlideOutOfDownwards() && rhythmSlash.HasSlideOutOfDownwards()));
-        TEST(wxT("SetSlideOutOfDownwards - false"), (rhythmSlash.SetSlideOutOfDownwards(false) && !rhythmSlash.HasSlideOutOfDownwards()));
+        TEST(wxT("SetSlideOutOfDownwards - true"),
+            (rhythmSlash.SetSlideOutOfDownwards() &&
+            rhythmSlash.HasSlideOutOfDownwards()));
+        TEST(wxT("SetSlideOutOfDownwards - false"),
+            (rhythmSlash.SetSlideOutOfDownwards(false) &&
+            !rhythmSlash.HasSlideOutOfDownwards()));
     }
     
     // TEST CASE: SetSlideOutOfUpwards
     {
         RhythmSlash rhythmSlash;
-        TEST(wxT("SetSlideOutOfUpwards - true"), (rhythmSlash.SetSlideOutOfUpwards() && rhythmSlash.HasSlideOutOfUpwards()));
-        TEST(wxT("SetSlideOutOfUpwards - false"), (rhythmSlash.SetSlideOutOfUpwards(false) && !rhythmSlash.HasSlideOutOfUpwards()));
+        TEST(wxT("SetSlideOutOfUpwards - true"),
+            (rhythmSlash.SetSlideOutOfUpwards() &&
+            rhythmSlash.HasSlideOutOfUpwards()));
+        TEST(wxT("SetSlideOutOfUpwards - false"),
+            (rhythmSlash.SetSlideOutOfUpwards(false) &&
+            !rhythmSlash.HasSlideOutOfUpwards()));
     }
     
     return (true);
@@ -911,7 +1056,9 @@ bool RhythmSlashTestSuite::TestCaseSingleNoteData()
         wxByte i = RhythmSlash::MIN_SINGLE_NOTE_STRING_NUMBER - 1;
         for (; i < (RhythmSlash::MIN_SINGLE_NOTE_STRING_NUMBER + 1); i++)
             TEST(wxString::Format(wxT("IsValidStringNumber - %d"), i),
-                (RhythmSlash::IsValidStringNumber(i) == ((i >= RhythmSlash::MIN_SINGLE_NOTE_STRING_NUMBER) && (i <= RhythmSlash::MAX_SINGLE_NOTE_STRING_NUMBER)))
+                (RhythmSlash::IsValidStringNumber(i) ==
+                ((i >= RhythmSlash::MIN_SINGLE_NOTE_STRING_NUMBER) &&
+                (i <= RhythmSlash::MAX_SINGLE_NOTE_STRING_NUMBER)))
             );
     }
     
@@ -920,21 +1067,26 @@ bool RhythmSlashTestSuite::TestCaseSingleNoteData()
         wxByte i = RhythmSlash::MIN_SINGLE_NOTE_FRET_NUMBER - 1;
         for (; i < (RhythmSlash::MIN_SINGLE_NOTE_FRET_NUMBER + 1); i++)
             TEST(wxString::Format(wxT("IsValidFretNumber - %d"), i),
-                (RhythmSlash::IsValidFretNumber(i) == ((i >= RhythmSlash::MIN_SINGLE_NOTE_FRET_NUMBER) && (i <= RhythmSlash::MAX_SINGLE_NOTE_FRET_NUMBER)))
+                (RhythmSlash::IsValidFretNumber(i) == 
+                ((i >= RhythmSlash::MIN_SINGLE_NOTE_FRET_NUMBER) &&
+                (i <= RhythmSlash::MAX_SINGLE_NOTE_FRET_NUMBER)))
             );
     }
     
     // TEST CASE: SetSingleNoteData
     {
         RhythmSlash rhythmSlash;
-        TEST(wxT("SetSingleNoteData - invalid string number"), !rhythmSlash.SetSingleNoteData(200, 1));
-        TEST(wxT("SetSingleNoteData - invalid fret number"), !rhythmSlash.SetSingleNoteData(1, 200));
+        TEST(wxT("SetSingleNoteData - invalid string number"), 
+            !rhythmSlash.SetSingleNoteData(200, 1));
+        TEST(wxT("SetSingleNoteData - invalid fret number"), 
+            !rhythmSlash.SetSingleNoteData(1, 200));
         
         bool ok = rhythmSlash.SetSingleNoteData(3,5);
         wxByte stringNumber = 0;
         wxByte fretNumber = 0;
         rhythmSlash.GetSingleNoteData(stringNumber, fretNumber);
-        TEST(wxT("SetSingleNoteData"), ok && (stringNumber == 3) && (fretNumber == 5));
+        TEST(wxT("SetSingleNoteData"), ok && (stringNumber == 3) &&
+            (fretNumber == 5));
     }
     
     // TEST CASE: ClearSingleNoteData

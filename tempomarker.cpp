@@ -41,12 +41,15 @@ TempoMarker::TempoMarker() :
 
 /// Primary Constructor
 /// @param system Zero-based index of the system where the dynamic is anchored
-/// @param position Zero-based index of the position within the system where the dynamic is anchored
+/// @param position Zero-based index of the position within the system where the
+/// dynamic is anchored
 /// @param beatType Beat type (see beatTypes enum for values)
 /// @param beatsPerMinute Beats per minute
 /// @param description Description for the tempo
-/// @param tripletFeelType Triplet feel type to set (see tripletFeelTypes for values)
-TempoMarker::TempoMarker(wxUint32 system, wxUint32 position, wxByte beatType, wxUint32 beatsPerMinute, const wxChar* description, wxByte tripletFeelType) :
+/// @param tripletFeelType Triplet feel type to set (see tripletFeelTypes for
+/// values)
+TempoMarker::TempoMarker(wxUint32 system, wxUint32 position, wxByte beatType,
+    wxUint32 beatsPerMinute, const wxChar* description, wxByte tripletFeelType) :
     m_description(DEFAULT_DESCRIPTION)
 {
     //------Last Checked------//
@@ -65,11 +68,13 @@ TempoMarker::TempoMarker(wxUint32 system, wxUint32 position, wxByte beatType, wx
 
 /// Listesso Constructor
 /// @param system Zero-based index of the system where the dynamic is anchored
-/// @param position Zero-based index of the position within the system where the dynamic is anchored
+/// @param position Zero-based index of the position within the system where the
+/// dynamic is anchored
 /// @param beatType Beat type to set
 /// @param listessoBeatType Listesso beat type to set
 /// @param description Description to set
-TempoMarker::TempoMarker(wxUint32 system, wxUint32 position, wxByte beatType, wxByte listessoBeatType, const wxChar* description) :
+TempoMarker::TempoMarker(wxUint32 system, wxUint32 position, wxByte beatType,
+    wxByte listessoBeatType, const wxChar* description) :
     m_description(DEFAULT_DESCRIPTION)
 {
     //------Last Checked------//
@@ -87,7 +92,8 @@ TempoMarker::TempoMarker(wxUint32 system, wxUint32 position, wxByte beatType, wx
 
 /// Alteration Of Pace Constructor
 /// @param system Zero-based index of the system where the dynamic is anchored
-/// @param position Zero-based index of the position within the system where the dynamic is anchored
+/// @param position Zero-based index of the position within the system where the
+/// dynamic is anchored
 /// @param accelerando True sets an accelerando, false sets a ritardando
 TempoMarker::TempoMarker(wxUint32 system, wxUint32 position, bool accelerando) :
     m_description(DEFAULT_DESCRIPTION)
@@ -184,7 +190,8 @@ bool TempoMarker::DoDeserialize(PowerTabInputStream& stream, wxWord version)
     wxCHECK(stream.CheckState(), false);
         
     // Version 1.0.2 or less
-    if (version == PowerTabFileHeader::FILEVERSION_1_0 || version == PowerTabFileHeader::FILEVERSION_1_0_2)
+    if (version == PowerTabFileHeader::FILEVERSION_1_0 ||
+        version == PowerTabFileHeader::FILEVERSION_1_0_2)
     {
         // Beat types are stored differently now
         wxByte beatType = HIBYTE(HIWORD(m_data));
@@ -244,7 +251,8 @@ wxByte TempoMarker::GetType() const
 /// @param description
 /// @param tripletFeelType
 /// @return True if the data was set, false if not
-bool TempoMarker::SetStandardMarker(wxByte beatType, wxUint32 beatsPerMinute, const wxChar* description, wxByte tripletFeelType)
+bool TempoMarker::SetStandardMarker(wxByte beatType, wxUint32 beatsPerMinute,
+    const wxChar* description, wxByte tripletFeelType)
 {
     //------Last Checked------//
     // - Jan 13, 2005
@@ -268,7 +276,8 @@ bool TempoMarker::SetStandardMarker(wxByte beatType, wxUint32 beatsPerMinute, co
 /// @param listessoBeatType Listesso beat type to set
 /// @param description Description to set
 /// @return True if the data was set, false if not
-bool TempoMarker::SetListesso(wxByte beatType, wxByte listessoBeatType, const wxChar* description)
+bool TempoMarker::SetListesso(wxByte beatType, wxByte listessoBeatType,
+    const wxChar* description)
 {
     //------Last Checked------//
     // - Jan 13, 2005

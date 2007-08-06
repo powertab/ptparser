@@ -27,10 +27,14 @@ AlternateEnding::AlternateEnding()
 }
 
 /// Primary Constructor
-/// @param system Zero-based index of the system where the alternate ending is anchored
-/// @param position Zero-based index of the position within the system where the alternate ending is anchored
-/// @param numbers Bits indicating which numbers are to be set (1st bit = 1., 2nd bit = 2., etc.)
-AlternateEnding::AlternateEnding(wxUint32 system, wxUint32 position, wxWord numbers)
+/// @param system Zero-based index of the system where the alternate ending is
+/// anchored
+/// @param position Zero-based index of the position within the system where the
+/// alternate ending is anchored
+/// @param numbers Bits indicating which numbers are to be set (1st bit = 1.,
+/// 2nd bit = 2., etc.)
+AlternateEnding::AlternateEnding(wxUint32 system, wxUint32 position,
+    wxWord numbers)
 {
     //------Last Checked------//
     // - Dec 4, 2004
@@ -56,7 +60,8 @@ AlternateEnding::~AlternateEnding()
 
 // Operators
 /// Assignment Operator
-const AlternateEnding& AlternateEnding::operator=(const AlternateEnding& alternateEnding)
+const AlternateEnding& AlternateEnding::operator=(
+    const AlternateEnding& alternateEnding)
 {
     //------Last Checked------//
     // - Dec 3, 2004
@@ -107,7 +112,8 @@ bool AlternateEnding::DoDeserialize(PowerTabInputStream& stream, wxWord version)
 
 // Number Functions
 /// Sets the numbers using a bit map
-/// @param numbers Bit map of the numbers to set (bit 0 = 1, bit 1 = 2, bit 2 = 3, etc.)
+/// @param numbers Bit map of the numbers to set (bit 0 = 1, bit 1 = 2,
+/// bit 2 = 3, etc.)
 /// @return True if the numbers were set, false if not
 bool AlternateEnding::SetNumbers(wxWord numbers)
 {
@@ -208,7 +214,8 @@ wxString AlternateEnding::GetText() const
 		if (i == lastNumber)
 			numberSet = false;
 
-		// We've reached the end of a group, if groupStart != -1, then we have a group
+		// We've reached the end of a group, if groupStart != -1, then we have a
+        // group
 		if (!numberSet && groupStart != -1)
 		{
 		    // Add a separator
@@ -219,13 +226,24 @@ wxString AlternateEnding::GetText() const
 
 			// Single number
 			if (groupStart == groupEnd)
-				temp = wxString::Format(wxT("%s."), GetNumberText(groupStart).c_str());
+            {
+				temp = wxString::Format(wxT("%s."),
+                    GetNumberText(groupStart).c_str());
+            }
 			// 2 numbers
 			else if (groupStart == (groupEnd - 1))
-				temp = wxString::Format(wxT("%s., %s."), GetNumberText(groupStart).c_str(), GetNumberText(groupEnd).c_str());
+            {
+				temp = wxString::Format(wxT("%s., %s."),
+                    GetNumberText(groupStart).c_str(),
+                    GetNumberText(groupEnd).c_str());
+            }
 			// > 2 numbers
 			else 
-				temp = wxString::Format(wxT("%s.-%s."), GetNumberText(groupStart).c_str(), GetNumberText(groupEnd).c_str());
+            {
+				temp = wxString::Format(wxT("%s.-%s."),
+                    GetNumberText(groupStart).c_str(),
+                    GetNumberText(groupEnd).c_str());
+            }
 			    
 			returnValue += temp;
                 

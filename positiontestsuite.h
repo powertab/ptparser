@@ -18,16 +18,16 @@ class PositionTestSuite :
 {
     DECLARE_DYNAMIC_CLASS(PositionTestSuite)
     
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     PositionTestSuite();
     ~PositionTestSuite();
 
-    // Overrides    
+// Overrides    
     size_t GetTestCount() const;
     bool RunTestCases();
     
-    // Test Cases
+// Test Cases
 private:
     bool TestCaseConstructor();
     bool TestCaseCreation();

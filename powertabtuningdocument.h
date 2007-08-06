@@ -19,17 +19,18 @@ class PowerTabTuningDocument : public wxDocument
 {
     DECLARE_DYNAMIC_CLASS(PowerTabTuningDocument)
 
+// Member Variables
 protected:
     TuningArray     m_tuningArray;              ///< List of tunings
     
     bool            m_displayErrors;            ///< Determines whether error messages are displayed via message boxes during load/save
-    
+
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     PowerTabTuningDocument();
     ~PowerTabTuningDocument();
        
-    // Load/Save
+// Load/Save
 #if wxUSE_STD_IOSTREAM
     wxSTD istream& LoadObject(wxSTD istream& text_stream);
     wxSTD ostream& SaveObject(wxSTD ostream& text_stream);
@@ -38,17 +39,18 @@ public:
     wxOutputStream& SaveObject(wxOutputStream& stream);
 #endif
 
-    // Overrides
+// Overrides
     virtual bool DeleteContents();
     
-    // Error Functions
+// Error Functions
     void SetDisplayErrors(bool set = true)                  
         {m_displayErrors = set;}
     bool AreErrorsDisplayed() const                         
         {return (m_displayErrors);}
-    void ReportLoadSaveError(const wxString& fileName, off_t offset, const wxString& errorMessage, bool saving);
+    void ReportLoadSaveError(const wxString& fileName, off_t offset,
+        const wxString& errorMessage, bool saving);
     
-    // Tuning Functions
+// Tuning Functions
     /// Determines if a tuning index is valid
     /// @param index Tuning index to validate
     /// @return True if the tuning index is valid, false if not
@@ -62,7 +64,10 @@ public:
     /// @param index Index of the tuning to retrieve
     /// @return A pointer to the nth tuning, or NULL if the index is invalid
     Tuning* GetTuning(wxUint32 index) const                 
-        {wxCHECK(IsValidTuningIndex(index), NULL); return (m_tuningArray[index]);}
+    {
+        wxCHECK(IsValidTuningIndex(index), NULL);
+        return (m_tuningArray[index]);
+    }
     void DeleteTuningArrayContents();        
 };
 

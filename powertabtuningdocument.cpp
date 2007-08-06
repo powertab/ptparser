@@ -53,13 +53,15 @@ wxInputStream& PowerTabTuningDocument::LoadObject(wxInputStream& stream)
     //------Last Checked------//
     // - Dec 30, 2004
     PowerTabInputStream data_stream(stream);
-    m_tuningArray.Deserialize(data_stream, PowerTabFileHeader::FILEVERSION_CURRENT);
+    m_tuningArray.Deserialize(data_stream,
+        PowerTabFileHeader::FILEVERSION_CURRENT);
     
     if (!data_stream.CheckState())
     {
         DeleteContents();
         if (AreErrorsDisplayed())
-            ReportLoadSaveError(GetFilename(), data_stream.TellI(), data_stream.GetLastErrorMessage(), false);
+            ReportLoadSaveError(GetFilename(), data_stream.TellI(),
+            data_stream.GetLastErrorMessage(), false);
     }
         
     return (stream);
@@ -88,7 +90,10 @@ wxOutputStream& PowerTabTuningDocument::SaveObject(wxOutputStream& stream)
     if (!data_stream.CheckState())
     {
         if (AreErrorsDisplayed())
-            ReportLoadSaveError(GetFilename(), data_stream.TellO(), data_stream.GetLastErrorMessage(), true);
+        {
+            ReportLoadSaveError(GetFilename(), data_stream.TellO(),
+                data_stream.GetLastErrorMessage(), true);
+        }
     }
                   
     return (stream);
@@ -100,8 +105,10 @@ wxOutputStream& PowerTabTuningDocument::SaveObject(wxOutputStream& stream)
 /// @param fileName Name of the file that experienced the error
 /// @param offset Offset within the file where the error occurred
 /// @param errorMessage Error message text
-/// @param saving Determines whether the error occurred during a save operation or a load operation
-void PowerTabTuningDocument::ReportLoadSaveError(const wxString& fileName, off_t offset, const wxString& errorMessage, bool saving)
+/// @param saving Determines whether the error occurred during a save operation
+/// or a load operation
+void PowerTabTuningDocument::ReportLoadSaveError(const wxString& fileName,
+    off_t offset, const wxString& errorMessage, bool saving)
 {
     //------Last Checked------//
     // - Dec 30, 2004
@@ -110,7 +117,10 @@ void PowerTabTuningDocument::ReportLoadSaveError(const wxString& fileName, off_t
         action = wxT("saving");
     else
         action = wxT("loading");
-    wxMessageBox(wxString::Format(wxT("An error occurred at offset %lld while %s the file '%s'.\n\n%s"), offset, action.c_str(), fileName.c_str(), errorMessage.c_str()), wxTheApp->GetAppName().c_str(), wxICON_ERROR);
+    wxMessageBox(
+        wxString::Format(wxT("An error occurred at offset %lld while %s the file '%s'.\n\n%s"),
+        offset, action.c_str(), fileName.c_str(), errorMessage.c_str()),
+        wxTheApp->GetAppName().c_str(), wxICON_ERROR);
 }
 
 // Overrides

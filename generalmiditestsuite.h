@@ -18,16 +18,16 @@ class GeneralMidiTestSuite :
 {
     DECLARE_DYNAMIC_CLASS(GeneralMidiTestSuite)
     
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     GeneralMidiTestSuite();
     ~GeneralMidiTestSuite();
     
-    // Overrides
+// Overrides
     size_t GetTestCount() const;
     bool RunTestCases();
     
-    // Test Case Functions
+// Test Case Functions
 private:
     bool TestCaseMidiChannel();
     bool TestCaseMidiNote();

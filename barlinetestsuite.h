@@ -18,16 +18,16 @@ class BarlineTestSuite :
 {
     DECLARE_DYNAMIC_CLASS(BarlineTestSuite)
     
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     BarlineTestSuite();
     ~BarlineTestSuite();
 
-    // Overrides    
+// Overrides    
     size_t GetTestCount() const;
     bool RunTestCases();
     
-    // Test Cases
+// Test Cases
 private:
     bool TestCaseConstructor();
     bool TestCaseCreation();

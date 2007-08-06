@@ -22,7 +22,8 @@
 /// @param subString Zero-based index of the substring to extract
 /// @param separator Character used to separator the substrings
 /// @return True if the substring was extracted, false if not
-bool wxExtractSubString(wxString& string, const wxChar* fullString, wxUint32 subString, wxChar separator)
+bool wxExtractSubString(wxString& string, const wxChar* fullString,
+    wxUint32 subString, wxChar separator)
 {
     //------Last Verified------//
     // - Nov 27, 2004
@@ -41,7 +42,8 @@ bool wxExtractSubString(wxString& string, const wxChar* fullString, wxUint32 sub
         fullString++;       // point past the separator
     }
     const wxChar* end = wxStrchr(fullString, separator);
-    wxInt32 length = (end == NULL) ? wxStrlen_(fullString) : (wxInt32)(end - fullString);
+    wxInt32 length = (end == NULL) ? wxStrlen_(fullString) :
+        (wxInt32)(end - fullString);
     wxASSERT(length >= 0);
     memcpy(string.GetWriteBuf(length), fullString, length * sizeof(wxChar));
     string.UngetWriteBuf();     // Need to call ReleaseBuffer 
@@ -61,7 +63,8 @@ int wxCompareIntegers(int* n1, int* n2)
 }
 
 // Date/Time Functions
-/// Formats a wxDateTime value using the format representation of the user's locale
+/// Formats a wxDateTime value using the format representation of the user's
+/// locale
 /// @param dateTime wxDateTime value to format
 /// @return Formatted string
 wxString wxGetLocaleDateTime(const wxDateTime& dateTime)
@@ -71,7 +74,8 @@ wxString wxGetLocaleDateTime(const wxDateTime& dateTime)
     return (dateTime.Format());
 }
 
-/// Formats a wxDateTime value using the short format representation of the user's locale
+/// Formats a wxDateTime value using the short format representation of the
+/// user's locale
 /// @param dateTime wxDateTime value to format
 /// @return Formatted string
 wxString wxGetLocaleShortDateTime(const wxDateTime& dateTime)
@@ -81,7 +85,8 @@ wxString wxGetLocaleShortDateTime(const wxDateTime& dateTime)
     return (dateTime.Format());
 }
 
-/// Formats a wxDateTime value using the long format representation of the user's locale
+/// Formats a wxDateTime value using the long format representation of the
+/// user's locale
 /// @param dateTime wxDateTime value to format
 /// @return Formatted string
 wxString wxGetLocaleLongDateTime(const wxDateTime& dateTime)

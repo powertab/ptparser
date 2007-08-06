@@ -121,7 +121,8 @@ PowerTabFileHeader::~PowerTabFileHeader()
 
 // Operators
 /// Assignment Operator
-const PowerTabFileHeader& PowerTabFileHeader::operator=(const PowerTabFileHeader& header)
+const PowerTabFileHeader& PowerTabFileHeader::operator=(
+    const PowerTabFileHeader& header)
 {
     //------Last Checked------//
     // - Dec 28, 2004
@@ -157,8 +158,10 @@ const PowerTabFileHeader& PowerTabFileHeader::operator=(const PowerTabFileHeader
 
         m_songData.arranger = header.m_songData.arranger;
         
-        m_songData.guitarScoreTranscriber = header.m_songData.guitarScoreTranscriber;
-        m_songData.bassScoreTranscriber = header.m_songData.bassScoreTranscriber;
+        m_songData.guitarScoreTranscriber =
+            header.m_songData.guitarScoreTranscriber;
+        m_songData.bassScoreTranscriber =
+            header.m_songData.bassScoreTranscriber;
         
         m_songData.copyright = header.m_songData.copyright;
         
@@ -302,7 +305,8 @@ bool PowerTabFileHeader::Serialize(PowerTabOutputStream& stream)
             stream.WriteMFCString(m_songData.bootlegData.title);
             wxCHECK(stream.CheckState(), false);
             
-            stream << m_songData.bootlegData.month << m_songData.bootlegData.day << m_songData.bootlegData.year;
+            stream << m_songData.bootlegData.month <<
+                m_songData.bootlegData.day << m_songData.bootlegData.year;
             wxCHECK(stream.CheckState(), false);
         }
 
@@ -477,7 +481,8 @@ bool PowerTabFileHeader::DeserializeVersion1_7(PowerTabInputStream& stream)
             stream.ReadMFCString(m_songData.bootlegData.title);
             wxCHECK(stream.CheckState(), false);
             
-            stream >> m_songData.bootlegData.month >> m_songData.bootlegData.day >> m_songData.bootlegData.year;
+            stream >> m_songData.bootlegData.month >>
+                m_songData.bootlegData.day >> m_songData.bootlegData.year;
             wxCHECK(stream.CheckState(), false);
         }
 
@@ -614,7 +619,8 @@ bool PowerTabFileHeader::DeserializeVersion1_5(PowerTabInputStream& stream)
         m_songData.videoData.title = releaseTitle;
         m_songData.videoData.live = live;
     }
-    // Single, EP, LP, Double LP, Triple LP, Boxset, Soundtrack become audio releases
+    // Single, EP, LP, Double LP, Triple LP, Boxset, Soundtrack become audio
+    // releases
     else
     {
         m_songData.releaseType = RELEASETYPE_PUBLIC_AUDIO;
@@ -627,7 +633,8 @@ bool PowerTabFileHeader::DeserializeVersion1_5(PowerTabInputStream& stream)
     return (stream.CheckState());
 }
 
-/// Loads a v1.0 or v1.0.2 format PowerTabFileHeader object from a Power Tab input stream
+/// Loads a v1.0 or v1.0.2 format PowerTabFileHeader object from a Power Tab
+/// input stream
 /// @param stream Power Tab input stream to load from
 /// @return True if the object was deserialized, false if not
 bool PowerTabFileHeader::DeserializeVersion1_0(PowerTabInputStream& stream)
@@ -696,7 +703,8 @@ bool PowerTabFileHeader::DeserializeVersion1_0(PowerTabInputStream& stream)
     // Demo becomes not-released
     else if (releasedOn == RO_DEMO)
         m_songData.releaseType = RELEASETYPE_NOTRELEASED;
-    // Single, EP, LP, Double LP, Triple LP, Boxset, Soundtrack become audio releases
+    // Single, EP, LP, Double LP, Triple LP, Boxset, Soundtrack become audio
+    // releases
     else
     {
         m_songData.releaseType = RELEASETYPE_PUBLIC_AUDIO;
@@ -709,7 +717,8 @@ bool PowerTabFileHeader::DeserializeVersion1_0(PowerTabInputStream& stream)
     return (stream.CheckState());
 }
 
-/// Gets the release title for a song (audio title or video title or bootleg title)
+/// Gets the release title for a song (audio title or video title or bootleg
+/// title)
 /// @return The release title for the song
 wxString PowerTabFileHeader::GetSongReleaseTitle() const
 {

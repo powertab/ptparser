@@ -39,9 +39,12 @@ SystemSymbol::SystemSymbol() :
 }
 
 /// Primary Constructor
-/// @param system Zero-based index of the system where the system symbol is anchored
-/// @param position Zero-based index of the position within the system where the system symbol is anchored
-/// @param data Data used by the symbol (the data format is dependant upon the derived class)
+/// @param system Zero-based index of the system where the system symbol is
+/// anchored
+/// @param position Zero-based index of the position within the system where the
+/// system symbol is anchored
+/// @param data Data used by the symbol (the data format is dependant upon the
+/// derived class)
 SystemSymbol::SystemSymbol(wxUint32 system, wxUint32 position, wxUint32 data) :
     m_system(DEFAULT_SYSTEM), m_position(DEFAULT_POSITION), m_data(data)
 {

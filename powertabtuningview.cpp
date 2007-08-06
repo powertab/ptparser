@@ -28,7 +28,8 @@ END_EVENT_TABLE()
 
 // Constructor/Destructor
 /// Default Constructor
-PowerTabTuningView::PowerTabTuningView() : m_frame((wxMDIChildFrame*)NULL), m_window((PowerTabTuningViewWindow*)NULL)
+PowerTabTuningView::PowerTabTuningView() : m_frame((wxMDIChildFrame*)NULL),
+    m_window((PowerTabTuningViewWindow*)NULL)
 {
     //------Last Checked------//
     // - Dec 30, 2004
@@ -99,11 +100,14 @@ void PowerTabTuningView::OnUpdate(wxView* sender, wxObject* WXUNUSED(hint))
         Tuning* tuning = document->GetTuning(i);
         wxCHECK2(tuning != NULL, continue);
         
-        long index = m_window->InsertItem(m_window->GetItemCount(), tuning->GetName());
+        long index = m_window->InsertItem(m_window->GetItemCount(),
+            tuning->GetName());
         wxCHECK2(index != -1, continue);
         
-        m_window->SetItem(index, PowerTabTuningViewWindow::COLUMN_STRINGS, wxString::Format(wxT("%d"), tuning->GetStringCount()));
-        m_window->SetItem(index, PowerTabTuningViewWindow::COLUMN_SPELLING, tuning->GetSpelling()); 
+        m_window->SetItem(index, PowerTabTuningViewWindow::COLUMN_STRINGS,
+            wxString::Format(wxT("%d"), tuning->GetStringCount()));
+        m_window->SetItem(index, PowerTabTuningViewWindow::COLUMN_SPELLING,
+            tuning->GetSpelling()); 
     }
     
     // Adjust the column widths
@@ -137,7 +141,8 @@ bool PowerTabTuningView::OnClose(bool deleteWindow)
 
 // Operations
 /// Creates the window used by the view
-/// @return A pointer to the newly created window, or NULL if the window could not be created
+/// @return A pointer to the newly created window, or NULL if the window could
+/// not be created
 PowerTabTuningViewWindow* PowerTabTuningView::CreateViewWindow()
 {
     //------Last Checked------//
@@ -150,7 +155,8 @@ PowerTabTuningViewWindow* PowerTabTuningView::CreateViewWindow()
     m_frame->GetClientSize(&width, &height);
 
     // Create the view window
-    PowerTabTuningViewWindow* window = new PowerTabTuningViewWindow(this, m_frame, wxPoint(0,0), wxSize(width, height));
+    PowerTabTuningViewWindow* window = new PowerTabTuningViewWindow(this,
+        m_frame, wxPoint(0,0), wxSize(width, height));
 
     return (window);
 }

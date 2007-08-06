@@ -28,11 +28,11 @@ const wxByte Note::MAX_STRING               = 6;
     
 // Fret Number Constants
 const wxByte Note::MIN_FRET_NUMBER          = 0;
-const wxByte Note::MAX_FRET_NUMBER          = 24;
+const wxByte Note::MAX_FRET_NUMBER          = 29;
 
 // Bend Constants
 const wxByte Note::MAX_BEND_PITCH           = 12;
-const wxByte Note::MAX_BEND_DURATION        = 8;
+const wxByte Note::MAX_BEND_DURATION        = 9;
 
 // Constructor/Destructor
 /// Default Constructor
@@ -173,7 +173,8 @@ bool Note::DoDeserialize(PowerTabInputStream& stream, wxWord version)
     // - Dec 17, 2004
     
     // Version 1.0/1.0.2 artificial harm updated
-	if (version == PowerTabFileHeader::FILEVERSION_1_0 || version == PowerTabFileHeader::FILEVERSION_1_0_2)
+	if (version == PowerTabFileHeader::FILEVERSION_1_0 ||
+        version == PowerTabFileHeader::FILEVERSION_1_0_2)
 	{
 		wxByte simple;
 		stream >> m_stringData >> simple;
@@ -223,9 +224,11 @@ bool Note::DoDeserialize(PowerTabInputStream& stream, wxWord version)
 				wxByte duration = HIBYTE(LOWORD(m_complexSymbolArray[i]));
     			
 				wxByte drawStart = (wxByte)((type < 6) ? 0 : 1);
-				wxByte drawEnd = (wxByte)((type == 0 || type == 2 || type == 3 || type == 5 || type == 7) ? 1 : 0);
+				wxByte drawEnd = (wxByte)((type == 0 || type == 2 ||
+                    type == 3 || type == 5 || type == 7) ? 1 : 0);
     	
-    	        SetBend(type, bentPitch, releasePitch, duration, drawStart, drawEnd);
+    	        SetBend(type, bentPitch, releasePitch, duration, drawStart,
+                    drawEnd);
 			}
 		}
 	}
@@ -425,7 +428,8 @@ bool Note::SetSlideOutOf(wxByte type, wxInt8 steps)
     // Slide exists; update its slide out of data
     if (index != (wxUint32)-1)
     {
-        m_complexSymbolArray[index] &= ~(slideOutOfTypeMask | slideOutOfStepsMask);
+        m_complexSymbolArray[index] &= ~(slideOutOfTypeMask |
+            slideOutOfStepsMask);
         m_complexSymbolArray[index] |= (wxUint32)(type << 8);
         m_complexSymbolArray[index] |= (wxUint32)(steps);
         return (true);
@@ -505,14 +509,20 @@ bool Note::ClearSlideOutOf()
 /// @param drawStartPoint Draw start point to validate
 /// @param drawEndPoint Draw end point to validate
 /// @return True if the bend data is valid, false if not
-bool Note::IsValidBend(wxByte type, wxByte bentPitch, wxByte releasePitch, wxByte duration, wxByte drawStartPoint, wxByte drawEndPoint)
+bool Note::IsValidBend(wxByte type, wxByte bentPitch, wxByte releasePitch,
+    wxByte duration, wxByte drawStartPoint, wxByte drawEndPoint)
 {
     //------Last Checked------//
     // - Jan 24, 2005
     
     // 1st validate the individual pieces
-    if (!IsValidBendType(type) || !IsValidBentPitch(bentPitch) || !IsValidReleasePitch(releasePitch) || !IsValidBendDuration(duration) || !IsValidDrawStartPoint(drawStartPoint) || !IsValidDrawEndPoint(drawEndPoint))
+    if (!IsValidBendType(type) || !IsValidBentPitch(bentPitch) ||
+        !IsValidReleasePitch(releasePitch) || !IsValidBendDuration(duration) ||
+        !IsValidDrawStartPoint(drawStartPoint) ||
+        !IsValidDrawEndPoint(drawEndPoint))
+    {
         return (false);
+    }
  
     bool returnValue = false;
                         
@@ -522,7 +532,8 @@ bool Note::IsValidBend(wxByte type, wxByte bentPitch, wxByte releasePitch, wxByt
         // b) Release pitch must be zero
         // c) Duration may be any value
         // d) Draw start must be low or mid and end must be higher
-        returnValue = ((bentPitch > 0) && (releasePitch == 0) && (drawStartPoint <= midPoint) && (drawEndPoint > drawStartPoint));
+        returnValue = ((bentPitch > 0) && (releasePitch == 0) &&
+            (drawStartPoint <= midPoint) && (drawEndPoint > drawStartPoint));
     }
     else if (type == bendAndRelease)
     {
@@ -530,7 +541,9 @@ bool Note::IsValidBend(wxByte type, wxByte bentPitch, wxByte releasePitch, wxByt
         // b) Release pitch must be less than bent pitch
         // c) Duration must be zero
         // d) Draw start must be low or mid and drawEndPoint must be low or mid
-        returnValue = ((bentPitch > 0) && (releasePitch < bentPitch) && (duration == 0) && (drawStartPoint <= midPoint) && (drawEndPoint <= midPoint));
+        returnValue = ((bentPitch > 0) && (releasePitch < bentPitch) &&
+            (duration == 0) && (drawStartPoint <= midPoint) &&
+            (drawEndPoint <= midPoint));
     }
     else if ((type == preBend) || (type == preBendAndHold))
     {
@@ -538,7 +551,9 @@ bool Note::IsValidBend(wxByte type, wxByte bentPitch, wxByte releasePitch, wxByt
         // b) Release pitch must be zero
         // c) Duration must be zero
         // d) Draw start must be low, and end must be higher
-        returnValue = ((bentPitch > 0) && (releasePitch == 0) && (duration == 0) && (drawStartPoint == lowPoint) && (drawEndPoint > drawStartPoint));
+        returnValue = ((bentPitch > 0) && (releasePitch == 0) &&
+            (duration == 0) && (drawStartPoint == lowPoint) &&
+            (drawEndPoint > drawStartPoint));
     }
     else if (type == preBendAndRelease)
     {
@@ -546,7 +561,9 @@ bool Note::IsValidBend(wxByte type, wxByte bentPitch, wxByte releasePitch, wxByt
         // b) Release pitch must be less than bent pitch
         // c) Duration must be zero
         // d) Draw start and end must be low
-        returnValue = ((bentPitch > 0) && (releasePitch < bentPitch) && (duration == 0) && (drawStartPoint == lowPoint) && (drawEndPoint == lowPoint));
+        returnValue = ((bentPitch > 0) && (releasePitch < bentPitch) &&
+            (duration == 0) && (drawStartPoint == lowPoint) &&
+            (drawEndPoint == lowPoint));
     }
     else if (type == gradualRelease)
     {
@@ -554,7 +571,9 @@ bool Note::IsValidBend(wxByte type, wxByte bentPitch, wxByte releasePitch, wxByt
         // b) Release pitch must be standard to 2 3/4
         // c) Duration must be > 0
         // d) Draw start must be high or mid point, draw end must be lower
-        returnValue = ((bentPitch == 0) && (releasePitch <= 11) && (duration > 0) && (drawStartPoint >= midPoint) && (drawEndPoint < drawStartPoint));
+        returnValue = ((bentPitch == 0) && (releasePitch <= 11) &&
+            (duration > 0) && (drawStartPoint >= midPoint) &&
+            (drawEndPoint < drawStartPoint));
     }
     else if (type == immediateRelease)
     {
@@ -562,7 +581,9 @@ bool Note::IsValidBend(wxByte type, wxByte bentPitch, wxByte releasePitch, wxByt
         // b) Release pitch must be zero
         // c) Duration must be zero
         // d) Draw start must be high or mid, and match draw end
-        returnValue = ((bentPitch == 0) && (releasePitch == 0) && (duration == 0) && (drawStartPoint >= midPoint) && (drawStartPoint == drawEndPoint));
+        returnValue = ((bentPitch == 0) && (releasePitch == 0) &&
+            (duration == 0) && (drawStartPoint >= midPoint) &&
+            (drawStartPoint == drawEndPoint));
     }
         
     return (returnValue);
@@ -572,15 +593,21 @@ bool Note::IsValidBend(wxByte type, wxByte bentPitch, wxByte releasePitch, wxByt
 /// @param type Type of bend to set (see bendTypes enum for values)
 /// @param bentPitch Amount of pitch to bend, in quarter steps
 /// @param releasePitch Pitch to release to, in quarter steps
-/// @param duration The duration of the bend (0 = default, occurs over 32nd note, 1 = occurs over duration of note, 2 = occurs over duration of note + next note, etc.)
-/// @param drawStartPoint Vertical draw start point for the bend (see bendDrawingPoints enum for values)
-/// @param drawEndPoint Vertical draw end point for the bend (see bendDrawingPoints enum for values)
+/// @param duration The duration of the bend (0 = default, occurs over 32nd
+/// note, 1 = occurs over duration of note, 2 = occurs over duration of note +
+/// next note, etc.)
+/// @param drawStartPoint Vertical draw start point for the bend (see
+/// bendDrawingPoints enum for values)
+/// @param drawEndPoint Vertical draw end point for the bend (see
+/// bendDrawingPoints enum for values)
 /// @return True if the bend was added or updated
-bool Note::SetBend(wxByte type, wxByte bentPitch, wxByte releasePitch, wxByte duration, wxByte drawStartPoint, wxByte drawEndPoint)
+bool Note::SetBend(wxByte type, wxByte bentPitch, wxByte releasePitch,
+    wxByte duration, wxByte drawStartPoint, wxByte drawEndPoint)
 {
     //------Last Checked------//
     // - Jan 23, 2005
-    wxCHECK(IsValidBend(type, bentPitch, releasePitch, duration, drawStartPoint, drawEndPoint), false);
+    wxCHECK(IsValidBend(type, bentPitch, releasePitch, duration, drawStartPoint,
+        drawEndPoint), false);
 
     // Construct the symbol data, then add it to the array    
     wxUint32 symbolData = MAKELONG(0, MAKEWORD(0, bend));
@@ -602,7 +629,8 @@ bool Note::SetBend(wxByte type, wxByte bentPitch, wxByte releasePitch, wxByte du
 /// @param drawStartPoint Holds the draw start point return value
 /// @param drawEndPoint Holds the draw end point return value
 /// @return True if the data was returned, false if not
-bool Note::GetBend(wxByte& type, wxByte& bentPitch, wxByte& releasePitch, wxByte& duration, wxByte& drawStartPoint, wxByte& drawEndPoint) const
+bool Note::GetBend(wxByte& type, wxByte& bentPitch, wxByte& releasePitch,
+    wxByte& duration, wxByte& drawStartPoint, wxByte& drawEndPoint) const
 {
     //------Last Checked------//
     // - Jan 24, 2005
@@ -660,7 +688,8 @@ bool Note::SetTappedHarmonic(wxByte tappedFretNumber)
     wxCHECK(IsValidTappedHarmonic(tappedFretNumber), false);
     
     // Construct the symbol data, then add it to the array
-    wxUint32 symbolData = MAKELONG(MAKEWORD(tappedFretNumber, 0), MAKEWORD(0, tappedHarmonic));
+    wxUint32 symbolData = MAKELONG(MAKEWORD(tappedFretNumber, 0),
+        MAKEWORD(0, tappedHarmonic));
     return (AddComplexSymbol(symbolData));
 }
 
@@ -762,7 +791,8 @@ bool Note::ClearTrill()
 // Artificial Harmonic Functions
 /// Sets (adds or updates) a artificial harmonic
 /// @param key Key to set (see ChordName::keys enum for values)
-/// @param keyVariation Key variation to set (see ChordName::keyVariation enum for values)
+/// @param keyVariation Key variation to set (see ChordName::keyVariation enum
+/// for values)
 /// @param octave Octave to set
 /// @return True if the artificial harmonic was added or updated
 bool Note::SetArtificialHarmonic(wxByte key, wxByte keyVariation, wxByte octave)
@@ -772,7 +802,8 @@ bool Note::SetArtificialHarmonic(wxByte key, wxByte keyVariation, wxByte octave)
     wxCHECK(IsValidArtificialHarmonic(key, keyVariation, octave), false);
 
     // Construct the symbol data, then add it to the array
-    wxUint32 symbolData = MAKELONG(MAKEWORD(key, keyVariation), MAKEWORD(octave, artificialHarmonic));
+    wxUint32 symbolData = MAKELONG(MAKEWORD(key, keyVariation),
+        MAKEWORD(octave, artificialHarmonic));
     return (AddComplexSymbol(symbolData));
 }
 
@@ -781,7 +812,8 @@ bool Note::SetArtificialHarmonic(wxByte key, wxByte keyVariation, wxByte octave)
 /// @param keyVariation Holds the key variation return value
 /// @param octave Holds the octave return value
 /// @return True if the data was returned, false if not
-bool Note::GetArtificialHarmonic(wxByte& key, wxByte& keyVariation, wxByte& octave) const
+bool Note::GetArtificialHarmonic(wxByte& key, wxByte& keyVariation,
+    wxByte& octave) const
 {
     //------Last Checked------//
     // - Jan 19, 2005
@@ -846,7 +878,8 @@ bool Note::AddComplexSymbol(wxUint32 symbolData)
 		m_complexSymbolArray[index] = symbolData;
 		returnValue = true;
     }
-    // Symbol was not found in the array, find the first free array slot and insert there
+    // Symbol was not found in the array, find the first free array slot and
+    // insert there
 	else
 	{
 	    wxUint32 i = 0;
@@ -884,7 +917,8 @@ size_t Note::GetComplexSymbolCount() const
 
 /// Gets the index of a given complex symbol type in the complex symbol array
 /// @param type Type of symbol to find
-/// @return Index within the array where the symbol was found, or -1 if not found
+/// @return Index within the array where the symbol was found, or -1 if not
+/// found
 wxUint32 Note::FindComplexSymbol(wxByte type) const
 {
     //------Last Checked------//

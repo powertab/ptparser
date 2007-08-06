@@ -72,35 +72,37 @@ public:
         repeatNumberMask                = (wxWord)0x3f,         ///< Mask used to retrieve the repeat number value
     };
     
+// Member Variables
 protected:
     wxByte          m_position;         ///< Zero-based index of the position within the system where the direction is anchored
     wxWordArray     m_symbolArray;      ///< Array of direction symbols (symbol: top byte = symbol type, next 2 bits = active symbol, next 6 bits = repeat number)
-    
+
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     Direction();
-    Direction(wxUint32 position, wxByte symbolType, wxByte activeSymbol, wxByte repeatNumber);
+    Direction(wxUint32 position, wxByte symbolType, wxByte activeSymbol,
+        wxByte repeatNumber);
     Direction(const Direction& direction);
     ~Direction();
     
-    // Creation Functions
+// Creation Functions
     /// Creates an exact duplicate of the object
     /// @return The duplicate object
     PowerTabObject* CloneObject() const                     
         {return (new Direction(*this));}
     
-    // Operators
+// Operators
     const Direction& operator=(const Direction& direction);
     bool operator==(const Direction& direction) const;
     bool operator!=(const Direction& direction) const;
 
-    // Serialization functions
+// Serialization functions
 protected:
     bool DoSerialize(PowerTabOutputStream& stream);
     bool DoDeserialize(PowerTabInputStream& stream, wxWord version);
 
+// MFC Class Functions
 public:
-    // MFC Class Functions
     /// Gets the MFC Class Name for the object
     /// @return The MFC Class Name
     wxString GetMFCClassName() const                        
@@ -110,17 +112,22 @@ public:
     wxWord GetMFCClassSchema() const                        
         {return ((wxWord)1);}
     
-    // Position Functions
+// Position Functions
     /// Determines whether a position is valid
     /// @param position Position to validate
     /// @return True if the position is valid, false if not
     static bool IsValidPosition(wxUint32 position)
         {return ((position >= MIN_POSITION) && (position <= MAX_POSITION));}
     /// Sets the position within the system where the direction is anchored
-    /// @param position Zero-based index within the system where the direction is anchored
+    /// @param position Zero-based index within the system where the direction
+    /// is anchored
     /// @return True if the position was set, false if not
     bool SetPosition(wxUint32 position)
-        {wxCHECK(IsValidPosition(position), false); m_position = (wxByte)position; return (true);}
+    {
+        wxCHECK(IsValidPosition(position), false);
+        m_position = (wxByte)position;
+        return (true);
+    }
     /// Gets the position within the system where the direction is anchored
     /// @return The position within the system where the direction is anchored
     wxUint32 GetPosition() const                           
@@ -140,27 +147,33 @@ public:
     /// @param repeatNumber Repeat number to validate
     /// @return True if the repeat number is valid, false if not
     static bool IsValidRepeatNumber(wxByte repeatNumber)
-        {return ((repeatNumber >= MIN_REPEAT_NUMBER) && (repeatNumber <= MAX_REPEAT_NUMBER));}
+    {
+        return ((repeatNumber >= MIN_REPEAT_NUMBER) &&
+            (repeatNumber <= MAX_REPEAT_NUMBER));
+    }
         
-    // Symbol Array Functions
+// Symbol Array Functions
     /// Determines if a symbol index is valid
     /// @param index Index to validate
     /// @return True if the symbol index is valid, false if not
     bool IsValidSymbolIndex(wxUint32 index) const         
         {return (index < GetSymbolCount());}
-    bool AddSymbol(wxByte symbolType, wxByte activeSymbol = activeNone, wxByte repeatNumber = 0);
+    bool AddSymbol(wxByte symbolType, wxByte activeSymbol = activeNone,
+        wxByte repeatNumber = 0);
     /// Gets the number of symbols in the symbol array
     /// @return The number of symbols in the symbol array
     size_t GetSymbolCount() const
         {return (m_symbolArray.GetCount());}
-    bool SetSymbol(wxUint32 index, wxByte symbolType, wxByte activeSymbol, wxByte repeatNumber);
-    bool GetSymbol(wxUint32 index, wxByte& symbolType, wxByte& activeSymbol, wxByte& repeatNumber) const;
+    bool SetSymbol(wxUint32 index, wxByte symbolType, wxByte activeSymbol,
+        wxByte repeatNumber);
+    bool GetSymbol(wxUint32 index, wxByte& symbolType, wxByte& activeSymbol,
+        wxByte& repeatNumber) const;
     bool IsSymbolType(wxUint32 index, wxByte symbolType) const;
     bool RemoveSymbolAtIndex(wxUint32 index);
 protected:
     void DeleteSymbolArrayContents();
     
-    // Operations
+// Operations
 public:
     wxString GetText(wxUint32 index) const;
 };

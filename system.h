@@ -32,7 +32,7 @@ public:
     static const wxByte DEFAULT_RHYTHM_SLASH_SPACING_BELOW;
     static const wxByte DEFAULT_EXTRA_SPACING;
     
-    // Member Variables
+ // Member Variables
 protected:
 	wxRect  m_rect;												///< Bounding rect for the system
 	wxByte  m_positionSpacing;									///< Spacing between each position in the system
@@ -48,31 +48,31 @@ public:
     StaffArray          m_staffArray;                           ///< List of staves used within the system
     BarlineArray        m_barlineArray;                         ///< List of barlines (not including start and end bars) used within the system
     Barline             m_endBar;                               ///< Barline at the end of the system (time and key signature are not used in this barline)
-    
+
+// Constructor/Destructor
 public:
-	// Constructor/Destructor
 	System();
 	System(const System& system);
 	~System();
 
-    // Creation Functions
+// Creation Functions
     /// Creates an exact duplicate of the object
     /// @return The duplicate object
     PowerTabObject* CloneObject() const
         {return (new System(*this));}
     
-	// Operators
+// Operators
 	const System& operator=(const System& system);
     bool operator==(const System& system) const;
     bool operator!=(const System& system) const;
-    
-	// Serialzation Functions
+   
+// Serialzation Functions
 protected:
     bool DoSerialize(PowerTabOutputStream& stream);
     bool DoDeserialize(PowerTabInputStream& stream, wxWord version);
-    
+
+// MFC Class Functions
 public:
-    // MFC Class Functions
     /// Gets the MFC Class Name for the object
     /// @return The MFC Class Name
     wxString GetMFCClassName() const                            
@@ -82,36 +82,39 @@ public:
     wxWord GetMFCClassSchema() const                            
         {return ((wxWord)1);}
     
+// Rect Functions
     /// Gets the bounding rect for the system
     /// @return The bounding rect for the system
     wxRect GetRect() const
         {return (m_rect);}
         
-    // Position Spacing Functions
+// Position Spacing Functions
     /// Gets the amount of spacing between positions
     /// @return The amount of spacing between positions
     wxUint32 GetPositionSpacing() const
         {return (m_positionSpacing);}
     
-    // Rhythm Slash Spacing Above Functions
-    /// Gets the amount of spacing above the rhythm slashes (when slashes are used)
+// Rhythm Slash Spacing Above Functions
+    /// Gets the amount of spacing above the rhythm slashes (when slashes are
+    /// used)
     /// @return The amount of spacing above the rhythm slashes
     wxUint32 GetRhythmSlashSpacingAbove() const
         {return (m_rhythmSlashSpacingAbove);}
     
-    // Rhythm Slash Spacing Below Functions
-    /// Gets the amount of spacing below the rhythm slashes (when slashes are used)
+// Rhythm Slash Spacing Below Functions
+    /// Gets the amount of spacing below the rhythm slashes (when slashes are
+    /// used)
     /// @return The amount of spacing below the rhythm slashes
     wxUint32 GetRhythmSlashSpacingBelow() const
         {return (m_rhythmSlashSpacingBelow);}
         
-    // Extra Spacing Functions
+// Extra Spacing Functions
     /// Gets the extra spacing (used by rehearsal signs, tempo markers, etc.)
     /// @return The amount of extra spacing
     wxUint32 GetExtraSpacing() const
         {return (m_extraSpacing);}
      
-    // Start Bar Functions
+// Start Bar Functions
     /// Gets the bar at the start of the system
     /// @return The start bar
     Barline GetStartBar() const
@@ -125,7 +128,7 @@ public:
     const Barline& GetStartBarConstRef() const
         {return (m_startBar);}
                 
-    // Direction Functions
+// Direction Functions
     /// Determines if a staff index is valid
     /// @param index staff index to validate
     /// @return True if the staff index is valid, false if not
@@ -139,9 +142,12 @@ public:
     /// @param index Index of the staff to get
     /// @return The nth staff in the system
     Direction* GetDirection(wxUint32 index) const
-        {wxCHECK(IsValidDirectionIndex(index), NULL); return (m_directionArray[index]);}
+    {
+        wxCHECK(IsValidDirectionIndex(index), NULL);
+        return (m_directionArray[index]);
+    }
         
-    // Chord Text Functions
+// Chord Text Functions
     /// Determines if a chord text index is valid
     /// @param index chord text index to validate
     /// @return True if the chord text index is valid, false if not
@@ -155,9 +161,12 @@ public:
     /// @param index Index of the chord text to get
     /// @return The nth chord text item in the system
     ChordText* GetChordText(wxUint32 index) const
-        {wxCHECK(IsValidChordTextIndex(index), NULL); return (m_chordTextArray[index]);}
+    {
+        wxCHECK(IsValidChordTextIndex(index), NULL);
+        return (m_chordTextArray[index]);
+    }
 
-    // Rhythm Slash Functions
+// Rhythm Slash Functions
     /// Determines if a rhythm slash index is valid
     /// @param index rhythm slash index to validate
     /// @return True if the rhythm slash index is valid, false if not
@@ -171,9 +180,12 @@ public:
     /// @param index Index of the rhythm slash to get
     /// @return The nth rhythm slash in the system
     RhythmSlash* GetRhythmSlash(wxUint32 index) const
-        {wxCHECK(IsValidRhythmSlashIndex(index), NULL); return (m_rhythmSlashArray[index]);}
+    {
+        wxCHECK(IsValidRhythmSlashIndex(index), NULL);
+        return (m_rhythmSlashArray[index]);
+    }
     
-    // Staff Functions
+// Staff Functions
     /// Determines if a staff index is valid
     /// @param index staff index to validate
     /// @return True if the staff index is valid, false if not
@@ -189,7 +201,7 @@ public:
     Staff* GetStaff(wxUint32 index) const
         {wxCHECK(IsValidStaffIndex(index), NULL); return (m_staffArray[index]);}
 
-    // Barline Functions
+// Barline Functions
     /// Determines if a barline index is valid
     /// @param index barline index to validate
     /// @return True if the barline index is valid, false if not
@@ -203,11 +215,14 @@ public:
     /// @param index Index of the barline to get
     /// @return The nth barline in the system
     Barline* GetBarline(wxUint32 index) const
-        {wxCHECK(IsValidBarlineIndex(index), NULL); return (m_barlineArray[index]);}
+    {
+        wxCHECK(IsValidBarlineIndex(index), NULL);
+        return (m_barlineArray[index]);
+    }
     Barline* GetBarlineAtPosition(wxUint32 position) const;
     void GetBarlines(BarlineArray& barlineArray);
     
-    // End Bar Functions
+// End Bar Functions
     /// Gets the bar at the end of the system
     /// @return The end bar
     Barline GetEndBar() const

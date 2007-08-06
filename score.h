@@ -103,6 +103,7 @@ class Score : public PowerTabObject
 {
 friend class ScoreTestSuite;
 
+// Member Variables
 public:
     GuitarArray                 m_guitarArray;              ///< Guitars used by the score
     ChordDiagramArray           m_chordDiagramArray;        ///< Chord diagrams used in the score
@@ -112,31 +113,31 @@ public:
     DynamicArray                m_dynamicArray;             ///< Dynamic markers used in the score
     AlternateEndingArray        m_alternateEndingArray;     ///< Alternate endings used in the score
     SystemArray                 m_systemArray;              ///< Systems used in the score
-    
+
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     Score();
     Score(const Score& score);
     ~Score();
     
-    // Creation Functions
+// Creation Functions
     /// Creates an exact duplicate of the object
     /// @return The duplicate object
     PowerTabObject* CloneObject() const                     
         {return (new Score(*this));}
     
-    // Operators
+// Operators
     const Score& operator=(const Score& score);
     bool operator==(const Score& score) const;
     bool operator!=(const Score& score) const;
     
-    // Serialization Functions
+// Serialization Functions
 protected:
     bool DoSerialize(PowerTabOutputStream& stream);
     bool DoDeserialize(PowerTabInputStream& stream, wxWord version);
 
+// Guitar Functions
 public:   
-    // Guitar Functions
     /// Determines if a guitar index is valid
     /// @param index guitar index to validate
     /// @return True if the guitar index is valid, false if not
@@ -150,9 +151,12 @@ public:
     /// @param index Index of the guitar to get
     /// @return The nth guitar in the score
     Guitar* GetGuitar(wxUint32 index) const
-        {wxCHECK(IsValidGuitarIndex(index), NULL); return (m_guitarArray[index]);}
+    {
+        wxCHECK(IsValidGuitarIndex(index), NULL);
+        return (m_guitarArray[index]);
+    }
     
-    // Chord Diagram Functions
+// Chord Diagram Functions
     /// Determines if a guitar index is valid
     /// @param index ChordDiagram index to validate
     /// @return True if the guitar index is valid, false if not
@@ -166,9 +170,12 @@ public:
     /// @param index Index of the guitar to get
     /// @return The nth guitar in the score
     ChordDiagram* GetChordDiagram(wxUint32 index) const         
-        {wxCHECK(IsValidChordDiagramIndex(index), NULL); return (m_chordDiagramArray[index]);}
+    {
+        wxCHECK(IsValidChordDiagramIndex(index), NULL);
+        return (m_chordDiagramArray[index]);
+    }
     
-    // Floating Text Functions
+// Floating Text Functions
     /// Determines if a floating text index is valid
     /// @param index floating text index to validate
     /// @return True if the floating text index is valid, false if not
@@ -182,9 +189,12 @@ public:
     /// @param index Index of the floating text to get
     /// @return The nth floating text in the score
     FloatingText* GetFloatingText(wxUint32 index) const         
-        {wxCHECK(IsValidFloatingTextIndex(index), NULL); return (m_floatingTextArray[index]);}
+    {
+        wxCHECK(IsValidFloatingTextIndex(index), NULL);
+        return (m_floatingTextArray[index]);
+    }
     
-    // Guitar In Functions
+// Guitar In Functions
     /// Determines if a guitar in index is valid
     /// @param index guitar in index to validate
     /// @return True if the guitar in index is valid, false if not
@@ -198,9 +208,12 @@ public:
     /// @param index Index of the guitar in to get
     /// @return The nth guitar in in the score
     GuitarIn* GetGuitarIn(wxUint32 index) const                 
-        {wxCHECK(IsValidGuitarInIndex(index), NULL); return (m_guitarInArray[index]);}
+    {
+        wxCHECK(IsValidGuitarInIndex(index), NULL);
+        return (m_guitarInArray[index]);
+    }
     
-    // Tempo Marker Functions
+// Tempo Marker Functions
     /// Determines if a tempo marker index is valid
     /// @param index tempo marker index to validate
     /// @return True if the tempo marker index is valid, false if not
@@ -214,9 +227,12 @@ public:
     /// @param index Index of the tempo marker to get
     /// @return The nth tempo marker in the score
     TempoMarker* GetTempoMarker(wxUint32 index) const
-        {wxCHECK(IsValidTempoMarkerIndex(index), NULL); return (m_tempoMarkerArray[index]);}
+    {
+        wxCHECK(IsValidTempoMarkerIndex(index), NULL);
+        return (m_tempoMarkerArray[index]);
+    }
     
-    // Dynamic Functions
+// Dynamic Functions
     /// Determines if a dynamic index is valid
     /// @param index dynamic index to validate
     /// @return True if the dynamic index is valid, false if not
@@ -230,9 +246,12 @@ public:
     /// @param index Index of the dynamic to get
     /// @return The nth dynamic in the score
     Dynamic* GetDynamic(wxUint32 index) const                   
-        {wxCHECK(IsValidDynamicIndex(index), NULL); return (m_dynamicArray[index]);}
+    {
+        wxCHECK(IsValidDynamicIndex(index), NULL);
+        return (m_dynamicArray[index]);
+    }
     
-    // Alternate Ending Functions
+// Alternate Ending Functions
     /// Determines if a alternate ending index is valid
     /// @param index alternate ending index to validate
     /// @return True if the alternate ending index is valid, false if not
@@ -246,9 +265,12 @@ public:
     /// @param index Index of the alternate ending to get
     /// @return The nth alternate ending in the score
     AlternateEnding* GetAlternateEnding(wxUint32 index) const
-        {wxCHECK(IsValidAlternateEndingIndex(index), NULL); return (m_alternateEndingArray[index]);}
+    {
+        wxCHECK(IsValidAlternateEndingIndex(index), NULL);
+        return (m_alternateEndingArray[index]);
+    }
     
-    // System Functions
+// System Functions
     /// Determines if a system index is valid
     /// @param index system index to validate
     /// @return True if the system index is valid, false if not
@@ -262,14 +284,18 @@ public:
     /// @param index Index of the system to get
     /// @return The nth system in the score
     System* GetSystem(wxUint32 index) const                     
-        {wxCHECK(IsValidSystemIndex(index), NULL); return (m_systemArray[index]);}
+    {
+        wxCHECK(IsValidSystemIndex(index), NULL);
+        return (m_systemArray[index]);
+    }
 
-    // Operations
+// Operations
     void GetStatistics(SCORE_STATISTICS& statistics);
 };
 
 // Array declarations
-// Note: Do not use WX_DEFINE_POWERTABARRAY here! It will cause incorrect file serialization
+// Note: Do not use WX_DEFINE_POWERTABARRAY here! It will cause incorrect file
+// serialization
 WX_DEFINE_ARRAY(Score*, ScoreArray);
 
 #endif

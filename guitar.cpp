@@ -59,8 +59,10 @@ const wxByte         Guitar::MAX_CAPO                       = 12;
 // Constructors/Destructors
 /// Default Constructor
 Guitar::Guitar() :
-    m_number(DEFAULT_NUMBER), m_description(DEFAULT_DESCRIPTION), m_preset(DEFAULT_PRESET), m_initialVolume(DEFAULT_INITIAL_VOLUME),
-    m_pan(DEFAULT_PAN), m_reverb(DEFAULT_REVERB), m_chorus(DEFAULT_CHORUS), m_tremolo(DEFAULT_TREMOLO), m_phaser(DEFAULT_PHASER), m_capo(DEFAULT_CAPO)
+    m_number(DEFAULT_NUMBER), m_description(DEFAULT_DESCRIPTION),
+    m_preset(DEFAULT_PRESET), m_initialVolume(DEFAULT_INITIAL_VOLUME),
+    m_pan(DEFAULT_PAN), m_reverb(DEFAULT_REVERB), m_chorus(DEFAULT_CHORUS),
+    m_tremolo(DEFAULT_TREMOLO), m_phaser(DEFAULT_PHASER), m_capo(DEFAULT_CAPO)
 {
     //------Last Checked------//
     // - Dec 8, 2004
@@ -77,9 +79,12 @@ Guitar::Guitar() :
 /// @param tremolo MIDI tremolo level
 /// @param phaser MIDI phaser level
 /// @param capo Capo fret number (0 = no capo)
-Guitar::Guitar(wxByte number, const wxChar* description, wxByte preset, wxByte initialVolume, wxByte pan, wxByte reverb, wxByte chorus, wxByte tremolo, wxByte phaser, wxByte capo) :
-    m_number(number), m_description(description), m_preset(preset), m_initialVolume(initialVolume),
-    m_pan(pan), m_reverb(reverb), m_chorus(chorus), m_tremolo(tremolo), m_phaser(phaser), m_capo(capo)
+Guitar::Guitar(wxByte number, const wxChar* description, wxByte preset,
+    wxByte initialVolume, wxByte pan, wxByte reverb, wxByte chorus,
+    wxByte tremolo, wxByte phaser, wxByte capo) : m_number(number),
+    m_description(description), m_preset(preset),
+    m_initialVolume(initialVolume), m_pan(pan), m_reverb(reverb),
+    m_chorus(chorus), m_tremolo(tremolo), m_phaser(phaser), m_capo(capo)
 {
     //------Last Checked------//
     // - Dec 8, 2004
@@ -96,8 +101,10 @@ Guitar::Guitar(wxByte number, const wxChar* description, wxByte preset, wxByte i
 
 /// Copy Constructor
 Guitar::Guitar (const Guitar& guitar) :
-    m_number(DEFAULT_NUMBER), m_description(DEFAULT_DESCRIPTION), m_preset(DEFAULT_PRESET), m_initialVolume(DEFAULT_INITIAL_VOLUME),
-    m_pan(DEFAULT_PAN), m_reverb(DEFAULT_REVERB), m_chorus(DEFAULT_CHORUS), m_tremolo(DEFAULT_TREMOLO), m_phaser(DEFAULT_PHASER), m_capo(DEFAULT_CAPO)
+    m_number(DEFAULT_NUMBER), m_description(DEFAULT_DESCRIPTION),
+    m_preset(DEFAULT_PRESET), m_initialVolume(DEFAULT_INITIAL_VOLUME),
+    m_pan(DEFAULT_PAN), m_reverb(DEFAULT_REVERB), m_chorus(DEFAULT_CHORUS),
+    m_tremolo(DEFAULT_TREMOLO), m_phaser(DEFAULT_PHASER), m_capo(DEFAULT_CAPO)
     
 {
     //------Last Checked------//
@@ -179,7 +186,8 @@ bool Guitar::DoSerialize(PowerTabOutputStream& stream)
     stream.WriteMFCString(m_description);
     wxCHECK(stream.CheckState(), false);
     
-    stream << m_preset << m_initialVolume << m_pan << m_reverb << m_chorus << m_tremolo << m_phaser << m_capo;
+    stream << m_preset << m_initialVolume << m_pan << m_reverb << m_chorus <<
+        m_tremolo << m_phaser << m_capo;
     wxCHECK(stream.CheckState(), false);
     
     m_tuning.Serialize(stream);
@@ -202,7 +210,8 @@ bool Guitar::DoDeserialize(PowerTabInputStream& stream, wxWord version)
     stream.ReadMFCString(m_description);
     wxCHECK(stream.CheckState(), false);
     
-    stream >> m_preset >> m_initialVolume >> m_pan >> m_reverb >> m_chorus >> m_tremolo >> m_phaser >> m_capo;
+    stream >> m_preset >> m_initialVolume >> m_pan >> m_reverb >> m_chorus >>
+        m_tremolo >> m_phaser >> m_capo;
     wxCHECK(stream.CheckState(), false);
     
     m_tuning.Deserialize(stream, version);
@@ -217,6 +226,8 @@ wxString Guitar::GetLegendText() const
 {
     //------Last Checked------//
     // - Dec 8, 2004   
-    wxString returnValue = wxString::Format(wxT("Gtr. %s - %s - %s"), wxArabicToRoman(GetNumber() + 1).c_str(), GetDescription().c_str(), m_tuning.GetSpelling().c_str());
+    wxString returnValue = wxString::Format(wxT("Gtr. %s - %s - %s"),
+        wxArabicToRoman(GetNumber() + 1).c_str(), GetDescription().c_str(),
+        m_tuning.GetSpelling().c_str());
     return (returnValue);
 }

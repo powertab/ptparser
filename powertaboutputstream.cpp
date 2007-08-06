@@ -15,7 +15,8 @@
 // Constructor/Destructor
 /// Primary Constructor
 PowerTabOutputStream::PowerTabOutputStream(wxOutputStream& stream) :
-    wxDataOutputStream(stream), m_mapsInitialized(false), m_mapCount(0), m_lastPowerTabError(POWERTABSTREAM_NO_ERROR)
+    wxDataOutputStream(stream), m_mapsInitialized(false), m_mapCount(0),
+    m_lastPowerTabError(POWERTABSTREAM_NO_ERROR)
 {
     //------Last Checked------//
     // - Dec 20, 2004
@@ -73,7 +74,8 @@ bool PowerTabOutputStream::WriteAnsiText(const wxString& text)
     return (CheckState());
 }
 
-/// Writes a wxString object to the stream using the Microsoft based (MFC) string format
+/// Writes a wxString object to the stream using the Microsoft based (MFC)
+/// string format
 /// @param string String to write
 /// @return True if the string was written, false if not
 bool PowerTabOutputStream::WriteMFCString(const wxString& string)
@@ -111,7 +113,8 @@ bool PowerTabOutputStream::WriteMFCStringLength(wxUint32 length, bool unicode)
     // If length is less than byte placeholder, write the length as a byte value
     if (length < BYTE_PLACEHOLDER)
 	    *this << (wxByte)length;
-	// If length is less than the Unicode marker, write the length as a word value
+	// If length is less than the Unicode marker, write the length as a word
+    // value
     else if (length < UNICODE_MARKER)
     {
 	    *this << (wxByte)BYTE_PLACEHOLDER;
@@ -139,7 +142,8 @@ bool PowerTabOutputStream::WriteWin32ColorRef(wxColor color)
     //------Last Checked------//
     // - Dec 27, 2004
     // COLORREF format = 0x00bbggrr
-    wxUint32 colorref = MAKELONG(MAKEWORD(color.Red(), color.Green()), MAKEWORD(color.Blue(), 0));
+    wxUint32 colorref = MAKELONG(MAKEWORD(color.Red(), color.Green()),
+        MAKEWORD(color.Blue(), 0));
     *this << colorref;
     return (CheckState());
 }
@@ -153,7 +157,8 @@ bool PowerTabOutputStream::WriteMFCRect(const wxRect& rect)
     // - Dec 27, 2004
 
     // CRect format = left, top, right, bottom, all 32 bit integers
-    *this << (wxInt32)rect.GetLeft() << (wxInt32)rect.GetTop() << (wxInt32)rect.GetRight() << (wxInt32)rect.GetBottom();
+    *this << (wxInt32)rect.GetLeft() << (wxInt32)rect.GetTop() <<
+        (wxInt32)rect.GetRight() << (wxInt32)rect.GetBottom();
     return (CheckState());
 }
 
@@ -271,8 +276,10 @@ bool PowerTabOutputStream::WriteClassInformation(const PowerTabObject* object)
     return (CheckState());
 }
 
-/// Gets the error message associated with the last error that occurred in the stream
-/// @return The error message associated with the last error that occurred in the stream
+/// Gets the error message associated with the last error that occurred in the
+/// stream
+/// @return The error message associated with the last error that occurred in
+/// the stream
 wxString PowerTabOutputStream::GetLastErrorMessage()
 {
     //------Last Checked------//

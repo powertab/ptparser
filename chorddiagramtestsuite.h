@@ -18,16 +18,16 @@ class ChordDiagramTestSuite :
 {
     DECLARE_DYNAMIC_CLASS(ChordDiagramTestSuite)
     
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     ChordDiagramTestSuite();
     ~ChordDiagramTestSuite();
 
-    // Overrides
+// Overrides
     size_t GetTestCount() const;
     bool RunTestCases();
     
-    // Test Cases
+// Test Cases
 private:
     bool TestCaseConstructor();
     bool TestCaseCreation();

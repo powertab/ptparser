@@ -24,35 +24,36 @@ public:
     // Default Constants
     static const wxByte DEFAULT_POSITION;       ///< Default value for the position member variable
     
+// Member Variables
 protected:
     wxByte          m_position;                 ///< Zero-based index of the position within the system where the chord text is anchored
 	ChordName       m_chordName;	            ///< Chord name data (see ChordName class for details)
 
+// Constructor/Destructor
 public:
-	// Constructor/Destructor
 	ChordText();
 	ChordText(wxUint32 position, const ChordName& chordName);
     ChordText(const ChordText& chordText);
 	~ChordText();
 
-    // Creation Functions
+// Creation Functions
     /// Creates an exact duplicate of the object
     /// @return The duplicate object
     PowerTabObject* CloneObject() const                         
         {return (new ChordText(*this));}
     
-    // Operators
+// Operators
 	const ChordText& operator=(const ChordText& chordText);
 	bool operator==(const ChordText& chordText) const;
 	bool operator!=(const ChordText& chordText) const;
 
-	// Serialization functions
+// Serialization functions
 protected:
     bool DoSerialize(PowerTabOutputStream& stream);
     bool DoDeserialize(PowerTabInputStream& stream, wxWord version);
 
+// MFC Class Functions
 public:
-    // MFC Class Functions
     /// Gets the MFC Class Name for the object
     /// @return The MFC Class Name
     wxString GetMFCClassName() const                            
@@ -62,23 +63,28 @@ public:
     wxWord GetMFCClassSchema() const                            
         {return ((wxWord)1);}
     
-    // Position Functions
+// Position Functions
     /// Determines whether a position is valid
     /// @param position Position to validate
     /// @return True if the position is valid, false if not
     static bool IsValidPosition(wxUint32 position)              
         {return ((position >= 0) && (position <= 255));}
     /// Sets the position within the system where the chord text is anchored
-    /// @param position Zero-based index within the system where the chord text is anchored
+    /// @param position Zero-based index within the system where the chord text
+    /// is anchored
     /// @return True if the position was set, false if not
     bool SetPosition(wxUint32 position)                         
-        {wxCHECK(IsValidPosition(position), false); m_position = (wxByte)position; return (true);}
+    {
+        wxCHECK(IsValidPosition(position), false);
+        m_position = (wxByte)position;
+        return (true);
+    }
     /// Gets the position within the system where the chord text is anchored
     /// @return The position within the system where the chord text is anchored
     wxUint32 GetPosition() const                                
         {return (m_position);}
 
-	// Chord Name Functions
+// Chord Name Functions
 	/// Sets the chord name
     void SetChordName(const ChordName& chordName)               
         {m_chordName = chordName;}

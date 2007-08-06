@@ -46,7 +46,8 @@ const wxByte    Position::MAX_MULTIBAR_REST_MEASURE_COUNT               = 255;
     
 /// Default Constructor
 Position::Position() :
-    m_position(DEFAULT_POSITION), m_beaming(DEFAULT_BEAMING), m_data(DEFAULT_DATA)
+    m_position(DEFAULT_POSITION), m_beaming(DEFAULT_BEAMING),
+    m_data(DEFAULT_DATA)
 {
     //------Last Checked------//
     // - Jan 18, 2005
@@ -54,8 +55,10 @@ Position::Position() :
 }
 
 /// Primary Constructor
-/// @param position Zero-based index within the system where the position is anchored
-/// @param durationType Duration type to set (1 = whole, 2 = half, 4 = quarter, 8 = 8th, 16 = 16th, 32 = 32nd, 64 = 64th)
+/// @param position Zero-based index within the system where the position is
+/// anchored
+/// @param durationType Duration type to set (1 = whole, 2 = half, 4 = quarter,
+/// 8 = 8th, 16 = 16th, 32 = 32nd, 64 = 64th)
 /// @param dotCount Number of duration dots to set
 Position::Position(wxUint32 position, wxByte durationType, wxByte dotCount) :
     m_position(position), m_beaming(DEFAULT_BEAMING), m_data(DEFAULT_DATA)
@@ -76,7 +79,8 @@ Position::Position(wxUint32 position, wxByte durationType, wxByte dotCount) :
 
 /// Copy Constructor
 Position::Position(const Position& position) :
-    m_position(DEFAULT_POSITION), m_beaming(DEFAULT_BEAMING), m_data(DEFAULT_DATA)
+    m_position(DEFAULT_POSITION), m_beaming(DEFAULT_BEAMING),
+    m_data(DEFAULT_DATA)
 {
     //------Last Checked------//
     // - Dec 17, 2004
@@ -194,12 +198,14 @@ bool Position::DoDeserialize(PowerTabInputStream& stream, wxWord version)
     // - Jan 17, 2005
     
     // Version 1.0/1.0.2 beaming updated
-	if (version == PowerTabFileHeader::FILEVERSION_1_0 || version == PowerTabFileHeader::FILEVERSION_1_0_2)
+	if (version == PowerTabFileHeader::FILEVERSION_1_0 ||
+        version == PowerTabFileHeader::FILEVERSION_1_0_2)
 	{
 		stream >> m_position >> m_beaming >> m_data;
 		wxCHECK(stream.CheckState(), false);
 		
-		// All we have to do is move the irregular flags to the duration variable, the document will be rebeamed in the CDocument::Serialize()
+		// All we have to do is move the irregular flags to the duration
+        // variable, the document will be rebeamed in the CDocument::Serialize()
 		if ((m_beaming & 0x2000) == 0x2000)
 			m_data |= irregularGroupingStart;
 		if ((m_beaming & 0x4000) == 0x4000)
@@ -249,7 +255,8 @@ bool Position::DoDeserialize(PowerTabInputStream& stream, wxWord version)
 
 // Duration Type Functions
 /// Sets the duration type
-/// @param durationType Duration type to set (1 = whole, 2 = half, 4 = quarter, 8 = 8th, 16 = 16th, 32 = 32nd, 64 = 64th)
+/// @param durationType Duration type to set (1 = whole, 2 = half, 4 = quarter,
+/// 8 = 8th, 16 = 16th, 32 = 32nd, 64 = 64th)
 /// @return True if the duration type was set, false if not
 bool Position::SetDurationType(wxByte durationType)
 {
@@ -264,7 +271,8 @@ bool Position::SetDurationType(wxByte durationType)
 	return (true);
 }
 
-/// Gets the duration type (1 = whole, 2 = half, 4 = quarter, 8 = 8th, 16 = 16th)
+/// Gets the duration type (1 = whole, 2 = half, 4 = quarter, 8 = 8th,
+/// 16 = 16th)
 /// @return The duration type
 wxByte Position::GetDurationType() const
 {
@@ -278,11 +286,13 @@ wxByte Position::GetDurationType() const
 /// @param notesPlayed Number of notes played
 /// @param notesPlayedOver Number of notes played over
 /// @return True if the irregular grouping timing was set, false if not
-bool Position::SetIrregularGroupingTiming(wxByte notesPlayed, wxByte notesPlayedOver)
+bool Position::SetIrregularGroupingTiming(wxByte notesPlayed,
+    wxByte notesPlayedOver)
 {
     //------Last Checked------//
     // - Jan 18, 2005
-    wxCHECK(IsValidIrregularGroupingTiming(notesPlayed, notesPlayedOver), false);
+    wxCHECK(IsValidIrregularGroupingTiming(notesPlayed, notesPlayedOver),
+        false);
 
 	// Values are stored as 1-15 and 1-7
 	notesPlayed--;
@@ -300,14 +310,17 @@ bool Position::SetIrregularGroupingTiming(wxByte notesPlayed, wxByte notesPlayed
 /// @param notesPlayed Top value for the irregular grouping timing
 /// @param notesPlayedOver Bottom value for the irregular grouping timing
 /// @return True if the irregular grouping was set, false if not
-void Position::GetIrregularGroupingTiming(wxByte& notesPlayed, wxByte& notesPlayedOver) const
+void Position::GetIrregularGroupingTiming(wxByte& notesPlayed,
+    wxByte& notesPlayedOver) const
 {
     //------Last Checked------//
     // - Jan 18, 2005
     
 	// Values are stored as 1-15 and 1-7, but there is no 1 value
-	notesPlayed = (wxByte)(((m_beaming & irregularGroupingNotesPlayedMask) >> 3) + 1);
-	notesPlayedOver = (wxByte)((m_beaming & irregularGroupingNotesPlayedOverMask) + 1);
+	notesPlayed = 
+        (wxByte)(((m_beaming & irregularGroupingNotesPlayedMask) >> 3) + 1);
+	notesPlayedOver = 
+        (wxByte)((m_beaming & irregularGroupingNotesPlayedOverMask) + 1);
 }
 
 /// Determines if the position has an irregular grouping timing
@@ -333,8 +346,10 @@ bool Position::ClearIrregularGroupingTiming()
 }
 
 // Previous Beam Duration Functions
-/// Sets the duration type of the previous rhythm slash in the beam group (cache only)
-/// @param durationType Duration type to set (0 = not beamed, 8 = 8th, 16 = 16th, 32 = 32nd, 64 = 64th)
+/// Sets the duration type of the previous rhythm slash in the beam group (cache
+/// only)
+/// @param durationType Duration type to set (0 = not beamed, 8 = 8th,
+/// 16 = 16th, 32 = 32nd, 64 = 64th)
 /// @return True if the duration type was set, false if not
 bool Position::SetPreviousBeamDurationType(wxByte durationType)
 {
@@ -362,7 +377,8 @@ bool Position::SetPreviousBeamDurationType(wxByte durationType)
 }
 
 /// Gets the duration type of the previous rhythm slash in the beam group
-/// @return The duration type of the previous rhythm slash in the beam group (0 = not beamed, 8 = 8th, 16 = 16th)
+/// @return The duration type of the previous rhythm slash in the beam group
+/// (0 = not beamed, 8 = 8th, 16 = 16th)
 wxByte Position::GetPreviousBeamDurationType() const
 {
     //------Last Checked------//
@@ -443,16 +459,19 @@ bool Position::SetDataFlag(wxUint32 flag)
 /// Sets (adds or updates) a volume swell
 /// @param startVolume Starting volume of the swell
 /// @param endVolume Ending volume of the swell
-/// @param duration Duration of the swell  (0 = occurs over position, 1 and up = occurs over next n positions)
+/// @param duration Duration of the swell  (0 = occurs over position, 1 and up
+/// = occurs over next n positions)
 /// @return True if the volume swell was added or updated
-bool Position::SetVolumeSwell(wxByte startVolume, wxByte endVolume, wxByte duration)
+bool Position::SetVolumeSwell(wxByte startVolume, wxByte endVolume,
+    wxByte duration)
 {
     //------Last Checked------//
     // - Jan 19, 2005
     wxCHECK(IsValidVolumeSwell(startVolume, endVolume, duration), false);
     
     // Construct the symbol data, then add it to the array
-    wxUint32 symbolData = MAKELONG(MAKEWORD(endVolume, startVolume), MAKEWORD(duration, volumeSwell));
+    wxUint32 symbolData = MAKELONG(MAKEWORD(endVolume, startVolume),
+        MAKEWORD(duration, volumeSwell));
     return (AddComplexSymbol(symbolData));	
 }
 
@@ -461,7 +480,8 @@ bool Position::SetVolumeSwell(wxByte startVolume, wxByte endVolume, wxByte durat
 /// @param endVolume Holds the end volume return value
 /// @param duration Holds the duration return value
 /// @return True if the data was returned, false if not
-bool Position::GetVolumeSwell(wxByte& startVolume, wxByte& endVolume, wxByte& duration) const
+bool Position::GetVolumeSwell(wxByte& startVolume, wxByte& endVolume,
+    wxByte& duration) const
 {
     //------Last Checked------//
     // - Jan 19, 2005
@@ -505,7 +525,8 @@ bool Position::ClearVolumeSwell()
 // Tremolo Bar Functions
 /// Sets (adds or updates) a tremolo bar
 /// @param type Type of tremolo bar (see tremoloBarTypes enum for values)
-/// @param duration Duration of the tremolo bar (0 = occurs over position, 1 and up = occurs over next n positions)
+/// @param duration Duration of the tremolo bar (0 = occurs over position, 1
+/// and up = occurs over next n positions)
 /// @param pitch Pitch of the tremolo bar
 /// @return True if the tremolo bar was added or updated
 bool Position::SetTremoloBar(wxByte type, wxByte duration, wxByte pitch)
@@ -515,7 +536,8 @@ bool Position::SetTremoloBar(wxByte type, wxByte duration, wxByte pitch)
     wxCHECK(IsValidTremoloBar(type, duration, pitch), false);
     
     // Construct the symbol data, then add it to the array
-    wxUint32 symbolData = MAKELONG(MAKEWORD(pitch, duration), MAKEWORD(type, tremoloBar));
+    wxUint32 symbolData = MAKELONG(MAKEWORD(pitch, duration),
+        MAKEWORD(type, tremoloBar));
     return (AddComplexSymbol(symbolData));	
 }
 
@@ -524,7 +546,8 @@ bool Position::SetTremoloBar(wxByte type, wxByte duration, wxByte pitch)
 /// @param duration Holds the duration return value
 /// @param pitch Holds the pitch return value
 /// @return True if the data was returned, false if not
-bool Position::GetTremoloBar(wxByte& type, wxByte& duration, wxByte& pitch) const
+bool Position::GetTremoloBar(wxByte& type, wxByte& duration,
+    wxByte& pitch) const
 {
     //------Last Checked------//
     // - Jan 19, 2005
@@ -576,7 +599,8 @@ bool Position::SetMultibarRest(wxByte measureCount)
     wxCHECK(IsValidMultibarRest(measureCount), false);
     
     // Construct the symbol data, then add it to the array
-    wxUint32 symbolData = MAKELONG(MAKEWORD(measureCount, 0), MAKEWORD(0, multibarRest));
+    wxUint32 symbolData = MAKELONG(MAKEWORD(measureCount, 0),
+        MAKEWORD(0, multibarRest));
     return (AddComplexSymbol(symbolData));	
 }
 
@@ -644,7 +668,8 @@ bool Position::AddComplexSymbol(wxUint32 symbolData)
 		m_complexSymbolArray[index] = symbolData;
 		returnValue = true;
     }
-    // Symbol was not found in the array, find the first free array slot and insert there
+    // Symbol was not found in the array, find the first free array slot and
+    // insert there
 	else
 	{
 	    wxUint32 i = 0;
@@ -682,7 +707,8 @@ size_t Position::GetComplexSymbolCount() const
 
 /// Gets the index of a given complex symbol type in the complex symbol array
 /// @param type Type of symbol to find
-/// @return Index within the array where the symbol was found, or -1 if not found
+/// @return Index within the array where the symbol was found, or -1 if not
+/// found
 wxUint32 Position::FindComplexSymbol(wxByte type) const
 {
     //------Last Checked------//

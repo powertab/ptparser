@@ -41,7 +41,8 @@ const wxUint32      Dynamic::MAX_POSITION               = 255;
 // Constructor/Destructor
 /// Default Constructor
 Dynamic::Dynamic() :
-    m_system(DEFAULT_SYSTEM), m_staff(DEFAULT_STAFF), m_position(DEFAULT_POSITION), m_data(DEFAULT_DATA)
+    m_system(DEFAULT_SYSTEM), m_staff(DEFAULT_STAFF),
+    m_position(DEFAULT_POSITION), m_data(DEFAULT_DATA)
 {
     //------Last Checked------//
     // - Jan 12, 2005
@@ -50,11 +51,13 @@ Dynamic::Dynamic() :
 /// Primary Constructor
 /// @param system Zero-based index of the system where the dynamic is anchored
 /// @param staff Zero-based index of the staff where the dynamic is anchored
-/// @param position Zero-based index of the position within the system where the dynamic is anchored
+/// @param position Zero-based index of the position within the system where the
+/// dynamic is anchored
 /// @param staffVolume Staff volume to set (see volumeLevels enum)
 /// @param rhythmSlashVolume Rhythm slash volume to set (see volumeLevels enum)
-Dynamic::Dynamic(wxUint32 system, wxUint32 staff, wxUint32 position, wxByte staffVolume, wxByte rhythmSlashVolume) :
-    m_system(DEFAULT_SYSTEM), m_staff(DEFAULT_STAFF), m_position(DEFAULT_POSITION), m_data(DEFAULT_DATA)
+Dynamic::Dynamic(wxUint32 system, wxUint32 staff, wxUint32 position,
+    wxByte staffVolume, wxByte rhythmSlashVolume) : m_system(DEFAULT_SYSTEM),
+    m_staff(DEFAULT_STAFF), m_position(DEFAULT_POSITION), m_data(DEFAULT_DATA)
 {
     //------Last Checked------//
     // - Jan 12, 2005
@@ -70,7 +73,8 @@ Dynamic::Dynamic(wxUint32 system, wxUint32 staff, wxUint32 position, wxByte staf
 
 /// Copy Constructor
 Dynamic::Dynamic(const Dynamic& dynamic) :
-    m_system(DEFAULT_SYSTEM), m_staff(DEFAULT_STAFF), m_position(DEFAULT_POSITION), m_data(DEFAULT_DATA)
+    m_system(DEFAULT_SYSTEM), m_staff(DEFAULT_STAFF),
+    m_position(DEFAULT_POSITION), m_data(DEFAULT_DATA)
 {
     //------Last Checked------//
     // - Jan 12, 2005
@@ -145,7 +149,8 @@ bool Dynamic::DoDeserialize(PowerTabInputStream& stream, wxWord version)
     // - Jan 12, 2005
     
     // Version 1.0 and 1.0.2 (only staff volume was stored)
-    if (version == PowerTabFileHeader::FILEVERSION_1_0 || version == PowerTabFileHeader::FILEVERSION_1_0_2)
+    if (version == PowerTabFileHeader::FILEVERSION_1_0 ||
+        version == PowerTabFileHeader::FILEVERSION_1_0_2)
     {
         wxByte staffVolume;
         stream >> m_system >> m_staff >> m_position >> staffVolume;
@@ -165,7 +170,8 @@ bool Dynamic::DoDeserialize(PowerTabInputStream& stream, wxWord version)
 
 // Volume Functions
 /// Sets the volume
-/// @param rhythmSlashes True to set the rhythm slash volume, false to set the staff volume
+/// @param rhythmSlashes True to set the rhythm slash volume, false to set the
+/// staff volume
 /// @param volume Volume to set
 /// @return True if the volume was set, false if not
 bool Dynamic::SetVolume(bool rhythmSlashes, wxByte volume)
@@ -183,7 +189,8 @@ bool Dynamic::SetVolume(bool rhythmSlashes, wxByte volume)
 }
 
 /// Gets the volume
-/// @param rhythmSlashes True to get the rhythm slash volume, false to get the staff volume
+/// @param rhythmSlashes True to get the rhythm slash volume, false to get the
+/// staff volume
 /// @return The volume
 wxByte Dynamic::GetVolume(bool rhythmSlashes) const
 {
@@ -195,19 +202,23 @@ wxByte Dynamic::GetVolume(bool rhythmSlashes) const
 }
 
 /// Determines if the volume is set
-/// @param rhythmSlashes True to test if the rhythm slash volume is set, false to test if the staff volume is set
+/// @param rhythmSlashes True to test if the rhythm slash volume is set, false
+/// to test if the staff volume is set
 /// @return True if the volume is set, false if not
 bool Dynamic::IsVolumeSet(bool rhythmSlashes) const
 {
     //------Last Checked------//
     // - Jan 13, 2005
-    wxByte volume = ((rhythmSlashes) ? GetRhythmSlashVolume() : GetStaffVolume());
+    wxByte volume = ((rhythmSlashes) ? GetRhythmSlashVolume() :
+        GetStaffVolume());
     return (volume != notSet);
 }
 
 // Operations
-/// Returns a text representation of the dynamic volume level (i.e. mf, ppp, etc.)
-/// @param rhythmSlashes If true, gets the rhythm slash volume level text, otherwise the staff volume level text
+/// Returns a text representation of the dynamic volume level (i.e. mf, ppp,
+/// etc.)
+/// @param rhythmSlashes If true, gets the rhythm slash volume level text,
+/// otherwise the staff volume level text
 /// @return A text representation of the volume level
 wxString Dynamic::GetText(bool rhythmSlashes) const
 {

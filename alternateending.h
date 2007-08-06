@@ -29,31 +29,31 @@ public:
         numbersMask         =   (wxWord)0x7ff           ///< Mask used to retrieve all allowable numbers
     };
     
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     AlternateEnding();
     AlternateEnding(wxUint32 system, wxUint32 position, wxWord numbers);
     AlternateEnding(const AlternateEnding& alternateEnding);
     ~AlternateEnding();
    
-    // Creation Functions
+// Creation Functions
     /// Creates an exact duplicate of the object
     /// @return The duplicate object
     PowerTabObject* CloneObject() const                         
         {return (new AlternateEnding(*this));}
    
-    // Operators
+// Operators
     const AlternateEnding& operator=(const AlternateEnding& alternateEnding);
     bool operator==(const AlternateEnding& alternateEnding) const;
     bool operator!=(const AlternateEnding& alternateEnding) const;
     
-    // Serialization Functions
+// Serialization Functions
 protected:
     bool DoSerialize(PowerTabOutputStream& stream);
     bool DoDeserialize(PowerTabInputStream& stream, wxWord version);
 
+// MFC Class Functions
 public:    
-    // MFC Class Functions
     /// Gets the MFC Class Name for the object
     /// @return The MFC Class Name
     wxString GetMFCClassName() const                            
@@ -63,12 +63,15 @@ public:
     wxWord GetMFCClassSchema() const                            
         {return ((wxWord)1);}
     
-    // Number Functions
+// Number Functions
     /// Deteremines if a numbers bit map is valid
     /// @param numbers Numbers bit map to validate
     /// @return True if the numbers bit map is valid, false if not
     static bool IsValidNumbers(wxWord numbers)
-        {return ((numbers == 0) || (((numbers & numbersMask) != 0) && ((numbers & ~numbersMask) == 0)));}
+    {
+        return ((numbers == 0) ||
+            (((numbers & numbersMask) != 0) && ((numbers & ~numbersMask) == 0)));
+    }
     /// Determines if a number is valid
     /// @param number Number to validate
     /// @return True if the number is valid, false if not
@@ -80,7 +83,7 @@ public:
     bool IsNumberSet(wxUint32 number) const;
     bool ClearNumber(wxUint32 number);
     
-    // Da Capo Functions
+// Da Capo Functions
     void SetDaCapo()                                            
         {SetNumber(daCapo);}
     bool IsDaCapoSet() const                                    
@@ -88,7 +91,7 @@ public:
     void ClearDaCapo()                                          
         {ClearNumber(daCapo);}
     
-    // Dal Segno Functions
+// Dal Segno Functions
     void SetDalSegno()                                          
         {SetNumber(dalSegno);}
     bool IsDalSegnoSet() const                                  
@@ -96,7 +99,7 @@ public:
     void ClearDalSegno()                                        
         {ClearNumber(dalSegno);}
     
-    // Dal Segno Segno Functions
+// Dal Segno Segno Functions
     void SetDalSegnoSegno()
         {SetNumber(dalSegnoSegno);}
     bool IsDalSegnoSegnoSet() const
@@ -104,7 +107,7 @@ public:
     void ClearDalSegnoSegno()
         {ClearNumber(dalSegnoSegno);}
     
-    // Operations
+// Operations
     wxString GetText() const;
 protected:
     static wxString GetNumberText(wxUint32 number);

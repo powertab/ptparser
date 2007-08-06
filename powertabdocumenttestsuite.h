@@ -17,17 +17,17 @@ class PowerTabDocumentTestSuite :
     public TestSuite
 {
     DECLARE_DYNAMIC_CLASS(PowerTabDocumentTestSuite)
-    
+
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     PowerTabDocumentTestSuite();
     ~PowerTabDocumentTestSuite();
 
-    // Overrides    
+// Overrides    
     size_t GetTestCount() const;
     bool RunTestCases();
     
-    // Test Cases
+// Test Cases
 private:
     bool TestCaseConstructor();
     bool TestCaseScore();

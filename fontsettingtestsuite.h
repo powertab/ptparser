@@ -18,16 +18,16 @@ class FontSettingTestSuite :
 {
     DECLARE_DYNAMIC_CLASS(FontSettingTestSuite)
     
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     FontSettingTestSuite();
     ~FontSettingTestSuite();
     
-    // Overrides
+// Overrides
     size_t GetTestCount() const;
     bool RunTestCases();
     
-    // Test Case Functions
+// Test Case Functions
 private:
     bool TestCaseConstructor();
     bool TestCaseCreation();

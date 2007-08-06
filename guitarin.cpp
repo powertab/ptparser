@@ -36,7 +36,8 @@ const wxUint32      GuitarIn::MAX_POSITION                  = 255;
 
 /// Default Constructor
 GuitarIn::GuitarIn() :
-    m_system(DEFAULT_SYSTEM), m_staff(DEFAULT_STAFF), m_position(DEFAULT_POSITION), m_data(DEFAULT_DATA)
+    m_system(DEFAULT_SYSTEM), m_staff(DEFAULT_STAFF),
+    m_position(DEFAULT_POSITION), m_data(DEFAULT_DATA)
 {
     //------Last Checked------//
     // - Jan 25, 2005
@@ -44,12 +45,18 @@ GuitarIn::GuitarIn() :
 
 /// Primary Constructor
 /// @param system Zero-based index of the system where the guitar in is anchored
-/// @param staff Zero-based inded of the staff within the system where the guitar in is anchored
-/// @param position Zero-based index of the position within the system where the guitar in is anchored
-/// @param staffGuitars A bit map representing the guitars to set on the staff (bit 1 = guitar 0, bit 2 = guitar 1, etc.)
-/// @param rhythmSlashGuitars A bit map representing the guitars to set for the rhythm slashes (bit 1 = guitar 0, bit 2 = guitar 1, etc.)
-GuitarIn::GuitarIn(wxUint32 system, wxUint32 staff, wxUint32 position, wxByte staffGuitars, wxByte rhythmSlashGuitars) :
-    m_system(DEFAULT_SYSTEM), m_staff(DEFAULT_STAFF), m_position(DEFAULT_POSITION), m_data(DEFAULT_DATA)
+/// @param staff Zero-based inded of the staff within the system where the
+/// guitar in is anchored
+/// @param position Zero-based index of the position within the system where the
+/// guitar in is anchored
+/// @param staffGuitars A bit map representing the guitars to set on the staff
+/// (bit 1 = guitar 0, bit 2 = guitar 1, etc.)
+/// @param rhythmSlashGuitars A bit map representing the guitars to set for the
+/// rhythm slashes (bit 1 = guitar 0, bit 2 = guitar 1, etc.)
+GuitarIn::GuitarIn(wxUint32 system, wxUint32 staff, wxUint32 position,
+    wxByte staffGuitars, wxByte rhythmSlashGuitars) :
+    m_system(DEFAULT_SYSTEM), m_staff(DEFAULT_STAFF),
+    m_position(DEFAULT_POSITION), m_data(DEFAULT_DATA)
 {
     //------Last Checked------//
     // - Jan 25, 2005
@@ -65,7 +72,8 @@ GuitarIn::GuitarIn(wxUint32 system, wxUint32 staff, wxUint32 position, wxByte st
 
 /// Copy Constructor
 GuitarIn::GuitarIn(const GuitarIn& guitarIn) :
-    m_system(DEFAULT_SYSTEM), m_staff(DEFAULT_STAFF), m_position(DEFAULT_POSITION), m_data(DEFAULT_DATA)
+    m_system(DEFAULT_SYSTEM), m_staff(DEFAULT_STAFF),
+    m_position(DEFAULT_POSITION), m_data(DEFAULT_DATA)
 {
     //------Last Checked------//
     // - Dec 16, 2004
@@ -148,8 +156,10 @@ bool GuitarIn::DoDeserialize(PowerTabInputStream& stream,
 
 // Guitars Functions
 /// Sets the guitars
-/// @param rhythmSlashes True to set the rhythm slash guitars, false to set the staff guitars
-/// @param guitars A bit map representing the guitars to set (bit 1 = guitar 0, bit 2 = guitar 1, etc.)
+/// @param rhythmSlashes True to set the rhythm slash guitars, false to set the
+/// staff guitars
+/// @param guitars A bit map representing the guitars to set (bit 1 = guitar 0,
+/// bit 2 = guitar 1, etc.)
 /// @return True if the guitars was set, false if not
 bool GuitarIn::SetGuitars(bool rhythmSlashes, wxByte guitars)
 {
@@ -164,8 +174,10 @@ bool GuitarIn::SetGuitars(bool rhythmSlashes, wxByte guitars)
 }
 
 /// Gets the guitars
-/// @param rhythmSlashes True to get the rhythm slash guitars, false to get the staff guitars
-/// @return A bit map representing the guitars (bit map where bit 1 = guitar 0, bit 2 = guitar 1, etc.)
+/// @param rhythmSlashes True to get the rhythm slash guitars, false to get the
+/// staff guitars
+/// @return A bit map representing the guitars (bit map where bit 1 = guitar 0,
+/// bit 2 = guitar 1, etc.)
 wxByte GuitarIn::GetGuitars(bool rhythmSlashes) const
 {
     //------Last Checked------//
@@ -176,19 +188,22 @@ wxByte GuitarIn::GetGuitars(bool rhythmSlashes) const
 }
 
 /// Determines if the guitars is set
-/// @param rhythmSlashes True to test if the rhythm slash guitars are set, false to test if the staff guitars are set
+/// @param rhythmSlashes True to test if the rhythm slash guitars are set, false
+/// to test if the staff guitars are set
 /// @return True if the guitars is set, false if not
 bool GuitarIn::HasGuitarsSet(bool rhythmSlashes) const
 {
     //------Last Checked------//
     // - Jan 25, 2005
-    wxByte guitars = ((rhythmSlashes) ? GetRhythmSlashGuitars() : GetStaffGuitars());
+    wxByte guitars = ((rhythmSlashes) ? GetRhythmSlashGuitars() :
+        GetStaffGuitars());
     return (guitars != 0);
 }
 
 // Operations
 /// Returns a text representation of the guitar in (i.e. Gtr I, II)
-/// @param rhythmSlashes If true, gets the rhythm slash guitars text, otherwise the staff guitars text
+/// @param rhythmSlashes If true, gets the rhythm slash guitars text, otherwise
+/// the staff guitars text
 /// @return A text representation of the guitars
 wxString GuitarIn::GetText(bool rhythmSlashes) const
 {

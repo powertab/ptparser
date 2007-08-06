@@ -93,7 +93,8 @@ bool KeySignatureTestSuite::TestCaseConstructor()
     
     // TEST CASE: Primary Constructor
     {
-        KeySignature keySignature(KeySignature::minorKey, KeySignature::threeFlats);
+        KeySignature keySignature(KeySignature::minorKey,
+            KeySignature::threeFlats);
         TEST(wxT("Primary Constructor"),
             (keySignature.IsMinorKey()) &&
             (keySignature.HasThreeFlats()) &&
@@ -104,7 +105,8 @@ bool KeySignatureTestSuite::TestCaseConstructor()
 
     // TEST CASE: Copy Constructors
     {
-        KeySignature keySignature(KeySignature::minorKey, KeySignature::threeFlats);
+        KeySignature keySignature(KeySignature::minorKey,
+            KeySignature::threeFlats);
         KeySignature keySignature2(keySignature);
         TEST(wxT("Copy Constructor"),
             (keySignature2.IsMinorKey()) &&
@@ -140,7 +142,8 @@ bool KeySignatureTestSuite::TestCaseOperator()
 
     // TEST CASE: operator=
     {
-        KeySignature keySignature(KeySignature::minorKey, KeySignature::threeFlats);
+        KeySignature keySignature(KeySignature::minorKey,
+            KeySignature::threeFlats);
         KeySignature keySignature2 = keySignature;
         TEST(wxT("Operator="),
             (keySignature2.IsMinorKey()) &&
@@ -158,36 +161,58 @@ bool KeySignatureTestSuite::TestCaseOperator()
     
     // TEST CASE: Operator==
     {
-        KeySignature keySignature(KeySignature::minorKey, KeySignature::threeFlats);
-        KeySignature keySignature2(KeySignature::minorKey, KeySignature::threeFlats);
-        KeySignature keySignature3(KeySignature::majorKey, KeySignature::threeFlats);
-        KeySignature keySignature4(KeySignature::minorKey, KeySignature::fourFlats);
-        KeySignature keySignature5(KeySignature::minorKey, KeySignature::threeFlats);
+        KeySignature keySignature(KeySignature::minorKey,
+            KeySignature::threeFlats);
+        KeySignature keySignature2(KeySignature::minorKey,
+            KeySignature::threeFlats);
+        KeySignature keySignature3(KeySignature::majorKey,
+            KeySignature::threeFlats);
+        KeySignature keySignature4(KeySignature::minorKey,
+            KeySignature::fourFlats);
+        KeySignature keySignature5(KeySignature::minorKey,
+            KeySignature::threeFlats);
         keySignature5.SetCancellation();
-        KeySignature keySignature6(KeySignature::minorKey, KeySignature::threeFlats);
+        KeySignature keySignature6(KeySignature::minorKey,
+            KeySignature::threeFlats);
         keySignature6.Show();
-        TEST(wxT("Operator== - keySignature == keySignature"), (keySignature == keySignature2));
-        TEST(wxT("Operator== - keySignature != keySignature"), !(keySignature == keySignature3));
-        TEST(wxT("Operator== - keySignature != keySignature 2"), !(keySignature == keySignature4));
-        TEST(wxT("Operator== - keySignature != keySignature 3"), !(keySignature == keySignature5));
-        TEST(wxT("Operator== - keySignature != keySignature 4"), !(keySignature == keySignature6));
+        TEST(wxT("Operator== - keySignature == keySignature"),
+            (keySignature == keySignature2));
+        TEST(wxT("Operator== - keySignature != keySignature"),
+            !(keySignature == keySignature3));
+        TEST(wxT("Operator== - keySignature != keySignature 2"),
+            !(keySignature == keySignature4));
+        TEST(wxT("Operator== - keySignature != keySignature 3"),
+            !(keySignature == keySignature5));
+        TEST(wxT("Operator== - keySignature != keySignature 4"),
+            !(keySignature == keySignature6));
     }
     
     // TEST CASE: Operator!=
     {
-        KeySignature keySignature(KeySignature::minorKey, KeySignature::threeFlats);
-        KeySignature keySignature2(KeySignature::minorKey, KeySignature::threeFlats);
-        KeySignature keySignature3(KeySignature::majorKey, KeySignature::threeFlats);
-        KeySignature keySignature4(KeySignature::minorKey, KeySignature::fourFlats);
-        KeySignature keySignature5(KeySignature::minorKey, KeySignature::threeFlats);
+        KeySignature keySignature(KeySignature::minorKey,
+            KeySignature::threeFlats);
+        KeySignature keySignature2(KeySignature::minorKey,
+            KeySignature::threeFlats);
+        KeySignature keySignature3(KeySignature::majorKey,
+            KeySignature::threeFlats);
+        KeySignature keySignature4(KeySignature::minorKey,
+            KeySignature::fourFlats);
+        KeySignature keySignature5(KeySignature::minorKey,
+            KeySignature::threeFlats);
         keySignature5.SetCancellation();
-        KeySignature keySignature6(KeySignature::minorKey, KeySignature::threeFlats);
+        KeySignature keySignature6(KeySignature::minorKey,
+            KeySignature::threeFlats);
         keySignature6.Show();
-        TEST(wxT("Operator!= - keySignature == keySignature"), !(keySignature != keySignature2));
-        TEST(wxT("Operator!= - keySignature != keySignature"), (keySignature != keySignature3));
-        TEST(wxT("Operator!= - keySignature != keySignature 2"), (keySignature != keySignature4));
-        TEST(wxT("Operator!= - keySignature != keySignature 3"), (keySignature != keySignature5));
-        TEST(wxT("Operator!= - keySignature != keySignature 4"), (keySignature != keySignature6));
+        TEST(wxT("Operator!= - keySignature == keySignature"),
+            !(keySignature != keySignature2));
+        TEST(wxT("Operator!= - keySignature != keySignature"),
+            (keySignature != keySignature3));
+        TEST(wxT("Operator!= - keySignature != keySignature 2"),
+            (keySignature != keySignature4));
+        TEST(wxT("Operator!= - keySignature != keySignature 3"),
+            (keySignature != keySignature5));
+        TEST(wxT("Operator!= - keySignature != keySignature 4"),
+            (keySignature != keySignature6));
     }
     
     return (true);
@@ -205,7 +230,8 @@ bool KeySignatureTestSuite::TestCaseSerialize()
     PowerTabOutputStream streamOut(testStream.GetOutputStream());
     
     // Write test data to stream
-    KeySignature keySignatureOut(KeySignature::minorKey, KeySignature::threeFlats);
+    KeySignature keySignatureOut(KeySignature::minorKey,
+        KeySignature::threeFlats);
     keySignatureOut.Serialize(streamOut);
 
     // Output must be OK before using input
@@ -215,7 +241,8 @@ bool KeySignatureTestSuite::TestCaseSerialize()
     
         // Read test data back from stream
         KeySignature keySignatureIn;
-        keySignatureIn.Deserialize(streamIn, PowerTabFileHeader::FILEVERSION_CURRENT);
+        keySignatureIn.Deserialize(streamIn,
+            PowerTabFileHeader::FILEVERSION_CURRENT);
 
         // Validate the data
         ok = ((keySignatureIn == keySignatureOut) 
@@ -234,20 +261,27 @@ bool KeySignatureTestSuite::TestCaseKey()
     //------Last Checked------//
     // - Dec 11, 2004
     KeySignature keySignature;
-    TEST(wxT("SetKey - invalid key type"), !keySignature.SetKey(44, KeySignature::threeFlats));
-    TEST(wxT("SetKey - invalid key accidentals"), !keySignature.SetKey(KeySignature::minorKey, 44));
-    TEST(wxT("SetKey - valid"), keySignature.SetKey(KeySignature::minorKey, KeySignature::threeFlats) &&
+    TEST(wxT("SetKey - invalid key type"),
+        !keySignature.SetKey(44, KeySignature::threeFlats));
+    TEST(wxT("SetKey - invalid key accidentals"),
+        !keySignature.SetKey(KeySignature::minorKey, 44));
+    TEST(wxT("SetKey - valid"),
+        keySignature.SetKey(KeySignature::minorKey, KeySignature::threeFlats) &&
         (keySignature.GetKeyType() == KeySignature::minorKey) &&
         (keySignature.GetKeyAccidentals() == KeySignature::threeFlats)
     );
     
     // TEST CASE: IsSameKey
     {
-        KeySignature keySignature(KeySignature::minorKey, KeySignature::threeFlats);
+        KeySignature keySignature(KeySignature::minorKey,
+            KeySignature::threeFlats);
         keySignature.Show();
-        KeySignature keySignature2(KeySignature::minorKey, KeySignature::threeFlats);
-        KeySignature keySignature3(KeySignature::majorKey, KeySignature::threeFlats);
-        KeySignature keySignature4(KeySignature::minorKey, KeySignature::fourFlats);
+        KeySignature keySignature2(KeySignature::minorKey,
+            KeySignature::threeFlats);
+        KeySignature keySignature3(KeySignature::majorKey,
+            KeySignature::threeFlats);
+        KeySignature keySignature4(KeySignature::minorKey,
+            KeySignature::fourFlats);
         TEST(wxT("IsSameKey - true"), keySignature.IsSameKey(keySignature2));
         TEST(wxT("IsSameKey - false"), !keySignature.IsSameKey(keySignature3));
         TEST(wxT("IsSameKey - false"), !keySignature.IsSameKey(keySignature4));
@@ -266,18 +300,23 @@ bool KeySignatureTestSuite::TestCaseKeyType()
     {
         wxByte i = KeySignature::majorKey;
         for (; i <= (KeySignature::minorKey + 1); i++)
+        {
             TEST(wxString::Format(wxT("IsValidKeyType - %d"), i), 
                 (KeySignature::IsValidKeyType(i) == (i <= KeySignature::minorKey))
             );
+        }
     }
     
     KeySignature keySignature;
     wxByte i = KeySignature::majorKey;
     for (; i <= (KeySignature::minorKey + 1); i++)
+    {
         TEST(wxString::Format(wxT("SetKeyType - %d"), i), 
                 (keySignature.SetKeyType(i) == (i <= KeySignature::minorKey)) &&
-                ((i > KeySignature::minorKey) ? 1 : (keySignature.GetKeyType() == i))
+                ((i > KeySignature::minorKey) ? 1 :
+                    (keySignature.GetKeyType() == i))
             );
+    }
     return (true);
 }
 
@@ -292,18 +331,25 @@ bool KeySignatureTestSuite::TestCaseKeyAccidentals()
     {
         wxByte i = KeySignature::noAccidentals;
         for (; i <= (KeySignature::sevenFlats + 1); i++)
+        {
             TEST(wxString::Format(wxT("IsValidKeyAccidentals - %d"), i), 
-                (KeySignature::IsValidKeyAccidentals(i) == (i <= KeySignature::sevenFlats))
+                (KeySignature::IsValidKeyAccidentals(i) ==
+                    (i <= KeySignature::sevenFlats))
             );
+        }
     }
     
     KeySignature keySignature;
     wxByte i = KeySignature::noAccidentals;
     for (; i <= (KeySignature::sevenFlats + 1); i++)
+    {
         TEST(wxString::Format(wxT("SetKeyAccidentals - %d"), i), 
-                (keySignature.SetKeyAccidentals(i) == (i <= KeySignature::sevenFlats)) &&
-                ((i > KeySignature::sevenFlats) ? 1 : (keySignature.GetKeyAccidentals() == i))
+                (keySignature.SetKeyAccidentals(i) ==
+                    (i <= KeySignature::sevenFlats)) &&
+                ((i > KeySignature::sevenFlats) ? 1 :
+                    (keySignature.GetKeyAccidentals() == i))
             );
+    }
             
     // TEST CASE: HasNAccidentals
     {
@@ -312,21 +358,36 @@ bool KeySignatureTestSuite::TestCaseKeyAccidentals()
         for (; i <= KeySignature::sevenFlats; i++)
         {
             keySignature.SetKeyAccidentals(i);
-            TEST(wxString::Format(wxT("HasNoKeyAccidentals - %d"), i), (keySignature.HasNoKeyAccidentals() == (i == KeySignature::noAccidentals)));
-            TEST(wxString::Format(wxT("HasOneSharp - %d"), i), (keySignature.HasOneSharp() == (i == KeySignature::oneSharp)));
-            TEST(wxString::Format(wxT("HasTwoSharps - %d"), i), (keySignature.HasTwoSharps() == (i == KeySignature::twoSharps)));
-            TEST(wxString::Format(wxT("HasThreeSharps - %d"), i), (keySignature.HasThreeSharps() == (i == KeySignature::threeSharps)));
-            TEST(wxString::Format(wxT("HasFourSharps - %d"), i), (keySignature.HasFourSharps() == (i == KeySignature::fourSharps)));
-            TEST(wxString::Format(wxT("HasFiveSharps - %d"), i), (keySignature.HasFiveSharps() == (i == KeySignature::fiveSharps)));
-            TEST(wxString::Format(wxT("HasSixSharps - %d"), i), (keySignature.HasSixSharps() == (i == KeySignature::sixSharps)));
-            TEST(wxString::Format(wxT("HasSevenSharps - %d"), i), (keySignature.HasSevenSharps() == (i == KeySignature::sevenSharps)));
-            TEST(wxString::Format(wxT("HasOneFlat - %d"), i), (keySignature.HasOneFlat() == (i == KeySignature::oneFlat)));
-            TEST(wxString::Format(wxT("HasTwoFlats - %d"), i), (keySignature.HasTwoFlats() == (i == KeySignature::twoFlats)));
-            TEST(wxString::Format(wxT("HasThreeFlats - %d"), i), (keySignature.HasThreeFlats() == (i == KeySignature::threeFlats)));
-            TEST(wxString::Format(wxT("HasFourFlats - %d"), i), (keySignature.HasFourFlats() == (i == KeySignature::fourFlats)));
-            TEST(wxString::Format(wxT("HasFiveFlats - %d"), i), (keySignature.HasFiveFlats() == (i == KeySignature::fiveFlats)));
-            TEST(wxString::Format(wxT("HasSixFlats - %d"), i), (keySignature.HasSixFlats() == (i == KeySignature::sixFlats)));
-            TEST(wxString::Format(wxT("HasSevenFlats - %d"), i), (keySignature.HasSevenFlats() == (i == KeySignature::sevenFlats)));
+            TEST(wxString::Format(wxT("HasNoKeyAccidentals - %d"), i),
+                (keySignature.HasNoKeyAccidentals() == (i == KeySignature::noAccidentals)));
+            TEST(wxString::Format(wxT("HasOneSharp - %d"), i),
+                (keySignature.HasOneSharp() == (i == KeySignature::oneSharp)));
+            TEST(wxString::Format(wxT("HasTwoSharps - %d"), i),
+                (keySignature.HasTwoSharps() == (i == KeySignature::twoSharps)));
+            TEST(wxString::Format(wxT("HasThreeSharps - %d"), i),
+                (keySignature.HasThreeSharps() == (i == KeySignature::threeSharps)));
+            TEST(wxString::Format(wxT("HasFourSharps - %d"), i),
+                (keySignature.HasFourSharps() == (i == KeySignature::fourSharps)));
+            TEST(wxString::Format(wxT("HasFiveSharps - %d"), i),
+                (keySignature.HasFiveSharps() == (i == KeySignature::fiveSharps)));
+            TEST(wxString::Format(wxT("HasSixSharps - %d"), i),
+                (keySignature.HasSixSharps() == (i == KeySignature::sixSharps)));
+            TEST(wxString::Format(wxT("HasSevenSharps - %d"), i),
+                (keySignature.HasSevenSharps() == (i == KeySignature::sevenSharps)));
+            TEST(wxString::Format(wxT("HasOneFlat - %d"), i),
+                (keySignature.HasOneFlat() == (i == KeySignature::oneFlat)));
+            TEST(wxString::Format(wxT("HasTwoFlats - %d"), i),
+                (keySignature.HasTwoFlats() == (i == KeySignature::twoFlats)));
+            TEST(wxString::Format(wxT("HasThreeFlats - %d"), i),
+                (keySignature.HasThreeFlats() == (i == KeySignature::threeFlats)));
+            TEST(wxString::Format(wxT("HasFourFlats - %d"), i),
+                (keySignature.HasFourFlats() == (i == KeySignature::fourFlats)));
+            TEST(wxString::Format(wxT("HasFiveFlats - %d"), i),
+                (keySignature.HasFiveFlats() == (i == KeySignature::fiveFlats)));
+            TEST(wxString::Format(wxT("HasSixFlats - %d"), i),
+                (keySignature.HasSixFlats() == (i == KeySignature::sixFlats)));
+            TEST(wxString::Format(wxT("HasSevenFlats - %d"), i),
+                (keySignature.HasSevenFlats() == (i == KeySignature::sevenFlats)));
         }   
     }
     return (true);
@@ -377,7 +438,9 @@ bool KeySignatureTestSuite::TestCaseFlag()
     for (; i < testValueCount; i++)
     {
         keySignature.SetFlag(testValues[i]);
-        TEST(wxString::Format(wxT("SetFlag - 0x%x"), testValues[i]), ((keySignature.SetFlag(testValues[i]) == (i < 2)) && (keySignature.IsFlagSet(testValues[i]) == (i < 2))));
+        TEST(wxString::Format(wxT("SetFlag - 0x%x"), testValues[i]),
+            ((keySignature.SetFlag(testValues[i]) == (i < 2)) &&
+            (keySignature.IsFlagSet(testValues[i]) == (i < 2))));
     }
     return (true);
 }

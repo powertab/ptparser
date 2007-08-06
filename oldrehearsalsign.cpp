@@ -27,7 +27,9 @@ const wxChar*       OldRehearsalSign::DEFAULT_DESCRIPTION       = wxT("");
     
 /// Default Constructor
 OldRehearsalSign::OldRehearsalSign() :
-    m_system(DEFAULT_SYSTEM), m_position(DEFAULT_POSITION), m_data(DEFAULT_DATA), m_letter(DEFAULT_LETTER), m_description(DEFAULT_DESCRIPTION)
+    m_system(DEFAULT_SYSTEM), m_position(DEFAULT_POSITION),
+    m_data(DEFAULT_DATA), m_letter(DEFAULT_LETTER),
+    m_description(DEFAULT_DESCRIPTION)
 {
     //------Last Checked------//
     // - Jan 3, 2005
@@ -44,7 +46,8 @@ OldRehearsalSign::~OldRehearsalSign()
 /// Constructs a RehearsalSign object using OldRehearsalSign data
 /// @param rehearsalSign RehearsalSign object to construct
 /// @return True if the object was constructed, false if not
-bool OldRehearsalSign::ConstructRehearsalSign(RehearsalSign& rehearsalSign) const
+bool OldRehearsalSign::ConstructRehearsalSign(
+    RehearsalSign& rehearsalSign) const
 {
     //------Last Checked------//
     // - Jan 3, 2005
@@ -57,7 +60,8 @@ bool OldRehearsalSign::ConstructRehearsalSign(RehearsalSign& rehearsalSign) cons
 
 // Operators
 /// Assignment Operator
-const OldRehearsalSign& OldRehearsalSign::operator=(const OldRehearsalSign& oldRehearsalSign)
+const OldRehearsalSign& OldRehearsalSign::operator=(
+    const OldRehearsalSign& oldRehearsalSign)
 {
     //------Last Checked------//
     // - Jan 5, 2005
@@ -75,7 +79,8 @@ const OldRehearsalSign& OldRehearsalSign::operator=(const OldRehearsalSign& oldR
 }
 
 /// Equality Operator
-bool OldRehearsalSign::operator==(const OldRehearsalSign& oldRehearsalSign) const
+bool OldRehearsalSign::operator==(
+    const OldRehearsalSign& oldRehearsalSign) const
 {
     //------Last Checked------//
     // - Jan 5, 2005
@@ -89,7 +94,8 @@ bool OldRehearsalSign::operator==(const OldRehearsalSign& oldRehearsalSign) cons
 }
 
 /// Inequality Operator
-bool OldRehearsalSign::operator!=(const OldRehearsalSign& oldRehearsalSign) const
+bool OldRehearsalSign::operator!=(
+    const OldRehearsalSign& oldRehearsalSign) const
 {
     //------Last Checked------//
     // - Jan 5, 2005

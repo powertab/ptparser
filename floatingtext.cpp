@@ -36,8 +36,9 @@ FloatingText::FloatingText() :
 /// @param rect Bounding rect for the text, in logical co-ordinates
 /// @param flags Flags to set (see flags enum)
 /// @param fontSetting FontSetting object to set
-FloatingText::FloatingText(const wxChar* text, wxRect rect, wxByte flags, const FontSetting& fontSetting) :
-    m_text(text), m_rect(rect), m_flags(flags), m_fontSetting(fontSetting)
+FloatingText::FloatingText(const wxChar* text, wxRect rect, wxByte flags,
+    const FontSetting& fontSetting) : m_text(text), m_rect(rect),
+    m_flags(flags), m_fontSetting(fontSetting)
 {
     //------Last Checked------//
     // - Dec 7, 2004
@@ -153,8 +154,12 @@ void FloatingText::SetFlag(wxByte flag)
     // - Dec 7, 2004
     
     // Clear old alignment flag if new flag is alignment flag
-    if (((flag & alignLeft) == alignLeft) | ((flag & alignCenter) == alignCenter) | ((flag & alignRight) == alignRight))
+    if (((flag & alignLeft) == alignLeft) |
+        ((flag & alignCenter) == alignCenter) |
+        ((flag & alignRight) == alignRight))
+    {
         ClearFlag(alignMask);
+    }
     m_flags |= flag;
 }
 

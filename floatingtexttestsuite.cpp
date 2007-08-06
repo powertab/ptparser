@@ -80,7 +80,8 @@ bool FloatingTextTestSuite::TestCaseConstructor()
     //------Last Checked------//
     // - Dec 6, 2004
 
-    const FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true, true, true, wxColor(255,0,0));    
+    const FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold,
+        true, true, true, wxColor(255,0,0));    
     
     // TEST CASE: Default constructor
     {
@@ -97,7 +98,8 @@ bool FloatingTextTestSuite::TestCaseConstructor()
 
     // TEST CASE: Primary constructor
     {
-        FloatingText floatingText(wxT("Test"), wxRect(10,10,20,20), FloatingText::alignCenter | FloatingText::border, fontSetting);
+        FloatingText floatingText(wxT("Test"), wxRect(10,10,20,20),
+            FloatingText::alignCenter | FloatingText::border, fontSetting);
         TEST(wxT("Primary Constructor"), 
             (floatingText.GetText() == wxT("Test")) &&
             (floatingText.GetRect() == wxRect(10,10,20,20)) &&
@@ -109,7 +111,8 @@ bool FloatingTextTestSuite::TestCaseConstructor()
     
     // TEST CASE: Copy constructor
     {
-        FloatingText floatingText(wxT("Test"), wxRect(10,10,20,20), FloatingText::alignCenter | FloatingText::border, fontSetting);
+        FloatingText floatingText(wxT("Test"), wxRect(10,10,20,20),
+            FloatingText::alignCenter | FloatingText::border, fontSetting);
         FloatingText floatingText2(floatingText);
 
         TEST(wxT("Copy Constructor"), 
@@ -128,8 +131,10 @@ bool FloatingTextTestSuite::TestCaseCreation()
     //------Last Checked------//
     // - Jan 12, 2005
     
-    const FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true, true, true, wxColor(255,0,0));    
-    FloatingText floatingText(wxT("Test"), wxRect(10,10,20,20), FloatingText::alignCenter | FloatingText::border, fontSetting);
+    const FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold,
+        true, true, true, wxColor(255,0,0));    
+    FloatingText floatingText(wxT("Test"), wxRect(10,10,20,20),
+        FloatingText::alignCenter | FloatingText::border, fontSetting);
     FloatingText* clone = (FloatingText*)floatingText.CloneObject();
     TEST(wxT("CloneObject"),
         (*clone == floatingText)
@@ -146,12 +151,15 @@ bool FloatingTextTestSuite::TestCaseOperator()
     //------Last Checked------//
     // - Dec 7, 2004
     
-    const FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true, true, true, wxColor(255,0,0));
-    const FontSetting fontSetting2(wxT("Arial2"), 12, FontSetting::weightBold, true, true, true, wxColor(255,0,0));
+    const FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold,
+        true, true, true, wxColor(255,0,0));
+    const FontSetting fontSetting2(wxT("Arial2"), 12, FontSetting::weightBold,
+        true, true, true, wxColor(255,0,0));
     
     // TEST CASE: Operator =
 	{    
-	    FloatingText floatingText(wxT("Test"), wxRect(10,10,20,20), FloatingText::alignCenter | FloatingText::border, fontSetting);
+	    FloatingText floatingText(wxT("Test"), wxRect(10,10,20,20),
+            FloatingText::alignCenter | FloatingText::border, fontSetting);
 	    FloatingText floatingText2 = floatingText;
         TEST(wxT("Operator="), 
             (floatingText2.GetText() == wxT("Test")) &&
@@ -163,7 +171,8 @@ bool FloatingTextTestSuite::TestCaseOperator()
             
 		// TEST CASE: Self assignment
 		{
-		    FloatingText floatingText(wxT("Test"), wxRect(10,10,20,20), FloatingText::alignCenter | FloatingText::border, fontSetting);
+		    FloatingText floatingText(wxT("Test"), wxRect(10,10,20,20),
+                FloatingText::alignCenter | FloatingText::border, fontSetting);
 		    floatingText = floatingText;
             TEST(wxT("Operator= (self-assignment)"), 
                 (floatingText.GetText() == wxT("Test")) &&
@@ -177,40 +186,66 @@ bool FloatingTextTestSuite::TestCaseOperator()
 
 	// TEST CASE: Operator==
 	{
-	    FloatingText floatingText(wxT("Test"), wxRect(10,10,20,20), FloatingText::alignCenter | FloatingText::border, fontSetting);
-	    FloatingText floatingText2(wxT("Test"), wxRect(10,10,20,20), FloatingText::alignCenter | FloatingText::border, fontSetting);
-	    FloatingText floatingText3(wxT("Test2"), wxRect(10,10,20,20), FloatingText::alignCenter | FloatingText::border, fontSetting);
-	    FloatingText floatingText4(wxT("Test"), wxRect(11,10,20,20), FloatingText::alignCenter | FloatingText::border, fontSetting);
-	    FloatingText floatingText5(wxT("Test"), wxRect(10,10,20,20), FloatingText::alignLeft | FloatingText::border, fontSetting);
-	    FloatingText floatingText6(wxT("Test"), wxRect(10,10,20,20), FloatingText::alignCenter, fontSetting);
-	    FloatingText floatingText7(wxT("Test"), wxRect(10,10,20,20), FloatingText::alignCenter | FloatingText::border, fontSetting2);
+	    FloatingText floatingText(wxT("Test"), wxRect(10,10,20,20),
+            FloatingText::alignCenter | FloatingText::border, fontSetting);
+	    FloatingText floatingText2(wxT("Test"), wxRect(10,10,20,20),
+            FloatingText::alignCenter | FloatingText::border, fontSetting);
+	    FloatingText floatingText3(wxT("Test2"), wxRect(10,10,20,20),
+            FloatingText::alignCenter | FloatingText::border, fontSetting);
+	    FloatingText floatingText4(wxT("Test"), wxRect(11,10,20,20),
+            FloatingText::alignCenter | FloatingText::border, fontSetting);
+	    FloatingText floatingText5(wxT("Test"), wxRect(10,10,20,20),
+            FloatingText::alignLeft | FloatingText::border, fontSetting);
+	    FloatingText floatingText6(wxT("Test"), wxRect(10,10,20,20),
+            FloatingText::alignCenter, fontSetting);
+	    FloatingText floatingText7(wxT("Test"), wxRect(10,10,20,20),
+            FloatingText::alignCenter | FloatingText::border, fontSetting2);
 	    
 		// TEST CASE: floatingText == floatingText
-		TEST(wxT("Operator== - floatingText == floatingText"), (floatingText == floatingText2));
-		TEST(wxT("Operator== - floatingText != floatingText"), !(floatingText == floatingText3));
-		TEST(wxT("Operator== - floatingText != floatingText 2"), !(floatingText == floatingText4));
-		TEST(wxT("Operator== - floatingText != floatingText 3"), !(floatingText == floatingText5));
-		TEST(wxT("Operator== - floatingText != floatingText 4"), !(floatingText == floatingText6));
-		TEST(wxT("Operator== - floatingText != floatingText 5"), !(floatingText == floatingText7));
+		TEST(wxT("Operator== - floatingText == floatingText"),
+            (floatingText == floatingText2));
+		TEST(wxT("Operator== - floatingText != floatingText"),
+            !(floatingText == floatingText3));
+		TEST(wxT("Operator== - floatingText != floatingText 2"),
+            !(floatingText == floatingText4));
+		TEST(wxT("Operator== - floatingText != floatingText 3"),
+            !(floatingText == floatingText5));
+		TEST(wxT("Operator== - floatingText != floatingText 4"),
+            !(floatingText == floatingText6));
+		TEST(wxT("Operator== - floatingText != floatingText 5"),
+            !(floatingText == floatingText7));
 	}
 
 	// TEST CASE: Operator!=
 	{
-	    FloatingText floatingText(wxT("Test"), wxRect(10,10,20,20), FloatingText::alignCenter | FloatingText::border, fontSetting);
-	    FloatingText floatingText2(wxT("Test"), wxRect(10,10,20,20), FloatingText::alignCenter | FloatingText::border, fontSetting);
-	    FloatingText floatingText3(wxT("Test2"), wxRect(10,10,20,20), FloatingText::alignCenter | FloatingText::border, fontSetting);
-	    FloatingText floatingText4(wxT("Test"), wxRect(11,10,20,20), FloatingText::alignCenter | FloatingText::border, fontSetting);
-	    FloatingText floatingText5(wxT("Test"), wxRect(10,10,20,20), FloatingText::alignLeft | FloatingText::border, fontSetting);
-	    FloatingText floatingText6(wxT("Test"), wxRect(10,10,20,20), FloatingText::alignCenter, fontSetting);
-	    FloatingText floatingText7(wxT("Test"), wxRect(10,10,20,20), FloatingText::alignCenter | FloatingText::border, fontSetting2);
+	    FloatingText floatingText(wxT("Test"), wxRect(10,10,20,20),
+            FloatingText::alignCenter | FloatingText::border, fontSetting);
+	    FloatingText floatingText2(wxT("Test"), wxRect(10,10,20,20),
+            FloatingText::alignCenter | FloatingText::border, fontSetting);
+	    FloatingText floatingText3(wxT("Test2"), wxRect(10,10,20,20),
+            FloatingText::alignCenter | FloatingText::border, fontSetting);
+	    FloatingText floatingText4(wxT("Test"), wxRect(11,10,20,20),
+            FloatingText::alignCenter | FloatingText::border, fontSetting);
+	    FloatingText floatingText5(wxT("Test"), wxRect(10,10,20,20),
+            FloatingText::alignLeft | FloatingText::border, fontSetting);
+	    FloatingText floatingText6(wxT("Test"), wxRect(10,10,20,20),
+            FloatingText::alignCenter, fontSetting);
+	    FloatingText floatingText7(wxT("Test"), wxRect(10,10,20,20),
+            FloatingText::alignCenter | FloatingText::border, fontSetting2);
 	   
 	    // TEST CASE: floatingText != floatingText
-		TEST(wxT("Operator!= - floatingText == floatingText"), !(floatingText != floatingText2));
-		TEST(wxT("Operator!= - floatingText != floatingText"), (floatingText != floatingText3));
-		TEST(wxT("Operator!= - floatingText != floatingText 2"), (floatingText != floatingText4));
-		TEST(wxT("Operator!= - floatingText != floatingText 3"), (floatingText != floatingText5));
-		TEST(wxT("Operator!= - floatingText != floatingText 4"), (floatingText != floatingText6));
-		TEST(wxT("Operator!= - floatingText != floatingText 5"), (floatingText != floatingText7));
+		TEST(wxT("Operator!= - floatingText == floatingText"),
+            !(floatingText != floatingText2));
+		TEST(wxT("Operator!= - floatingText != floatingText"),
+            (floatingText != floatingText3));
+		TEST(wxT("Operator!= - floatingText != floatingText 2"),
+            (floatingText != floatingText4));
+		TEST(wxT("Operator!= - floatingText != floatingText 3"),
+            (floatingText != floatingText5));
+		TEST(wxT("Operator!= - floatingText != floatingText 4"),
+            (floatingText != floatingText6));
+		TEST(wxT("Operator!= - floatingText != floatingText 5"),
+            (floatingText != floatingText7));
 	}
 	    
     return (true);
@@ -229,7 +264,10 @@ bool FloatingTextTestSuite::TestCaseSerialize()
     PowerTabOutputStream streamOut(testStream.GetOutputStream());
     
     // Write test data to stream
-    FloatingText floatingTextOut(wxT("Text"), wxRect(10, 10, 20, 20), FloatingText::alignCenter | FloatingText::border, FontSetting(wxT("Arial"), 10, FontSetting::weightBold, true, true, true, wxColor(255,0,0)));
+    FloatingText floatingTextOut(wxT("Text"), wxRect(10, 10, 20, 20),
+        FloatingText::alignCenter | FloatingText::border,
+        FontSetting(wxT("Arial"), 10, FontSetting::weightBold, true, true, true,
+        wxColor(255,0,0)));
     floatingTextOut.Serialize(streamOut);
 
     // Output must be OK before using input
@@ -239,7 +277,8 @@ bool FloatingTextTestSuite::TestCaseSerialize()
     
         // Read test data back from stream
         FloatingText floatingTextIn;
-        floatingTextIn.Deserialize(streamIn, PowerTabFileHeader::FILEVERSION_CURRENT);
+        floatingTextIn.Deserialize(streamIn,
+            PowerTabFileHeader::FILEVERSION_CURRENT);
 
         // Validate the data
         ok = ((floatingTextIn == floatingTextOut) 
@@ -259,7 +298,8 @@ bool FloatingTextTestSuite::TestCaseText()
     // - Dec 7, 2004
     FloatingText floatingText;
     TEST(wxT("SetText - NULL"), !floatingText.SetText(NULL));
-    TEST(wxT("SetText - valid text"), ((floatingText.SetText(wxT("Test"))) && (floatingText.GetText() == wxT("Test"))));
+    TEST(wxT("SetText - valid text"), ((floatingText.SetText(wxT("Test"))) &&
+        (floatingText.GetText() == wxT("Test"))));
     return (true);
 }
 
@@ -315,7 +355,8 @@ bool FloatingTextTestSuite::TestCaseAlignment()
         
         int i = 0;
         for (; i < testValueCount; i++)
-            TEST(wxString::Format(wxT("IsValidAlignment - %d"), testValues[i]), (FloatingText::IsValidAlignment(testValues[i]) == expectedResults[i]));
+            TEST(wxString::Format(wxT("IsValidAlignment - %d"), testValues[i]),
+            (FloatingText::IsValidAlignment(testValues[i]) == expectedResults[i]));
     }
     
     // TEST CASE: SetAlignment
@@ -331,7 +372,9 @@ bool FloatingTextTestSuite::TestCaseAlignment()
         for (; i < testValueCount; i++)
             TEST(wxString::Format(wxT("SetAlignment - %d"), testValues[i]), 
                 (floatingText.SetAlignment(testValues[i]) == expectedResults[i]) &&
-                (!expectedResults[i]) ? 1 : ((floatingText.IsAligned(testValues[i]) && (floatingText.GetAlignment() == testValues[i])))
+                (!expectedResults[i]) ? 1 :
+                ((floatingText.IsAligned(testValues[i]) &&
+                (floatingText.GetAlignment() == testValues[i])))
             );
     }
     
@@ -349,7 +392,8 @@ bool FloatingTextTestSuite::TestCaseAlignment()
         for (; i < testValueCount; i++)
         {
             floatingText.SetAlignment(testValues[i]);
-            TEST(wxString::Format(wxT("IsAlignedLeft - %d"), testValues[i]), (floatingText.IsAlignedLeft() == expectedResults[i]));
+            TEST(wxString::Format(wxT("IsAlignedLeft - %d"), testValues[i]),
+                (floatingText.IsAlignedLeft() == expectedResults[i]));
         }
     }
     
@@ -367,7 +411,8 @@ bool FloatingTextTestSuite::TestCaseAlignment()
         for (; i < testValueCount; i++)
         {
             floatingText.SetAlignment(testValues[i]);
-            TEST(wxString::Format(wxT("IsAlignedCenter - %d"), testValues[i]), (floatingText.IsAlignedCenter() == expectedResults[i]));
+            TEST(wxString::Format(wxT("IsAlignedCenter - %d"), testValues[i]),
+                (floatingText.IsAlignedCenter() == expectedResults[i]));
         }
     }
     
@@ -385,7 +430,8 @@ bool FloatingTextTestSuite::TestCaseAlignment()
         for (; i < testValueCount; i++)
         {
             floatingText.SetAlignment(testValues[i]);
-            TEST(wxString::Format(wxT("IsAlignedRight - %d"), testValues[i]), (floatingText.IsAlignedRight() == expectedResults[i]));
+            TEST(wxString::Format(wxT("IsAlignedRight - %d"), testValues[i]),
+                (floatingText.IsAlignedRight() == expectedResults[i]));
         }
     }
     
@@ -413,10 +459,13 @@ bool FloatingTextTestSuite::TestCaseFontSetting()
     //------Last Checked------//
     // - Dec 7, 2004
     FloatingText floatingText;
-    FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true, true, true, wxColor(255,0,0));
+    FontSetting fontSetting(wxT("Arial"), 12, FontSetting::weightBold, true,
+        true, true, wxColor(255,0,0));
     floatingText.SetFontSetting(fontSetting);
     TEST(wxT("SetFontSetting"), (floatingText.GetFontSetting() == fontSetting));
-    TEST(wxT("SetFontSetting 2"), (floatingText.GetFontSettingRef() == fontSetting));
-    TEST(wxT("SetFontSetting 3"), (floatingText.GetFontSettingConstRef() == fontSetting));
+    TEST(wxT("SetFontSetting 2"),
+        (floatingText.GetFontSettingRef() == fontSetting));
+    TEST(wxT("SetFontSetting 3"),
+        (floatingText.GetFontSettingConstRef() == fontSetting));
     return (true);
 }

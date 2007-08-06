@@ -17,22 +17,23 @@ class PowerTabTuningViewWindow;
 /// Displays the PowerTabTuningDocument-based data
 class PowerTabTuningView : public wxView
 {
+// Member Variables
 protected:
     wxMDIChildFrame*                m_frame;        ///< Frame that holds the view
     PowerTabTuningViewWindow*       m_window;       ///< Window associated with the view
 
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     PowerTabTuningView();
     ~PowerTabTuningView();
 
-    // Overrides
+// Overrides
     bool OnCreate(wxDocument* doc, long flags);
     void OnDraw(wxDC* dc);
     void OnUpdate(wxView* sender, wxObject* hint = (wxObject*)NULL);
     bool OnClose(bool deleteWindow = true);
     
-    // Operations
+// Operations
 protected:
     PowerTabTuningViewWindow* CreateViewWindow();
 

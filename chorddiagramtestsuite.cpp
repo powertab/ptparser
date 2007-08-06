@@ -96,7 +96,8 @@ bool ChordDiagramTestSuite::TestCaseConstructor()
     
     // TEST CASE: Primary Constructor
     {
-        ChordDiagram chordDiagram(chordName, 3, 3, 4, 5, 5, 3, ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram(chordName, 3, 3, 4, 5, 5, 3,
+            ChordDiagram::stringMuted);
         TEST(wxT("Primary Constructor"),
             (chordDiagram.GetChordName() == chordName) &&
             (chordDiagram.GetTopFret() == 3) &&
@@ -115,7 +116,8 @@ bool ChordDiagramTestSuite::TestCaseConstructor()
     
     // TEST CASE: Copy Constructor
     {
-        ChordDiagram chordDiagram(chordName, 3, 3, 4, 5, 5, 3, ChordDiagram::stringMuted);        
+        ChordDiagram chordDiagram(chordName, 3, 3, 4, 5, 5, 3,
+            ChordDiagram::stringMuted);        
         ChordDiagram chordDiagram2(chordDiagram);
         TEST(wxT("Copy Constructor"),
             (chordDiagram2 == chordDiagram)
@@ -135,7 +137,8 @@ bool ChordDiagramTestSuite::TestCaseCreation()
     ChordName chordName;
     chordName.SetFormula(ChordName::minor);
     
-    ChordDiagram chordDiagram(chordName, 3, 3, 4, 5, 5, 3, ChordDiagram::stringMuted);
+    ChordDiagram chordDiagram(chordName, 3, 3, 4, 5, 5, 3,
+        ChordDiagram::stringMuted);
     ChordDiagram* clone = (ChordDiagram*)chordDiagram.CloneObject();
     TEST(wxT("CloneObject"),
         (*clone == chordDiagram)
@@ -157,7 +160,8 @@ bool ChordDiagramTestSuite::TestCaseOperator()
             
     // TEST CASE: Operator=
     {
-        ChordDiagram chordDiagram(chordName, 3, 3, 4, 5, 5, 3, ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram(chordName, 3, 3, 4, 5, 5, 3,
+            ChordDiagram::stringMuted);
         ChordDiagram chordDiagram2 = chordDiagram;
         TEST(wxT("Copy Constructor"), 
             (chordDiagram2 == chordDiagram)
@@ -172,66 +176,110 @@ bool ChordDiagramTestSuite::TestCaseOperator()
     
     // TEST CASE: Operator==
     {
-        ChordDiagram chordDiagram(chordName, 3, 3, 4, 5, 5, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram2(chordName, 3, 3, 4, 5, 5, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram3(chordName2, 3, 3, 4, 5, 5, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram4(chordName, 2, 3, 4, 5, 5, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram5(chordName, 3, 4, 4, 5, 5, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram6(chordName, 3, 3, 5, 5, 5, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram7(chordName, 3, 3, 4, 6, 5, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram8(chordName, 3, 3, 4, 5, 6, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram9(chordName, 3, 3, 4, 5, 5, 4, ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram(chordName, 3, 3, 4, 5, 5, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram2(chordName, 3, 3, 4, 5, 5, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram3(chordName2, 3, 3, 4, 5, 5, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram4(chordName, 2, 3, 4, 5, 5, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram5(chordName, 3, 4, 4, 5, 5, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram6(chordName, 3, 3, 5, 5, 5, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram7(chordName, 3, 3, 4, 6, 5, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram8(chordName, 3, 3, 4, 5, 6, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram9(chordName, 3, 3, 4, 5, 5, 4,
+            ChordDiagram::stringMuted);
         ChordDiagram chordDiagram10(chordName, 3, 3, 4, 5, 5, 3, 3);
         ChordDiagram chordDiagram11(chordName, 3, 3, 4, 5);
         ChordDiagram chordDiagram12(chordName, 3, 3, 4, 5, 5);
         ChordDiagram chordDiagram13(chordName, 3, 3, 4, 5, 5, 3);
         ChordDiagram chordDiagram14(chordName, 3, 3, 4, 5, 5, 3, 3, 3);
         
-        TEST(wxT("Operator== - chordDiagram == chordDiagram"), (chordDiagram == chordDiagram2));
-        TEST(wxT("Operator== - chordDiagram != chordDiagram"), !(chordDiagram == chordDiagram3));
-        TEST(wxT("Operator== - chordDiagram != chordDiagram 2"), !(chordDiagram == chordDiagram4));
-        TEST(wxT("Operator== - chordDiagram != chordDiagram 3"), !(chordDiagram == chordDiagram5));
-        TEST(wxT("Operator== - chordDiagram != chordDiagram 4"), !(chordDiagram == chordDiagram6));
-        TEST(wxT("Operator== - chordDiagram != chordDiagram 5"), !(chordDiagram == chordDiagram7));
-        TEST(wxT("Operator== - chordDiagram != chordDiagram 6"), !(chordDiagram == chordDiagram8));
-        TEST(wxT("Operator== - chordDiagram != chordDiagram 7"), !(chordDiagram == chordDiagram9));
-        TEST(wxT("Operator== - chordDiagram != chordDiagram 8"), !(chordDiagram == chordDiagram10));
-        TEST(wxT("Operator== - chordDiagram != chordDiagram 9"), !(chordDiagram == chordDiagram11));
-        TEST(wxT("Operator== - chordDiagram != chordDiagram 10"), !(chordDiagram == chordDiagram12));
-        TEST(wxT("Operator== - chordDiagram != chordDiagram 11"), !(chordDiagram == chordDiagram13));
-        TEST(wxT("Operator== - chordDiagram != chordDiagram 12"), !(chordDiagram == chordDiagram14));
+        TEST(wxT("Operator== - chordDiagram == chordDiagram"),
+            (chordDiagram == chordDiagram2));
+        TEST(wxT("Operator== - chordDiagram != chordDiagram"),
+            !(chordDiagram == chordDiagram3));
+        TEST(wxT("Operator== - chordDiagram != chordDiagram 2"),
+            !(chordDiagram == chordDiagram4));
+        TEST(wxT("Operator== - chordDiagram != chordDiagram 3"),
+            !(chordDiagram == chordDiagram5));
+        TEST(wxT("Operator== - chordDiagram != chordDiagram 4"),
+            !(chordDiagram == chordDiagram6));
+        TEST(wxT("Operator== - chordDiagram != chordDiagram 5"),
+            !(chordDiagram == chordDiagram7));
+        TEST(wxT("Operator== - chordDiagram != chordDiagram 6"),
+            !(chordDiagram == chordDiagram8));
+        TEST(wxT("Operator== - chordDiagram != chordDiagram 7"),
+            !(chordDiagram == chordDiagram9));
+        TEST(wxT("Operator== - chordDiagram != chordDiagram 8"),
+            !(chordDiagram == chordDiagram10));
+        TEST(wxT("Operator== - chordDiagram != chordDiagram 9"),
+            !(chordDiagram == chordDiagram11));
+        TEST(wxT("Operator== - chordDiagram != chordDiagram 10"),
+            !(chordDiagram == chordDiagram12));
+        TEST(wxT("Operator== - chordDiagram != chordDiagram 11"),
+            !(chordDiagram == chordDiagram13));
+        TEST(wxT("Operator== - chordDiagram != chordDiagram 12"),
+            !(chordDiagram == chordDiagram14));
     }
         
     // TEST CASE: Operator!=
     {
-        ChordDiagram chordDiagram(chordName, 3, 3, 4, 5, 5, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram2(chordName, 3, 3, 4, 5, 5, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram3(chordName2, 3, 3, 4, 5, 5, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram4(chordName, 2, 3, 4, 5, 5, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram5(chordName, 3, 4, 4, 5, 5, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram6(chordName, 3, 3, 5, 5, 5, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram7(chordName, 3, 3, 4, 6, 5, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram8(chordName, 3, 3, 4, 5, 6, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram9(chordName, 3, 3, 4, 5, 5, 4, ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram(chordName, 3, 3, 4, 5, 5, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram2(chordName, 3, 3, 4, 5, 5, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram3(chordName2, 3, 3, 4, 5, 5, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram4(chordName, 2, 3, 4, 5, 5, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram5(chordName, 3, 4, 4, 5, 5, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram6(chordName, 3, 3, 5, 5, 5, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram7(chordName, 3, 3, 4, 6, 5, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram8(chordName, 3, 3, 4, 5, 6, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram9(chordName, 3, 3, 4, 5, 5, 4,
+            ChordDiagram::stringMuted);
         ChordDiagram chordDiagram10(chordName, 3, 3, 4, 5, 5, 3, 3);
         ChordDiagram chordDiagram11(chordName, 3, 3, 4, 5);
         ChordDiagram chordDiagram12(chordName, 3, 3, 4, 5, 5);
         ChordDiagram chordDiagram13(chordName, 3, 3, 4, 5, 5, 3);
         ChordDiagram chordDiagram14(chordName, 3, 3, 4, 5, 5, 3, 3, 3);
         
-        TEST(wxT("Operator!= - chordDiagram == chordDiagram"), !(chordDiagram != chordDiagram2));
-        TEST(wxT("Operator!= - chordDiagram != chordDiagram"), (chordDiagram != chordDiagram3));
-        TEST(wxT("Operator!= - chordDiagram != chordDiagram 2"), (chordDiagram != chordDiagram4));
-        TEST(wxT("Operator!= - chordDiagram != chordDiagram 3"), (chordDiagram != chordDiagram5));
-        TEST(wxT("Operator!= - chordDiagram != chordDiagram 4"), (chordDiagram != chordDiagram6));
-        TEST(wxT("Operator!= - chordDiagram != chordDiagram 5"), (chordDiagram != chordDiagram7));
-        TEST(wxT("Operator!= - chordDiagram != chordDiagram 6"), (chordDiagram != chordDiagram8));
-        TEST(wxT("Operator!= - chordDiagram != chordDiagram 7"), (chordDiagram != chordDiagram9));
-        TEST(wxT("Operator!= - chordDiagram != chordDiagram 8"), (chordDiagram != chordDiagram10));
-        TEST(wxT("Operator!= - chordDiagram != chordDiagram 9"), (chordDiagram != chordDiagram11));
-        TEST(wxT("Operator!= - chordDiagram != chordDiagram 10"), (chordDiagram != chordDiagram12));
-        TEST(wxT("Operator!= - chordDiagram != chordDiagram 11"), (chordDiagram != chordDiagram13));
-        TEST(wxT("Operator!= - chordDiagram != chordDiagram 12"), (chordDiagram != chordDiagram14));
+        TEST(wxT("Operator!= - chordDiagram == chordDiagram"),
+            !(chordDiagram != chordDiagram2));
+        TEST(wxT("Operator!= - chordDiagram != chordDiagram"),
+            (chordDiagram != chordDiagram3));
+        TEST(wxT("Operator!= - chordDiagram != chordDiagram 2"),
+            (chordDiagram != chordDiagram4));
+        TEST(wxT("Operator!= - chordDiagram != chordDiagram 3"),
+            (chordDiagram != chordDiagram5));
+        TEST(wxT("Operator!= - chordDiagram != chordDiagram 4"),
+            (chordDiagram != chordDiagram6));
+        TEST(wxT("Operator!= - chordDiagram != chordDiagram 5"),
+            (chordDiagram != chordDiagram7));
+        TEST(wxT("Operator!= - chordDiagram != chordDiagram 6"),
+            (chordDiagram != chordDiagram8));
+        TEST(wxT("Operator!= - chordDiagram != chordDiagram 7"),
+            (chordDiagram != chordDiagram9));
+        TEST(wxT("Operator!= - chordDiagram != chordDiagram 8"),
+            (chordDiagram != chordDiagram10));
+        TEST(wxT("Operator!= - chordDiagram != chordDiagram 9"),
+            (chordDiagram != chordDiagram11));
+        TEST(wxT("Operator!= - chordDiagram != chordDiagram 10"),
+            (chordDiagram != chordDiagram12));
+        TEST(wxT("Operator!= - chordDiagram != chordDiagram 11"),
+            (chordDiagram != chordDiagram13));
+        TEST(wxT("Operator!= - chordDiagram != chordDiagram 12"),
+            (chordDiagram != chordDiagram14));
     }
 
     return (true);
@@ -252,7 +300,8 @@ bool ChordDiagramTestSuite::TestCaseSerialize()
     chordName.SetFormula(ChordName::minor);
     
     // Write test data to stream
-    ChordDiagram chordDiagramOut(chordName, 3, 3, 4, 5, 5, 3, ChordDiagram::stringMuted);
+    ChordDiagram chordDiagramOut(chordName, 3, 3, 4, 5, 5, 3,
+        ChordDiagram::stringMuted);
     chordDiagramOut.Serialize(streamOut);
 
     // Output must be OK before using input
@@ -262,7 +311,8 @@ bool ChordDiagramTestSuite::TestCaseSerialize()
     
         // Read test data back from stream
         ChordDiagram chordDiagramIn;
-        chordDiagramIn.Deserialize(streamIn, PowerTabFileHeader::FILEVERSION_CURRENT);
+        chordDiagramIn.Deserialize(streamIn,
+            PowerTabFileHeader::FILEVERSION_CURRENT);
 
         // Validate the data
         ok = ((chordDiagramIn == chordDiagramOut) 
@@ -285,15 +335,24 @@ bool ChordDiagramTestSuite::TestCaseChordDiagram()
     chordName.SetFormula(ChordName::major6th);
     
     ChordDiagram chordDiagram;
-    TEST(wxT("SetChordDiagram - invalid top fret"), !chordDiagram.SetChordDiagram(chordName,192,3,4,5,5,3,3,3));
-    TEST(wxT("SetChordDiagram - invalid fret number 1"), !chordDiagram.SetChordDiagram(chordName,3,192,4,5,5,3,3,3));
-    TEST(wxT("SetChordDiagram - invalid fret number 2"), !chordDiagram.SetChordDiagram(chordName,3,3,192,5,5,3,3,3));
-    TEST(wxT("SetChordDiagram - invalid fret number 3"), !chordDiagram.SetChordDiagram(chordName,3,3,4,192,5,3,3,3));
-    TEST(wxT("SetChordDiagram - invalid fret number 4"), !chordDiagram.SetChordDiagram(chordName,3,3,4,5,192,3,3,3));
-    TEST(wxT("SetChordDiagram - invalid fret number 5"), !chordDiagram.SetChordDiagram(chordName,3,3,4,5,5,192,3,3));
-    TEST(wxT("SetChordDiagram - invalid fret number 6"), !chordDiagram.SetChordDiagram(chordName,3,3,4,5,5,3,192,3));
-    TEST(wxT("SetChordDiagram - invalid fret number 7"), !chordDiagram.SetChordDiagram(chordName,3,3,4,5,5,3,3,192));
-    TEST(wxT("SetChordDiagram - valid"), chordDiagram.SetChordDiagram(chordName,3,3,4,5,5,3,3,3));
+    TEST(wxT("SetChordDiagram - invalid top fret"),
+        !chordDiagram.SetChordDiagram(chordName,192,3,4,5,5,3,3,3));
+    TEST(wxT("SetChordDiagram - invalid fret number 1"),
+        !chordDiagram.SetChordDiagram(chordName,3,192,4,5,5,3,3,3));
+    TEST(wxT("SetChordDiagram - invalid fret number 2"),
+        !chordDiagram.SetChordDiagram(chordName,3,3,192,5,5,3,3,3));
+    TEST(wxT("SetChordDiagram - invalid fret number 3"),
+        !chordDiagram.SetChordDiagram(chordName,3,3,4,192,5,3,3,3));
+    TEST(wxT("SetChordDiagram - invalid fret number 4"),
+        !chordDiagram.SetChordDiagram(chordName,3,3,4,5,192,3,3,3));
+    TEST(wxT("SetChordDiagram - invalid fret number 5"),
+        !chordDiagram.SetChordDiagram(chordName,3,3,4,5,5,192,3,3));
+    TEST(wxT("SetChordDiagram - invalid fret number 6"),
+        !chordDiagram.SetChordDiagram(chordName,3,3,4,5,5,3,192,3));
+    TEST(wxT("SetChordDiagram - invalid fret number 7"),
+        !chordDiagram.SetChordDiagram(chordName,3,3,4,5,5,3,3,192));
+    TEST(wxT("SetChordDiagram - valid"),
+        chordDiagram.SetChordDiagram(chordName,3,3,4,5,5,3,3,3));
         
     return (true);
 }
@@ -328,7 +387,8 @@ bool ChordDiagramTestSuite::TestCaseTopFret()
     wxByte i = ChordDiagram::MIN_TOP_FRET;
     for (; i <= (ChordDiagram::MAX_TOP_FRET + 1); i++)
         TEST(wxString::Format(wxT("IsValidTopFret - %d"), i),
-            (ChordDiagram::IsValidTopFret(i) == (i <= ChordDiagram::MAX_TOP_FRET)));   
+            (ChordDiagram::IsValidTopFret(i) ==
+            (i <= ChordDiagram::MAX_TOP_FRET)));   
     return (true);
 }
 
@@ -343,11 +403,13 @@ bool ChordDiagramTestSuite::TestCaseString()
     chordName.SetFormula(ChordName::minor);
     
     // Write test data to stream
-    ChordDiagram chordDiagram(chordName, 3, 3, 4, 5, 5, 3, ChordDiagram::stringMuted);
+    ChordDiagram chordDiagram(chordName, 3, 3, 4, 5, 5, 3,
+        ChordDiagram::stringMuted);
     const size_t stringCount = chordDiagram.GetStringCount();
     wxUint32 i = 0;
     for (; i <= (stringCount + 1); i++)
-        TEST(wxString::Format(wxT("IsValidString - %d"), i), (chordDiagram.IsValidString(i) == ((i >= 0) && (i < stringCount))));
+        TEST(wxString::Format(wxT("IsValidString - %d"), i),
+        (chordDiagram.IsValidString(i) == ((i >= 0) && (i < stringCount))));
             
     return (true);
 }
@@ -364,19 +426,25 @@ bool ChordDiagramTestSuite::TestCaseFretNumber()
         wxByte i = ChordDiagram::MIN_FRET_NUMBER;
         for (; i <= (ChordDiagram::MAX_FRET_NUMBER + 1); i++)
             TEST(wxString::Format(wxT("IsValidFretNumber - %d"), i), 
-                (ChordDiagram::IsValidFretNumber(i) == (i <= ChordDiagram::MAX_FRET_NUMBER))
+                (ChordDiagram::IsValidFretNumber(i) ==
+                (i <= ChordDiagram::MAX_FRET_NUMBER))
             );
-        TEST(wxT("IsValidFretNumber - string muted"), ChordDiagram::IsValidFretNumber(ChordDiagram::stringMuted));
-        TEST(wxT("IsValidFretNumber - not used"), ChordDiagram::IsValidFretNumber(ChordDiagram::notUsed));
+        TEST(wxT("IsValidFretNumber - string muted"),
+            ChordDiagram::IsValidFretNumber(ChordDiagram::stringMuted));
+        TEST(wxT("IsValidFretNumber - not used"),
+            ChordDiagram::IsValidFretNumber(ChordDiagram::notUsed));
     }
     
     // TEST CASE: SetFretNumber
     {
         ChordName chordName;
         chordName.SetFormula(ChordName::minor);
-        ChordDiagram chordDiagram(chordName, 3, 3, 4, 5, 5, 3, ChordDiagram::stringMuted);
-        TEST(wxT("SetFretNumber - invalid string"), !chordDiagram.SetFretNumber(6, 2));
-        TEST(wxT("SetFretNumber - invalid fret number"), !chordDiagram.SetFretNumber(0, 192));
+        ChordDiagram chordDiagram(chordName, 3, 3, 4, 5, 5, 3,
+            ChordDiagram::stringMuted);
+        TEST(wxT("SetFretNumber - invalid string"),
+            !chordDiagram.SetFretNumber(6, 2));
+        TEST(wxT("SetFretNumber - invalid fret number"),
+            !chordDiagram.SetFretNumber(0, 192));
         
         wxUint32 i = 0;
         wxUint32 stringCount = chordDiagram.GetStringCount();
@@ -385,34 +453,47 @@ bool ChordDiagramTestSuite::TestCaseFretNumber()
                 (chordDiagram.SetFretNumber(i, 2)) &&
                 (chordDiagram.GetFretNumber(i) == 2)
             );
-        TEST(wxT("GetFretNumber - invalid string"), chordDiagram.GetFretNumber(6) == 0);
+        TEST(wxT("GetFretNumber - invalid string"),
+            chordDiagram.GetFretNumber(6) == 0);
     }
     
     // TEST CASE: AddFretNumbers
     {
         ChordDiagram chordDiagram;
-        TEST(wxT("AddFretNumbers - invalid fret number1"), !chordDiagram.AddFretNumbers(192, 4, 5, 5, 3, 3, 3));
-        TEST(wxT("AddFretNumbers - invalid fret number2"), !chordDiagram.AddFretNumbers(3, 192, 5, 5, 3, 3, 3));
-        TEST(wxT("AddFretNumbers - invalid fret number3"), !chordDiagram.AddFretNumbers(3, 4, 192, 5, 3, 3, 3));
-        TEST(wxT("AddFretNumbers - invalid fret number4"), !chordDiagram.AddFretNumbers(3, 4, 5, 192, 3, 3, 3));
-        TEST(wxT("AddFretNumbers - invalid fret number5"), !chordDiagram.AddFretNumbers(3, 4, 5, 5, 192, 3, 3));
-        TEST(wxT("AddFretNumbers - invalid fret number6"), !chordDiagram.AddFretNumbers(3, 4, 5, 5, 3, 192, 3));
-        TEST(wxT("AddFretNumbers - invalid fret number7"), !chordDiagram.AddFretNumbers(3, 4, 5, 5, 3, 3, 192));
+        TEST(wxT("AddFretNumbers - invalid fret number1"),
+            !chordDiagram.AddFretNumbers(192, 4, 5, 5, 3, 3, 3));
+        TEST(wxT("AddFretNumbers - invalid fret number2"),
+            !chordDiagram.AddFretNumbers(3, 192, 5, 5, 3, 3, 3));
+        TEST(wxT("AddFretNumbers - invalid fret number3"),
+            !chordDiagram.AddFretNumbers(3, 4, 192, 5, 3, 3, 3));
+        TEST(wxT("AddFretNumbers - invalid fret number4"),
+            !chordDiagram.AddFretNumbers(3, 4, 5, 192, 3, 3, 3));
+        TEST(wxT("AddFretNumbers - invalid fret number5"),
+            !chordDiagram.AddFretNumbers(3, 4, 5, 5, 192, 3, 3));
+        TEST(wxT("AddFretNumbers - invalid fret number6"),
+            !chordDiagram.AddFretNumbers(3, 4, 5, 5, 3, 192, 3));
+        TEST(wxT("AddFretNumbers - invalid fret number7"),
+            !chordDiagram.AddFretNumbers(3, 4, 5, 5, 3, 3, 192));
                 
         TEST(wxT("AddFretNumbers - 3 string chordDiagram"), 
-            chordDiagram.AddFretNumbers(3, 4, 5, ChordDiagram::notUsed, ChordDiagram::notUsed, ChordDiagram::notUsed, ChordDiagram::notUsed) &&
+            chordDiagram.AddFretNumbers(3, 4, 5, ChordDiagram::notUsed,
+            ChordDiagram::notUsed, ChordDiagram::notUsed,
+            ChordDiagram::notUsed) &&
             chordDiagram.IsSameVoicing(3, 4, 5)
         );
         TEST(wxT("AddFretNumbers - 4 string chordDiagram"), 
-            chordDiagram.AddFretNumbers(3, 4, 5, 5, ChordDiagram::notUsed, ChordDiagram::notUsed, ChordDiagram::notUsed) &&
+            chordDiagram.AddFretNumbers(3, 4, 5, 5, ChordDiagram::notUsed,
+            ChordDiagram::notUsed, ChordDiagram::notUsed) &&
             chordDiagram.IsSameVoicing(3, 4, 5, 5)
         );  
         TEST(wxT("AddFretNumbers - 5 string chordDiagram"), 
-            chordDiagram.AddFretNumbers(3, 4, 5, 5, 3, ChordDiagram::notUsed, ChordDiagram::notUsed) &&
+            chordDiagram.AddFretNumbers(3, 4, 5, 5, 3, ChordDiagram::notUsed,
+            ChordDiagram::notUsed) &&
             chordDiagram.IsSameVoicing(3, 4, 5, 5, 3)
         );
         TEST(wxT("AddFretNumbers - 6 string chordDiagram"), 
-            chordDiagram.AddFretNumbers(3, 4, 5, 5, 3, 3, ChordDiagram::notUsed) &&
+            chordDiagram.AddFretNumbers(3, 4, 5, 5, 3, 3,
+            ChordDiagram::notUsed) &&
             chordDiagram.IsSameVoicing(3, 4, 5, 5, 3, 3)
         );
         TEST(wxT("AddFretNumbers - 7 string chordDiagram"), 
@@ -435,30 +516,48 @@ bool ChordDiagramTestSuite::TestCaseVoicing()
     
     // TEST CASE: IsSameVoicing(ChordDiagram)
     {
-        ChordDiagram chordDiagram(chordName, 3, 3, 4, 5, 5, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram2(chordName, 3, 3, 4, 5, 5, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram3(chordName, 3, 4, 4, 5, 5, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram4(chordName, 3, 3, 5, 5, 5, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram5(chordName, 3, 3, 4, 6, 5, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram6(chordName, 3, 3, 4, 5, 6, 3, ChordDiagram::stringMuted);
-        ChordDiagram chordDiagram7(chordName, 3, 3, 4, 5, 5, 4, ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram(chordName, 3, 3, 4, 5, 5, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram2(chordName, 3, 3, 4, 5, 5, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram3(chordName, 3, 4, 4, 5, 5, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram4(chordName, 3, 3, 5, 5, 5, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram5(chordName, 3, 3, 4, 6, 5, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram6(chordName, 3, 3, 4, 5, 6, 3,
+            ChordDiagram::stringMuted);
+        ChordDiagram chordDiagram7(chordName, 3, 3, 4, 5, 5, 4,
+            ChordDiagram::stringMuted);
         ChordDiagram chordDiagram8(chordName, 3, 3, 4, 5, 5, 3, 3);
         ChordDiagram chordDiagram9(chordName, 3, 3, 4, 5);
         ChordDiagram chordDiagram10(chordName, 3, 3, 4, 5, 5);
         ChordDiagram chordDiagram11(chordName, 3, 3, 4, 5, 5, 3);
         ChordDiagram chordDiagram12(chordName, 3, 3, 4, 5, 5, 3, 3, 3);
                 
-        TEST(wxT("IsSameVoicing - chordDiagram == chordDiagram"), chordDiagram.IsSameVoicing(chordDiagram2));
-        TEST(wxT("IsSameVoicing - chordDiagram != chordDiagram"), !chordDiagram.IsSameVoicing(chordDiagram3));
-        TEST(wxT("IsSameVoicing - chordDiagram != chordDiagram 2"), !chordDiagram.IsSameVoicing(chordDiagram4));
-        TEST(wxT("IsSameVoicing - chordDiagram != chordDiagram 3"), !chordDiagram.IsSameVoicing(chordDiagram5));
-        TEST(wxT("IsSameVoicing - chordDiagram != chordDiagram 4"), !chordDiagram.IsSameVoicing(chordDiagram6));
-        TEST(wxT("IsSameVoicing - chordDiagram != chordDiagram 5"), !chordDiagram.IsSameVoicing(chordDiagram7));
-        TEST(wxT("IsSameVoicing - chordDiagram != chordDiagram 6"), !chordDiagram.IsSameVoicing(chordDiagram8));
-        TEST(wxT("IsSameVoicing - chordDiagram != chordDiagram 7"), !chordDiagram.IsSameVoicing(chordDiagram9));
-        TEST(wxT("IsSameVoicing - chordDiagram != chordDiagram 8"), !chordDiagram.IsSameVoicing(chordDiagram10));
-        TEST(wxT("IsSameVoicing - chordDiagram != chordDiagram 9"), !chordDiagram.IsSameVoicing(chordDiagram11));
-        TEST(wxT("IsSameVoicing - chordDiagram != chordDiagram 10"), !chordDiagram.IsSameVoicing(chordDiagram12));
+        TEST(wxT("IsSameVoicing - chordDiagram == chordDiagram"),
+            chordDiagram.IsSameVoicing(chordDiagram2));
+        TEST(wxT("IsSameVoicing - chordDiagram != chordDiagram"),
+            !chordDiagram.IsSameVoicing(chordDiagram3));
+        TEST(wxT("IsSameVoicing - chordDiagram != chordDiagram 2"),
+            !chordDiagram.IsSameVoicing(chordDiagram4));
+        TEST(wxT("IsSameVoicing - chordDiagram != chordDiagram 3"),
+            !chordDiagram.IsSameVoicing(chordDiagram5));
+        TEST(wxT("IsSameVoicing - chordDiagram != chordDiagram 4"),
+            !chordDiagram.IsSameVoicing(chordDiagram6));
+        TEST(wxT("IsSameVoicing - chordDiagram != chordDiagram 5"),
+            !chordDiagram.IsSameVoicing(chordDiagram7));
+        TEST(wxT("IsSameVoicing - chordDiagram != chordDiagram 6"),
+            !chordDiagram.IsSameVoicing(chordDiagram8));
+        TEST(wxT("IsSameVoicing - chordDiagram != chordDiagram 7"),
+            !chordDiagram.IsSameVoicing(chordDiagram9));
+        TEST(wxT("IsSameVoicing - chordDiagram != chordDiagram 8"),
+            !chordDiagram.IsSameVoicing(chordDiagram10));
+        TEST(wxT("IsSameVoicing - chordDiagram != chordDiagram 9"),
+            !chordDiagram.IsSameVoicing(chordDiagram11));
+        TEST(wxT("IsSameVoicing - chordDiagram != chordDiagram 10"),
+            !chordDiagram.IsSameVoicing(chordDiagram12));
     }
 
     // TEST CASE: IsSameVoicing(wxByte,wxByte,wxByte,wxByte,wxByte,wxByte,wxByte)
@@ -469,11 +568,16 @@ bool ChordDiagramTestSuite::TestCaseVoicing()
         ChordDiagram chordDiagram4(chordName, 3, 3, 4, 5, 5, 3, 3);
         ChordDiagram chordDiagram5(chordName, 3, 3, 4, 5, 5, 3, 3, 3);
                 
-        TEST(wxT("IsSameVoicing - 3 string chord diagram"), chordDiagram.IsSameVoicing(3,4,5));
-        TEST(wxT("IsSameVoicing - 4 string chord diagram"), chordDiagram2.IsSameVoicing(3,4,5,5));
-        TEST(wxT("IsSameVoicing - 5 string chord diagram"), chordDiagram3.IsSameVoicing(3,4,5,5,3));
-        TEST(wxT("IsSameVoicing - 6 string chord diagram"), chordDiagram4.IsSameVoicing(3,4,5,5,3,3));
-        TEST(wxT("IsSameVoicing - 7 string chord diagram"), chordDiagram5.IsSameVoicing(3,4,5,5,3,3,3));
+        TEST(wxT("IsSameVoicing - 3 string chord diagram"),
+            chordDiagram.IsSameVoicing(3,4,5));
+        TEST(wxT("IsSameVoicing - 4 string chord diagram"),
+            chordDiagram2.IsSameVoicing(3,4,5,5));
+        TEST(wxT("IsSameVoicing - 5 string chord diagram"),
+            chordDiagram3.IsSameVoicing(3,4,5,5,3));
+        TEST(wxT("IsSameVoicing - 6 string chord diagram"),
+            chordDiagram4.IsSameVoicing(3,4,5,5,3,3));
+        TEST(wxT("IsSameVoicing - 7 string chord diagram"),
+            chordDiagram5.IsSameVoicing(3,4,5,5,3,3,3));
     }
     
     return (true);

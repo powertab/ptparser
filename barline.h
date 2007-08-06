@@ -46,6 +46,7 @@ public:
         repeatCountMask     = (wxByte)0x1f          ///< Mask used to retrieve the repeat count
     };
 
+// Member Variables
 protected:
     wxByte          m_position;                     ///< Zero-based index of the position within the system where the barline is anchored
     wxByte          m_data;                         ///< Top 3 bits = type, bottom 5 = repeat number
@@ -54,31 +55,31 @@ protected:
     TimeSignature   m_timeSignature;                ///< Time signature
     RehearsalSign   m_rehearsalSign;                ///< Rehearsal sign
 
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     Barline();
     Barline(wxUint32 position, wxByte type, wxByte repeatCount = 0);
     Barline(const Barline& barline);
     ~Barline();
 
-    // Creation Functions
+// Creation Functions
     /// Creates an exact duplicate of the object
     /// @return The duplicate object
     PowerTabObject* CloneObject() const                         
         {return (new Barline(*this));}
         
-    // Operators
+// Operators
     const Barline& operator=(const Barline& barline);
     bool operator==(const Barline& barline) const;
     bool operator!=(const Barline& barline) const;
 
-    // Serialization Functions
+// Serialization Functions
 protected:
     bool DoSerialize(PowerTabOutputStream& stream);
     bool DoDeserialize(PowerTabInputStream& stream, wxWord version);
 
+// MFC Class Functions
 public:
-    // MFC Class Functions
     /// Gets the MFC Class Name for the object
     /// @return The MFC Class Name
     wxString GetMFCClassName() const                            
@@ -88,27 +89,32 @@ public:
     wxWord GetMFCClassSchema() const                            
         {return ((wxWord)1);}
     
-    // Position Functions
+// Position Functions
     /// Determines whether a position is valid
     /// @param position Position to validate
     /// @return True if the position is valid, false if not
     static bool IsValidPosition(wxUint32 position)              
         {return ((position >= 0) && (position <= 255));}
     /// Sets the position within the system where the barline is anchored
-    /// @param position Zero-based index within the system where the barline is anchored
+    /// @param position Zero-based index within the system where the barline is
+    /// anchored
     /// @return True if the position was set, false if not
     bool SetPosition(wxUint32 position)                         
-        {wxCHECK(IsValidPosition(position), false); m_position = (wxByte)position; return (true);}
+    {
+        wxCHECK(IsValidPosition(position), false);
+        m_position = (wxByte)position;
+        return (true);
+    }
     /// Gets the position within the system where the barline is anchored
     /// @return The position within the system where the barline is anchored
     wxUint32 GetPosition() const                                
         {return (m_position);}
    
-    // Barline Data Functions
+// Barline Data Functions
     bool SetBarlineData(wxByte type, wxByte repeatCount);
     void GetBarlineData(wxByte& type, wxByte& repeatCount) const;
      
-    // Type Functions
+// Type Functions
     /// Determines if a type is valid
     /// @param type Type to validate
     /// @return True if the type is valid, false if not
@@ -140,23 +146,27 @@ public:
     bool IsRepeatEnd() const                                    
         {return (GetType() == repeatEnd);}
     /// Determines if the barline type is a double bar (fine) bar
-    /// @return True if the barline type is a double bar (fine) bar, false if not
+    /// @return True if the barline type is a double bar (fine) bar, false if
+    /// not
     bool IsDoubleBarFine() const                                
         {return (GetType() == doubleBarFine);}
     
-    // Repeat Count Functions
+// Repeat Count Functions
     /// Determines if a repeat count is valid
     /// @param repeatCount Repeat count to validate
     /// @return True if the repeat count is valid, false if not
     static bool IsValidRepeatCount(wxUint32 repeatCount)        
-        {return (((repeatCount >= MIN_REPEAT_COUNT) && (repeatCount <= MAX_REPEAT_COUNT)) || (repeatCount == 0));}
+    {
+        return (((repeatCount >= MIN_REPEAT_COUNT) &&
+            (repeatCount <= MAX_REPEAT_COUNT)) || (repeatCount == 0));
+    }
     bool SetRepeatCount(wxUint32 repeatCount);
     /// Gets the repeat count (used by repeat end bars)
     /// @return The repeat count
     wxUint32 GetRepeatCount() const                             
         {return ((wxUint32)(m_data & repeatCountMask));}
    
-    // Key Signature Functions
+// Key Signature Functions
     /// Sets the key signature
     void SetKeySignature(const KeySignature& keySignature)      
         {m_keySignature = keySignature;}
@@ -177,7 +187,7 @@ public:
     KeySignature* GetKeySignaturePtr()                          
         {return (&m_keySignature);}
     
-    // Time Signature Functions
+// Time Signature Functions
     /// Sets the time signature
     void SetTimeSignature(const TimeSignature& timeSignature)   
         {m_timeSignature = timeSignature;}
@@ -198,7 +208,7 @@ public:
     TimeSignature* GetTimeSignaturePtr()                        
         {return (&m_timeSignature);}
     
-    // Rehearsal Sign Functions
+// Rehearsal Sign Functions
     /// Sets the rehearsal sign
     void SetRehearsalSign(const RehearsalSign& rehearsalSign)   
         {m_rehearsalSign = rehearsalSign;}

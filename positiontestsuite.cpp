@@ -257,39 +257,72 @@ bool PositionTestSuite::TestCaseOperator()
         position35.SetTremoloBar(Position::invertedDip, 1, 12);
         
         TEST(wxT("Operator== - position == position"), (position == position2));
-        TEST(wxT("Operator== - position != position"), !(position == position3));
-        TEST(wxT("Operator== - position != position 2"), !(position == position4));
-        TEST(wxT("Operator== - position != position 3"), !(position == position5));
-        TEST(wxT("Operator== - position != position 4"), !(position == position6));
-        TEST(wxT("Operator== - position != position 5"), !(position == position7));
-        TEST(wxT("Operator== - position != position 6"), !(position == position8));
-        TEST(wxT("Operator== - position != position 7"), !(position == position9));
-        TEST(wxT("Operator== - position != position 8"), !(position == position10));
-        TEST(wxT("Operator== - position != position 9"), !(position == position11));
-        TEST(wxT("Operator== - position != position 10"), !(position == position12));
-        TEST(wxT("Operator== - position != position 11"), !(position == position13));
-        TEST(wxT("Operator== - position != position 12"), !(position == position14));
-        TEST(wxT("Operator== - position != position 13"), !(position == position15));
-        TEST(wxT("Operator== - position != position 14"), !(position == position16));
-        TEST(wxT("Operator== - position != position 15"), !(position == position17));
-        TEST(wxT("Operator== - position != position 16"), !(position == position18));
-        TEST(wxT("Operator== - position != position 17"), !(position == position19));
-        TEST(wxT("Operator== - position != position 18"), !(position == position20));
-        TEST(wxT("Operator== - position != position 19"), !(position == position21));
-        TEST(wxT("Operator== - position != position 20"), !(position == position22));
-        TEST(wxT("Operator== - position != position 21"), !(position == position23));
-        TEST(wxT("Operator== - position != position 22"), !(position == position24));
-        TEST(wxT("Operator== - position != position 23"), !(position == position25));
-        TEST(wxT("Operator== - position != position 24"), !(position == position26));
-        TEST(wxT("Operator== - position != position 25"), !(position == position27));
-        TEST(wxT("Operator== - position != position 26"), !(position == position28));
-        TEST(wxT("Operator== - position != position 27"), !(position == position29));
-        TEST(wxT("Operator== - position != position 28"), !(position == position30));
-        TEST(wxT("Operator== - position != position 29"), !(position == position31));
-        TEST(wxT("Operator== - position != position 30"), !(position == position32));
-        TEST(wxT("Operator== - position != position 31"), !(position == position33));
-        TEST(wxT("Operator== - position != position 32"), !(position == position34));
-        TEST(wxT("Operator== - position != position 33"), !(position == position35));
+        TEST(wxT("Operator== - position != position"),
+            !(position == position3));
+        TEST(wxT("Operator== - position != position 2"),
+            !(position == position4));
+        TEST(wxT("Operator== - position != position 3"),
+            !(position == position5));
+        TEST(wxT("Operator== - position != position 4"),
+            !(position == position6));
+        TEST(wxT("Operator== - position != position 5"),
+            !(position == position7));
+        TEST(wxT("Operator== - position != position 6"),
+            !(position == position8));
+        TEST(wxT("Operator== - position != position 7"),
+            !(position == position9));
+        TEST(wxT("Operator== - position != position 8"),
+            !(position == position10));
+        TEST(wxT("Operator== - position != position 9"),
+            !(position == position11));
+        TEST(wxT("Operator== - position != position 10"),
+            !(position == position12));
+        TEST(wxT("Operator== - position != position 11"),
+            !(position == position13));
+        TEST(wxT("Operator== - position != position 12"),
+            !(position == position14));
+        TEST(wxT("Operator== - position != position 13"),
+            !(position == position15));
+        TEST(wxT("Operator== - position != position 14"),
+            !(position == position16));
+        TEST(wxT("Operator== - position != position 15"),
+            !(position == position17));
+        TEST(wxT("Operator== - position != position 16"),
+            !(position == position18));
+        TEST(wxT("Operator== - position != position 17"),
+            !(position == position19));
+        TEST(wxT("Operator== - position != position 18"),
+            !(position == position20));
+        TEST(wxT("Operator== - position != position 19"),
+            !(position == position21));
+        TEST(wxT("Operator== - position != position 20"),
+            !(position == position22));
+        TEST(wxT("Operator== - position != position 21"),
+            !(position == position23));
+        TEST(wxT("Operator== - position != position 22"),
+            !(position == position24));
+        TEST(wxT("Operator== - position != position 23"),
+            !(position == position25));
+        TEST(wxT("Operator== - position != position 24"),
+            !(position == position26));
+        TEST(wxT("Operator== - position != position 25"),
+            !(position == position27));
+        TEST(wxT("Operator== - position != position 26"), 
+            !(position == position28));
+        TEST(wxT("Operator== - position != position 27"),
+            !(position == position29));
+        TEST(wxT("Operator== - position != position 28"),
+            !(position == position30));
+        TEST(wxT("Operator== - position != position 29"),
+            !(position == position31));
+        TEST(wxT("Operator== - position != position 30"),
+            !(position == position32));
+        TEST(wxT("Operator== - position != position 31"),
+            !(position == position33));
+        TEST(wxT("Operator== - position != position 32"),
+            !(position == position34));
+        TEST(wxT("Operator== - position != position 33"),
+            !(position == position35));
     }
     
     // Inequality Operator
@@ -360,40 +393,74 @@ bool PositionTestSuite::TestCaseOperator()
         Position position35(12,4,2);
         position35.SetTremoloBar(Position::invertedDip, 1, 12);
         
-        TEST(wxT("Operator!= - position == position"), !(position != position2));
-        TEST(wxT("Operator!= - position != position"), (position != position3));
-        TEST(wxT("Operator!= - position != position 2"), (position != position4));
-        TEST(wxT("Operator!= - position != position 3"), (position != position5));
-        TEST(wxT("Operator!= - position != position 4"), (position != position6));
-        TEST(wxT("Operator!= - position != position 5"), (position != position7));
-        TEST(wxT("Operator!= - position != position 6"), (position != position8));
-        TEST(wxT("Operator!= - position != position 7"), (position != position9));
-        TEST(wxT("Operator!= - position != position 8"), (position != position10));
-        TEST(wxT("Operator!= - position != position 9"), (position != position11));
-        TEST(wxT("Operator!= - position != position 10"), (position != position12));
-        TEST(wxT("Operator!= - position != position 11"), (position != position13));
-        TEST(wxT("Operator!= - position != position 12"), (position != position14));
-        TEST(wxT("Operator!= - position != position 13"), (position != position15));
-        TEST(wxT("Operator!= - position != position 14"), (position != position16));
-        TEST(wxT("Operator!= - position != position 15"), (position != position17));
-        TEST(wxT("Operator!= - position != position 16"), (position != position18));
-        TEST(wxT("Operator!= - position != position 17"), (position != position19));
-        TEST(wxT("Operator!= - position != position 18"), (position != position20));
-        TEST(wxT("Operator!= - position != position 19"), (position != position21));
-        TEST(wxT("Operator!= - position != position 20"), (position != position22));
-        TEST(wxT("Operator!= - position != position 21"), (position != position23));
-        TEST(wxT("Operator!= - position != position 22"), (position != position24));
-        TEST(wxT("Operator!= - position != position 23"), (position != position25));
-        TEST(wxT("Operator!= - position != position 24"), (position != position26));
-        TEST(wxT("Operator!= - position != position 25"), (position != position27));
-        TEST(wxT("Operator!= - position != position 26"), (position != position28));
-        TEST(wxT("Operator!= - position != position 27"), (position != position29));
-        TEST(wxT("Operator!= - position != position 28"), (position != position30));
-        TEST(wxT("Operator!= - position != position 29"), (position != position31));
-        TEST(wxT("Operator!= - position != position 30"), (position != position32));
-        TEST(wxT("Operator!= - position != position 31"), (position != position33));
-        TEST(wxT("Operator!= - position != position 32"), (position != position34));
-        TEST(wxT("Operator!= - position != position 33"), (position != position35));
+        TEST(wxT("Operator!= - position == position"),
+            !(position != position2));
+        TEST(wxT("Operator!= - position != position"),
+            (position != position3));
+        TEST(wxT("Operator!= - position != position 2"),
+            (position != position4));
+        TEST(wxT("Operator!= - position != position 3"),
+            (position != position5));
+        TEST(wxT("Operator!= - position != position 4"),
+            (position != position6));
+        TEST(wxT("Operator!= - position != position 5"),
+            (position != position7));
+        TEST(wxT("Operator!= - position != position 6"),
+            (position != position8));
+        TEST(wxT("Operator!= - position != position 7"),
+            (position != position9));
+        TEST(wxT("Operator!= - position != position 8"),
+            (position != position10));
+        TEST(wxT("Operator!= - position != position 9"),
+            (position != position11));
+        TEST(wxT("Operator!= - position != position 10"),
+            (position != position12));
+        TEST(wxT("Operator!= - position != position 11"),
+            (position != position13));
+        TEST(wxT("Operator!= - position != position 12"),
+            (position != position14));
+        TEST(wxT("Operator!= - position != position 13"),
+            (position != position15));
+        TEST(wxT("Operator!= - position != position 14"),
+            (position != position16));
+        TEST(wxT("Operator!= - position != position 15"),
+            (position != position17));
+        TEST(wxT("Operator!= - position != position 16"),
+            (position != position18));
+        TEST(wxT("Operator!= - position != position 17"),
+            (position != position19));
+        TEST(wxT("Operator!= - position != position 18"),
+            (position != position20));
+        TEST(wxT("Operator!= - position != position 19"),
+            (position != position21));
+        TEST(wxT("Operator!= - position != position 20"),
+            (position != position22));
+        TEST(wxT("Operator!= - position != position 21"),
+            (position != position23));
+        TEST(wxT("Operator!= - position != position 22"),
+            (position != position24));
+        TEST(wxT("Operator!= - position != position 23"),
+            (position != position25));
+        TEST(wxT("Operator!= - position != position 24"),
+            (position != position26));
+        TEST(wxT("Operator!= - position != position 25"),
+            (position != position27));
+        TEST(wxT("Operator!= - position != position 26"),
+            (position != position28));
+        TEST(wxT("Operator!= - position != position 27"),
+            (position != position29));
+        TEST(wxT("Operator!= - position != position 28"),
+            (position != position30));
+        TEST(wxT("Operator!= - position != position 29"),
+            (position != position31));
+        TEST(wxT("Operator!= - position != position 30"),
+            (position != position32));
+        TEST(wxT("Operator!= - position != position 31"),
+            (position != position33));
+        TEST(wxT("Operator!= - position != position 32"),
+            (position != position34));
+        TEST(wxT("Operator!= - position != position 33"),
+            (position != position35));
     }
     
     return (true);
@@ -423,7 +490,8 @@ bool PositionTestSuite::TestCaseSerialize()
     
         // Read test data back from stream
         Position positionIn;
-        positionIn.Deserialize(streamIn, PowerTabFileHeader::FILEVERSION_CURRENT);
+        positionIn.Deserialize(streamIn,
+            PowerTabFileHeader::FILEVERSION_CURRENT);
 
         // Validate the data
         ok = ((positionIn == positionOut)
@@ -461,7 +529,8 @@ bool PositionTestSuite::TestCasePosition()
         {
             TEST(wxT("SetPosition - %d"), 
                 (position.SetPosition(i) == (i <= Position::MAX_POSITION)) &&
-                ((i > Position::MAX_POSITION) ? 1 : (position.GetPosition() == i))
+                ((i > Position::MAX_POSITION) ? 1 :
+                    (position.GetPosition() == i))
             );
         }
     }
@@ -527,12 +596,17 @@ bool PositionTestSuite::TestCaseIrregularGrouping()
         for (; i < (Position::MAX_IRREGULAR_GROUPING_NOTES_PLAYED + 1); i++)
         {
             wxByte j = Position::MIN_IRREGULAR_GROUPING_NOTES_PLAYED_OVER - 1;
-            for (; j < (Position::MAX_IRREGULAR_GROUPING_NOTES_PLAYED_OVER + 1); j++)
+            for (; j < (Position::MAX_IRREGULAR_GROUPING_NOTES_PLAYED_OVER + 1);
+                j++)
             {
-                TEST(wxString::Format(wxT("IsValidIrregularGroupingTiming - %d, %d"), i, j),
+                TEST(
+                    wxString::Format(wxT("IsValidIrregularGroupingTiming - %d, %d"),
+                    i, j),
                     (Position::IsValidIrregularGroupingTiming(i, j) == 
-                        (((i >= Position::MIN_IRREGULAR_GROUPING_NOTES_PLAYED) && (i <= Position::MAX_IRREGULAR_GROUPING_NOTES_PLAYED)) &&
-                        ((j >= Position::MIN_IRREGULAR_GROUPING_NOTES_PLAYED_OVER) && (j <= Position::MAX_IRREGULAR_GROUPING_NOTES_PLAYED_OVER))))
+                        (((i >= Position::MIN_IRREGULAR_GROUPING_NOTES_PLAYED) &&
+                        (i <= Position::MAX_IRREGULAR_GROUPING_NOTES_PLAYED)) &&
+                        ((j >= Position::MIN_IRREGULAR_GROUPING_NOTES_PLAYED_OVER) &&
+                        (j <= Position::MAX_IRREGULAR_GROUPING_NOTES_PLAYED_OVER))))
                 );
             }
         }   
@@ -549,16 +623,19 @@ bool PositionTestSuite::TestCaseIrregularGrouping()
             for (; j < (Position::MAX_IRREGULAR_GROUPING_NOTES_PLAYED_OVER + 1); j++)
             {
                 bool set = position.SetIrregularGroupingTiming(i,j);
-                bool valid = (i >= Position::MIN_IRREGULAR_GROUPING_NOTES_PLAYED) && (i <= Position::MAX_IRREGULAR_GROUPING_NOTES_PLAYED) &&
-                        (j >= Position::MIN_IRREGULAR_GROUPING_NOTES_PLAYED_OVER) && (j <= Position::MAX_IRREGULAR_GROUPING_NOTES_PLAYED_OVER);
+                bool valid = (i >= Position::MIN_IRREGULAR_GROUPING_NOTES_PLAYED) &&
+                    (i <= Position::MAX_IRREGULAR_GROUPING_NOTES_PLAYED) &&
+                        (j >= Position::MIN_IRREGULAR_GROUPING_NOTES_PLAYED_OVER) &&
+                        (j <= Position::MAX_IRREGULAR_GROUPING_NOTES_PLAYED_OVER);
                          
                 wxByte notesPlayed = 0;
                 wxByte notesPlayedOver = 0;
                 position.GetIrregularGroupingTiming(notesPlayed, notesPlayedOver);
                 
-                TEST(wxString::Format(wxT("SetIrregularGroupingTiming - %d, %d"), i, j),
-                    (set == valid) &&
-                    ((!valid) ? 1 : (position.HasIrregularGroupingTiming() && ((notesPlayed == i) && (notesPlayedOver == j))))
+                TEST(wxString::Format(wxT("SetIrregularGroupingTiming - %d, %d"),
+                    i, j), (set == valid) &&
+                    ((!valid) ? 1 : (position.HasIrregularGroupingTiming() &&
+                    ((notesPlayed == i) && (notesPlayedOver == j))))
                 );
             }
         }   
@@ -587,13 +664,15 @@ bool PositionTestSuite::TestCaseBeaming()
     
     // TEST CASE: IsValidPreviousBeamDurationType
     {
-        TEST(wxT("IsValidPreviousBeamDurationType - 0"), Position::IsValidPreviousBeamDurationType(0));
+        TEST(wxT("IsValidPreviousBeamDurationType - 0"),
+            Position::IsValidPreviousBeamDurationType(0));
         
         wxByte i = 1;
         for (; i <= 128; i = i * 2)
         {
             TEST(wxString::Format(wxT("IsValidPreviousBeamDurationType - %d"), i),
-                (Position::IsValidPreviousBeamDurationType(i) == ((i == 0) || (i == 8) || (i == 16) || (i == 32) || (i == 64)))
+                (Position::IsValidPreviousBeamDurationType(i) ==
+                ((i == 0) || (i == 8) || (i == 16) || (i == 32) || (i == 64)))
             );
             
             // Block overflow
@@ -606,14 +685,17 @@ bool PositionTestSuite::TestCaseBeaming()
     {
         Position position;
         
-        TEST(wxT("SetPreviousBeamDurationType - 0"), position.SetPreviousBeamDurationType(0));
+        TEST(wxT("SetPreviousBeamDurationType - 0"),
+            position.SetPreviousBeamDurationType(0));
         
         wxByte i = 1;
         for (; i <= 128; i = i * 2)
         {
             TEST(wxString::Format(wxT("SetPreviousBeamDurationType - %d"), i),
-                (position.SetPreviousBeamDurationType(i) == ((i == 0) || (i == 8) || (i == 16) || (i == 32) || (i == 64))) &&
-                (!((i == 0) || (i == 8) || (i == 16) || (i == 32) || (i == 64)) ? 1 : (position.GetPreviousBeamDurationType() == i))
+                (position.SetPreviousBeamDurationType(i) == ((i == 0) ||
+                (i == 8) || (i == 16) || (i == 32) || (i == 64))) &&
+                (!((i == 0) || (i == 8) || (i == 16) || (i == 32) ||
+                (i == 64)) ? 1 : (position.GetPreviousBeamDurationType() == i))
             );
             
             // Block overflow
@@ -625,29 +707,37 @@ bool PositionTestSuite::TestCaseBeaming()
     // TEST CASE: SetBeamStart
     {
         Position position;
-        TEST(wxT("SetBeamStart - true"), (position.SetBeamStart() && position.IsBeamStart()));
-        TEST(wxT("SetBeamStart - false"), (position.SetBeamStart(false) && !position.IsBeamStart()));
+        TEST(wxT("SetBeamStart - true"),
+            (position.SetBeamStart() && position.IsBeamStart()));
+        TEST(wxT("SetBeamStart - false"),
+            (position.SetBeamStart(false) && !position.IsBeamStart()));
     }
     
     // TEST CASE: SetFractionalLeftBeam
     {
         Position position;
-        TEST(wxT("SetFractionalLeftBeam - true"), (position.SetFractionalLeftBeam() && position.HasFractionalLeftBeam()));
-        TEST(wxT("SetFractionalLeftBeam - false"), (position.SetFractionalLeftBeam(false) && !position.HasFractionalLeftBeam()));
+        TEST(wxT("SetFractionalLeftBeam - true"),
+            (position.SetFractionalLeftBeam() && position.HasFractionalLeftBeam()));
+        TEST(wxT("SetFractionalLeftBeam - false"),
+            (position.SetFractionalLeftBeam(false) && !position.HasFractionalLeftBeam()));
     }
     
     // TEST CASE: SetFractionalRightBeam
     {
         Position position;
-        TEST(wxT("SetFractionalRightBeam - true"), (position.SetFractionalRightBeam() && position.HasFractionalRightBeam()));
-        TEST(wxT("SetFractionalRightBeam - false"), (position.SetFractionalRightBeam(false) && !position.HasFractionalRightBeam()));
+        TEST(wxT("SetFractionalRightBeam - true"),
+            (position.SetFractionalRightBeam() && position.HasFractionalRightBeam()));
+        TEST(wxT("SetFractionalRightBeam - false"),
+            (position.SetFractionalRightBeam(false) && !position.HasFractionalRightBeam()));
     }
     
     // TEST CASE: SetBeamEnd
     {
         Position position;
-        TEST(wxT("SetBeamEnd - true"), (position.SetBeamEnd() && position.IsBeamEnd()));
-        TEST(wxT("SetBeamEnd - false"), (position.SetBeamEnd(false) && !position.IsBeamEnd()));
+        TEST(wxT("SetBeamEnd - true"),
+            (position.SetBeamEnd() && position.IsBeamEnd()));
+        TEST(wxT("SetBeamEnd - false"),
+            (position.SetBeamEnd(false) && !position.IsBeamEnd()));
     }
     
     // TEST CASE: ClearBeam
@@ -700,15 +790,19 @@ bool PositionTestSuite::TestCaseDotted()
     // TEST CASE: Dotted
     {
         Position position;
-        TEST(wxT("SetDotted - true"), (position.SetDotted() && position.IsDotted()));
-        TEST(wxT("SetDotted - false"), (position.SetDotted(false) && !position.IsDotted()));
+        TEST(wxT("SetDotted - true"),
+            (position.SetDotted() && position.IsDotted()));
+        TEST(wxT("SetDotted - false"),
+            (position.SetDotted(false) && !position.IsDotted()));
     }
     
     // TEST CASE: Double Dotted
     {
         Position position;
-        TEST(wxT("SetDoubleDotted - true"), (position.SetDoubleDotted() && position.IsDoubleDotted()));
-        TEST(wxT("SetDoubleDotted - false"), (position.SetDoubleDotted(false) && !position.IsDoubleDotted()));
+        TEST(wxT("SetDoubleDotted - true"),
+            (position.SetDoubleDotted() && position.IsDoubleDotted()));
+        TEST(wxT("SetDoubleDotted - false"),
+            (position.SetDoubleDotted(false) && !position.IsDoubleDotted()));
     }
     
     return (true);
@@ -722,8 +816,10 @@ bool PositionTestSuite::TestCaseRest()
     // - Jan 7, 2005
     
     Position position;
-    TEST(wxT("SetRest - true"), (position.SetRest() && position.IsRest()));
-    TEST(wxT("SetRest - false"), (position.SetRest(false) && !position.IsRest()));
+    TEST(wxT("SetRest - true"),
+        (position.SetRest() && position.IsRest()));
+    TEST(wxT("SetRest - false"),
+        (position.SetRest(false) && !position.IsRest()));
     
     return (true);
 }
@@ -738,15 +834,19 @@ bool PositionTestSuite::TestCaseVibrato()
     // TEST CASE: Vibrato
     {
         Position position;
-        TEST(wxT("SetVibrato - true"), (position.SetVibrato() && position.HasVibrato()));
-        TEST(wxT("SetVibrato - false"), (position.SetVibrato(false) && !position.HasVibrato()));
+        TEST(wxT("SetVibrato - true"),
+            (position.SetVibrato() && position.HasVibrato()));
+        TEST(wxT("SetVibrato - false"),
+            (position.SetVibrato(false) && !position.HasVibrato()));
     }
     
     // TEST CASE: Wide Vibrato
     {
         Position position;
-        TEST(wxT("SetWideVibrato - true"), (position.SetWideVibrato() && position.HasWideVibrato()));
-        TEST(wxT("SetWideVibrato - false"), (position.SetWideVibrato(false) && !position.HasWideVibrato()));
+        TEST(wxT("SetWideVibrato - true"),
+            (position.SetWideVibrato() && position.HasWideVibrato()));
+        TEST(wxT("SetWideVibrato - false"), 
+            (position.SetWideVibrato(false) && !position.HasWideVibrato()));
     }
     
     return (true);
@@ -762,15 +862,19 @@ bool PositionTestSuite::TestCaseArpeggio()
     // TEST CASE: SetArpeggioDown
     {
         Position position;
-        TEST(wxT("SetArpeggioDown - true"), (position.SetArpeggioDown() && position.HasArpeggioDown()));
-        TEST(wxT("SetArpeggioDown - false"), (position.SetArpeggioDown(false) && !position.HasArpeggioDown()));
+        TEST(wxT("SetArpeggioDown - true"),
+            (position.SetArpeggioDown() && position.HasArpeggioDown()));
+        TEST(wxT("SetArpeggioDown - false"),
+            (position.SetArpeggioDown(false) && !position.HasArpeggioDown()));
     }
     
     // TEST CASE: SetArpeggioUp
     {
         Position position;
-        TEST(wxT("SetArpeggioUp - true"), (position.SetArpeggioUp() && position.HasArpeggioUp()));
-        TEST(wxT("SetArpeggioUp - false"), (position.SetArpeggioUp(false) && !position.HasArpeggioUp()));
+        TEST(wxT("SetArpeggioUp - true"),
+            (position.SetArpeggioUp() && position.HasArpeggioUp()));
+        TEST(wxT("SetArpeggioUp - false"),
+            (position.SetArpeggioUp(false) && !position.HasArpeggioUp()));
     }
     
     return (true);
@@ -786,15 +890,19 @@ bool PositionTestSuite::TestCasePickStroke()
     // TEST CASE: SetPickStrokeUp
     {
         Position position;
-        TEST(wxT("SetPickStrokeUp - true"), (position.SetPickStrokeUp() && position.HasPickStrokeUp()));
-        TEST(wxT("SetPickStrokeUp - false"), (position.SetPickStrokeUp(false) && !position.HasPickStrokeUp()));
+        TEST(wxT("SetPickStrokeUp - true"), 
+            (position.SetPickStrokeUp() && position.HasPickStrokeUp()));
+        TEST(wxT("SetPickStrokeUp - false"),
+            (position.SetPickStrokeUp(false) && !position.HasPickStrokeUp()));
     }
     
     // TEST CASE: SetPickStrokeDown
     {
         Position position;
-        TEST(wxT("SetPickStrokeDown - true"), (position.SetPickStrokeDown() && position.HasPickStrokeDown()));
-        TEST(wxT("SetPickStrokeDown - false"), (position.SetPickStrokeDown(false) && !position.HasPickStrokeDown()));
+        TEST(wxT("SetPickStrokeDown - true"), 
+            (position.SetPickStrokeDown() && position.HasPickStrokeDown()));
+        TEST(wxT("SetPickStrokeDown - false"), 
+            (position.SetPickStrokeDown(false) && !position.HasPickStrokeDown()));
     }
     
     return (true);
@@ -808,8 +916,10 @@ bool PositionTestSuite::TestCaseStaccato()
     // - Jan 7, 2005
   
     Position position;
-    TEST(wxT("SetStaccato - true"), (position.SetStaccato() && position.IsStaccato()));
-    TEST(wxT("SetStaccato - false"), (position.SetStaccato(false) && !position.IsStaccato()));
+    TEST(wxT("SetStaccato - true"), 
+        (position.SetStaccato() && position.IsStaccato()));
+    TEST(wxT("SetStaccato - false"), 
+        (position.SetStaccato(false) && !position.IsStaccato()));
     
     return (true);
 }
@@ -824,15 +934,19 @@ bool PositionTestSuite::TestCaseAccent()
     // TEST CASE: SetMarcato
     {
         Position position;    
-        TEST(wxT("SetMarcato - true"), (position.SetMarcato() && position.HasMarcato()));
-        TEST(wxT("SetMarcato - false"), (position.SetMarcato(false) && !position.HasMarcato()));
+        TEST(wxT("SetMarcato - true"),
+            (position.SetMarcato() && position.HasMarcato()));
+        TEST(wxT("SetMarcato - false"),
+            (position.SetMarcato(false) && !position.HasMarcato()));
     }
     
     // TEST CASE: SetSforzando
     {
         Position position;
-        TEST(wxT("SetSforzando - true"), (position.SetSforzando() && position.HasSforzando()));
-        TEST(wxT("SetSforzando - false"), (position.SetSforzando(false) && !position.HasSforzando()));
+        TEST(wxT("SetSforzando - true"), 
+            (position.SetSforzando() && position.HasSforzando()));
+        TEST(wxT("SetSforzando - false"),
+            (position.SetSforzando(false) && !position.HasSforzando()));
     }
     
     return (true);
@@ -845,8 +959,10 @@ bool PositionTestSuite::TestCaseTremoloPicking()
     //------Last Checked------//
     // - Jan 18, 2005
     Position position;
-    TEST(wxT("SetTremoloPicking - true"), (position.SetTremoloPicking() && position.HasTremoloPicking()));
-    TEST(wxT("SetTremoloPicking - false"), (position.SetTremoloPicking(false) && !position.HasTremoloPicking()));
+    TEST(wxT("SetTremoloPicking - true"), 
+        (position.SetTremoloPicking() && position.HasTremoloPicking()));
+    TEST(wxT("SetTremoloPicking - false"), 
+        (position.SetTremoloPicking(false) && !position.HasTremoloPicking()));
     return (true);
 }
 
@@ -857,8 +973,10 @@ bool PositionTestSuite::TestCasePalmMuting()
     //------Last Checked------//
     // - Jan 18, 2005
     Position position;
-    TEST(wxT("SetPalmMuting - true"), (position.SetPalmMuting() && position.HasPalmMuting()));
-    TEST(wxT("SetPalmMuting - false"), (position.SetPalmMuting(false) && !position.HasPalmMuting()));
+    TEST(wxT("SetPalmMuting - true"),
+        (position.SetPalmMuting() && position.HasPalmMuting()));
+    TEST(wxT("SetPalmMuting - false"),
+        (position.SetPalmMuting(false) && !position.HasPalmMuting()));
     return (true);
 }
 
@@ -884,8 +1002,10 @@ bool PositionTestSuite::TestCaseGraceNotes()
     // TEST CASE: Acciaccatura
     {
         Position position;
-        TEST(wxT("SetAcciaccatura - true"), (position.SetAcciaccatura() && position.IsAcciaccatura()));
-        TEST(wxT("SetAcciaccatura - false"), (position.SetAcciaccatura(false) && !position.IsAcciaccatura()));
+        TEST(wxT("SetAcciaccatura - true"),
+            (position.SetAcciaccatura() && position.IsAcciaccatura()));
+        TEST(wxT("SetAcciaccatura - false"),
+            (position.SetAcciaccatura(false) && !position.IsAcciaccatura()));
     }
     
     return (true);
@@ -901,15 +1021,19 @@ bool PositionTestSuite::TestCaseTripletFeel()
     // TEST CASE: SetTripletFeel1st
     {
         Position position;
-        TEST(wxT("SetTripletFeel1st - true"), (position.SetTripletFeel1st() && position.IsTripletFeel1st()));
-        TEST(wxT("SetTripletFeel1st - false"), (position.SetTripletFeel1st(false) && !position.IsTripletFeel1st()));
+        TEST(wxT("SetTripletFeel1st - true"),
+            (position.SetTripletFeel1st() && position.IsTripletFeel1st()));
+        TEST(wxT("SetTripletFeel1st - false"),
+            (position.SetTripletFeel1st(false) && !position.IsTripletFeel1st()));
     }
     
     // TEST CASE: SetTripletFeel2nd
     {
         Position position;
-        TEST(wxT("SetTripletFeel2nd - true"), (position.SetTripletFeel2nd() && position.IsTripletFeel2nd()));
-        TEST(wxT("SetTripletFeel2nd - false"), (position.SetTripletFeel2nd(false) && !position.IsTripletFeel2nd()));
+        TEST(wxT("SetTripletFeel2nd - true"),
+            (position.SetTripletFeel2nd() && position.IsTripletFeel2nd()));
+        TEST(wxT("SetTripletFeel2nd - false"),
+            (position.SetTripletFeel2nd(false) && !position.IsTripletFeel2nd()));
     }
     
     return (true);
@@ -922,8 +1046,10 @@ bool PositionTestSuite::TestCaseLetRing()
     //------Last Checked------//
     // - Jan 18, 2005
     Position position;
-    TEST(wxT("SetLetRing - true"), (position.SetLetRing() && position.HasLetRing()));
-    TEST(wxT("SetLetRing - false"), (position.SetLetRing(false) && !position.HasLetRing()));
+    TEST(wxT("SetLetRing - true"),
+        (position.SetLetRing() && position.HasLetRing()));
+    TEST(wxT("SetLetRing - false"),
+        (position.SetLetRing(false) && !position.HasLetRing()));
     return (true);
 }
 
@@ -934,8 +1060,10 @@ bool PositionTestSuite::TestCaseFermata()
     //------Last Checked------//
     // - Jan 18, 2005
     Position position;
-    TEST(wxT("SetFermata - true"), (position.SetFermata() && position.HasFermata()));
-    TEST(wxT("SetFermata - false"), (position.SetFermata(false) && !position.HasFermata()));
+    TEST(wxT("SetFermata - true"),
+        (position.SetFermata() && position.HasFermata()));
+    TEST(wxT("SetFermata - false"), 
+        (position.SetFermata(false) && !position.HasFermata()));
     return (true);
 }
 
@@ -949,10 +1077,14 @@ bool PositionTestSuite::TestCaseVolumeSwell()
     // TEST CASE: SetVolumeSwell
     {
         Position position;
-        TEST(wxT("SetVolumeSwell - invalid start volume"), !position.SetVolumeSwell(255, Dynamic::mp, 4));
-        TEST(wxT("SetVolumeSwell - invalid end volume"), !position.SetVolumeSwell(Dynamic::off, 255, 4));
-        TEST(wxT("SetVolumeSwell - invalid duration"), !position.SetVolumeSwell(Dynamic::off, Dynamic::mp, 255));
-        TEST(wxT("SetVolumeSwell - same volumes"), !position.SetVolumeSwell(Dynamic::mp, Dynamic::mp, 4));
+        TEST(wxT("SetVolumeSwell - invalid start volume"),
+            !position.SetVolumeSwell(255, Dynamic::mp, 4));
+        TEST(wxT("SetVolumeSwell - invalid end volume"),
+            !position.SetVolumeSwell(Dynamic::off, 255, 4));
+        TEST(wxT("SetVolumeSwell - invalid duration"),
+            !position.SetVolumeSwell(Dynamic::off, Dynamic::mp, 255));
+        TEST(wxT("SetVolumeSwell - same volumes"),
+            !position.SetVolumeSwell(Dynamic::mp, Dynamic::mp, 4));
         
         bool set = position.SetVolumeSwell(Dynamic::off, Dynamic::mp, 1);
         wxByte startVolume = 0;
@@ -1022,9 +1154,12 @@ bool PositionTestSuite::TestCaseTremoloBar()
     // TEST CASE: SetTremoloBar
     {
         Position position;
-        TEST(wxT("SetTremoloBar - invalid type"), !position.SetTremoloBar(255, 1, 12));
-        TEST(wxT("SetTremoloBar - invalid duration"), !position.SetTremoloBar(Position::invertedDip, 255, 12));
-        TEST(wxT("SetTremoloBar - invalid pitch"), !position.SetTremoloBar(Position::invertedDip, 1, 255));
+        TEST(wxT("SetTremoloBar - invalid type"),
+            !position.SetTremoloBar(255, 1, 12));
+        TEST(wxT("SetTremoloBar - invalid duration"),
+            !position.SetTremoloBar(Position::invertedDip, 255, 12));
+        TEST(wxT("SetTremoloBar - invalid pitch"), 
+            !position.SetTremoloBar(Position::invertedDip, 1, 255));
         
         bool set = position.SetTremoloBar(Position::invertedDip, 1, 12);
         wxByte type = 0;
@@ -1101,7 +1236,8 @@ bool PositionTestSuite::TestCaseMultibarRest()
             wxByte measureCount = 0;
             position.GetMultibarRest(measureCount);
             TEST(wxString::Format(wxT("SetMultibarRest - %d"), i),
-                ((set == (i >= Position::MIN_MULTIBAR_REST_MEASURE_COUNT) && (i <= Position::MAX_MULTIBAR_REST_MEASURE_COUNT)) &&
+                ((set == (i >= Position::MIN_MULTIBAR_REST_MEASURE_COUNT) && 
+                (i <= Position::MAX_MULTIBAR_REST_MEASURE_COUNT)) &&
                 ((i < Position::MIN_MULTIBAR_REST_MEASURE_COUNT) ? 1 : 
                     ((position.HasMultibarRest()) && (measureCount == i))
                 ))
@@ -1139,7 +1275,9 @@ bool PositionTestSuite::TestCaseComplexSymbol()
         for (;;i++)
         {
             TEST(wxString::Format(wxT("IsValidComplexSymbolType - %d"), i),
-                (Position::IsValidComplexSymbolType(i) == ((i == Position::volumeSwell) || (i == Position::tremoloBar) || (i == Position::multibarRest)))
+                (Position::IsValidComplexSymbolType(i) == 
+                ((i == Position::volumeSwell) || (i == Position::tremoloBar) ||
+                (i == Position::multibarRest)))
             );
             
             // block overflow
@@ -1151,7 +1289,8 @@ bool PositionTestSuite::TestCaseComplexSymbol()
     // TEST CASE: AddComplexSymbol
     {
         Position position;
-        TEST(wxT("AddComplexSymbol - invalid type"), !position.AddComplexSymbol(0));
+        TEST(wxT("AddComplexSymbol - invalid type"),
+            !position.AddComplexSymbol(0));
         position.SetVolumeSwell(Dynamic::off, Dynamic::mp, 1);
         position.SetTremoloBar(Position::invertedDip, 1, 12);
         TEST(wxT("AddComplexSymbol - full"), !position.SetMultibarRest(10));
@@ -1183,8 +1322,10 @@ bool PositionTestSuite::TestCaseComplexSymbol()
         position.SetVolumeSwell(Dynamic::off, Dynamic::mp, 1);
         position.SetTremoloBar(Position::invertedDip, 1, 12);
         
-        TEST(wxT("FindComplexSymbol - volume swell"), (position.FindComplexSymbol(Position::volumeSwell) == 0));
-        TEST(wxT("FindComplexSymbol - tremolo bar"), (position.FindComplexSymbol(Position::tremoloBar) == 1));
+        TEST(wxT("FindComplexSymbol - volume swell"),
+            (position.FindComplexSymbol(Position::volumeSwell) == 0));
+        TEST(wxT("FindComplexSymbol - tremolo bar"),
+            (position.FindComplexSymbol(Position::tremoloBar) == 1));
     }
 
     // TEST CASE: RemoveComplexSymbol

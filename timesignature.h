@@ -55,29 +55,30 @@ public:
         textFull                = 2                             ///< Full fractional text 4/4
     };
     
+// Member Variables
 protected:
     wxUint32    m_data;             ///< Stores the meter, beaming pattern and any flags (see flags enum for bit breakdown)
     wxByte      m_pulses;           ///< Number of pulses in a measure
 
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     TimeSignature();
     TimeSignature(wxByte beatsPerMeasure, wxByte beatAmount);
     TimeSignature(const TimeSignature& timeSignature);
     ~TimeSignature();
 
-    // Creation Functions
+// Creation Functions
     /// Creates an exact duplicate of the object
     /// @return The duplicate object
     PowerTabObject* CloneObject() const                         
         {return (new TimeSignature(*this));}
     
-    // Operators
+// Operators
     const TimeSignature& operator=(const TimeSignature& timeSignature);
     bool operator==(const TimeSignature& timeSignature) const;
     bool operator!=(const TimeSignature& timeSignature) const;
     
-    // MFC Class Functions
+// MFC Class Functions
     /// Gets the MFC Class Name for the object
     /// @return The MFC Class Name
     wxString GetMFCClassName() const                            
@@ -87,20 +88,24 @@ public:
     wxWord GetMFCClassSchema() const                            
         {return ((wxWord)1);}
     
-    // Serialize Functions
+// Serialize Functions
 protected:
     bool DoSerialize(PowerTabOutputStream& stream);
     bool DoDeserialize(PowerTabInputStream& stream, wxWord version);
-    
+
+// Meter Functions
 public:
-    // Meter Functions
     bool SetMeter(wxByte beatsPerMeasure, wxByte beatAmount);
     void GetMeter(wxByte & beatsPerMeasure, wxByte & beatAmount) const;
-    /// Determines if the meter is the same as that of another TimeSignature object
+    /// Determines if the meter is the same as that of another TimeSignature
+    /// object
     /// @param timeSignature TimeSignature object to compare with
     /// @return True if the time signatures have the same meter, false if not
     bool IsSameMeter(const TimeSignature& timeSignature) const
-        {return ((GetBeatsPerMeasure() == timeSignature.GetBeatsPerMeasure()) && (GetBeatAmount() == timeSignature.GetBeatAmount()));}
+    {
+        return ((GetBeatsPerMeasure() == timeSignature.GetBeatsPerMeasure()) &&
+        (GetBeatAmount() == timeSignature.GetBeatAmount()));
+    }
     // Sets the time signature to use the cut time symbol and meter
     void SetCutTime()                               
         {SetMeter(2,2); SetFlag(cutTime); /* note: Flag must be set after call to SetMeter, cause it clears both cut and common flags) */}
@@ -120,37 +125,46 @@ public:
     wxUint32 GetBasicBeat() const;
     wxUint32 GetMeasureTotal() const;
 
-    // Beats Per Measure Functions
+// Beats Per Measure Functions
     /// Determines if a beats per measure value is valid
     /// @param beatsPerMeasure Beats per measure value to validate
     /// @return True if the beats per measure value is valid, false if not
     static bool IsValidBeatsPerMeasure(wxByte beatsPerMeasure)      
-        {return ((beatsPerMeasure >= MIN_BEATSPERMEASURE) && (beatsPerMeasure <= MAX_BEATSPERMEASURE));}
+    {
+        return ((beatsPerMeasure >= MIN_BEATSPERMEASURE) &&
+            (beatsPerMeasure <= MAX_BEATSPERMEASURE));
+    }
     bool SetBeatsPerMeasure(wxByte beatsPerMeasure);
     wxByte GetBeatsPerMeasure() const;
     
-    // Beat Amount Functions
+// Beat Amount Functions
     /// Determines if a beat amount is valid
     /// @param beatAmount Beat amount to validate
     /// @return True if the beat amount is valid, false if not
     static bool IsValidBeatAmount(wxByte beatAmount)                
-        {return ((beatAmount == 2) || (beatAmount == 4) || (beatAmount == 8) || (beatAmount == 16) || (beatAmount == 32));}
+    {
+        return ((beatAmount == 2) || (beatAmount == 4) || (beatAmount == 8) ||
+            (beatAmount == 16) || (beatAmount == 32));
+    }
     bool SetBeatAmount(wxByte beatAmount);
     wxByte GetBeatAmount() const;
     
-    // Beaming Pattern Functions
+// Beaming Pattern Functions
     /// Determines if a beaming pattern beat value is valid
     /// @param beat Beaming pattern beat value to validate
-    /// @param beat1 True if the beat value is the first beat in the beaming pattern
+    /// @param beat1 True if the beat value is the first beat in the beaming
+    /// pattern
     /// @return True if the beaming pattern beat value is valid, false if not
     static bool IsValidBeamingPatternBeat(wxByte beat, bool beat1)  
         {return ((beat <= MAX_BEATAMOUNT) && ((beat1) ? (beat > 0) : 1));}
-    bool SetBeamingPattern(wxByte beat1, wxByte beat2 = 0, wxByte beat3 = 0, wxByte beat4 = 0);
-    void GetBeamingPattern(wxByte & beat1, wxByte & beat2, wxByte & beat3, wxByte & beat4) const;
+    bool SetBeamingPattern(wxByte beat1, wxByte beat2 = 0, wxByte beat3 = 0,
+        wxByte beat4 = 0);
+    void GetBeamingPattern(wxByte & beat1, wxByte & beat2, wxByte & beat3,
+        wxByte & beat4) const;
     bool SetBeamingPatternFromwxUint32(wxUint32 beamingPattern);
     wxUint32 GetBeamingPatternAswxUint32() const;
 
-    // Show Functions
+// Show Functions
     /// Makes the time signature visible
     void Show()                                     
         {SetFlag(show);}
@@ -162,7 +176,7 @@ public:
     bool IsShown() const                            
         {return (IsFlagSet(show));}
         
-    // Pulse Functions
+// Pulse Functions
     /// Determines if a pulses value is valid
     /// @param pulses Pulses value to validate
     /// @return True if the pulses value is valid, false if not
@@ -172,19 +186,25 @@ public:
     /// @param pulses Number of pulses to set
     /// @return True if the pulses value was set, false if not
     bool SetPulses(wxByte pulses)                   
-        {wxCHECK(IsValidPulses(pulses), false); m_pulses = pulses; return (true);}
+    {
+        wxCHECK(IsValidPulses(pulses), false);
+        m_pulses = pulses; return (true);
+    }
     /// Gets the number of pulses in a measure
     /// @return The number of pulses in a measure
     wxByte GetPulses() const                        
         {return (m_pulses);}
     
-    // Flag Functions
+// Flag Functions
 protected:
     /// Determines if a flag is valid
     /// @param flag Flag to validate
     /// @return True if the flag is valid, false if not
     static bool IsValidFlag(wxUint32 flag)          
-        {return ((flag >= show) && (flag <= (show | brackets | commonTime | cutTime)));}
+    {
+        return ((flag >= show) &&
+            (flag <= (show | brackets | commonTime | cutTime)));
+    }
     bool SetFlag(wxUint32 flag);
     /// Clears a flag used by the TimeSignature object
     /// @param flag The flag to clear
@@ -196,7 +216,7 @@ protected:
     bool IsFlagSet(wxUint32 flag) const             
         {wxCHECK(IsValidFlag(flag), false); return ((m_data & flag) == flag);}
 
-    // Operations    
+// Operations    
 public:
     wxString GetText(wxUint32 type) const;
 };

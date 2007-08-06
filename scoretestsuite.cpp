@@ -181,10 +181,12 @@ bool ScoreTestSuite::TestCaseOperator()
         score3.m_guitarArray.Add(new Guitar(2));
         
         Score score4;
-        score4.m_chordDiagramArray.Add(new ChordDiagram(ChordName(), 2, 1, 2, 3));
+        score4.m_chordDiagramArray.Add(
+            new ChordDiagram(ChordName(), 2, 1, 2, 3));
         
         Score score5;
-        score5.m_floatingTextArray.Add(new FloatingText(wxT("Test"), wxRect(1,2,3,4), 0, FontSetting()));
+        score5.m_floatingTextArray.Add(
+            new FloatingText(wxT("Test"), wxRect(1,2,3,4), 0, FontSetting()));
         
         Score score6;
         score6.m_guitarInArray.Add(new GuitarIn(1,2,3,4,2));
@@ -221,16 +223,19 @@ bool ScoreTestSuite::TestCaseOperator()
         score3.m_guitarArray.Add(new Guitar(2));
         
         Score score4;
-        score4.m_chordDiagramArray.Add(new ChordDiagram(ChordName(), 2, 1, 2, 3));
+        score4.m_chordDiagramArray.Add(
+            new ChordDiagram(ChordName(), 2, 1, 2, 3));
         
         Score score5;
-        score5.m_floatingTextArray.Add(new FloatingText(wxT("Test"), wxRect(1,2,3,4), 0, FontSetting()));
+        score5.m_floatingTextArray.Add(
+            new FloatingText(wxT("Test"), wxRect(1,2,3,4), 0, FontSetting()));
         
         Score score6;
         score6.m_guitarInArray.Add(new GuitarIn(1,2,3,4,2));
         
         Score score7;
-        score7.m_tempoMarkerArray.Add(new TempoMarker(1,2, 1, 120, wxT("Test")));
+        score7.m_tempoMarkerArray.Add(
+            new TempoMarker(1,2, 1, 120, wxT("Test")));
         
         Score score8;
         score8.m_dynamicArray.Add(new Dynamic(1,2,3,1,1));
@@ -320,8 +325,10 @@ bool ScoreTestSuite::TestCaseChordDiagramArray()
     //------Last Checked------//
     // - Jan 6, 2005
     Score score;
-    TEST(wxT("IsValidChordDiagramIndex - false"), !score.IsValidChordDiagramIndex(0));
-    TEST(wxT("GetChordDiagram - invalid index"), (score.GetChordDiagram(0) == NULL));
+    TEST(wxT("IsValidChordDiagramIndex - false"),
+        !score.IsValidChordDiagramIndex(0));
+    TEST(wxT("GetChordDiagram - invalid index"),
+        (score.GetChordDiagram(0) == NULL));
     return (true);
 }
 
@@ -332,8 +339,10 @@ bool ScoreTestSuite::TestCaseFloatingTextArray()
     //------Last Checked------//
     // - Jan 6, 2005
     Score score;
-    TEST(wxT("IsValidFloatingTextIndex - false"), !score.IsValidFloatingTextIndex(0));
-    TEST(wxT("GetFloatingText - invalid index"), (score.GetFloatingText(0) == NULL));
+    TEST(wxT("IsValidFloatingTextIndex - false"),
+        !score.IsValidFloatingTextIndex(0));
+    TEST(wxT("GetFloatingText - invalid index"),
+        (score.GetFloatingText(0) == NULL));
     return (true);
 }
 
@@ -356,8 +365,10 @@ bool ScoreTestSuite::TestCaseTempoMarkerArray()
     //------Last Checked------//
     // - Jan 6, 2005
     Score score;
-    TEST(wxT("IsValidTempoMarkerIndex - false"), !score.IsValidTempoMarkerIndex(0));
-    TEST(wxT("GetTempoMarker - invalid index"), (score.GetTempoMarker(0) == NULL));
+    TEST(wxT("IsValidTempoMarkerIndex - false"),
+        !score.IsValidTempoMarkerIndex(0));
+    TEST(wxT("GetTempoMarker - invalid index"),
+        (score.GetTempoMarker(0) == NULL));
     return (true);
 }
 
@@ -380,8 +391,10 @@ bool ScoreTestSuite::TestCaseAlternateEndingArray()
     //------Last Checked------//
     // - Jan 6, 2005
     Score score;
-    TEST(wxT("IsValidAlternateEndingIndex - false"), !score.IsValidAlternateEndingIndex(0));
-    TEST(wxT("GetAlternateEnding - invalid index"), (score.GetAlternateEnding(0) == NULL));
+    TEST(wxT("IsValidAlternateEndingIndex - false"),
+        !score.IsValidAlternateEndingIndex(0));
+    TEST(wxT("GetAlternateEnding - invalid index"),
+        (score.GetAlternateEnding(0) == NULL));
     return (true);
 }
 

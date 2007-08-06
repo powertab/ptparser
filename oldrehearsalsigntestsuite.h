@@ -17,17 +17,17 @@ class OldRehearsalSignTestSuite :
     public TestSuite
 {
     DECLARE_DYNAMIC_CLASS(OldRehearsalSignTestSuite)
-    
+
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     OldRehearsalSignTestSuite();
     ~OldRehearsalSignTestSuite();
 
-    // Overrides    
+// Overrides    
     size_t GetTestCount() const;
     bool RunTestCases();
     
-    // Test Cases
+// Test Cases
 private:
     bool TestCaseConstructor();
     bool TestCaseConstruction();

@@ -25,7 +25,8 @@ const int PowerTabTuningViewWindow::COLUMN_SPELLING        = 2;
 
 // Constructor/Destructor
 /// Primary Constructor
-PowerTabTuningViewWindow::PowerTabTuningViewWindow(wxView* view, wxWindow* parent, const wxPoint& pos, const wxSize& size, long style) :
+PowerTabTuningViewWindow::PowerTabTuningViewWindow(wxView* view,
+    wxWindow* parent, const wxPoint& pos, const wxSize& size, long style) :
     wxListCtrl(parent, -1, pos, size, style), m_view(view)
 {
     //------Last Checked------//

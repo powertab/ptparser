@@ -30,9 +30,10 @@ const wxInt32   FontSetting::MIN_POINTSIZE              = 1;
 const wxInt32   FontSetting::MAX_POINTSIZE              = 72;
     
 /// Default Constructor
-FontSetting::FontSetting() :
-    m_faceName(DEFAULT_FACENAME), m_pointSize(DEFAULT_POINTSIZE), m_weight(DEFAULT_WEIGHT),
-    m_italic(DEFAULT_ITALIC), m_underline(DEFAULT_UNDERLINE), m_strikeOut(DEFAULT_STRIKEOUT), m_color(DEFAULT_COLOR)
+FontSetting::FontSetting() : m_faceName(DEFAULT_FACENAME),
+    m_pointSize(DEFAULT_POINTSIZE), m_weight(DEFAULT_WEIGHT),
+    m_italic(DEFAULT_ITALIC), m_underline(DEFAULT_UNDERLINE),
+    m_strikeOut(DEFAULT_STRIKEOUT), m_color(DEFAULT_COLOR)
 {
     //------Last Checked------//
     // - Dec 6, 2004
@@ -46,8 +47,11 @@ FontSetting::FontSetting() :
 /// @param underline Make the font underline style
 /// @param strikeOut Make the font strikeout style
 /// @param color Color to draw the font with
-FontSetting::FontSetting(const wxChar* faceName, wxInt32 pointSize, wxInt32 weight, bool italic, bool underline, bool strikeOut, wxColor color) :
-    m_faceName(faceName), m_pointSize(pointSize), m_weight(weight), m_italic(italic), m_underline(underline), m_strikeOut(strikeOut), m_color(color)
+FontSetting::FontSetting(const wxChar* faceName, wxInt32 pointSize,
+    wxInt32 weight, bool italic, bool underline, bool strikeOut, wxColor color) :
+    m_faceName(faceName), m_pointSize(pointSize), m_weight(weight),
+    m_italic(italic), m_underline(underline), m_strikeOut(strikeOut),
+    m_color(color)
 {
     //------Last Checked------//
     // - Dec 6, 2004
@@ -58,8 +62,10 @@ FontSetting::FontSetting(const wxChar* faceName, wxInt32 pointSize, wxInt32 weig
 
 /// Copy Constructor
 FontSetting::FontSetting(const FontSetting& fontSetting) :
-    m_faceName(DEFAULT_FACENAME), m_pointSize(DEFAULT_POINTSIZE), m_weight(DEFAULT_WEIGHT),
-    m_italic(DEFAULT_ITALIC), m_underline(DEFAULT_UNDERLINE), m_strikeOut(DEFAULT_STRIKEOUT), m_color(DEFAULT_COLOR)
+    m_faceName(DEFAULT_FACENAME), m_pointSize(DEFAULT_POINTSIZE),
+    m_weight(DEFAULT_WEIGHT), m_italic(DEFAULT_ITALIC),
+    m_underline(DEFAULT_UNDERLINE), m_strikeOut(DEFAULT_STRIKEOUT),
+    m_color(DEFAULT_COLOR)
 {
     //------Last Checked------//
     // - Dec 6, 2004
@@ -166,7 +172,8 @@ bool FontSetting::DoDeserialize(PowerTabInputStream& stream,
 /// @param strikeOut Make the font strikeout style
 /// @param color Color to draw the font with
 /// @return success or failure
-bool FontSetting::SetFontSetting(const wxChar* faceName, wxInt32 pointSize, wxInt32 weight, bool italic, bool underline, bool strikeOut, wxColor color)
+bool FontSetting::SetFontSetting(const wxChar* faceName, wxInt32 pointSize,
+    wxInt32 weight, bool italic, bool underline, bool strikeOut, wxColor color)
 {
     //------Last Checked------//
     // - Dec 6, 2004
@@ -184,8 +191,10 @@ bool FontSetting::SetFontSetting(const wxChar* faceName, wxInt32 pointSize, wxIn
     return (true);
 }
 
-/// Updates the contents of the FontSetting object using a delimited string containing the font settings
-/// @param string Comma delimited string containing the font settings (FaceName,PointSize,Weight,Italic(T/F),Underline(T/F),StrikeOut(T/F),Color)
+/// Updates the contents of the FontSetting object using a delimited string
+/// containing the font settings
+/// @param string Comma delimited string containing the font settings
+/// (FaceName,PointSize,Weight,Italic(T/F),Underline(T/F),StrikeOut(T/F),Color)
 /// @return success or failure
 bool FontSetting::SetFontSettingFromString(const wxChar* string)
 {
@@ -242,7 +251,8 @@ bool FontSetting::SetFontSettingFromString(const wxChar* string)
     temp.Trim(false);
     temp.Trim();
     wxUint32 color = wxAtoi(temp);
-    m_color = wxColor(LOBYTE(LOWORD(color)), HIBYTE(LOWORD(color)), LOBYTE(HIWORD(color)));
+    m_color = wxColor(LOBYTE(LOWORD(color)), HIBYTE(LOWORD(color)),
+        LOBYTE(HIWORD(color)));
     
     return (true);
 }

@@ -18,20 +18,23 @@ class PowerTabInputStream;
 /// Provides support for polymorphic reading/writing of Power Tab objects
 class PowerTabObject
 {
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     PowerTabObject();
     virtual ~PowerTabObject();
     
-    // Creation Functions
+// Creation Functions
     static PowerTabObject* CreateObject(const wxString& classId);
     virtual PowerTabObject* CloneObject() const = 0;
     
-    // MFC Class Functions
+// MFC Class Functions
     /// Gets the MFC class id associated with the object
     /// @return The MFC class id associated with the object
     virtual wxString GetMFCClassId() const                                                      
-        {return (wxString::Format(wxT("%s-%d"), GetMFCClassName().c_str(), GetMFCClassSchema()));}
+    {
+        return (wxString::Format(wxT("%s-%d"), GetMFCClassName().c_str(),
+            GetMFCClassSchema()));
+    }
     /// Gets the MFC Class Name for the object
     /// @return The MFC Class Name
     virtual wxString GetMFCClassName() const        
@@ -42,17 +45,21 @@ public:
         {return ((wxWord)0);}
     bool WriteMFCClassInformation(wxOutputStream& stream) const;
     bool WriteMFCClassInformation(PowerTabOutputStream& stream) const;
-    static bool ReadMFCClassInformation(wxInputStream& stream, wxWord version, wxString& classId);
-    static bool ReadMFCClassInformation(PowerTabInputStream& stream, wxWord version, wxString& classId);
+    static bool ReadMFCClassInformation(wxInputStream& stream, wxWord version,
+        wxString& classId);
+    static bool ReadMFCClassInformation(PowerTabInputStream& stream,
+        wxWord version, wxString& classId);
     
-    // Serialization Functions
+// Serialization Functions
     bool Serialize(wxOutputStream& stream);
     bool Serialize(PowerTabOutputStream& stream);
     bool Deserialize(wxInputStream& stream, wxWord version);
     bool Deserialize(PowerTabInputStream& stream, wxWord version);
     
-    // Note: DoSerialize/DoDeserialize are needed because of name function hiding problem
-    // (see wxWidgets Programmer Style Guide - Avoid Overloaded Virtual Functions topic)
+    // Note: DoSerialize/DoDeserialize are needed because of name function
+    // hiding problem
+    // (see wxWidgets Programmer Style Guide - Avoid Overloaded Virtual
+    // Functions topic)
 protected:
     /// Performs serialization for the class
     /// @param stream Power Tab output stream to serialize to

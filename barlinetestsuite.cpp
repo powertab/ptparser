@@ -220,7 +220,8 @@ bool BarlineTestSuite::TestCaseSerialize()
     
         // Read test data back from stream
         Barline barlineIn;
-        barlineIn.Deserialize(streamIn, PowerTabFileHeader::FILEVERSION_CURRENT);
+        barlineIn.Deserialize(streamIn,
+            PowerTabFileHeader::FILEVERSION_CURRENT);
 
         // Validate the data
         ok = ((barlineIn == barlineOut)
@@ -340,7 +341,9 @@ bool BarlineTestSuite::TestCaseRepeatCount()
         for (; i <= (Barline::MAX_REPEAT_COUNT + 1); i++)
         {
             TEST(wxString::Format(wxT("IsValidRepeatCount - %d"), i),
-                (Barline::IsValidRepeatCount(i) == ((i >= Barline::MIN_REPEAT_COUNT) && (i <= Barline::MAX_REPEAT_COUNT)))
+                (Barline::IsValidRepeatCount(i) ==
+                ((i >= Barline::MIN_REPEAT_COUNT) &&
+                (i <= Barline::MAX_REPEAT_COUNT)))
             );         
         }
     }
@@ -348,13 +351,18 @@ bool BarlineTestSuite::TestCaseRepeatCount()
     // TEST CASE: SetRepeatCount
     {
         Barline barline;
-        TEST(wxT("SetRepeatCount - 0"), (barline.SetRepeatCount(0) && (barline.GetRepeatCount() == 0)));
+        TEST(wxT("SetRepeatCount - 0"), (barline.SetRepeatCount(0) &&
+            (barline.GetRepeatCount() == 0)));
         wxByte i = Barline::MIN_REPEAT_COUNT - 1;
         for (; i <= (Barline::MAX_REPEAT_COUNT + 1); i++)
         {
             TEST(wxString::Format(wxT("SetRepeatCount - %d"), i),
-                (barline.SetRepeatCount(i) == ((i >= Barline::MIN_REPEAT_COUNT) && (i <= Barline::MAX_REPEAT_COUNT))) &&
-                (((i < Barline::MIN_REPEAT_COUNT) || (i > Barline::MAX_REPEAT_COUNT)) ? 1 : (barline.GetRepeatCount() == i))
+                (barline.SetRepeatCount(i) ==
+                ((i >= Barline::MIN_REPEAT_COUNT) &&
+                (i <= Barline::MAX_REPEAT_COUNT))) &&
+                (((i < Barline::MIN_REPEAT_COUNT) ||
+                (i > Barline::MAX_REPEAT_COUNT)) ? 1 :
+                (barline.GetRepeatCount() == i))
             );
         }
     }

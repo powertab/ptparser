@@ -1,6 +1,7 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:            fontsetting.h
-// Purpose:         Stores information about a font format (facename, point size, weight, style, etc.)
+// Purpose:         Stores information about a font format (facename,
+//                  point size,weight, style, etc.)
 // Author:          Brad Larsen
 // Modified by:     
 // Created:         Dec 5, 2004
@@ -12,7 +13,8 @@
 #ifndef __FONTSETTING_H__
 #define __FONTSETTING_H__
 
-/// Stores information about a font format (facename, point size, weight, style, etc.)
+/// Stores information about a font format (facename, point size, weight, style,
+/// etc.)
 class FontSetting : public PowerTabObject
 {
 friend class FontSettingTestSuite;
@@ -62,25 +64,26 @@ protected:
     wxByte      m_strikeOut;        ///< Determines whether or not the font is struck out
     wxColor     m_color;            ///< Color of the font
 
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     FontSetting();
-    FontSetting(const wxChar* faceName, wxInt32 pointSize, wxInt32 weight, bool italic, bool underline, bool strikeOut, wxColor color);
+    FontSetting(const wxChar* faceName, wxInt32 pointSize, wxInt32 weight,
+        bool italic, bool underline, bool strikeOut, wxColor color);
     FontSetting(const FontSetting& fontSetting);
     ~FontSetting();
 
-    // Creation Functions
+// Creation Functions
     /// Creates an exact duplicate of the object
     /// @return The duplicate object
     PowerTabObject* CloneObject() const                         
         {return (new FontSetting(*this));}
     
-    // Operators
+// Operators
     const FontSetting& operator=(const FontSetting& fontSetting);
     bool operator==(const FontSetting& fontSetting) const;
     bool operator!=(const FontSetting& fontSetting) const;
 
-    // MFC Class Functions
+// MFC Class Functions
     /// Gets the MFC Class Name for the object
     /// @return The MFC Class Name
     wxString GetMFCClassName() const                            
@@ -90,28 +93,34 @@ public:
     wxWord GetMFCClassSchema() const                            
         {return ((wxWord)1);}
     
-    // Serialization Functions
+// Serialization Functions
 protected:
     bool DoSerialize(PowerTabOutputStream& stream);
     bool DoDeserialize(PowerTabInputStream& stream, wxWord version);
-    
+
+// Data Functions
 public:
-    // Data Functions
-    bool SetFontSetting(const wxChar* faceName, wxInt32 pointSize, wxInt32 weight, bool italic, bool underline, bool strikeOut, wxColor color);
+    bool SetFontSetting(const wxChar* faceName, wxInt32 pointSize,
+        wxInt32 weight, bool italic, bool underline, bool strikeOut,
+        wxColor color);
     bool SetFontSettingFromString(const wxChar* string);
 
-    // Face Name Functions
+// Face Name Functions
     /// Sets the face name used by the FontSetting object
     /// @param faceName Face name to set
     /// @return True if the face name was set, false if not
     bool SetFaceName(const wxChar* faceName)                
-        {wxCHECK(faceName != NULL, false); m_faceName = faceName; return (true);}
+    {
+        wxCHECK(faceName != NULL, false);
+        m_faceName = faceName;
+        return (true);
+    }
     /// Gets the face name used by the FontSetting object
     /// @return The face name used by the FontSetting object
     wxString GetFaceName() const                            
         {return (m_faceName);}
 
-    // Point Size Functions
+// Point Size Functions
     /// Determines if a point size is valid
     /// @param pointSize Point size to validate
     /// @return True if the point size is valid, false if not
@@ -121,29 +130,40 @@ public:
     /// @param pointSize Point size to set
     /// @return true if the point size was set, false if not
     bool SetPointSize(wxInt32 pointSize)                    
-        {wxCHECK(IsValidPointSize(pointSize), false); m_pointSize = pointSize; return (true);}
+    {
+        wxCHECK(IsValidPointSize(pointSize), false);
+        m_pointSize = pointSize;
+        return (true);
+    }
     /// Gets the point size used by the FontSetting object
     /// @return The point size used by the FontSetting object
     int GetPointSize() const                                
         {return (m_pointSize);}
 
-    // Weight Functions
+// Weight Functions
     /// Determines if a weight is valid
     /// @param weight Weight to validate
     /// @return True if the weight is valid, false if not
     static bool IsValidWeight(wxInt32 weight)               
-        {return (((weight >= weightDontCare) && (weight <= weightHeavy)) && ((weight % 100) == 0));}
+    {
+        return (((weight >= weightDontCare) && (weight <= weightHeavy)) &&
+            ((weight % 100) == 0));
+    }
     /// Sets the weight used by the FontSetting object
     /// @param weight Weight to set
     /// @return True if the weight was set, false if not
     bool SetWeight(wxInt32 weight)                          
-        {wxCHECK(IsValidWeight(weight), false); m_weight = weight; return (true);}
+    {
+        wxCHECK(IsValidWeight(weight), false);
+        m_weight = weight;
+        return (true);
+    }
     /// Gets the weight used by the FontSetting object
     /// @return The weight used by the FontSetting object
     int GetWeight() const                                   
         {return (m_weight);}
 
-    // Effects Functions
+// Effects Functions
     /// Sets or clears the italic effect
     /// @param set True sets the italic effect, false clears it
     void SetItalic(bool set = true)                         
@@ -169,7 +189,7 @@ public:
     bool IsStrikeOut() const                                
         {return (m_strikeOut == (wxByte)true);}
         
-    // Color Functions
+// Color Functions
     /// Sets the color used by the FontSetting object
     /// @param color Color to set
     void SetColor(wxColor color)                            

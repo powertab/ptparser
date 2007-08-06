@@ -12,16 +12,19 @@
 #ifndef __POWERTABVIEWCANVAS_H__
 #define __POWERTABVIEWCANVAS_H__
 
+/// Canvas used by the PowerTabView class
 class PowerTabViewCanvas: public wxScrolledWindow
 {
+// Member Variables
 protected:
     wxView* m_view;         ///< Pointer to the PowerTabView object associated with the canvas
-    
+
+// Constructor/Destructor
 public:
-    // Constructor
-    PowerTabViewCanvas(wxView* view, wxMDIChildFrame* frame, const wxPoint& pos, const wxSize& size, long style);
+    PowerTabViewCanvas(wxView* view, wxMDIChildFrame* frame, const wxPoint& pos,
+        const wxSize& size, long style);
     
-    // Overrides
+// Overrides
     void OnDraw(wxDC& dc);
 
 private:

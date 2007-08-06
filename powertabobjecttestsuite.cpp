@@ -65,7 +65,8 @@ bool PowerTabObjectTestSuite::TestCaseCreateObject()
     //------Last Checked------//
     // - Dec 27, 2004
     
-    TEST(wxT("CreateObject - invalid class id"), (PowerTabObject::CreateObject(wxT("Dummy")) == NULL));
+    TEST(wxT("CreateObject - invalid class id"),
+        (PowerTabObject::CreateObject(wxT("Dummy")) == NULL));
     
     return (true);
 }
@@ -93,7 +94,8 @@ bool PowerTabObjectTestSuite::TestCaseMFCClassInformation()
     
         // Read test data back from stream
         wxString classId = wxT("");
-        ok = ((floatingText.ReadMFCClassInformation(streamIn, PowerTabFileHeader::FILEVERSION_CURRENT, classId)) &&
+        ok = ((floatingText.ReadMFCClassInformation(streamIn,
+            PowerTabFileHeader::FILEVERSION_CURRENT, classId)) &&
                 (classId == wxT("CFloatingText-1")) &&
                 (streamIn.CheckState())
         );

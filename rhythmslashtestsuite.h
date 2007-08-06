@@ -17,17 +17,17 @@ class RhythmSlashTestSuite :
     public TestSuite
 {
     DECLARE_DYNAMIC_CLASS(RhythmSlashTestSuite)
-    
+
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     RhythmSlashTestSuite();
     ~RhythmSlashTestSuite();
 
-    // Overrides    
+// Overrides    
     size_t GetTestCount() const;
     bool RunTestCases();
     
-    // Test Cases
+// Test Cases
 private:
     bool TestCaseConstructor();
     bool TestCaseCreation();

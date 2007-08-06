@@ -150,10 +150,14 @@ bool SystemSymbolTestSuite::TestCaseOperator()
         SystemSymbol systemSymbol4(1,3,3);
         SystemSymbol systemSymbol5(1,2,4);
                
-        TEST(wxT("Operator== - systemSymbol == systemSymbol"), (systemSymbol == systemSymbol2));
-        TEST(wxT("Operator== - systemSymbol != systemSymbol"), !(systemSymbol == systemSymbol3));
-        TEST(wxT("Operator== - systemSymbol != systemSymbol 2"), !(systemSymbol == systemSymbol4));
-        TEST(wxT("Operator== - systemSymbol != systemSymbol 3"), !(systemSymbol == systemSymbol4));
+        TEST(wxT("Operator== - systemSymbol == systemSymbol"),
+            (systemSymbol == systemSymbol2));
+        TEST(wxT("Operator== - systemSymbol != systemSymbol"),
+            !(systemSymbol == systemSymbol3));
+        TEST(wxT("Operator== - systemSymbol != systemSymbol 2"),
+            !(systemSymbol == systemSymbol4));
+        TEST(wxT("Operator== - systemSymbol != systemSymbol 3"),
+            !(systemSymbol == systemSymbol4));
     }
         
     // TEST CASE: Operator!=
@@ -164,10 +168,14 @@ bool SystemSymbolTestSuite::TestCaseOperator()
         SystemSymbol systemSymbol4(1,3,3);
         SystemSymbol systemSymbol5(1,2,4);
                
-        TEST(wxT("Operator!= - systemSymbol == systemSymbol"), !(systemSymbol != systemSymbol2));
-        TEST(wxT("Operator!= - systemSymbol != systemSymbol"), (systemSymbol != systemSymbol3));
-        TEST(wxT("Operator!= - systemSymbol != systemSymbol 2"), (systemSymbol != systemSymbol4));
-        TEST(wxT("Operator!= - systemSymbol != systemSymbol 3"), (systemSymbol != systemSymbol5));
+        TEST(wxT("Operator!= - systemSymbol == systemSymbol"),
+            !(systemSymbol != systemSymbol2));
+        TEST(wxT("Operator!= - systemSymbol != systemSymbol"),
+            (systemSymbol != systemSymbol3));
+        TEST(wxT("Operator!= - systemSymbol != systemSymbol 2"),
+            (systemSymbol != systemSymbol4));
+        TEST(wxT("Operator!= - systemSymbol != systemSymbol 3"),
+            (systemSymbol != systemSymbol5));
     }
 
     return (true);
@@ -195,7 +203,8 @@ bool SystemSymbolTestSuite::TestCaseSerialize()
     
         // Read test data back from stream
         SystemSymbol systemSymbolIn;
-        systemSymbolIn.Deserialize(streamIn, PowerTabFileHeader::FILEVERSION_CURRENT);
+        systemSymbolIn.Deserialize(streamIn,
+            PowerTabFileHeader::FILEVERSION_CURRENT);
 
         // Validate the data
         ok = ((systemSymbolIn == systemSymbolOut) 
@@ -262,7 +271,8 @@ bool SystemSymbolTestSuite::TestCasePosition()
         for (; i <= (SystemSymbol::MAX_POSITION + 1); i++)
         {
             TEST(wxString::Format(wxT("IsValidPosition - %d"), i),
-                (SystemSymbol::IsValidPosition(i) == (i <= SystemSymbol::MAX_POSITION))
+                (SystemSymbol::IsValidPosition(i) ==
+                (i <= SystemSymbol::MAX_POSITION))
             );
         }
     }
@@ -274,8 +284,10 @@ bool SystemSymbolTestSuite::TestCasePosition()
         for (; i <= (SystemSymbol::MAX_POSITION + 1); i++)
         {
             TEST(wxString::Format(wxT("SetPosition - %d"), i),
-                (systemSymbol.SetPosition(i) == (i <= SystemSymbol::MAX_POSITION)) &&
-                ((i > SystemSymbol::MAX_POSITION) ? 1 : (systemSymbol.GetPosition() == i))
+                (systemSymbol.SetPosition(i) ==
+                (i <= SystemSymbol::MAX_POSITION)) &&
+                ((i > SystemSymbol::MAX_POSITION) ? 1 :
+                (systemSymbol.GetPosition() == i))
             );
         }
     }

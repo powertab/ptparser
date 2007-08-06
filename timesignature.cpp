@@ -68,7 +68,8 @@ TimeSignature::~TimeSignature()
 
 // Operators
 /// Assignment Operator
-const TimeSignature& TimeSignature::operator=(const TimeSignature& timeSignature)
+const TimeSignature& TimeSignature::operator=(
+    const TimeSignature& timeSignature)
 {
     //------Last Checked------//
     // - Dec 12, 2004
@@ -142,7 +143,8 @@ bool TimeSignature::SetMeter(wxByte beatsPerMeasure, wxByte beatAmount)
     if (!SetBeatAmount(beatAmount))
         return (false);
         
-    // Set the default beaming pattern, based on the meter's beat amount and basic beat
+    // Set the default beaming pattern, based on the meter's beat amount and
+    // basic beat
     beatAmount = GetBeatAmount();
     wxUint32 basicBeat = GetBasicBeat();
 
@@ -201,8 +203,10 @@ bool TimeSignature::IsQuadrupleTime() const
     return ((beatsPerMeasure == 4) || (beatsPerMeasure == 12));
 }
 
-/// Gets the total time for a measure that uses the time signature, in MIDI units
-/// @returns The total time for a measure that uses the time signature, in MIDI units
+/// Gets the total time for a measure that uses the time signature, in MIDI
+/// units
+/// @returns The total time for a measure that uses the time signature, in MIDI
+/// units
 wxUint32 TimeSignature::GetMeasureTotal() const
 {
     //------Last Checked------//
@@ -321,7 +325,8 @@ wxByte TimeSignature::GetBeatAmount() const
 /// @param beat3 Number of items to beam in the third beat
 /// @param beat4 Number of items to beam in the fourth beat
 /// @return True if the beaming pattern was set, false if not
-bool TimeSignature::SetBeamingPattern(wxByte beat1, wxByte beat2, wxByte beat3, wxByte beat4)
+bool TimeSignature::SetBeamingPattern(wxByte beat1, wxByte beat2, wxByte beat3,
+    wxByte beat4)
 {
     //------Last Checked------//
     // - Dec 13, 2004
@@ -368,7 +373,8 @@ bool TimeSignature::SetBeamingPattern(wxByte beat1, wxByte beat2, wxByte beat3, 
 /// @param beat2 - Beaming pattern for the second beat in the time signature
 /// @param beat3 - Beaming pattern for the third beat in the time signature
 /// @param beat4 - Beaming pattern for the fourth beat in the time signature
-void TimeSignature::GetBeamingPattern(wxByte & beat1, wxByte & beat2, wxByte & beat3, wxByte & beat4) const
+void TimeSignature::GetBeamingPattern(wxByte & beat1, wxByte & beat2,
+    wxByte & beat3, wxByte & beat4) const
 {
     //------Last Checked------//
     // - Dec 13, 2004
@@ -390,7 +396,9 @@ void TimeSignature::GetBeamingPattern(wxByte & beat1, wxByte & beat2, wxByte & b
         beat4++;
 }
 
-/// Sets the beaming pattern using a wxUint32 format value (wxUint32 format = beat1 - LOBYTE of LOWORD, beat2 - HIBYTE of LOWORD, beat3 - LOBYTE of HIWORD, beat4 - HIBYTE of HIWORD)
+/// Sets the beaming pattern using a wxUint32 format value (wxUint32 format =
+/// beat1 - LOBYTE of LOWORD, beat2 - HIBYTE of LOWORD,
+/// beat3 - LOBYTE of HIWORD, beat4 - HIBYTE of HIWORD)
 /// @param beamingPattern Beaming pattern to set, in wxUint32 format
 /// @return True if the beaming pattern was set, false if not
 bool TimeSignature::SetBeamingPatternFromwxUint32(wxUint32 beamingPattern)
@@ -406,7 +414,9 @@ bool TimeSignature::SetBeamingPatternFromwxUint32(wxUint32 beamingPattern)
     );
 }
 
-/// Gets the beaming pattern used by the time signature, in wxUint32 format (wxUint32 format = beat1 - LOBYTE of LOWORD, beat2 - HIBYTE of LOWORD, beat3 - LOBYTE of HIWORD, beat4 - HIBYTE of HIWORD)
+/// Gets the beaming pattern used by the time signature, in wxUint32 format
+/// (wxUint32 format = beat1 - LOBYTE of LOWORD, beat2 - HIBYTE of LOWORD,
+/// beat3 - LOBYTE of HIWORD, beat4 - HIBYTE of HIWORD)
 /// @return The beaming pattern for the time signature, in wxUint32 format
 wxUint32 TimeSignature::GetBeamingPatternAswxUint32() const
 {
@@ -456,7 +466,10 @@ wxString TimeSignature::GetText(wxUint32 type) const
         returnValue = wxString::Format(wxT("%d"), beatAmount);
     // Full meter
     else
-        returnValue = wxString::Format(wxT("%d/%d"), beatsPerMeasure, beatAmount);
+    {
+        returnValue = wxString::Format(wxT("%d/%d"), beatsPerMeasure,
+            beatAmount);
+    }
 
     return (returnValue);
 }

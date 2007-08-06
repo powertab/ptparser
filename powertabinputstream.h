@@ -23,6 +23,7 @@ class PowerTabInputStream :
 friend class PowerTabFileHeader;
 friend class PowerTabObject;
 
+// Member Variables
 protected:
     bool                        m_mapsInitialized;              ///< Determines whether or not the maps have been initialized
     wxUint32                    m_mapCount;                     ///< Internal count of mapped objects
@@ -30,13 +31,13 @@ protected:
     ClassIdHashMap              m_classIdHashMap;               ///< Map of class Ids to the id of the class id
     ClassIdIdHashMap            m_classIdIdHashMap;             ///< Map of Id of the class Id to the class id (opposite of above map)
     wxArrayPtrVoid              m_loadArray;                    ///< Array of pointers to loaded objects and tags
-    
+
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     PowerTabInputStream(wxInputStream& stream);
     ~PowerTabInputStream();
 
-    // Read Functions
+// Read Functions
     wxUint32 ReadCount();
     bool ReadAnsiText(wxUint32 length, wxString& text);
     bool ReadMFCString(wxString& string);
@@ -44,10 +45,11 @@ public:
     bool ReadMFCRect(wxRect& rect);
     PowerTabObject* ReadObject(wxWord version);
 protected:
-    bool ReadClassInformation(wxWord version, wxString& classId, wxUint32& objectTag);
+    bool ReadClassInformation(wxWord version, wxString& classId,
+        wxUint32& objectTag);
     wxUint32 ReadMFCStringLength(wxUint32& charSize);
     
-    // Error Checking Functions
+// Error Checking Functions
 public:
     /// Checks the current state of the stream
     /// @return True if the stream is OK, false if an error has occurred
@@ -58,7 +60,7 @@ public:
 protected:
     bool CheckCount();
     
-    // Operations
+// Operations
     bool MapObject(const PowerTabObject* object);
 
 public:    

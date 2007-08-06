@@ -43,7 +43,8 @@ OldTimeSignature::~OldTimeSignature()
 /// Constructs a TimeSignature object using OldTimeSignature data
 /// @param timeSignature TimeSignature object to construct
 /// @return True if the object was constructed, false if not
-bool OldTimeSignature::ConstructTimeSignature(TimeSignature& timeSignature) const
+bool OldTimeSignature::ConstructTimeSignature(
+    TimeSignature& timeSignature) const
 {
     //------Last Checked------//
     // - Jan 3, 2005
@@ -76,7 +77,8 @@ bool OldTimeSignature::ConstructTimeSignature(TimeSignature& timeSignature) cons
 
 // Operators
 /// Assignment Operator
-const OldTimeSignature& OldTimeSignature::operator=(const OldTimeSignature& oldTimeSignature)
+const OldTimeSignature& OldTimeSignature::operator=(
+    const OldTimeSignature& oldTimeSignature)
 {
     //------Last Checked------//
     // - Jan 5, 2005
@@ -92,7 +94,8 @@ const OldTimeSignature& OldTimeSignature::operator=(const OldTimeSignature& oldT
 }
 
 /// Equality Operator
-bool OldTimeSignature::operator==(const OldTimeSignature& oldTimeSignature) const
+bool OldTimeSignature::operator==(
+    const OldTimeSignature& oldTimeSignature) const
 {
     //------Last Checked------//
     // - Jan 5, 2005
@@ -104,7 +107,8 @@ bool OldTimeSignature::operator==(const OldTimeSignature& oldTimeSignature) cons
 }
 
 /// Inequality Operator
-bool OldTimeSignature::operator!=(const OldTimeSignature& oldTimeSignature) const
+bool OldTimeSignature::operator!=(
+    const OldTimeSignature& oldTimeSignature) const
 {
     //------Last Checked------//
     // - Jan 5, 2005

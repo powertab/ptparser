@@ -156,7 +156,8 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
     // converts to the latest version during deserialization
     wxWord version = header.GetVersion();
 
-    // In Power Tab Editor v1.7, most of the header data is accessable via the Song Property Sheet:
+    // In Power Tab Editor v1.7, most of the header data is accessable via the
+    // Song Property Sheet:
     // Menu View -> File Information
     // Menu View -> Performance Notes
     // Menu View -> Lyrics
@@ -196,8 +197,10 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
             // no extra data for this data
         }
                         
-        // If author is known, get the composer and lyricist; otherwise, song is traditional
-        if (header.GetSongAuthorType() == PowerTabFileHeader::AUTHORTYPE_AUTHORKNOWN)
+        // If author is known, get the composer and lyricist; otherwise, song is
+        // traditional
+        if (header.GetSongAuthorType() ==
+            PowerTabFileHeader::AUTHORTYPE_AUTHORKNOWN)
         {
             wxString composer = header.GetSongComposer();
             wxString lyricist = header.GetSongLyricist();
@@ -205,7 +208,8 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
         
         wxString arranger = header.GetSongArranger();
         
-        wxString guitarScoreTranscriber = header.GetSongGuitarScoreTranscriber();
+        wxString guitarScoreTranscriber =
+            header.GetSongGuitarScoreTranscriber();
         wxString bassScoreTranscriber = header.GetSongBassScoreTranscriber();
         
         wxString copyright = header.GetSongCopyright();
@@ -244,7 +248,8 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
         wxCHECK2(score != NULL, continue);
         
         // Parse the guitars in the score
-        // In Power Tab Editor v1.7, the guitar data can be accessed via the Guitar Property Sheet:
+        // In Power Tab Editor v1.7, the guitar data can be accessed via the
+        // Guitar Property Sheet:
         // Menu Guitar -> Setup
         wxUint32 guitarIndex = 0;
         wxUint32 guitarCount = score->GetGuitarCount();
@@ -269,7 +274,8 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
             wxInt8 musicNotationOffset = tuning.GetMusicNotationOffset();
             bool usesSharps = tuning.UsesSharps();
             
-            // Get the MIDI note pitch for each string, starting with the highest string
+            // Get the MIDI note pitch for each string, starting with the
+            // highest string
             // Highest string = High E on standard guitar tuning
             size_t string = 0;
             size_t stringCount = tuning.GetStringCount();
@@ -281,10 +287,12 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
         }
         
         // Parse the chord diagrams in the score
-        // In Power Tab Editor v1.7, chord diagrams can be accessed via the Guitar Property Sheet:
+        // In Power Tab Editor v1.7, chord diagrams can be accessed via the
+        // Guitar Property Sheet:
         // Menu Guitar -> Chord Diagram List
         
-        // The chord diagrams appear in the Chord Diagram List in the order they are stored in the chord diagram
+        // The chord diagrams appear in the Chord Diagram List in the order they
+        // are stored in the chord diagram
         // array in the score
         wxUint32 chordDiagramIndex = 0;
         wxUint32 chordDiagramCount = score->GetChordDiagramCount();
@@ -293,7 +301,8 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
             ChordDiagram* chordDiagram = score->GetChordDiagram(chordDiagramIndex);
             wxCHECK2(chordDiagram != NULL, continue);
             
-            // In Power Tab Editor v1.7, chord name data can be accessed via the Chord Name dialog:
+            // In Power Tab Editor v1.7, chord name data can be accessed via the
+            // Chord Name dialog:
             // Menu Text -> Chord Name
             const ChordName& chordName = chordDiagram->GetChordNameConstRef();
             wxByte tonicKey = 0;
@@ -308,9 +317,11 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
             bool noChord = chordName.IsNoChord();
             
             wxWord formulaModificationFlag = ChordName::extended9th;
-            for (; formulaModificationFlag <= ChordName::suspended4th; formulaModificationFlag *= 2)
+            for (; formulaModificationFlag <= ChordName::suspended4th;
+                formulaModificationFlag *= 2)
             {
-                if (chordName.IsFormulaModificationFlagSet(formulaModificationFlag))
+                if (chordName.IsFormulaModificationFlagSet(
+                    formulaModificationFlag))
                 {
                     
                 }
@@ -344,14 +355,17 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
         // In Power Tab Editor v1.7, floating text items are created using:
         // Menu Text -> Insert
         
-        // Floating text items are stored in the array by order of their rect.top and
+        // Floating text items are stored in the array by order of their
+        // rect.top and
         // rect.left values
-        // i.e. An item at left = 40, top = 100 is stored prior to left = 10, top = 120
+        // i.e. An item at left = 40, top = 100 is stored prior to left = 10,
+        // top = 120
         wxUint32 floatingTextIndex = 0;
         wxUint32 floatingTextCount = score->GetFloatingTextCount();
         for (; floatingTextIndex < floatingTextCount; floatingTextIndex++)
         {
-            FloatingText* floatingText = score->GetFloatingText(floatingTextIndex);
+            FloatingText* floatingText =
+                score->GetFloatingText(floatingTextIndex);
             wxCHECK2(floatingText != NULL, continue);
             
             wxString text = floatingText->GetText();
@@ -360,7 +374,8 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
             bool border = floatingText->HasBorder();
             
             // Font setting for the text
-            const FontSetting& fontSetting = floatingText->GetFontSettingConstRef();
+            const FontSetting& fontSetting =
+                floatingText->GetFontSettingConstRef();
             wxString faceName = fontSetting.GetFaceName();
             wxInt32 pointSize = fontSetting.GetPointSize();
             wxInt32 weight = fontSetting.GetWeight();
@@ -371,11 +386,12 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
         }
         
         // Parse the guitar ins in the score
-        // In Power Tab Editor v1.7, guitar ins can be accessed via the Guitar In dialog:
+        // In Power Tab Editor v1.7, guitar ins can be accessed via the Guitar
+        // In dialog:
         // Menu Guitar -> Guitar In
         
-        // Guitar Ins are stored in the array by order of their system, position and 
-        // staff values
+        // Guitar Ins are stored in the array by order of their system, position
+        // and staff values
         wxUint32 guitarInIndex = 0;
         wxUint32 guitarInCount = score->GetGuitarInCount();
         for (; guitarInIndex < guitarInCount; guitarInIndex++)
@@ -399,13 +415,14 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
         }
         
         // Parse the tempo markers in the score
-        // In Power Tab Editor v1.7, tempo markers can be accessed via the Tempo Marker dialog:
+        // In Power Tab Editor v1.7, tempo markers can be accessed via the Tempo
+        // Marker dialog:
         // Menu Music Symbols -> Tempo Marker
         // and the Alteration of Pace dialog:
         // Menu Music Symbols -> Alteration of Pace
         
-        // Tempo Markers are stored in the array by order of their system, position and 
-        // staff values
+        // Tempo Markers are stored in the array by order of their system,
+        // position and staff values
         wxUint32 tempoMarkerIndex = 0;
         wxUint32 tempoMarkerCount = score->GetTempoMarkerCount();
         for (; tempoMarkerIndex < tempoMarkerCount; tempoMarkerIndex++)
@@ -442,11 +459,12 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
         }
         
         // Parse the dynamics in the score
-        // In Power Tab Editor v1.7, dynamics can be accessed via the Dynamic dialog:
+        // In Power Tab Editor v1.7, dynamics can be accessed via the Dynamic
+        // dialog:
         // Menu Music Symbols -> Dynamic
         
-        // Dynamics are stored in the array by order of their system, position and
-        // staff values
+        // Dynamics are stored in the array by order of their system, position
+        // and staff values
         wxUint32 dynamicIndex = 0;
         wxUint32 dynamicCount = score->GetDynamicCount();
         for (; dynamicIndex < dynamicCount; dynamicIndex++)
@@ -472,16 +490,18 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
         }
         
         // Parse the alternate endings in the score
-        // In Power Tab Editor v1.7, alternate endings can be accessed via the Repeat Ending dialog:
+        // In Power Tab Editor v1.7, alternate endings can be accessed via the
+        // Repeat Ending dialog:
         // Menu Music Symbols -> Repeat Ending
         
-        // Alternate endings are stored in the array by order of their system and
-        // position values
+        // Alternate endings are stored in the array by order of their system
+        // and position values
         wxUint32 alternateEndingIndex = 0;
         wxUint32 alternateEndingCount = score->GetAlternateEndingCount();
         for (; alternateEndingIndex < alternateEndingCount; alternateEndingIndex++)
         {
-            AlternateEnding* alternateEnding = score->GetAlternateEnding(alternateEndingIndex);
+            AlternateEnding* alternateEnding =
+                score->GetAlternateEnding(alternateEndingIndex);
             wxCHECK2(alternateEnding != NULL, continue);
             
             wxWord system = alternateEnding->GetSystem();
@@ -499,7 +519,8 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
         }
         
         // Parse the systems in the score
-        // In Power Tab Editor v1.7, systems can be accessed via the Section menu:
+        // In Power Tab Editor v1.7, systems can be accessed via the Section
+        // menu:
         // Menu Section -> New Section
         
         // Systems are stored in the array by order they are drawn in the score
@@ -514,7 +535,8 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
             wxByte positionSpacing = system->GetPositionSpacing();
 
             // Parse the directions in the system
-            // In Power Tab Editor v1.7, directions can be accessed via the Musical Direction dialog:
+            // In Power Tab Editor v1.7, directions can be accessed via the
+            // Musical Direction dialog:
             // Menu Music Symbols -> Musical Direction
             wxUint32 directionIndex = 0;
             wxUint32 directionCount = system->GetDirectionCount();
@@ -533,12 +555,14 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
                     wxByte symbolType = 0;
                     wxByte activeSymbol = 0;
                     wxByte repeatNumber = 0;
-                    direction->GetSymbol(symbolIndex, symbolType, activeSymbol, repeatNumber);
+                    direction->GetSymbol(symbolIndex, symbolType, activeSymbol,
+                        repeatNumber);
                 }
             }
             
             // Parse the chord text items in the system
-            // In Power Tab Editor v1.7, chord text/chord name data can be accessed via the Chord Name dialog:
+            // In Power Tab Editor v1.7, chord text/chord name data can be
+            // accessed via the Chord Name dialog:
             // Menu Text -> Chord Name
             wxUint32 chordTextIndex = 0;
             wxUint32 chordTextCount = system->GetChordTextCount();
@@ -562,9 +586,11 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
                 bool noChord = chordName.IsNoChord();
                 
                 wxWord formulaModificationFlag = ChordName::extended9th;
-                for (; formulaModificationFlag <= ChordName::suspended4th; formulaModificationFlag *= 2)
+                for (; formulaModificationFlag <= ChordName::suspended4th;
+                    formulaModificationFlag *= 2)
                 {
-                    if (chordName.IsFormulaModificationFlagSet(formulaModificationFlag))
+                    if (chordName.IsFormulaModificationFlagSet(
+                        formulaModificationFlag))
                     {
                         
                     }
@@ -586,17 +612,20 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
             }
 
             // Parse the rhythm slashes in the system
-            // In Power Tab Editor v1.7, rhythm slash data can be accessed via the Rhy. Slashes menu
+            // In Power Tab Editor v1.7, rhythm slash data can be accessed via
+            // the Rhy. Slashes menu
             wxUint32 rhythmSlashIndex = 0;
             wxUint32 rhythmSlashCount = system->GetRhythmSlashCount();
             for (; rhythmSlashIndex < rhythmSlashCount; rhythmSlashIndex++)
             {
-                RhythmSlash* rhythmSlash = system->GetRhythmSlash(rhythmSlashIndex);
+                RhythmSlash* rhythmSlash = system->GetRhythmSlash(
+                    rhythmSlashIndex);
                 wxCHECK2(rhythmSlash != NULL, continue);
                 
                 wxUint32 position = rhythmSlash->GetPosition();
                 wxByte durationType = rhythmSlash->GetDurationType();
-                wxByte previousDurationType = rhythmSlash->GetPreviousBeamDurationType();
+                wxByte previousDurationType =
+                    rhythmSlash->GetPreviousBeamDurationType();
                 
                 bool beamStart = rhythmSlash->IsBeamStart();
                 bool fractionalBeam = rhythmSlash->HasFractionalBeam();
@@ -641,7 +670,8 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
                 {
                     wxUint32 repeatCount = startBar.GetRepeatCount();
                 }
-                const KeySignature& keySignature = startBar.GetKeySignatureConstRef();
+                const KeySignature& keySignature =
+                    startBar.GetKeySignatureConstRef();
                 wxByte keyType = 0;
                 wxByte keyAccidentals = 0;
                 keySignature.GetKey(keyType, keyAccidentals);
@@ -652,7 +682,8 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
                 {
                 }
                 
-                const TimeSignature& timeSignature = startBar.GetTimeSignatureConstRef();
+                const TimeSignature& timeSignature =
+                    startBar.GetTimeSignatureConstRef();
                 wxByte beatsPerMeasure = 0;
                 wxByte beatAmount = 0;
                 timeSignature.GetMeter(beatsPerMeasure, beatAmount);
@@ -673,7 +704,8 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
                 }
                 wxByte pulses = timeSignature.GetPulses();
                 
-                const RehearsalSign& rehearsalSign = startBar.GetRehearsalSignConstRef();
+                const RehearsalSign& rehearsalSign =
+                    startBar.GetRehearsalSignConstRef();
                 if (rehearsalSign.IsSet())
                 {
                     wxInt8 letter = rehearsalSign.GetLetter();
@@ -691,7 +723,8 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
                 
                 wxUint32 position = barline->GetPosition();
                 
-                const KeySignature& keySignature = barline->GetKeySignatureConstRef();
+                const KeySignature& keySignature =
+                    barline->GetKeySignatureConstRef();
                 wxByte keyType = 0;
                 wxByte keyAccidentals = 0;
                 keySignature.GetKey(keyType, keyAccidentals);
@@ -702,7 +735,8 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
                 {
                 }
                 
-                const TimeSignature& timeSignature = barline->GetTimeSignatureConstRef();
+                const TimeSignature& timeSignature =
+                    barline->GetTimeSignatureConstRef();
                 wxByte beatsPerMeasure = 0;
                 wxByte beatAmount = 0;
                 timeSignature.GetMeter(beatsPerMeasure, beatAmount);
@@ -723,7 +757,8 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
                 }
                 wxByte pulses = timeSignature.GetPulses();
                 
-                const RehearsalSign& rehearsalSign = barline->GetRehearsalSignConstRef();
+                const RehearsalSign& rehearsalSign =
+                    barline->GetRehearsalSignConstRef();
                 if (rehearsalSign.IsSet())
                 {
                     wxInt8 letter = rehearsalSign.GetLetter();
@@ -739,7 +774,8 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
                 {
                     wxUint32 repeatCount = endBar.GetRepeatCount();
                 }
-                const KeySignature& keySignature = endBar.GetKeySignatureConstRef();
+                const KeySignature& keySignature =
+                    endBar.GetKeySignatureConstRef();
                 wxByte keyType = 0;
                 wxByte keyAccidentals = 0;
                 keySignature.GetKey(keyType, keyAccidentals);
@@ -750,7 +786,8 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
                 {
                 }
                 
-                const TimeSignature& timeSignature = endBar.GetTimeSignatureConstRef();
+                const TimeSignature& timeSignature =
+                    endBar.GetTimeSignatureConstRef();
                 wxByte beatsPerMeasure = 0;
                 wxByte beatAmount = 0;
                 timeSignature.GetMeter(beatsPerMeasure, beatAmount);
@@ -771,7 +808,8 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
                 }
                 wxByte pulses = timeSignature.GetPulses();
                 
-                const RehearsalSign& rehearsalSign = endBar.GetRehearsalSignConstRef();
+                const RehearsalSign& rehearsalSign =
+                    endBar.GetRehearsalSignConstRef();
                 if (rehearsalSign.IsSet())
                 {
                     wxInt8 letter = rehearsalSign.GetLetter();
@@ -780,10 +818,11 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
             }
             
             // Parse the staves in the system
-            // In Power Tab Editor v1.7, staves can be accessed via the Section menu:
+            // In Power Tab Editor v1.7, staves can be accessed via the Section
+            // menu:
             // Menu Section -> Attach Staff
-            // and by clicking the clef on the standard notation standard staff and
-            // by clicking the "TAB" clef on the tablature staff
+            // and by clicking the clef on the standard notation standard staff
+            // and by clicking the "TAB" clef on the tablature staff
             wxUint32 staffIndex = 0;
             wxUint32 staffCount = system->GetStaffCount();
             for (; staffIndex < staffCount; staffIndex++)
@@ -802,14 +841,16 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
                     wxUint32 positionCount = staff->GetPositionCount(voice);
                     for (; positionIndex < positionCount; positionIndex++)
                     {
-                        Position* position = staff->GetPosition(voice, positionIndex);
+                        Position* position = staff->GetPosition(voice,
+                            positionIndex);
                         wxCHECK2(position != NULL, continue);
                     
                         wxUint32 positionIndex = 0;
                         wxUint32 positionCount = staff->GetPositionCount(voice);
                         for (; positionIndex < positionCount; positionIndex++)
                         {
-                            Position* position = staff->GetPosition(voice, positionIndex);
+                            Position* position = staff->GetPosition(voice,
+                                positionIndex);
                             wxCHECK2(position != NULL, continue);
                             
                             wxUint32 position2 = position->GetPosition();
@@ -818,12 +859,16 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
                             {
                                 wxByte notesPlayed = 0;
                                 wxByte notesPlayedOver = 0;
-                                position->GetIrregularGroupingTiming(notesPlayed, notesPlayedOver);
+                                position->GetIrregularGroupingTiming(
+                                    notesPlayed, notesPlayedOver);
                             }
-                            wxByte previousBeamDurationType = position->GetPreviousBeamDurationType();
+                            wxByte previousBeamDurationType =
+                                position->GetPreviousBeamDurationType();
                             bool beamStart = position->IsBeamStart();
-                            bool fractionalLeftBeam = position->HasFractionalLeftBeam();
-                            bool fractionalRightBeam = position->HasFractionalRightBeam();
+                            bool fractionalLeftBeam =
+                                position->HasFractionalLeftBeam();
+                            bool fractionalRightBeam =
+                                position->HasFractionalRightBeam();
                             bool beamEnd = position->IsBeamEnd();
                             
                             bool dotted = position->IsDotted();
@@ -846,16 +891,20 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
                             bool tripletFeel2nd = position->IsTripletFeel2nd();
                             bool letRing = position->HasLetRing();
                             bool fermata = position->HasFermata();
-                            bool irregularGroupingStart = position->IsIrregularGroupingStart();
-                            bool irregularGroupingMiddle = position->IsIrregularGroupingMiddle();
-                            bool irregularGroupingEnd = position->IsIrregularGroupingEnd();
+                            bool irregularGroupingStart =
+                                position->IsIrregularGroupingStart();
+                            bool irregularGroupingMiddle =
+                                position->IsIrregularGroupingMiddle();
+                            bool irregularGroupingEnd =
+                                position->IsIrregularGroupingEnd();
                             
                             if (position->HasVolumeSwell())
                             {
                                 wxByte startVolume = 0;
                                 wxByte endVolume = 0;
                                 wxByte duration = 0;
-                                position->GetVolumeSwell(startVolume, endVolume, duration);
+                                position->GetVolumeSwell(startVolume, endVolume,
+                                    duration);
                             }
                             
                             if (position->HasTremoloBar())
@@ -867,8 +916,9 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
                             }
                             
                             // Parse the notes
-                            // In Power Tab Editor v1.7, note data can be accessed via the Notes menu, as well as
-                            // the Tab Symbols menu
+                            // In Power Tab Editor v1.7, note data can be
+                            // accessed via the Notes menu, as well as the Tab
+                            // Symbols menu
                             wxUint32 noteIndex = 0;
                             wxUint32 noteCount = position->GetNoteCount();
                             for (; noteIndex < noteCount; noteIndex++)
@@ -882,10 +932,13 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
                                 bool muted = note->IsMuted();
                                 bool tieWrap = note->HasTieWrap();
                                 bool hammerOn = note->HasHammerOn();
-                                bool hammerOnFromNowhere = note->HasHammerOnFromNowhere();
+                                bool hammerOnFromNowhere =
+                                    note->HasHammerOnFromNowhere();
                                 bool pullOff = note->HasPullOff();
-                                bool pullOffToNowhere = note->HasPullOffToNowhere();
-                                bool naturalHarmonic = note->IsNaturalHarmonic();
+                                bool pullOffToNowhere =
+                                    note->HasPullOffToNowhere();
+                                bool naturalHarmonic =
+                                    note->IsNaturalHarmonic();
                                 bool ghostNote = note->IsGhostNote();
                                 bool octave8va = note->IsOctave8va();
                                 bool octave15ma = note->IsOctave15ma();
@@ -913,7 +966,8 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
                                     wxByte duration = 0;
                                     wxByte drawStartPoint = 0;
                                     wxByte drawEndPoint = 0;
-                                    note->GetBend(type, bentPitch, releasePitch, duration, drawStartPoint, drawEndPoint);
+                                    note->GetBend(type, bentPitch, releasePitch,
+                                        duration, drawStartPoint, drawEndPoint);
                                 }
                                 
                                 if (note->HasTappedHarmonic())
@@ -933,7 +987,8 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
                                     wxByte key = 0;
                                     wxByte keyVariation = 0;
                                     wxByte octave = 0;
-                                    note->GetArtificialHarmonic(key, keyVariation, octave);
+                                    note->GetArtificialHarmonic(key,
+                                        keyVariation, octave);
                                 }
                             }
                         }
@@ -972,7 +1027,8 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
     
     // In Power Tab Editor v1.7, tablature line spacing values can be accessed
     // via the Line Height submenu on the Section menu
-    wxUint32 tablatureStaffLineSpacing = document->GetTablatureStaffLineSpacing();
+    wxUint32 tablatureStaffLineSpacing =
+        document->GetTablatureStaffLineSpacing();
     
     // In Power Tab Editor v1.7, fade values can be accessed via the Fade dialog:
     // Menu Music Symbols -> Fade
@@ -996,7 +1052,8 @@ void PowerTabView::OnTestParseFile(wxCommandEvent& WXUNUSED(event))
 /// @param view View to be associated with the canvas
 /// @param parent Frame that will hold the view
 /// @return Pointer to new canvas if created, NULL if creation failed
-PowerTabViewCanvas* PowerTabView::CreateCanvas(wxView* view, wxMDIChildFrame* parent)
+PowerTabViewCanvas* PowerTabView::CreateCanvas(wxView* view,
+    wxMDIChildFrame* parent)
 {
     //------Last Checked------//
     // - Jan 27, 2005

@@ -18,24 +18,25 @@ class MainFrame;
 /// Application for parsing Power Tab files
 class PowerTabParser : public wxApp
 {
+// Member Variables
 protected:
     wxDocManager*   m_docManager;                   ///< Document manager
-    
+
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     PowerTabParser();
     
-    // Overrides
+// Overrides
     bool OnInit();
     int OnExit();
 
-    // Document Manager Functions
+// Document Manager Functions
     /// Gets a pointer to the document manager
     /// @return A pointer to the document manager
     wxDocManager* GetDocManager() const             
         {return (m_docManager);}
     
-    // Operations
+// Operations
 protected:
     void AddDocumentTemplates();
     bool LoadXMLResources();

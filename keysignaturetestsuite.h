@@ -18,16 +18,16 @@ class KeySignatureTestSuite :
 {
     DECLARE_DYNAMIC_CLASS(KeySignatureTestSuite)
     
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     KeySignatureTestSuite();
     ~KeySignatureTestSuite();
     
-    // Overrides
+// Overrides
     size_t GetTestCount() const;
     bool RunTestCases();
     
-    // Test Cases
+// Test Cases
 private:
     bool TestCaseConstructor();
     bool TestCaseCreation();

@@ -57,7 +57,8 @@ RehearsalSign::~RehearsalSign()
 }
 
 /// Assignment Operator
-const RehearsalSign& RehearsalSign::operator=(const RehearsalSign& rehearsalSign)
+const RehearsalSign& RehearsalSign::operator=(
+    const RehearsalSign& rehearsalSign)
 {
     //------Last Checked------//
     // - Dec 10, 2004
@@ -76,7 +77,8 @@ bool RehearsalSign::operator==(const RehearsalSign& rehearsalSign) const
 {
     //------Last Checked------//
     // - Dec 10, 2004
-    return ((m_letter == rehearsalSign.m_letter) && (m_description == rehearsalSign.m_description));
+    return ((m_letter == rehearsalSign.m_letter) &&
+        (m_description == rehearsalSign.m_description));
 }
 
 /// Inequality Operator
@@ -139,11 +141,13 @@ bool RehearsalSign::SetLetter(wxInt8 letter)
 }
 
 // Operations
-/// Gets a formatted text representation of the rehearsal sign (combines the letter and the description)
+/// Gets a formatted text representation of the rehearsal sign (combines the
+/// letter and the description)
 /// @return The formatted text representation of the rehearsal sign
 wxString RehearsalSign::GetFormattedText() const
 {
     //------Last Checked------//
     // - Dec 10, 2004
-    return (wxString::Format(wxT("%c -- %s"), GetLetter(), GetDescription().c_str()));
+    return (wxString::Format(wxT("%c -- %s"), GetLetter(),
+        GetDescription().c_str()));
 }

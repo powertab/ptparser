@@ -17,16 +17,17 @@ class AlternateEndingTestSuite :
     public TestSuite
 {
     DECLARE_DYNAMIC_CLASS(AlternateEndingTestSuite)
-    
+
+// Constructor/Destructor
 public:
-    // Constructor/Destructor
     AlternateEndingTestSuite();
     ~AlternateEndingTestSuite();
-    
+
+// Overrides
     size_t GetTestCount() const;
     bool RunTestCases();
     
-    // Test Case Functions
+// Test Case Functions
 private:
     bool TestCaseConstructor();
     bool TestCaseCreation();

@@ -35,7 +35,9 @@ const wxByte ChordName::MAX_FRET_POSITION                   = 24;
 
 /// Default Constructor
 ChordName::ChordName() :
-    m_key(DEFAULT_KEY), m_formula(DEFAULT_FORMULA), m_formulaModifications(DEFAULT_FORMULA_MODIFICATIONS), m_extra(DEFAULT_EXTRA)
+    m_key(DEFAULT_KEY), m_formula(DEFAULT_FORMULA),
+    m_formulaModifications(DEFAULT_FORMULA_MODIFICATIONS),
+    m_extra(DEFAULT_EXTRA)
 {
     //------Last Checked------//
     // - Jan 4, 2005
@@ -43,13 +45,18 @@ ChordName::ChordName() :
 
 /// Primary Constructor
 /// @param tonicKey Key to set (see keys enum for values)
-/// @param tonicKeyVariation Key variation to set (see keyVariation enum for values)
+/// @param tonicKeyVariation Key variation to set (see keyVariation enum for
+/// values)
 /// @param formula Formula to set (see formula enum for values)
-/// @param formulaModifications Formula modifications to set (see formulaModifications enum for values)
+/// @param formulaModifications Formula modifications to set (see
+/// formulaModifications enum for values)
 /// @param fretPosition Fret position to set (0 through 30 + not used)
 /// @param type Type to set
-ChordName::ChordName(wxByte tonicKey, wxByte tonicKeyVariation, wxByte formula, wxWord formulaModifications, wxByte fretPosition, wxByte type) :
-    m_key(DEFAULT_KEY), m_formula(DEFAULT_FORMULA), m_formulaModifications(DEFAULT_FORMULA_MODIFICATIONS), m_extra(DEFAULT_EXTRA)
+ChordName::ChordName(wxByte tonicKey, wxByte tonicKeyVariation, wxByte formula,
+    wxWord formulaModifications, wxByte fretPosition, wxByte type) :
+    m_key(DEFAULT_KEY), m_formula(DEFAULT_FORMULA),
+    m_formulaModifications(DEFAULT_FORMULA_MODIFICATIONS),
+    m_extra(DEFAULT_EXTRA)
 {
     //------Last Checked------//
     // - Jan 4, 2005
@@ -62,7 +69,9 @@ ChordName::ChordName(wxByte tonicKey, wxByte tonicKeyVariation, wxByte formula, 
 
 /// Copy Constructor
 ChordName::ChordName(const ChordName& chordName) :
-    m_key(DEFAULT_KEY), m_formula(DEFAULT_FORMULA), m_formulaModifications(DEFAULT_FORMULA_MODIFICATIONS), m_extra(DEFAULT_EXTRA)
+    m_key(DEFAULT_KEY), m_formula(DEFAULT_FORMULA),
+    m_formulaModifications(DEFAULT_FORMULA_MODIFICATIONS),
+    m_extra(DEFAULT_EXTRA)
 {
     //------Last Checked------//
     // - Dec 16, 2004
@@ -137,7 +146,8 @@ bool ChordName::DoDeserialize(PowerTabInputStream& stream, wxWord version)
     // - Dec 14, 2004
     
     // Version 1.0 or 1.0.2
-	if (version == PowerTabFileHeader::FILEVERSION_1_0 || version == PowerTabFileHeader::FILEVERSION_1_0_2)
+	if (version == PowerTabFileHeader::FILEVERSION_1_0 ||
+        version == PowerTabFileHeader::FILEVERSION_1_0_2)
 	{
 		wxByte key;
 		stream >> key >> m_formula >> m_formulaModifications >> m_extra;
@@ -328,7 +338,8 @@ wxString ChordName::GetFormulaText() const
 					(nFormula == 9) ? chordAbbreviations[1] :
 					(nFormula == 10) ? chordAbbreviations[2] :
 					(nFormula == 11) ? chordAbbreviations[3] :
-					(nFormula == 12) ? (chordAbbreviations[1] + _T("/") + chordAbbreviations[0]) :
+					(nFormula == 12) ? (chordAbbreviations[1] + _T("/") +
+                        chordAbbreviations[0]) :
 					(chordAbbreviations[1] + strExtension[j] + _T("b5"))
 				);
 
@@ -365,11 +376,23 @@ wxString ChordName::GetFormulaText() const
 		returnValue += strSuffixList[nFormula];
 
 	wxString strText;
-	WORD wFormulaBit[13] = {suspended2nd, suspended4th, added2nd, added4th, added6th, added9th, added11th, flatted13th, raised11th, flatted9th, raised9th, flatted5th, raised5th};
-	wxString strAddition[13] = {chordAbbreviations[6], chordAbbreviations[7], chordAbbreviations[5] + _T("2"), chordAbbreviations[5] + _T("4"),
-		chordAbbreviations[5] + _T("6"), chordAbbreviations[5] + _T("9"), chordAbbreviations[5] + _T("11"),
-		chordAbbreviations[9] + _T("13"), chordAbbreviations[8] + _T("11"), chordAbbreviations[9] + _T("9"),
-		chordAbbreviations[8] + _T("9"), chordAbbreviations[9] + _T("5"), chordAbbreviations[8] + _T("5")};
+	WORD wFormulaBit[13] =
+    {
+        suspended2nd, suspended4th, added2nd, added4th, added6th, added9th,
+        added11th, flatted13th, raised11th, flatted9th, raised9th, flatted5th,
+        raised5th
+    };
+
+	wxString strAddition[13] =
+    {
+        chordAbbreviations[6], chordAbbreviations[7],
+        chordAbbreviations[5] + _T("2"), chordAbbreviations[5] + _T("4"),
+		chordAbbreviations[5] + _T("6"), chordAbbreviations[5] + _T("9"),
+        chordAbbreviations[5] + _T("11"), chordAbbreviations[9] + _T("13"),
+        chordAbbreviations[8] + _T("11"), chordAbbreviations[9] + _T("9"),
+		chordAbbreviations[8] + _T("9"), chordAbbreviations[9] + _T("5"),
+        chordAbbreviations[8] + _T("5")
+    };
 
 	for (int j = 0; j < 13; j++)
 	{			
@@ -413,7 +436,8 @@ bool ChordName::SetFretPosition(wxByte fretPosition)
     // - Jan 4, 2005
     wxCHECK(IsValidFretPosition(fretPosition), false);
  
-    // Note: Fret position is stored as values 0 to 31; 0 = not used, 1 to 31 = open to 30th fret
+    // Note: Fret position is stored as values 0 to 31; 0 = not used, 1 to 31 =
+    // open to 30th fret
     if (fretPosition == fretPositionNotUsed)
         fretPosition = 0;
     else
@@ -432,7 +456,8 @@ wxByte ChordName::GetFretPosition() const
     //------Last Checked------//
     // - Jan 4, 2005
 	wxByte returnValue = (wxByte)(m_extra & fretPositionMask);
-	return (wxByte)((returnValue == 0) ? fretPositionNotUsed : (returnValue - 1));
+	return (wxByte)((returnValue == 0) ? fretPositionNotUsed :
+        (returnValue - 1));
 }
 
 // Type Functions
@@ -445,7 +470,8 @@ bool ChordName::SetType(wxByte type)
     // - Jan 4, 2005
     wxCHECK(IsValidType(type), false);
     
-	// Note: Type is stored as values 0 to 7; 0 = not used, 1 to 7 = types 2 to 8
+	// Note: Type is stored as values 0 to 7; 0 = not used, 1 to 7 = types 2 to
+    // 8
 	if (type == typeNotUsed)
         type = 0;
 	else

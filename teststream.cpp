@@ -21,7 +21,8 @@ const wxMemoryInputStream*   TestStream::DEFAULT_INPUT_STREAM = NULL;
 
 // Constructor/Destructor
 /// Default Constructor
-TestStream::TestStream() : m_inputStream((wxMemoryInputStream*)DEFAULT_INPUT_STREAM)
+TestStream::TestStream() : m_inputStream(
+    (wxMemoryInputStream*)DEFAULT_INPUT_STREAM)
 {
     //------Last Checked------//
     // - Dec 24, 2004
@@ -35,7 +36,8 @@ TestStream::~TestStream()
     DeleteInputStream();
 }
 
-/// Gets a reference to the input stream (must be called after all output has been written)
+/// Gets a reference to the input stream (must be called after all output has
+/// been written)
 /// @return A reference to the input stream
 wxMemoryInputStream& TestStream::GetInputStream()
 {
@@ -70,7 +72,8 @@ bool TestStream::CreateInputStream()
     wxCHECK(streamBuffer != NULL, false);
     
     // Create the input stream
-    m_inputStream = new wxMemoryInputStream(streamBuffer->GetBufferStart(), streamBuffer->GetBufferSize());
+    m_inputStream = new wxMemoryInputStream(streamBuffer->GetBufferStart(),
+        streamBuffer->GetBufferSize());
     
     return (true);
 }

@@ -94,13 +94,15 @@ bool TempoMarkerTestSuite::TestCaseConstructor()
             (tempoMarker.GetPosition() == SystemSymbol::DEFAULT_POSITION) &&
             (tempoMarker.IsStandardMarker()) &&
             (tempoMarker.GetBeatType() == TempoMarker::DEFAULT_BEAT_TYPE) &&
-            (tempoMarker.GetBeatsPerMinute() == TempoMarker::DEFAULT_BEATS_PER_MINUTE)
+            (tempoMarker.GetBeatsPerMinute() ==
+            TempoMarker::DEFAULT_BEATS_PER_MINUTE)
         );
     }
     
     // TEST CASE: Primary constructor
     {
-        TempoMarker tempoMarker(1, 2, TempoMarker::quarter, 130, wxT("Test"), TempoMarker::tripletFeelEighth);
+        TempoMarker tempoMarker(1, 2, TempoMarker::quarter, 130, wxT("Test"),
+            TempoMarker::tripletFeelEighth);
         TEST(wxT("Primary Constructor"), 
             (tempoMarker.IsStandardMarker()) &&
             (tempoMarker.GetSystem() == 1) &&
@@ -114,7 +116,8 @@ bool TempoMarkerTestSuite::TestCaseConstructor()
     
     // TEST CASE: Listesso Constructor
     {
-        TempoMarker tempoMarker(1, 2, TempoMarker::quarter, TempoMarker::half, wxT("Test"));
+        TempoMarker tempoMarker(1, 2, TempoMarker::quarter, TempoMarker::half,
+            wxT("Test"));
         TEST(wxT("Listesso Constructor"),
             (tempoMarker.IsListesso()) &&
             (tempoMarker.GetSystem() == 1) &&
@@ -142,7 +145,8 @@ bool TempoMarkerTestSuite::TestCaseConstructor()
     
     // TEST CASE: Copy constructor
     {
-        TempoMarker tempoMarker(1, 2, TempoMarker::quarterDotted, 60, wxT("Test"), TempoMarker::tripletFeelEighth);
+        TempoMarker tempoMarker(1, 2, TempoMarker::quarterDotted, 60,
+            wxT("Test"), TempoMarker::tripletFeelEighth);
         TempoMarker tempoMarker2(tempoMarker);
         TEST(wxT("Copy Constructor"), 
             (tempoMarker2 == tempoMarker)
@@ -158,7 +162,8 @@ bool TempoMarkerTestSuite::TestCaseCreation()
 {
     //------Last Checked------//
     // - Jan 12, 2005
-    TempoMarker tempoMarker(1, 2, TempoMarker::quarter, 130, wxT("Test"), TempoMarker::tripletFeelEighth);
+    TempoMarker tempoMarker(1, 2, TempoMarker::quarter, 130, wxT("Test"),
+        TempoMarker::tripletFeelEighth);
     TempoMarker* clone = (TempoMarker*)tempoMarker.CloneObject();
     TEST(wxT("CloneObject"),
         (*clone == tempoMarker)
@@ -176,7 +181,8 @@ bool TempoMarkerTestSuite::TestCaseOperator()
             
     // TEST CASE: Operator=
     {
-        TempoMarker tempoMarker(1, 2, TempoMarker::quarter, 130, wxT("Test"), TempoMarker::tripletFeelEighth);
+        TempoMarker tempoMarker(1, 2, TempoMarker::quarter, 130, wxT("Test"),
+            TempoMarker::tripletFeelEighth);
         TempoMarker tempoMarker2 = tempoMarker;
         TEST(wxT("Operator="), 
             (tempoMarker2 == tempoMarker)
@@ -190,54 +196,92 @@ bool TempoMarkerTestSuite::TestCaseOperator()
     
     // TEST CASE: Operator==
     {
-        TempoMarker tempoMarker(1, 2, TempoMarker::quarter, 130, wxT("Test"), TempoMarker::tripletFeelEighth);
-        TempoMarker tempoMarker2(1, 2, TempoMarker::quarter, 130, wxT("Test"), TempoMarker::tripletFeelEighth);
-        TempoMarker tempoMarker3(2, 2, TempoMarker::quarter, 130, wxT("Test"), TempoMarker::tripletFeelEighth);
-        TempoMarker tempoMarker4(1, 3, TempoMarker::quarter, 130, wxT("Test"), TempoMarker::tripletFeelEighth);
-        TempoMarker tempoMarker5(1, 2, TempoMarker::quarterDotted, 130, wxT("Test"), TempoMarker::tripletFeelEighth);
-        TempoMarker tempoMarker6(1, 2, TempoMarker::quarter, 131, wxT("Test"), TempoMarker::tripletFeelEighth);
-        TempoMarker tempoMarker7(1, 2, TempoMarker::quarter, 130, wxT("Test2"), TempoMarker::tripletFeelEighth);
-        TempoMarker tempoMarker8(1, 2, TempoMarker::quarter, 130, wxT("Test"), TempoMarker::tripletFeelEighthOff);
-        TempoMarker tempoMarker9(1, 2, TempoMarker::quarter, TempoMarker::half, wxT("Test"));
+        TempoMarker tempoMarker(1, 2, TempoMarker::quarter, 130, wxT("Test"),
+            TempoMarker::tripletFeelEighth);
+        TempoMarker tempoMarker2(1, 2, TempoMarker::quarter, 130, wxT("Test"),
+            TempoMarker::tripletFeelEighth);
+        TempoMarker tempoMarker3(2, 2, TempoMarker::quarter, 130, wxT("Test"),
+            TempoMarker::tripletFeelEighth);
+        TempoMarker tempoMarker4(1, 3, TempoMarker::quarter, 130, wxT("Test"),
+            TempoMarker::tripletFeelEighth);
+        TempoMarker tempoMarker5(1, 2, TempoMarker::quarterDotted, 130,
+            wxT("Test"), TempoMarker::tripletFeelEighth);
+        TempoMarker tempoMarker6(1, 2, TempoMarker::quarter, 131, wxT("Test"),
+            TempoMarker::tripletFeelEighth);
+        TempoMarker tempoMarker7(1, 2, TempoMarker::quarter, 130, wxT("Test2"),
+            TempoMarker::tripletFeelEighth);
+        TempoMarker tempoMarker8(1, 2, TempoMarker::quarter, 130, wxT("Test"),
+            TempoMarker::tripletFeelEighthOff);
+        TempoMarker tempoMarker9(1, 2, TempoMarker::quarter, TempoMarker::half,
+            wxT("Test"));
         TempoMarker tempoMarker10(1, 2, true);
         TempoMarker tempoMarker11(1, 2, false);
                
-        TEST(wxT("Operator== - tempoMarker == tempoMarker"), (tempoMarker == tempoMarker2));
-        TEST(wxT("Operator== - tempoMarker != tempoMarker"), !(tempoMarker == tempoMarker3));
-        TEST(wxT("Operator== - tempoMarker != tempoMarker 2"), !(tempoMarker == tempoMarker4));
-        TEST(wxT("Operator== - tempoMarker != tempoMarker 3"), !(tempoMarker == tempoMarker5));
-        TEST(wxT("Operator== - tempoMarker != tempoMarker 4"), !(tempoMarker == tempoMarker6));
-        TEST(wxT("Operator== - tempoMarker != tempoMarker 5"), !(tempoMarker == tempoMarker7));
-        TEST(wxT("Operator== - tempoMarker != tempoMarker 6"), !(tempoMarker == tempoMarker8));
-        TEST(wxT("Operator== - tempoMarker != tempoMarker 7"), !(tempoMarker == tempoMarker9));
-        TEST(wxT("Operator== - tempoMarker != tempoMarker 8"), !(tempoMarker == tempoMarker10));
-        TEST(wxT("Operator== - tempoMarker != tempoMarker 9"), !(tempoMarker == tempoMarker11));
+        TEST(wxT("Operator== - tempoMarker == tempoMarker"),
+            (tempoMarker == tempoMarker2));
+        TEST(wxT("Operator== - tempoMarker != tempoMarker"),
+            !(tempoMarker == tempoMarker3));
+        TEST(wxT("Operator== - tempoMarker != tempoMarker 2"),
+            !(tempoMarker == tempoMarker4));
+        TEST(wxT("Operator== - tempoMarker != tempoMarker 3"),
+            !(tempoMarker == tempoMarker5));
+        TEST(wxT("Operator== - tempoMarker != tempoMarker 4"),
+            !(tempoMarker == tempoMarker6));
+        TEST(wxT("Operator== - tempoMarker != tempoMarker 5"),
+            !(tempoMarker == tempoMarker7));
+        TEST(wxT("Operator== - tempoMarker != tempoMarker 6"),
+            !(tempoMarker == tempoMarker8));
+        TEST(wxT("Operator== - tempoMarker != tempoMarker 7"),
+            !(tempoMarker == tempoMarker9));
+        TEST(wxT("Operator== - tempoMarker != tempoMarker 8"),
+            !(tempoMarker == tempoMarker10));
+        TEST(wxT("Operator== - tempoMarker != tempoMarker 9"),
+            !(tempoMarker == tempoMarker11));
     }
         
     // TEST CASE: Operator!=
     {
-        TempoMarker tempoMarker(1, 2, TempoMarker::quarter, 130, wxT("Test"), TempoMarker::tripletFeelEighth);
-        TempoMarker tempoMarker2(1, 2, TempoMarker::quarter, 130, wxT("Test"), TempoMarker::tripletFeelEighth);
-        TempoMarker tempoMarker3(2, 2, TempoMarker::quarter, 130, wxT("Test"), TempoMarker::tripletFeelEighth);
-        TempoMarker tempoMarker4(1, 3, TempoMarker::quarter, 130, wxT("Test"), TempoMarker::tripletFeelEighth);
-        TempoMarker tempoMarker5(1, 2, TempoMarker::quarterDotted, 130, wxT("Test"), TempoMarker::tripletFeelEighth);
-        TempoMarker tempoMarker6(1, 2, TempoMarker::quarter, 131, wxT("Test"), TempoMarker::tripletFeelEighth);
-        TempoMarker tempoMarker7(1, 2, TempoMarker::quarter, 130, wxT("Test2"), TempoMarker::tripletFeelEighth);
-        TempoMarker tempoMarker8(1, 2, TempoMarker::quarter, 130, wxT("Test"), TempoMarker::tripletFeelEighthOff);
-        TempoMarker tempoMarker9(1, 2, TempoMarker::quarter, TempoMarker::half, wxT("Test"));
+        TempoMarker tempoMarker(1, 2, TempoMarker::quarter, 130, wxT("Test"),
+            TempoMarker::tripletFeelEighth);
+        TempoMarker tempoMarker2(1, 2, TempoMarker::quarter, 130, wxT("Test"),
+            TempoMarker::tripletFeelEighth);
+        TempoMarker tempoMarker3(2, 2, TempoMarker::quarter, 130, wxT("Test"),
+            TempoMarker::tripletFeelEighth);
+        TempoMarker tempoMarker4(1, 3, TempoMarker::quarter, 130, wxT("Test"),
+            TempoMarker::tripletFeelEighth);
+        TempoMarker tempoMarker5(1, 2, TempoMarker::quarterDotted, 130,
+            wxT("Test"), TempoMarker::tripletFeelEighth);
+        TempoMarker tempoMarker6(1, 2, TempoMarker::quarter, 131, wxT("Test"),
+            TempoMarker::tripletFeelEighth);
+        TempoMarker tempoMarker7(1, 2, TempoMarker::quarter, 130, wxT("Test2"),
+            TempoMarker::tripletFeelEighth);
+        TempoMarker tempoMarker8(1, 2, TempoMarker::quarter, 130, wxT("Test"),
+            TempoMarker::tripletFeelEighthOff);
+        TempoMarker tempoMarker9(1, 2, TempoMarker::quarter, TempoMarker::half,
+            wxT("Test"));
         TempoMarker tempoMarker10(1, 2, true);
         TempoMarker tempoMarker11(1, 2, false);
                
-        TEST(wxT("Operator!= - tempoMarker == tempoMarker"), !(tempoMarker != tempoMarker2));
-        TEST(wxT("Operator!= - tempoMarker != tempoMarker"), (tempoMarker != tempoMarker3));
-        TEST(wxT("Operator!= - tempoMarker != tempoMarker 2"), (tempoMarker != tempoMarker4));
-        TEST(wxT("Operator!= - tempoMarker != tempoMarker 3"), (tempoMarker != tempoMarker5));
-        TEST(wxT("Operator!= - tempoMarker != tempoMarker 4"), (tempoMarker != tempoMarker6));
-        TEST(wxT("Operator!= - tempoMarker != tempoMarker 5"), (tempoMarker != tempoMarker7));
-        TEST(wxT("Operator!= - tempoMarker != tempoMarker 6"), (tempoMarker != tempoMarker8));
-        TEST(wxT("Operator!= - tempoMarker != tempoMarker 7"), (tempoMarker != tempoMarker9));
-        TEST(wxT("Operator!= - tempoMarker != tempoMarker 8"), (tempoMarker != tempoMarker10));
-        TEST(wxT("Operator!= - tempoMarker != tempoMarker 9"), (tempoMarker != tempoMarker11));
+        TEST(wxT("Operator!= - tempoMarker == tempoMarker"),
+            !(tempoMarker != tempoMarker2));
+        TEST(wxT("Operator!= - tempoMarker != tempoMarker"),
+            (tempoMarker != tempoMarker3));
+        TEST(wxT("Operator!= - tempoMarker != tempoMarker 2"),
+            (tempoMarker != tempoMarker4));
+        TEST(wxT("Operator!= - tempoMarker != tempoMarker 3"),
+            (tempoMarker != tempoMarker5));
+        TEST(wxT("Operator!= - tempoMarker != tempoMarker 4"),
+            (tempoMarker != tempoMarker6));
+        TEST(wxT("Operator!= - tempoMarker != tempoMarker 5"),
+            (tempoMarker != tempoMarker7));
+        TEST(wxT("Operator!= - tempoMarker != tempoMarker 6"),
+            (tempoMarker != tempoMarker8));
+        TEST(wxT("Operator!= - tempoMarker != tempoMarker 7"),
+            (tempoMarker != tempoMarker9));
+        TEST(wxT("Operator!= - tempoMarker != tempoMarker 8"),
+            (tempoMarker != tempoMarker10));
+        TEST(wxT("Operator!= - tempoMarker != tempoMarker 9"),
+            (tempoMarker != tempoMarker11));
     }
     
     return (true);
@@ -255,7 +299,8 @@ bool TempoMarkerTestSuite::TestCaseSerialize()
     PowerTabOutputStream streamOut(testStream.GetOutputStream());
     
     // Write test data to stream
-    TempoMarker tempoMarkerOut(1, 2, TempoMarker::quarter, 130, wxT("Test"), TempoMarker::tripletFeelEighth);
+    TempoMarker tempoMarkerOut(1, 2, TempoMarker::quarter, 130, wxT("Test"),
+        TempoMarker::tripletFeelEighth);
     tempoMarkerOut.Serialize(streamOut);
 
     // Output must be OK before using input
@@ -265,7 +310,8 @@ bool TempoMarkerTestSuite::TestCaseSerialize()
     
         // Read test data back from stream
         TempoMarker tempoMarkerIn;
-        tempoMarkerIn.Deserialize(streamIn, PowerTabFileHeader::FILEVERSION_CURRENT);
+        tempoMarkerIn.Deserialize(streamIn,
+            PowerTabFileHeader::FILEVERSION_CURRENT);
 
         // Validate the data
         ok = ((tempoMarkerIn == tempoMarkerOut) 
@@ -288,9 +334,12 @@ bool TempoMarkerTestSuite::TestCaseType()
     {
         wxByte i = TempoMarker::notShown;
         for (; i <= (TempoMarker::alterationOfPace + 1); i++)
+        {
             TEST(wxString::Format(wxT("IsValidType - %d"), i),
-                (TempoMarker::IsValidType(i) == (i <= TempoMarker::alterationOfPace))
+                (TempoMarker::IsValidType(i) ==
+                (i <= TempoMarker::alterationOfPace))
             );
+        }
     }
     
     // TEST CASE: SetType
@@ -298,10 +347,13 @@ bool TempoMarkerTestSuite::TestCaseType()
         TempoMarker tempoMarker;
         wxByte i = TempoMarker::notShown;
         for (; i <= (TempoMarker::alterationOfPace + 1); i++)
+        {
             TEST(wxString::Format(wxT("SetType - %d"), i),
                 (tempoMarker.SetType(i) == (i <= TempoMarker::alterationOfPace)) &&
-                ((i > TempoMarker::alterationOfPace) ? 1 : (tempoMarker.GetType() == i))
+                ((i > TempoMarker::alterationOfPace) ? 1 :
+                (tempoMarker.GetType() == i))
             );
+        }
     }      
       
     return (true);
@@ -316,23 +368,28 @@ bool TempoMarkerTestSuite::TestCaseStandardMarker()
     TempoMarker tempoMarker;
     
     TEST(wxT("SetStandardMarker - invalid beat type"),
-        !tempoMarker.SetStandardMarker(255, 130, wxT("Test"), TempoMarker::tripletFeelEighth)
+        !tempoMarker.SetStandardMarker(255, 130, wxT("Test"),
+        TempoMarker::tripletFeelEighth)
     );
     
     TEST(wxT("SetStandardMarker - invalid bpm"),
-        !tempoMarker.SetStandardMarker(TempoMarker::quarter, 430, wxT("Test"), TempoMarker::tripletFeelEighth)
+        !tempoMarker.SetStandardMarker(TempoMarker::quarter, 430, wxT("Test"),
+        TempoMarker::tripletFeelEighth)
     );
     
     TEST(wxT("SetStandardMarker - invalid description"),
-        !tempoMarker.SetStandardMarker(TempoMarker::quarter, 130, NULL, TempoMarker::tripletFeelEighth)
+        !tempoMarker.SetStandardMarker(TempoMarker::quarter, 130, NULL,
+        TempoMarker::tripletFeelEighth)
     );
     
     TEST(wxT("SetStandardMarker - invalid triplet feel type"),
-        !tempoMarker.SetStandardMarker(TempoMarker::quarter, 130, wxT("Test"), 255)
+        !tempoMarker.SetStandardMarker(TempoMarker::quarter, 130, wxT("Test"),
+        255)
     );
     
     TEST(wxT("SetStandardMarker - valid"),
-        tempoMarker.SetStandardMarker(TempoMarker::quarter, 130, wxT("Test"), TempoMarker::tripletFeelEighth) &&
+        tempoMarker.SetStandardMarker(TempoMarker::quarter, 130, wxT("Test"),
+        TempoMarker::tripletFeelEighth) &&
         (tempoMarker.GetBeatType() == TempoMarker::quarter) &&
         (tempoMarker.GetBeatsPerMinute() == 130) &&
         (tempoMarker.GetDescription() == wxT("Test")) &&
@@ -363,7 +420,8 @@ bool TempoMarkerTestSuite::TestCaseListesso()
     );
     
     TEST(wxT("SetListesso - valid"),
-        (tempoMarker.SetListesso(TempoMarker::half, TempoMarker::quarter, wxT("Test"))) &&
+        (tempoMarker.SetListesso(TempoMarker::half, TempoMarker::quarter,
+        wxT("Test"))) &&
         (tempoMarker.IsListesso()) &&
         (tempoMarker.GetBeatType() == TempoMarker::half) &&
         (tempoMarker.GetListessoBeatType() == TempoMarker::quarter) &&
@@ -408,7 +466,8 @@ bool TempoMarkerTestSuite::TestCaseBeatType()
         wxByte i = TempoMarker::half;
         for (; i <= (TempoMarker::thirtySecondDotted + 1); i++)
             TEST(wxString::Format(wxT("IsValidBeatType - %d"), i),
-                (TempoMarker::IsValidBeatType(i) == (i <= TempoMarker::thirtySecondDotted))
+                (TempoMarker::IsValidBeatType(i) ==
+                (i <= TempoMarker::thirtySecondDotted))
             );
     }
     
@@ -418,8 +477,10 @@ bool TempoMarkerTestSuite::TestCaseBeatType()
         wxByte i = TempoMarker::half;
         for (; i <= (TempoMarker::thirtySecondDotted + 1); i++)
             TEST(wxString::Format(wxT("SetBeatType - %d"), i),
-                (tempoMarker.SetBeatType(i) == (i <= TempoMarker::thirtySecondDotted)) &&
-                ((i > TempoMarker::thirtySecondDotted) ? 1 : (tempoMarker.GetBeatType() == i))
+                (tempoMarker.SetBeatType(i) ==
+                (i <= TempoMarker::thirtySecondDotted)) &&
+                ((i > TempoMarker::thirtySecondDotted) ? 1 :
+                (tempoMarker.GetBeatType() == i))
             );
     }      
   
@@ -439,8 +500,10 @@ bool TempoMarkerTestSuite::TestCaseListessoBeatType()
         wxByte i = TempoMarker::half;
         for (; i <= (TempoMarker::thirtySecondDotted + 1); i++)
             TEST(wxString::Format(wxT("SetListessoBeatType - %d"), i),
-                (tempoMarker.SetListessoBeatType(i) == (i <= TempoMarker::thirtySecondDotted)) &&
-                ((i > TempoMarker::thirtySecondDotted) ? 1 : (tempoMarker.GetListessoBeatType() == i))
+                (tempoMarker.SetListessoBeatType(i) == 
+                (i <= TempoMarker::thirtySecondDotted)) &&
+                ((i > TempoMarker::thirtySecondDotted) ? 1 :
+                (tempoMarker.GetListessoBeatType() == i))
             );
     }      
   
@@ -459,7 +522,8 @@ bool TempoMarkerTestSuite::TestCaseTripletFeel()
         wxByte i = TempoMarker::noTripletFeel;
         for (; i <= (TempoMarker::tripletFeelSixteenthOff + 1); i++)
             TEST(wxString::Format(wxT("IsValidTripletFeelType - %d"), i),
-                (TempoMarker::IsValidTripletFeelType(i) == (i <= TempoMarker::tripletFeelSixteenthOff))
+                (TempoMarker::IsValidTripletFeelType(i) ==
+                (i <= TempoMarker::tripletFeelSixteenthOff))
             );
     }
     
@@ -469,8 +533,10 @@ bool TempoMarkerTestSuite::TestCaseTripletFeel()
         wxByte i = TempoMarker::noTripletFeel;
         for (; i <= (TempoMarker::tripletFeelSixteenthOff + 1); i++)
             TEST(wxString::Format(wxT("SetTripletFeelType - %d"), i),
-                (tempoMarker.SetTripletFeelType(i) == (i <= TempoMarker::tripletFeelSixteenthOff)) &&
-                ((i > TempoMarker::tripletFeelSixteenthOff) ? 1 : (tempoMarker.GetTripletFeelType() == i))
+                (tempoMarker.SetTripletFeelType(i) ==
+                (i <= TempoMarker::tripletFeelSixteenthOff)) &&
+                ((i > TempoMarker::tripletFeelSixteenthOff) ? 1 :
+                (tempoMarker.GetTripletFeelType() == i))
             );
     }
         
@@ -489,7 +555,9 @@ bool TempoMarkerTestSuite::TestCaseBeatsPerMinute()
         wxWord i = TempoMarker::MIN_BEATS_PER_MINUTE - 1;
         for (; i <= (TempoMarker::MAX_BEATS_PER_MINUTE + 1); i++)
             TEST(wxString::Format(wxT("IsValidBeatsPerMinute - %d"), i),
-                (TempoMarker::IsValidBeatsPerMinute(i) == ((i >= TempoMarker::MIN_BEATS_PER_MINUTE) && (i <= TempoMarker::MAX_BEATS_PER_MINUTE)))
+                (TempoMarker::IsValidBeatsPerMinute(i) ==
+                ((i >= TempoMarker::MIN_BEATS_PER_MINUTE) &&
+                (i <= TempoMarker::MAX_BEATS_PER_MINUTE)))
             );
     }
     
@@ -499,8 +567,12 @@ bool TempoMarkerTestSuite::TestCaseBeatsPerMinute()
         wxWord i = TempoMarker::MIN_BEATS_PER_MINUTE - 1;
         for (; i <= (TempoMarker::MAX_BEATS_PER_MINUTE + 1); i++)
             TEST(wxString::Format(wxT("SetBeatsPerMinute - %d"), i),
-                (tempoMarker.SetBeatsPerMinute(i) == ((i >= TempoMarker::MIN_BEATS_PER_MINUTE) && (i <= TempoMarker::MAX_BEATS_PER_MINUTE))) &&
-                (((i < TempoMarker::MIN_BEATS_PER_MINUTE) || (i > TempoMarker::MAX_BEATS_PER_MINUTE)) ? 1 : (tempoMarker.GetBeatsPerMinute() == i))
+                (tempoMarker.SetBeatsPerMinute(i) == 
+                ((i >= TempoMarker::MIN_BEATS_PER_MINUTE) &&
+                (i <= TempoMarker::MAX_BEATS_PER_MINUTE))) &&
+                (((i < TempoMarker::MIN_BEATS_PER_MINUTE) ||
+                (i > TempoMarker::MAX_BEATS_PER_MINUTE)) ? 1 :
+                (tempoMarker.GetBeatsPerMinute() == i))
             );
     }
     
