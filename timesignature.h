@@ -219,6 +219,7 @@ protected:
 // Operations    
 public:
     wxString GetText(wxUint32 type) const;
+    int GetWidth() const;
 };
 
 #endif

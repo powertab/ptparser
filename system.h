@@ -32,6 +32,9 @@ public:
     static const wxByte DEFAULT_RHYTHM_SLASH_SPACING_BELOW;
     static const wxByte DEFAULT_EXTRA_SPACING;
     
+    // Position Spacing Constants
+    static const wxByte MIN_POSITION_SPACING;
+
  // Member Variables
 protected:
 	wxRect  m_rect;												///< Bounding rect for the system
@@ -89,6 +92,11 @@ public:
         {return (m_rect);}
         
 // Position Spacing Functions
+    /// Determines if a position spacing is valid
+    /// @param positionSpacing Position spacing to validate
+    /// @return True if the position spacing is valid, false if not
+    bool IsValidPositionSpacing(int positionSpacing) const
+        {return (positionSpacing >= MIN_POSITION_SPACING);}
     /// Gets the amount of spacing between positions
     /// @return The amount of spacing between positions
     wxUint32 GetPositionSpacing() const
@@ -235,6 +243,16 @@ public:
     /// @return A constant reference to the bar at the end of the system
     const Barline& GetEndBarConstRef() const
         {return (m_endBar);}        
+
+// Position Functions
+    bool IsValidPosition(int position) const;
+    int CalculatePositionCount(int nPositionSpacing) const;
+    int GetPositionCount() const;
+    int GetFirstPositionX() const;
+    int GetPositionX(int position) const;
+
+// Operations
+    int GetCumulativeInternalKeyAndTimeSignatureWidth(int position = -1) const;
 };
 
 WX_DEFINE_POWERTABARRAY(System*, SystemArray);

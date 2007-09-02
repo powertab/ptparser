@@ -445,7 +445,7 @@ bool TimeSignature::SetFlag(wxUint32 flag)
     return (true);
 }
 
-// Text Functions
+// Operations
 /// Gets a text representation of the meter
 /// @param type Type of text to get (see textTypes enum in .h for values)
 /// @return Text representation of the meter 
@@ -472,4 +472,16 @@ wxString TimeSignature::GetText(wxUint32 type) const
     }
 
     return (returnValue);
+}
+
+/// Gets the width of the time signature, in drawing units
+/// @return the width of the time signature
+int TimeSignature::GetWidth() const
+{
+    //------Last Checked------//
+    // - Aug 30, 2007
+
+    // Time signature must be shown to have width
+    // All time signatures are 18 units wide
+    return (IsShown() ? 18 : 0);
 }

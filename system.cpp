@@ -24,7 +24,10 @@ const wxByte System::DEFAULT_POSITION_SPACING                       = 20;
 const wxByte System::DEFAULT_RHYTHM_SLASH_SPACING_ABOVE             = 0;
 const wxByte System::DEFAULT_RHYTHM_SLASH_SPACING_BELOW             = 0;
 const wxByte System::DEFAULT_EXTRA_SPACING                          = 0;
-    
+
+// Position Spacing Constants
+const wxByte System::MIN_POSITION_SPACING                           = 3;
+
 // Constructor/Destructor
 /// Default Constructor
 System::System() :
@@ -338,4 +341,168 @@ void System::GetBarlines(BarlineArray& barlineArray)
     }
 
     barlineArray.Add(&m_endBar);
+}
+
+// Position Functions
+/// Determines if a position is valid
+/// @param position Zero-based index of the position to validate
+/// @return True if the position is valid, false if not
+bool System::IsValidPosition(int position) const
+{
+    //------Last Checked------//
+    // - Aug 30, 2007
+    return ((position >= 0) && (position < GetPositionCount()));
+}
+
+/// Calculates the number of positions that will fit across the system based on
+/// a given position spacing
+/// @param positionSpacing Position spacing used to perform the calculation
+/// @return The number of positions that will fit across the system
+int System::CalculatePositionCount(int positionSpacing) const
+{
+    //------Last Checked------//
+    // - Aug 30, 2007
+    wxCHECK(IsValidPositionSpacing(positionSpacing), 0);
+
+    int returnValue = 0;
+
+    // The available width extends from the first position to the right side of
+    // the system
+    int width = m_rect.GetRight() - GetFirstPositionX();
+
+	// Subtract the width of the key and time signatures on the barlines within
+    // the system (does not include the starting barline)
+    width -= GetCumulativeInternalKeyAndTimeSignatureWidth();
+
+    // We need at least 1 position worth of space from the last position and the
+    // end of the system
+    width -= positionSpacing;
+
+    // If we have enough width for at least 1 position, calculate the position
+    // count
+    if (width >= positionSpacing)
+        returnValue = width / positionSpacing;
+
+    return (returnValue);
+}
+
+/// Gets the number of positions that can fit across the system based on the
+/// current position width
+/// @return The number of positions that can fit across the system
+int System::GetPositionCount() const
+{
+    //------Last Checked------//
+    // - Aug 30, 2007
+
+    // Calculate the position count using the current position spacing
+    return (CalculatePositionCount(GetPositionSpacing()));
+}
+
+/// Gets the x co-ordinate of the first position in the system
+/// @return The x co-ordinate of the first position in the system
+int System::GetFirstPositionX() const
+{
+    //------Last Checked------//
+    // - Aug 30, 2007
+
+    // Start at the leftmost point in the system
+    int returnValue = m_rect.GetLeft();
+
+    // Add the width of the clef; the symbol itself is 16 units wide, with 3
+    // units of space on both sides, for a total of 22 units
+    returnValue += 22;
+
+	// Add the width of the starting key signature
+    int keySignatureWidth = m_startBar.GetKeySignatureConstRef().GetWidth();
+    returnValue += keySignatureWidth;
+
+	// Add the width of the starting time signature
+	int timeSignatureWidth = m_startBar.GetTimeSignatureConstRef().GetWidth();
+    returnValue += timeSignatureWidth;
+	
+	// If we have both a key and time signature, they are separated by 3 units
+	if ((keySignatureWidth > 0) && (timeSignatureWidth > 0))
+		returnValue += 3;
+
+    // Add the width required by the starting barline; for a standard barline,
+    // this is 1 unit of space, otherwise it is the distance between positions
+    int barlineWidth = ((m_startBar.IsBar()) ? 1 : GetPositionSpacing());
+    returnValue += barlineWidth;
+
+    return (returnValue);
+}
+
+/// Gets the x co-ordinate of the nth position in the system
+/// @param position Zero-based index of the position to retrieve the x
+/// co-ordinate for
+/// @return The x co-ordinate for the position, or the x co-ordinate of the
+/// first position if the position is invalid
+int System::GetPositionX(int position) const
+{
+    //------Last Checked------//
+    // - Aug 30, 2007
+    
+    // Initialize to the first position
+	int returnValue = GetFirstPositionX();
+
+    // Validate the position
+    wxCHECK(IsValidPosition(position), returnValue);
+
+    // Since we already have the first position, we only need to perform more
+    // calculations if we need to return the 2nd to 'n' position
+    if (position > 0)
+    {
+	    // Get the width of all key and time signatures up to, but not
+        // including, the position
+	    int keyAndTimeSignatureWidth =
+            GetCumulativeInternalKeyAndTimeSignatureWidth(position);
+
+        // Move "n" positions across using the position spacing, adding the
+        // cumulative key and time signature widths. Add 1 since the position
+        // value is zero-based
+	    returnValue += (((position + 1) * GetPositionSpacing()) +
+            keyAndTimeSignatureWidth);
+    }
+
+    return (returnValue);
+}
+
+// Operations
+/// Gets the total width used by all key and time signatures that reside within
+/// the system (does not include the start bar)
+/// @param position Zero-based index of the position to stop at. If -1, traverse
+/// all the barlines
+int System::GetCumulativeInternalKeyAndTimeSignatureWidth(int position) const
+{
+    //------Last Checked------//
+    // - Sep 01, 2007
+    int returnValue = 0;
+
+    BOOL bAllBarlines = (position == -1);
+
+    // Loop through barline list
+    for (int barline = 0, barlineCount = m_barlineArray.GetCount();
+        barline < barlineCount; ++barline)
+	{
+        // Get the position where the barline resides
+        int barlinePosition = m_barlineArray[barline]->GetPosition();
+
+		// Only use bars before the index
+		if (bAllBarlines || (barlinePosition < position))
+		{
+			// Ignore keys and time signs at position 0, they're handled in
+            // GetFirstPositionX
+		    if (m_barlineArray[barline]->GetPosition() > 0)
+		    {
+                // Add the width of the key and time signature, if present on
+                // the barline
+                returnValue += 
+                    m_barlineArray[barline]->GetKeyAndTimeSignatureWidth();
+		    }
+		}
+		else
+			break;
+	}
+
+    return (returnValue);
 }

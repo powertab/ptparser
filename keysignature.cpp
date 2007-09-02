@@ -148,7 +148,7 @@ void KeySignature::GetKey(wxByte& keyType, wxByte& keyAccidentals) const
 
 /// Gets the key type and accidentals required to draw the key signature
 /// @param keyType major or minor (see keyTypes enum in .h for values)
-/// @param keyAccidentals type and number of accidentals (4 sharps, 2 flats,
+/// @param keyAccidentals Type and number of accidentals (4 sharps, 2 flats,
 /// etc.; see keyAccidentals enum in .h for values)
 /// @return True if the key is a cancellation, false if not
 bool KeySignature::GetDrawKey(wxByte& keyType, wxByte& keyAccidentals) const
@@ -247,6 +247,33 @@ wxString KeySignature::GetText() const
 
     if (IsMinorKey())
         returnValue += "m";
+
+    return (returnValue);
+}
+
+/// Gets the width of the key signature, in drawing units (100ths of an inch)
+/// @return The width of the key signature
+int KeySignature::GetWidth() const
+{
+    //------Last Checked------//
+    // - Aug 30, 2007
+    int returnValue = 0;
+    
+    // Key signature must be shown to have width
+    if (IsShown())
+    {
+        // Get the draw key
+        wxByte keyType = 0;
+        wxByte keyAccidentals = 0;
+        GetDrawKey(keyType, keyAccidentals);
+
+        // Determine the number of accidentals, be it sharps or flats
+        int accidentals = ((keyAccidentals <= sevenSharps) ? keyAccidentals :
+            (keyAccidentals - 7));
+
+        // There are 6 drawing units per accidental
+		returnValue = accidentals * 6;
+    }
 
     return (returnValue);
 }

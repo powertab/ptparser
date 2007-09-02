@@ -228,6 +228,9 @@ public:
     /// @return A pointer to the rehearsal sign
     RehearsalSign* GetRehearsalSignPtr()                        
         {return (&m_rehearsalSign);}
+
+// Operations
+    int GetKeyAndTimeSignatureWidth() const;
 };
 
 WX_DEFINE_POWERTABARRAY(Barline*, BarlineArray);

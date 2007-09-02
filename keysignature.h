@@ -222,6 +222,7 @@ public:
         
 // Operations
     wxString GetText() const;
+    int GetWidth() const;
 
 // Flag Functions
 protected:

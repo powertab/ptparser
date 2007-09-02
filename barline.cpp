@@ -247,3 +247,39 @@ bool Barline::SetRepeatCount(wxUint32 repeatCount)
     
     return (true);
 }
+
+// Operations
+/// Gets the width of the key and time signature on the barline
+/// @return The width of the key and time signature on the barline
+int Barline::GetKeyAndTimeSignatureWidth() const
+{
+    //------Last Checked------//
+    // - Sep 01, 2007
+    int returnValue = 0;
+
+    // Add the width of the key signature
+    returnValue += m_keySignature.GetWidth();
+
+    // If the key signature has width, we need to adjust to account the right
+    // side of the barline
+    if (returnValue > 0)
+    {
+        // Some bars are thicker than others
+	    if (IsDoubleBar())
+		    returnValue += 2;
+	    else if (IsRepeatStart())
+		    returnValue += 5;
+	    else if (GetType() >= repeatEnd)
+		    returnValue += 6;
+    }
+
+    // Add the width of the time signature
+    int timeSignatureWidth = m_timeSignature.GetWidth();
+    if (timeSignatureWidth > 0)
+	{
+        // 3 units of space from barline or key signature
+        returnValue += (3 + timeSignatureWidth);
+	}
+
+    return (returnValue);
+}
