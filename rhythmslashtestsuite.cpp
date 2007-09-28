@@ -40,8 +40,8 @@ RhythmSlashTestSuite::~RhythmSlashTestSuite()
 size_t RhythmSlashTestSuite::GetTestCount() const
 {
     //------Last Checked------//
-    // - Jan 7, 2005
-    return (694);
+    // - Sep 27, 2007
+    return (693);
 }
 
 /// Executes all test cases in the test suite
@@ -1049,11 +1049,11 @@ bool RhythmSlashTestSuite::TestCaseSlideOutOf()
 bool RhythmSlashTestSuite::TestCaseSingleNoteData()
 {
     //------Last Checked------//
-    // - Jan 6, 2005
+    // - Sep 27, 2007
     
     // TEST CASE: IsValidStringNumber
     {
-        wxByte i = RhythmSlash::MIN_SINGLE_NOTE_STRING_NUMBER - 1;
+        wxByte i = RhythmSlash::MIN_SINGLE_NOTE_STRING_NUMBER;
         for (; i < (RhythmSlash::MIN_SINGLE_NOTE_STRING_NUMBER + 1); i++)
             TEST(wxString::Format(wxT("IsValidStringNumber - %d"), i),
                 (RhythmSlash::IsValidStringNumber(i) ==

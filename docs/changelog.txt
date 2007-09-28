@@ -1,3 +1,11 @@
+Latest Build
+============
+
+FIX: rhythmslash.cpp(32,33) - single note string number constants change from
+	 1 and 7 to 0 and 6 as the value is stored in zero-based. Had to update
+	 test suite as well
+	 Bug found by Simone Tellini
+
 Version 1.1.2 [ 05-Aug-2007 ]
 =============================
 

@@ -29,8 +29,8 @@ const wxUint32  RhythmSlash::MIN_POSITION                       = 0;
 const wxUint32  RhythmSlash::MAX_POSITION                       = 255;
     
 // Single Note String Number Constants
-const wxByte    RhythmSlash::MIN_SINGLE_NOTE_STRING_NUMBER      = 1;
-const wxByte    RhythmSlash::MAX_SINGLE_NOTE_STRING_NUMBER      = 7;
+const wxByte    RhythmSlash::MIN_SINGLE_NOTE_STRING_NUMBER      = 0;
+const wxByte    RhythmSlash::MAX_SINGLE_NOTE_STRING_NUMBER      = 6;
 
 // Single Note Fret Number Constants
 const wxByte    RhythmSlash::MIN_SINGLE_NOTE_FRET_NUMBER        = 0;
