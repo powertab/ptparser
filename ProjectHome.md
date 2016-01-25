@@ -1,0 +1,1 @@
+Power Tab Parser is a simple wxWidgets based program that can read and write Power Tab (.ptb) files. Contains code useful to developers wishing to write software that can convert, view, play or edit Power Tab (.ptb) files.
